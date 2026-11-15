@@ -10,7 +10,7 @@ Code mọi phần: **Toàn** (quyết định 15/11). Cột "Lý thuyết + thuy
 | Phần notebook | Mục | Lý thuyết + thuyết trình | Desc (`docs/parts/`) | Code (chưa làm / đang làm / xong) | Smoke run (đạt / lỗi / chưa chạy) | Normal run (đạt / lỗi / chưa chạy) | Đã bàn giao code | Slide | Ghi chú |
 |---|---|---|---|---|---|---|---|---|---|
 | 0. Setup | — | Toàn (cả nhóm phải hiểu) | — | xong | đạt (16/11, Kaggle T4) | chưa chạy | chưa | 2 | Ưu tiên số 1: cách lấy model / tokenizer / dữ liệu |
-| 1. Tác vụ mẫu | 1 | Muội | chưa có | chưa làm | chưa chạy | chưa chạy | chưa | 3–4 | |
+| 1. Tác vụ mẫu | 1 | Muội (demo: Toàn) | `muc01_gioi_thieu_v2.md` (duyệt 16/11) | xong | đạt (16/11, Kaggle T4, 4/4) | chưa chạy | chưa | 3–4 | |
 | 2. Kiến trúc | 2 | Muội | chưa có | chưa làm | chưa chạy | chưa chạy | chưa | 5–6 | Cần `attn_implementation="eager"` |
 | 3. Tokenization | 3 | Muội | chưa có | chưa làm | chưa chạy | chưa chạy | chưa | 7 | |
 | 4. Nguyên lý học | 4 | Phúc | chưa có | chưa làm | chưa chạy | chưa chạy | chưa | 8–9 | |
@@ -51,3 +51,5 @@ Log mỗi lần chạy ở `outputs/logs/<YYYYMMDD_HHMMSS>_<smoke|normal>/` theo
 - 2026-11-16 Toàn: phần 0 Setup: viết 8 cell code 0.1–0.8 (cấu hình, log, môi trường, tải Qwen2.5-1.5B-Instruct + GPT-2 tokenizer, kiến trúc + assert số tham số, UIT-VSFC, env.json/config.json) theo `docs/plans/detail_plan_notebook_v1.md` (AI hỗ trợ), nhánh `part/00-setup` → chạy thử cục bộ cell 0.1, 0.2, 0.7 (dữ liệu giả), 0.8 không có GPU: đạt; **chưa smoke run trên Kaggle**
 - 2026-11-16 Toàn: smoke run phần 0 trên Kaggle (T4 x2, `20261116_025328_smoke`): đạt (số tham số 1,543,714,304 khớp; UIT-VSFC khớp số dòng). Sau lần chạy: cell 0.4 đổi `device_map={"": 0}`, cell 0.3 thêm `gpu_count`, điền cell Phân tích (AI hỗ trợ) → chưa commit
 - 2026-11-16 Toàn: smoke run lại phần 0 (`20261116_030403_smoke`): revision `989aa79…` và `gpu_count` = 2 ghi đúng (AI hỗ trợ ghi log) → chưa commit
+- 2026-11-16 Toàn: desc mục 1 `docs/parts/muc01_gioi_thieu_v1.md` và `data/tasks_prompts.json` (AI viết theo yêu cầu Toàn) → Toàn duyệt; Toàn làm demo phần 1; dữ liệu `data/` lên Kaggle bằng Kaggle Dataset (cách (a))
+- 2026-11-16 Toàn: code phần 1 (cell 1.1–1.5: hàm sinh greedy, 4 tác vụ in rõ INPUT/OUTPUT, chạy `is_even` của model, chấm + cột `truncated`, thử prompt khác) (AI hỗ trợ); `tasks_prompts.json` v2 (trần token 256/512), desc `muc01_gioi_thieu_v2.md`; smoke run đạt 4/4

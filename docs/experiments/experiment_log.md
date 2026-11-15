@@ -6,6 +6,19 @@
 
 ---
 
+## 2026-11-16 smoke run phần 1 Tác vụ mẫu (lần cuối: END 03:54:34)
+
+- Người chạy: Toàn | Kaggle T4, Dataset `llms-dl-data` (`tasks_prompts.json` v2) | Chế độ: smoke | greedy, repetition_penalty 1.1 (mặc định)
+- Kết quả (`outputs/_smoke/results/tasks_outputs.csv`): hỏi đáp đạt (10/32 token), dịch đạt (8/48), sinh mã đạt (216/512; `is_even` = [True, False, True, False]), tóm tắt đạt, chấm tay: Toàn (104/256; "đúng 1 câu, giữ đủ 5 ý, không thêm ý; nhưng gần như ghép lại các câu gốc, rút gọn ít"); **đạt 4/4**, bị cắt 0/4; thời gian sinh 13.0 s.
+- Quyết định chấm (Toàn, 16/11): sinh mã giữ đạt theo test `is_even`; chữ ngoài khối code chỉ ghi vào `judge_note`, không trừ điểm vì prompt không cấm.
+- Sự cố đã xử lý:
+  - Lần đầu `FileNotFoundError` `data/tasks_prompts.json`: cell 0.1 chạy trước khi gắn Dataset; chạy lại 0.1 thì đạt.
+  - Bản v1 (`max_new_tokens` tóm tắt 96, sinh mã 192): cả hai chạm trần, bị cắt → v2 (256, 512) theo mức benchmark tóm tắt (~62–110 token tiếng Anh) và model card Qwen (512).
+  - Kaggle Dataset chưa cập nhật nên 2 lần chạy vẫn đọc v1 → cell 1.2 thêm `assert` version file dữ liệu.
+- Quan sát: prompt thử "Xin chào" được trả lời bằng tiếng Trung; sinh mã tự thêm ví dụ `print` và giải thích; tóm tắt gần như ghép lại 5 câu gốc.
+
+---
+
 ## 20261116_030403_smoke — phần 0 Setup (chạy lại sau khi sửa cell 0.3, 0.4)
 
 - Người chạy: Toàn | Nơi chạy: Kaggle Notebook, GPU Tesla T4, `gpu_count` = 2, model trên `cuda:0` | Chế độ: smoke
