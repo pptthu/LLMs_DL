@@ -1,0 +1,46 @@
+{
+  "_meta": {
+    "version": "v1",
+    "status": "Duyệt: Toàn, 2026-11-16",
+    "source": "docs/research/noi_dung_muc01_gioi_thieu_v1.md §5.2; đoạn văn tóm tắt do nhóm tự viết (AI soạn nháp, Toàn duyệt)"
+  },
+  "tasks": [
+    {
+      "id": "qa",
+      "task": "Hỏi đáp",
+      "prompt": "Thủ đô của Nhật Bản là gì? Trả lời một câu.",
+      "max_new_tokens": 32,
+      "check_method": "auto: output chứa 'Tokyo' (không phân biệt hoa thường)",
+      "expected": "Tokyo"
+    },
+    {
+      "id": "summary",
+      "task": "Tóm tắt",
+      "prompt": "Học sâu là một nhánh của học máy, dùng mạng nơ-ron nhiều lớp để tự học biểu diễn từ dữ liệu. Môn học bắt đầu từ mạng nơ-ron nhân tạo và cách huấn luyện mạng bằng lan truyền ngược. Tiếp theo, sinh viên học cách tinh chỉnh một mô hình đã huấn luyện sẵn cho bài toán mới. Hai chương sau giới thiệu mạng tích chập cho ảnh và mạng hồi quy cho dữ liệu chuỗi. Cuối môn, mỗi nhóm thuyết trình một chủ đề, ví dụ mô hình ngôn ngữ lớn, và chạy thử code trên GPU miễn phí.\n\nTóm tắt đoạn trên trong 1 câu.",
+      "max_new_tokens": 96,
+      "check_method": "tay: đúng 1 câu; giữ ý chính; không thêm ý không có trong đoạn",
+      "expected": null
+    },
+    {
+      "id": "translate",
+      "task": "Dịch",
+      "prompt": "Dịch sang tiếng Anh: Hôm nay trời rất đẹp.",
+      "max_new_tokens": 48,
+      "check_method": "auto: chứa 'today' và một trong 'weather', 'nice', 'beautiful', 'lovely'",
+      "expected": "The weather is very nice today."
+    },
+    {
+      "id": "code",
+      "task": "Sinh mã",
+      "prompt": "Viết hàm Python is_even(n) trả về True nếu n là số chẵn.",
+      "max_new_tokens": 192,
+      "check_method": "auto: is_even(0), is_even(1), is_even(2), is_even(-3) == True, False, True, False",
+      "expected": [
+        true,
+        false,
+        true,
+        false
+      ]
+    }
+  ]
+}
