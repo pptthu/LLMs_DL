@@ -17,8 +17,8 @@
     ├── .gitignore
     ├── .github/                  # Mẫu PR, mẫu issue
     ├── notebook/
-    │   ├── llm_presentation.ipynb   # Notebook nộp: phần 0–10, bản đã Save & Run All (Toàn ghép)
-    │   └── parts/                   # Notebook riêng của từng người: part_NN_<tên>.ipynb
+    │   ├── llm_presentation.ipynb   # Notebook nộp: phần 0–10, bản đã Save & Run All (Toàn viết toàn bộ code)
+    │   └── parts/                   # Không bắt buộc: notebook thử riêng một phần
     ├── data/                     # Bộ câu nhóm tự soạn + danh sách ID (commit được, dung lượng nhỏ)
     ├── outputs/
     │   ├── results/              # CSV, JSON từng phần + env.json (lần chạy chính thức)

@@ -15,7 +15,7 @@
 | Phạm vi | Không fine-tune; code chỉ trong notebook; 1 model chính 1.5B |
 | Chờ cô xác nhận | Cách demo mục 5 (base vs instruct) và mục 8 (không RAG vs có RAG); dùng UIT-VSFC. Đến Ngày 4 chưa trả lời thì chạy theo phương án hiện tại và ghi rõ trên slide |
 
-**Yêu cầu minh hoạ → phần notebook → slide**
+**Yêu cầu minh hoạ → phần notebook → slide** (cột "Người" = người phụ trách lý thuyết, slide, thuyết trình; **code mọi phần do Toàn viết**, quyết định 15/11)
 
 | # | Yêu cầu minh hoạ của đề | Phần | Slide | Người |
 |---|---|---|---|---|
@@ -39,8 +39,9 @@
 - Cách lấy từng thứ: `README.md` §Setup; model card ở `docs/models/`.
 
 ### 2.2 Notebook (phần 0–10)
+Code mọi phần: **Toàn**. Trong ngoặc là người phụ trách lý thuyết và thuyết trình.
 ```text
-Phần 0  Setup (Phúc): cấu hình, thư viện, tải model + tokenizer + UIT-VSFC, env.json
+Phần 0  Setup: cấu hình, thư viện, tải model + tokenizer + UIT-VSFC, env.json
   │
   ├─ Phần 1–3 (Muội):  tác vụ mẫu · kiến trúc + causal mask + top-5 · tokenization
   ├─ Phần 4–6 (Phúc):  cặp ngữ cảnh → đích + loss · base vs instruct · 5 cấu hình sinh
@@ -82,5 +83,5 @@ Theo `docs/rules/RULES_v1.md` §2:
 | Script tải UIT-VSFC không chạy với `datasets` ≥ 4.0 | Đọc Parquet bằng `pandas` |
 | Rò dữ liệu: câu few-shot trùng câu test | Ví dụ lấy từ split train, test từ split test, `assert` không trùng |
 | Số trên slide lệch notebook | Chỉ lấy số từ `outputs/results/` của lần Save & Run All; ghi đường dẫn dưới bảng |
-| Xung đột khi nhiều người sửa một `.ipynb` | Mỗi người một file trong `notebook/parts/`; Toàn ghép |
+| Người thuyết trình không giải thích được code do Toàn viết | Toàn bàn giao từng phần (giải thích từng cell); ghi vào `progress_status.md`; tập hỏi chéo trước buổi trình bày |
 | Không tải được model khi trình bày | Notebook nộp đã có output; xuất HTML dự phòng |

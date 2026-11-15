@@ -42,14 +42,15 @@
 - Tập thuyết trình trong 20 phút, gồm cả thời gian mở notebook.
 
 ## How-to-do
-1. Phúc: phần 0 setup, chạy thử tải 2 model + tokenizer + UIT-VSFC trên Kaggle, ghi `env.json`.
+1. Toàn: phần 0 setup, chạy thử tải 2 model + tokenizer + UIT-VSFC trên Kaggle, ghi `env.json`.
 2. Mỗi người: desc mục mình trong `parts/` (khuôn `PART_TEMPLATE_v1.md`) → Thư duyệt.
-3. Mỗi người: soạn file trong `data/`, viết notebook phần mình trong `notebook/parts/`, smoke run.
-4. Toàn: chốt prompt mục 7 trên split validation; normal run 500 câu × 4.
-5. Toàn: ghép notebook, Save & Run All trên Kaggle, xuất HTML dự phòng.
+3. Muội, Phúc: soạn file trong `data/` cho mục mình **[cần chốt]**. Toàn: code phần 1–10 trong `notebook/llm_presentation.ipynb`, smoke run từng phần.
+4. Toàn: bàn giao từng phần cho người phụ trách mục (giải thích từng cell, chỉ file kết quả).
+5. Toàn: chốt prompt mục 7 trên split validation; Save & Run All trên Kaggle; xuất HTML dự phòng.
 6. Mỗi người: điền số thật vào slide mục mình; Muội ghép slide; Thư review.
-7. Tập trình bày, hỏi chéo Q&A, nộp.
+7. Tập trình bày (mỗi người giải thích code phần mình trình bày), hỏi chéo Q&A, nộp.
 
 ## Quyết định (người ghi)
 - 2026-11-11: không fine-tune; mọi mục có demo trên model thật (góp ý của cô) — Thư ghi.
 - 2026-11-15: repo riêng `LLMs_DL`; code hết trong notebook, không có mã nguồn riêng; cấu trúc thư mục gọn; ưu tiên phần setup (lấy model ở đâu, như thế nào); giữ phân công code cho Muội, Phúc, Toàn — góp ý của Thư, Toàn ghi.
+- 2026-11-15: **Toàn viết toàn bộ code notebook (phần 0–10)**; Muội, Phúc làm lý thuyết, slide, thuyết trình mục mình và phải giải thích được code phần đó sau khi Toàn bàn giao — Toàn quyết định, thay cho phân công code ở `plans/plan_presentation_llm_v2.md` §4.

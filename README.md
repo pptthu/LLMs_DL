@@ -5,7 +5,7 @@ Bài thuyết trình nhóm môn Học sâu (UTH). Nhóm: Muội, Phúc, Toàn (t
 > Trạng thái: **[đề xuất]**, khung repo, chưa chạy notebook. Mọi số liệu sẽ lấy từ lần chạy chính thức trên Kaggle. Người phụ trách README: Muội.
 
 ## Nội dung
-10 mục theo đề của cô; mỗi mục có demo trên model thật, cùng một notebook:
+10 mục theo đề của cô; mỗi mục có demo trên model thật, cùng một notebook. Code notebook: Toàn. Cột "Người" là người phụ trách lý thuyết và thuyết trình:
 
 | # | Mục | Người |
 |---|---|---|
@@ -67,7 +67,7 @@ Cả ba model đều công khai, **không cần token Hugging Face**.
 LLMs_DL/
 ├── README.md, project_description.md, progress_status.md, AI_usage.md, AGENTS.md, CONTRIBUTING.md
 ├── requirements.txt, .gitignore, .github/
-├── notebook/      # llm_presentation.ipynb (bản nộp) + parts/ (notebook riêng từng người)
+├── notebook/      # llm_presentation.ipynb (bản nộp, Toàn viết code) + parts/ (không bắt buộc)
 ├── data/          # bộ câu nhóm tự soạn, ID 500 câu test, 3 bộ ví dụ few-shot
 ├── outputs/       # results/ (CSV, JSON, env.json), figures/ (PNG), _smoke/ (không commit)
 ├── slides/        # PPTX, PDF

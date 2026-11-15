@@ -4,7 +4,7 @@ Dựa trên `Lab-DL/AGENTS.md` và `Lab-DL/docs/agent/dl-lab-workflow/SKILL.md`,
 
 1. Đọc `docs/00_README_v1.md`, `docs/rules/RULES_v1.md` và `docs/rules/FOLDER_STRUCTURE_v1.md` trước mọi việc, rồi làm theo.
 2. Đọc `project_description.md`, `progress_status.md`, desc của mục đang làm trong `docs/parts/` (nếu có) và nội dung trong `docs/research/`.
-3. Mỗi lần chỉ làm **một phần notebook**, đúng phần người dùng nêu, trong file `notebook/parts/part_NN_*.ipynb` của người đó. Thay đổi nhỏ, chạy và kiểm, rồi giải thích.
+3. Mỗi lần chỉ làm **một phần notebook**, đúng phần người dùng nêu, trong `notebook/llm_presentation.ipynb` (Toàn viết toàn bộ code, quyết định 15/11). Thay đổi nhỏ, chạy và kiểm, rồi giải thích đủ để Toàn bàn giao lại cho người thuyết trình mục đó.
 4. Code chỉ nằm trong notebook. Không tạo file `.py` hay thư mục mã nguồn riêng.
 5. Không bao giờ nói "chạy được" khi chưa chạy. Không bịa số liệu, API, tham số; chưa chắc thì nói rõ và nói cách kiểm.
 6. Gọi `generate()` luôn truyền tham số sinh tường minh (bản Qwen2.5-Instruct mặc định lấy mẫu ngẫu nhiên).

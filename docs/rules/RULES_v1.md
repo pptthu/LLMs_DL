@@ -38,15 +38,16 @@ Mỗi phần (mục 1–10 của đề, ứng với phần 0–10 của notebook
 - AI không tự thêm thí nghiệm, không đổi cấu trúc thư mục ngoài plan đã duyệt.
 - Chưa chắc thì AI hỏi, không đoán. AI không khẳng định "chạy được" khi chưa có output thật.
 
-## 4. Phân công và làm song song
-| Người | Mục lý thuyết | Phần notebook |
-|---|---|---|
-| Muội | 1, 2, 3, 8; ghép slide | 1, 2, 3, 8; README |
-| Phúc | 4, 5, 6, 9 | 0 (setup), 4, 5, 6, 9 |
-| Toàn | 7, 10 | 7, 10; ghép notebook |
-| Thư (hỗ trợ) | Review, hỏi Q&A thử, bấm giờ | Không nhận phần nào |
+## 4. Phân công
+Quyết định ngày 15/11 (Toàn): **Toàn viết toàn bộ code notebook (phần 0–10)**; Muội và Phúc làm lý thuyết, slide và thuyết trình mục của mình.
 
-- Mỗi người viết trong notebook riêng `notebook/parts/part_NN_<tên>.ipynb` và chỉ sửa file của mình (file `.ipynb` rất khó gộp khi hai người cùng sửa).
-- Phần 0 (setup) do Phúc viết trước; các phần khác chép đúng cell setup đó, không tự viết cách tải model khác.
-- Toàn ghép các phần thành `notebook/llm_presentation.ipynb` rồi chạy chính thức một lần.
-- Mỗi người tự thuyết trình mục của mình, kể cả mở notebook giải thích code mình viết.
+| Người | Mục lý thuyết + slide + thuyết trình | Code notebook | Việc khác |
+|---|---|---|---|
+| Muội | 1, 2, 3, 8 | — | Ghép slide; README; soạn `data/tasks_prompts.json`, `data/rag_questions.csv` **[cần chốt]** |
+| Phúc | 4, 5, 6, 9 | — | Soạn `data/base_vs_instruct.json`, `data/hallucination.csv`, `data/bias_prompts.json`, `data/long_context.json` **[cần chốt]** |
+| Toàn | 7, 10 | **Phần 0–10** | Chạy chính thức (Save & Run All), `outputs/`, phân tích lỗi |
+| Thư (hỗ trợ) | Review, hỏi Q&A thử, bấm giờ | — | Duyệt 4 cổng |
+
+- Toàn viết thẳng vào `notebook/llm_presentation.ipynb`. Vì chỉ một người sửa nên không lo xung đột. `notebook/parts/` không bắt buộc, chỉ dùng khi muốn thử riêng một phần.
+- **Người thuyết trình mục nào phải giải thích được từng dòng code của phần đó** (yêu cầu của cô). Toàn code xong phần nào thì **bàn giao** cho người phụ trách mục đó: giải thích từng cell, chỉ file kết quả, ghi vào `progress_status.md`. Muội và Phúc đọc lại, hỏi đến khi tự giải thích được.
+- Muội và Phúc vẫn viết desc mục mình (`docs/parts/`) để Toàn code đúng ý; lấy số cho slide từ `outputs/results/`, không chép từ notebook bằng tay.
