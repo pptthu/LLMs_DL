@@ -9,7 +9,7 @@ Code mọi phần: **Toàn** (quyết định 15/11). Cột "Lý thuyết + thuy
 
 | Phần notebook | Mục | Lý thuyết + thuyết trình | Desc (`docs/parts/`) | Code (chưa làm / đang làm / xong) | Smoke run (đạt / lỗi / chưa chạy) | Normal run (đạt / lỗi / chưa chạy) | Đã bàn giao code | Slide | Ghi chú |
 |---|---|---|---|---|---|---|---|---|---|
-| 0. Setup | — | Toàn (cả nhóm phải hiểu) | — | chưa làm | chưa chạy | chưa chạy | chưa | 2 | Ưu tiên số 1: cách lấy model / tokenizer / dữ liệu |
+| 0. Setup | — | Toàn (cả nhóm phải hiểu) | — | xong | đạt (16/11, Kaggle T4) | chưa chạy | chưa | 2 | Ưu tiên số 1: cách lấy model / tokenizer / dữ liệu |
 | 1. Tác vụ mẫu | 1 | Muội | chưa có | chưa làm | chưa chạy | chưa chạy | chưa | 3–4 | |
 | 2. Kiến trúc | 2 | Muội | chưa có | chưa làm | chưa chạy | chưa chạy | chưa | 5–6 | Cần `attn_implementation="eager"` |
 | 3. Tokenization | 3 | Muội | chưa có | chưa làm | chưa chạy | chưa chạy | chưa | 7 | |
@@ -32,7 +32,9 @@ Toàn chỉ đánh dấu "Đã bàn giao" khi đủ cả 4 điều kiện:
 - [ ] Người phụ trách mục tự giải thích lại được 3 cell bất kỳ do Thư chọn
 
 ## Kiểm chứng
-_Chưa có lần chạy nào._ Log mỗi lần chạy ở `outputs/logs/<YYYYMMDD_HHMMSS>_<smoke|normal>/` theo `docs/templates/RUN_LOG_TEMPLATE_v2.md`; tóm tắt ở `docs/experiments/experiment_log.md`.
+- 2026-11-16 smoke run phần 0 (`20261116_025328_smoke`, Kaggle T4): đạt; tóm tắt trong `docs/experiments/experiment_log.md`.
+
+Log mỗi lần chạy ở `outputs/logs/<YYYYMMDD_HHMMSS>_<smoke|normal>/` theo `docs/templates/RUN_LOG_TEMPLATE_v2.md`; tóm tắt ở `docs/experiments/experiment_log.md`.
 
 ## Vấn đề mở
 - Chờ cô xác nhận: cách demo mục 5, mục 8; dùng UIT-VSFC.
@@ -46,3 +48,6 @@ _Chưa có lần chạy nào._ Log mỗi lần chạy ở `outputs/logs/<YYYYMMD
 - 2026-11-16 Toàn: duyệt toàn bộ bản v2 (rules, templates, description, plans, detail plan, hướng dẫn, model card, thiết kế demo mục 2); chốt Bonferroni mục 10, parse nhận nhãn Việt + thử nhiều mẫu prompt trên validation, repo `pptthu/LLMs_DL` (chủ: Thư), Ngày 1 = 15/11; danh sách file `data/` của Muội, Phúc → chưa commit
 - 2026-11-16 Toàn: chốt cách chấm mục 8, 9 (SQuAD, RGB, RAGAS, SimpleQA, FActScore; 2 người chấm mù, % đồng ý + kappa) → ghi vào `research/noi_dung_muc08_*_v2.md` §3.4, `noi_dung_muc09_*_v2.md` §5.1b, `presentation_description_v2.md`, `detail_plan_notebook_v1.md`, `references.md` → chưa commit
 - 2026-11-16 Toàn: chốt phần 0 Setup (lý thuyết + code) do Toàn; mục 2 phải có demo so sánh (thiết kế [đề xuất]: mBERT vs Qwen, Qwen2.5 vs Qwen2-VL-2B, +1 slide 6b); thêm "How to do: từng bước" vào `RULES_v2` §1.1, `FOLDER_STRUCTURE_v2` §7 và 4 template v2; thêm 2 model card; xoá `_to_delete/` → chưa commit, chờ Toàn duyệt
+- 2026-11-16 Toàn: phần 0 Setup: viết 8 cell code 0.1–0.8 (cấu hình, log, môi trường, tải Qwen2.5-1.5B-Instruct + GPT-2 tokenizer, kiến trúc + assert số tham số, UIT-VSFC, env.json/config.json) theo `docs/plans/detail_plan_notebook_v1.md` (AI hỗ trợ), nhánh `part/00-setup` → chạy thử cục bộ cell 0.1, 0.2, 0.7 (dữ liệu giả), 0.8 không có GPU: đạt; **chưa smoke run trên Kaggle**
+- 2026-11-16 Toàn: smoke run phần 0 trên Kaggle (T4 x2, `20261116_025328_smoke`): đạt (số tham số 1,543,714,304 khớp; UIT-VSFC khớp số dòng). Sau lần chạy: cell 0.4 đổi `device_map={"": 0}`, cell 0.3 thêm `gpu_count`, điền cell Phân tích (AI hỗ trợ) → chưa commit
+- 2026-11-16 Toàn: smoke run lại phần 0 (`20261116_030403_smoke`): revision `989aa79…` và `gpu_count` = 2 ghi đúng (AI hỗ trợ ghi log) → chưa commit
