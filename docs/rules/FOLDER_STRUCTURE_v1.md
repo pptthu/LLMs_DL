@@ -40,7 +40,6 @@ Không có thư mục mã nguồn và thư mục test riêng (góp ý của Thư
     ├── plans/                             # Kế hoạch, detail plan có version
     ├── parts/                             # Desc từng mục: muc01_<tên>_v1.md … muc10_<tên>_v1.md (người phụ trách viết)
     ├── research/                          # Ghi chú research có nguồn, nội dung chi tiết từng mục
-    ├── drafts/                            # Bản nháp báo cáo, nội dung slide
     ├── models/                            # Model card của model dùng (không train)
     ├── experiments/                       # experiment_log.md, error_analysis_v1.md
     ├── scripts/                           # Kịch bản thuyết trình từng người (tạo khi có file đầu tiên)

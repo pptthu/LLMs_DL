@@ -8,10 +8,10 @@ Closes #<số issue>
 <mục tiêu>
 
 ## Kiểm chứng thế nào
-<smoke run / normal run, cell nào, output thật tóm tắt>
+<smoke run / normal run, cell nào, thư mục log `outputs/.../logs/<ts>_…/`, output thật tóm tắt>
 
 ## Checklist
-- [ ] Chỉ sửa file của mình (`notebook/parts/part_NN_*.ipynb` hoặc tài liệu được giao)
+- [ ] Chỉ sửa đúng phần nêu trong issue (code notebook chỉ Toàn sửa trong `notebook/llm_presentation.ipynb`, quyết định 15/11)
 - [ ] Mỗi cell code có markdown trước, comment, cell "Phân tích" sau output
 - [ ] Tham số sinh (`do_sample`, `max_new_tokens`, …) truyền tường minh
 - [ ] `progress_status.md` đã cập nhật

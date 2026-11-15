@@ -1,7 +1,7 @@
 # Presentation LLMs — tổng quan dự án
 
-- **Created**: 2026-11-15T16:30:00+07:00 (Toàn, AI hỗ trợ) | Trạng thái: **[đề xuất]**, chờ Thư duyệt
-- Desc hiện hành: [`docs/presentation_description_v1.md`](docs/presentation_description_v1.md) · Plan: [`docs/plans/plan_presentation_llm_v2.md`](docs/plans/plan_presentation_llm_v2.md) · Mục lục: [`docs/00_README_v1.md`](docs/00_README_v1.md)
+- **Created**: 2026-11-15T16:30:00+07:00 (Toàn, AI hỗ trợ) | **Last Updated**: 2026-11-16T01:40:17+07:00 (Toàn) | Trạng thái: **Duyệt: Toàn, 2026-11-16** (Thư review)
+- Desc hiện hành: [`docs/presentation_description_v2.md`](docs/presentation_description_v2.md) · Plan: [`docs/plans/plan_presentation_llm_v3.md`](docs/plans/plan_presentation_llm_v3.md) · Mục lục: [`docs/00_README_v2.md`](docs/00_README_v2.md)
 
 ## 1. Define
 
@@ -20,7 +20,7 @@
 | # | Yêu cầu minh hoạ của đề | Phần | Slide | Người |
 |---|---|---|---|---|
 | 1 | Ví dụ các tác vụ: hỏi đáp, tóm tắt, dịch, sinh mã | 1 | 4 | Muội |
-| 2 | Sơ đồ từ token đầu vào đến xác suất token tiếp theo | 2 | 5–6 | Muội |
+| 2 | Sơ đồ từ token đầu vào đến xác suất token tiếp theo (+ so sánh LLM với RNN/LSTM, BERT, VLM có demo — điểm cộng) | 2 | 5–6, 6b | Muội |
 | 3 | Tokenize một câu tiếng Việt và một câu tiếng Anh | 3 | 7 | Muội |
 | 4 | Tạo các cặp ngữ cảnh → token mục tiêu từ một câu | 4 | 8–9 | Phúc |
 | 5 | Sơ đồ mục tiêu và dữ liệu của từng giai đoạn | 5 | 10–11 | Phúc |
@@ -36,7 +36,8 @@
 - Kaggle, GPU T4, `torch.float16`.
 - Model: `Qwen/Qwen2.5-1.5B-Instruct` (chính), `Qwen/Qwen2.5-1.5B` (mục 5), tokenizer `openai-community/gpt2` (mục 3).
 - Dữ liệu: UIT-VSFC (mục 7, 10).
-- Cách lấy từng thứ: `README.md` §Setup; model card ở `docs/models/`.
+- Cách lấy từng thứ: `README.md` §Setup; model card có sơ đồ kiến trúc ở `docs/models/*_v2.md`.
+- Input lấy từ đâu, output lưu ở đâu, model lưu ở đâu: `docs/rules/FOLDER_STRUCTURE_v2.md` §3, §5. Không train nên không có trọng số tự tạo.
 
 ### 2.2 Notebook (phần 0–10)
 Code mọi phần: **Toàn**. Trong ngoặc là người phụ trách lý thuyết và thuyết trình.
@@ -51,12 +52,14 @@ Phần 0  Setup: cấu hình, thư viện, tải model + tokenizer + UIT-VSFC, e
   └─ Phần 10  (Toàn):  metric, McNemar, confusion matrix, bảng tổng hợp mọi phần
 ```
 
-### 2.3 File dữ liệu và kết quả mỗi phần [đề xuất]
+### 2.3 File dữ liệu và kết quả mỗi phần
+Mỗi phần còn ghi log `outputs/logs/<YYYYMMDD_HHMMSS>_<smoke|normal>/partNN_<tên>.log` và `_records.csv`; cả lần chạy có `run.log`, `config.json`, `env.json` (khuôn `docs/templates/RUN_LOG_TEMPLATE_v2.md`).
+
 | Phần | Đầu vào trong `data/` | Đầu ra trong `outputs/` |
 |---|---|---|
 | 0 | — | `results/env.json` |
 | 1 | `tasks_prompts.json` | `results/tasks_outputs.csv` |
-| 2 | — | `results/model_config.json`, `results/top5_next_tokens.csv`, `figures/causal_mask.png`, `figures/attention_qwen.png` |
+| 2 | `vlm_image.png`, `compare_prompts.json` | `results/model_config.json`, `results/top5_next_tokens.csv`, `figures/causal_mask.png`, `figures/attention_qwen.png`, `results/compare_bert_qwen.csv`, `results/compare_vlm.csv` |
 | 3 | — | `results/token_counts.csv` |
 | 4 | — | `results/per_token_loss.csv` |
 | 5 | `base_vs_instruct.json` | `results/base_vs_instruct.csv` |
@@ -67,7 +70,7 @@ Phần 0  Setup: cấu hình, thư viện, tải model + tokenizer + UIT-VSFC, e
 | 10 | — | `results/icl_metrics.json`, `results/summary_table.csv`, `figures/confusion_matrix_*.png` |
 
 ### 2.4 Quy ước notebook
-Theo `docs/rules/RULES_v1.md` §2:
+Theo `docs/rules/RULES_v2.md` §2:
 - markdown trước mỗi cell code;
 - comment tiếng Việt cho dòng không hiển nhiên;
 - cell "Phân tích" sau output;
