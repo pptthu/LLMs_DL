@@ -38,6 +38,16 @@
 | 20 | Qwen Team, *Qwen2.5 Technical Report*, 2024 | https://arxiv.org/abs/2412.15115 | 2, 3, 4, 5 | 14/11 |
 | 21 | Nguyen et al., *UIT-VSFC: Vietnamese Students' Feedback Corpus for Sentiment Analysis*, KSE 2018, pp. 19–24 | doi:10.1109/KSE.2018.8573337 | 7, 9, 10 | 14/11 (qua trang dataset) |
 | 22 | Dietterich, *Approximate Statistical Tests for Comparing Supervised Classification Learning Algorithms*, Neural Computation 10(7), 1998 | doi:10.1162/089976698300017197 | 10 | 14/11 |
+| 23 | Devlin et al., *BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding*, NAACL 2019 | https://arxiv.org/abs/1810.04805 | 2 (so sánh) | |
+| 24 | Raffel et al., *Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer* (T5), JMLR 2020 | https://arxiv.org/abs/1910.10683 | 2 (so sánh) | |
+| 25 | Qwen Team, *Qwen2.5-VL Technical Report*, 2025 | https://arxiv.org/abs/2502.13923 | 2 (so sánh) | 16/11 |
+| 26 | Rajpurkar et al., *SQuAD: 100,000+ Questions for Machine Comprehension of Text*, EMNLP 2016 | https://arxiv.org/abs/1606.05250 | 8, 9 (chấm EM/F1: bỏ dấu câu và mạo từ; script chính thức còn chuyển chữ thường) | 16/11 |
+| 27 | Chen et al., *Benchmarking Large Language Models in Retrieval-Augmented Generation* (RGB), AAAI 2024 | https://arxiv.org/abs/2309.01431 | 8 | 16/11 |
+| 28 | Es et al., *Ragas: Automated Evaluation of Retrieval Augmented Generation*, 2023 | https://arxiv.org/abs/2309.15217 | 8 | 16/11 |
+| 29 | Wei et al., *Measuring short-form factuality in large language models* (SimpleQA), 2024 | https://arxiv.org/abs/2411.04368 | 9 | 16/11 |
+| 30 | Min et al., *FActScore: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text Generation*, EMNLP 2023 | https://arxiv.org/abs/2305.14251 | 9 | 16/11 |
+| 31 | Zheng et al., *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*, NeurIPS 2023 | https://arxiv.org/abs/2306.05685 | 8, 9 (vì sao không dùng LLM chấm) | 16/11 |
+| 32 | Landis & Koch, *The Measurement of Observer Agreement for Categorical Data*, Biometrics 33(1):159–174, 1977 | https://pubmed.ncbi.nlm.nih.gov/843571/ | 8, 9 (thang kappa) | 16/11 (chỉ mở được abstract; các ngưỡng 0,41/0,61/0,81 lấy từ tài liệu dạy NLP trích lại, chưa đọc bản gốc) |
 
 ## Model, dữ liệu, tài liệu thư viện
 | Tài liệu | Link | Mục | Đã mở |
