@@ -38,7 +38,6 @@
 | `research/nam_kien_thuc_5w1h_v1.md` | Tóm tắt 10 mục theo 5W1H |
 | `research/huong_dan_research_presentation_v1.md` | Hướng dẫn tự research |
 | `research/noi_dung_mucNN_*` | Nội dung chi tiết từng mục (bản số lớn nhất; mục 2 v2 có so sánh LLM với mô hình khác; mục 7, 10 trong `noi_dung_toan_muc07_muc10_v2.md`) |
-| `drafts/` | Bản nháp báo cáo, lý thuyết và chữ slide mục 7, 10 (Toàn); không phải sản phẩm nộp |
 | `models/*_v2.md` | Model card có sơ đồ kiến trúc: Qwen2.5-1.5B-Instruct, Qwen2.5-1.5B (base), GPT-2 tokenizer |
 | `models/bert-base-multilingual-cased_v1.md`, `models/qwen2-vl-2b-instruct_v1.md` | Model card 2 model dùng cho demo so sánh ở mục 2 |
 | `experiments/experiment_log.md` | Sổ tóm tắt các lần chạy, trỏ tới `outputs/logs/` |

@@ -68,7 +68,7 @@ Mỗi file: chỗ nào không đồng ý thì sửa trực tiếp (file chưa co
 
 ### C2. Dọn
 1. (Đã xoá `_to_delete/` ngày 16/11.)
-2. `git status` → chỉ còn các file của bạn; `docs/drafts/*` để riêng, không gộp vào commit này.
+2. `git status` → chỉ còn các file của bạn; chỉ `git add` đúng các file liệt kê ở §C3.
 
 ### C3. Commit (Git Bash hoặc PowerShell, trong thư mục `LLMs_DL`)
 ```bash

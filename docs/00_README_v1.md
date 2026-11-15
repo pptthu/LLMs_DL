@@ -35,7 +35,6 @@
 | `research/nam_kien_thuc_5w1h_v1.md` | Tóm tắt 10 mục theo 5W1H + câu tự kiểm tra |
 | `research/huong_dan_research_presentation_v1.md` | Hướng dẫn tự research: baseline, 3 mức hiểu, 8 bước |
 | `research/noi_dung_mucNN_*_v1.md` | Nội dung chi tiết từng mục (mục 7, 10 trong `noi_dung_toan_muc07_muc10_v1.md`) |
-| `drafts/` | Bản nháp báo cáo và nội dung slide mục 7, 10 (Toàn) |
 | `models/` | Model card: Qwen2.5-1.5B-Instruct, Qwen2.5-1.5B (base), GPT-2 tokenizer |
 | `experiments/experiment_log.md` | Sổ ghi các lần chạy và thí nghiệm |
 | `scripts/`, `qa/`, `bugs/` | Chưa có; tạo khi có file đầu tiên |

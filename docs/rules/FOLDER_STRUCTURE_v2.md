@@ -74,12 +74,6 @@ Ký hiệu: **(có)** = đã có trong repo; **(sẽ tạo)** = tạo khi có fi
     │   ├── noi_dung_muc08_prompting_finetuning_rag_v1.md, _v2.md
     │   ├── noi_dung_muc09_han_che_danh_gia_v1.md, _v2.md
     │   └── noi_dung_toan_muc07_muc10_v1.md, _v2.md (mục 7, 10)
-    ├── drafts/                                     Bản nháp phần của Toàn (mục 7, 10); không phải sản phẩm nộp
-    │   ├── bao_cao_toan_muc07_muc10_v1.md          Nháp báo cáo
-    │   ├── slide_toan_muc07_muc10_v1.md            Chữ đặt lên slide 14, 19, 20
-    │   ├── ly_thuyet_toan_muc07_muc10_v1.md, _v2.md
-    │   ├── ly_thuyet_toan_muc07_muc10_v1.docx
-    │   └── gop_y_noi_dung_nhom_v1.md               Góp ý file docx của nhóm
     ├── models/
     │   ├── qwen2.5-1.5b-instruct_v1.md, _v2.md     Model card (v2 có sơ đồ kiến trúc)
     │   ├── qwen2.5-1.5b-base_v1.md, _v2.md
