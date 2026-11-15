@@ -1,0 +1,29 @@
+# Python, notebook
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+.vscode/
+
+# Smoke run: không commit, không báo cáo
+outputs/_smoke/*
+!outputs/_smoke/.gitkeep
+
+# Dữ liệu tải về và trọng số model (KHÔNG commit)
+data/raw/
+*.parquet
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.zip
+.cache/
+huggingface/
+
+# Slide môn học dùng cho RAG (có bản quyền, chỉ để trên máy)
+tailieu/
+
+# Bí mật
+.env
+*.token
+hf_token*

@@ -1,0 +1,10 @@
+# Thư viện cho notebook bài presentation LLMs.
+# Chưa ghim phiên bản: sau lần chạy chính thức trên Kaggle, ghi phiên bản thật từ outputs/results/env.json vào đây.
+torch
+transformers>=4.37.0
+accelerate
+pandas
+pyarrow
+scikit-learn
+statsmodels
+matplotlib
