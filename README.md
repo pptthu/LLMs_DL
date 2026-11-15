@@ -53,13 +53,13 @@ Cả ba model đều công khai, **không cần token Hugging Face**.
 
 - `from_pretrained` tự tải file về bộ nhớ đệm của Hugging Face; lần sau không tải lại.
 - Mỗi model Qwen khoảng 3.1 GB.
-- Chi tiết và cách dự phòng khi không tải được: `docs/plans/plan_presentation_llm_v2.md` §3 và `docs/models/`.
+- Chi tiết và cách dự phòng khi không tải được: `docs/plans/plan_presentation_llm_v3.md` §3 và `docs/models/*_v2.md` (có sơ đồ kiến trúc).
 
 ## Cách chạy
 1. Mở `notebook/llm_presentation.ipynb` trên Kaggle (Upload notebook hoặc import từ GitHub).
 2. Bật GPU T4 và Internet.
 3. **Chạy thử:** đặt `SMOKE = True` ở cell đầu → Run All. Mỗi phần chạy vài câu, kết quả ghi vào `outputs/_smoke/`.
-4. **Chạy chính thức:** `SMOKE = False` → **Save & Run All**. Kết quả ghi vào `outputs/results/` và `outputs/figures/`.
+4. **Chạy chính thức:** `SMOKE = False` → **Save & Run All**. Kết quả ghi vào `outputs/results/` và `outputs/figures/`; log ghi vào `outputs/logs/<YYYYMMDD_HHMMSS>_normal/`.
 5. Thời gian chạy dự kiến: _chưa đo_ (điền sau lần chạy chính thức).
 
 ## Cấu trúc thư mục
@@ -69,11 +69,11 @@ LLMs_DL/
 ├── requirements.txt, .gitignore, .github/
 ├── notebook/      # llm_presentation.ipynb (bản nộp, Toàn viết code) + parts/ (không bắt buộc)
 ├── data/          # bộ câu nhóm tự soạn, ID 500 câu test, 3 bộ ví dụ few-shot
-├── outputs/       # results/ (CSV, JSON, env.json), figures/ (PNG), _smoke/ (không commit)
+├── outputs/       # results/ (CSV, JSON, env.json), figures/ (PNG), logs/<YYYYMMDD_HHMMSS>_normal/ (log mỗi lần chạy), _smoke/ (không commit)
 ├── slides/        # PPTX, PDF
 └── docs/          # luật, khuôn, kế hoạch, research, model card, sổ thí nghiệm, tài liệu tham khảo
 ```
-Chi tiết: `docs/rules/FOLDER_STRUCTURE_v1.md`. Đọc tài liệu bắt đầu từ `docs/00_README_v1.md`.
+Chi tiết: `docs/rules/FOLDER_STRUCTURE_v2.md`. Đọc tài liệu bắt đầu từ `docs/00_README_v2.md`.
 
 ## Sản phẩm nộp
 | Sản phẩm | Đường dẫn |

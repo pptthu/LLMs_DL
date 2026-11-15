@@ -1,6 +1,6 @@
 ---
 name: Việc của một phần
-about: Giao một phần notebook / một mục của đề cho một thành viên
+about: Theo dõi một mục của đề — dàn ý, lý thuyết, slide (người phụ trách mục) và code phần notebook (Toàn)
 labels: part-task
 ---
 
@@ -8,12 +8,13 @@ labels: part-task
 <mục NN của đề, yêu cầu minh hoạ>
 
 ## Phần notebook và file
-| Phần | File notebook | Đầu vào (`data/`) | Đầu ra (`outputs/`) | Slide |
+| Phần notebook | Người phụ trách mục | Đầu vào (lấy từ đâu) | Đầu ra (`outputs/`) | Slide |
 |---|---|---|---|---|
 
 ## Xong khi
-- [ ] Desc mục trong `docs/parts/` đã được Thư duyệt
-- [ ] Smoke run đạt, ghi đủ file kết quả
+- [ ] Dàn ý desc mục trong `docs/parts/` (khuôn `PART_TEMPLATE_v2.md`) đã được Toàn duyệt
+- [ ] Smoke run đạt, ghi đủ file kết quả và log
 - [ ] Có markdown, comment, cell "Phân tích"
+- [ ] Toàn đã bàn giao code phần này cho người phụ trách mục (`progress_status.md`)
 - [ ] `progress_status.md` đã cập nhật
 - [ ] PR đã mở với `Closes #<số>`
