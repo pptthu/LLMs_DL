@@ -1,7 +1,7 @@
 # Tiến độ bài Presentation LLMs
 
 - **Created**: 2026-11-15T16:30:00+07:00 (Toàn)
-- **Last Updated**: 2026-11-16T01:40:17+07:00 (Toàn)
+- **Last Updated**: 2026-11-17T11:25:29+07:00 (Thư)
 
 Cập nhật file này sau MỖI bước. Bảng dưới đây là nguồn thông tin duy nhất về việc ai đang làm gì.
 
@@ -53,3 +53,4 @@ Log mỗi lần chạy ở `outputs/logs/<YYYYMMDD_HHMMSS>_<smoke|normal>/` theo
 - 2026-11-16 Toàn: smoke run lại phần 0 (`20261116_030403_smoke`): revision `989aa79…` và `gpu_count` = 2 ghi đúng (AI hỗ trợ ghi log) → chưa commit
 - 2026-11-16 Toàn: desc mục 1 `docs/parts/muc01_gioi_thieu_v1.md` và `data/tasks_prompts.json` (AI viết theo yêu cầu Toàn) → Toàn duyệt; Toàn làm demo phần 1; dữ liệu `data/` lên Kaggle bằng Kaggle Dataset (cách (a))
 - 2026-11-16 Toàn: code phần 1 (cell 1.1–1.5: hàm sinh greedy, 4 tác vụ in rõ INPUT/OUTPUT, chạy `is_even` của model, chấm + cột `truncated`, thử prompt khác) (AI hỗ trợ); `tasks_prompts.json` v2 (trần token 256/512), desc `muc01_gioi_thieu_v2.md`; smoke run đạt 4/4
+- 2026-11-17 Thư: review repo (main tới PR #3) và notebook phần 0–1; ghi góp ý vào `docs/plans/gop_y_thu_cho_toan_v1.md` (AI hỗ trợ): §1 việc Thư đã chốt, §2 cần bàn (cách chấm mục 8–9, Bonferroni, chọn prompt trên validation), §3 đối chiếu yêu cầu của cô theo 10 mục, §4 demo B mục 2 và 3 phương án, §5 câu hỏi về docs/code/git → chờ Toàn trả lời; chưa sửa file nào khác của Toàn
