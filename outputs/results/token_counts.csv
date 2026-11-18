@@ -1,0 +1,5 @@
+sentence,lang,tokenizer,n_chars,n_bytes,n_tokens,tokens
+Hôm nay trời rất đẹp.,vi,gpt2,21,29,22,H|ô|m| n|ay| tr|�|�|�|i| r|�|�|�|t| �|�|�|�|�|p|.
+Hôm nay trời rất đẹp.,vi,qwen2.5,21,29,8,H|ôm| n|ay| trời| rất| đẹp|.
+The weather is very nice today.,en,gpt2,31,31,7,The| weather| is| very| nice| today|.
+The weather is very nice today.,en,qwen2.5,31,31,7,The| weather| is| very| nice| today|.

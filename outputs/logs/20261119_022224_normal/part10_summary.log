@@ -1,0 +1,4 @@
+=== PART 10 summary START 2026-11-19T02:29:33+07:00 ===
+McNemar: a=2648, b=47, c=120, d=184, p=1.503e-08
+phân tích lỗi: 30/231 câu sai few-shot | {'chưa gán': 30}
+=== PART 10 summary END 2026-11-19T02:29:34+07:00 ===

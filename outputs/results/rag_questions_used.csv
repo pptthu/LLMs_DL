@@ -1,0 +1,19 @@
+id,title,question,answer_list,is_impossible,gold_doc_id
+0014-0004-0002,Đế quốc La Mã Thần thánh,Muốn ban hành luật thì hoàng đế phải làm gì?,"['phải thông qua Hội đồng', 'thông qua Hội đồng']",False,376
+0015-0028-0002,Mông Cổ,Trong GDP thì các ngành nông nghiệp chiếm tỷ lệ bao nhiêu?,['20.4%'],False,417
+0004-0049-0002,Chiến tranh Vùng Vịnh,Đâu là một trong những loại vũ khí thông minh của quân đội Hoa Kỳ?,['tên lửa AGM-130'],False,216
+0006-0008-0001,Puerto Rico,Ai được xem là người khởi xướng cho những phong trào đấu tranh giành tự do ở Puerto Rico?,['Ramon Emeterio Betances'],False,235
+0012-0034-0001,Mahatma Gandhi,Việc nhịn ăn đối với ông là gì?,"['một vũ khí chính trị', 'vũ khí chính trị']",False,359
+0001-0064-0006,Paris,Bức tranh Mona Lisa nằm ở đâu?,['viện bảo tàng Louvre'],False,63
+0007-0002-0008,Nam Ossetia,"Trên thực tế, Nam Ossetia thuộc chủ quyền quốc gia nào?",['Gruzia'],False,251
+0001-0025-0004,Paris,Paris có sự lột xác mạnh mẽ từ phong cách cổ xưa sang diện mạo mới vào lúc nào?,['thời Napoléon III'],False,24
+0019-0036-0002,Texas,Tại Texas thì cứ bao nhiêu học sinh thì sẽ tương ứng với một giáo viên?,"['14,9']",False,550
+0014-0017-0006,Đế quốc La Mã Thần thánh,Liên minh các Vương hầu được thành lập với lí do gì?,"['Khi Hoàng đế Joseph II lại muốn chiếm xứ Bayern vào thập niên 1780', 'chiếm xứ Bayern']",False,389
+0013-0004-0009,Nội chiến Anh,"Trong ""Bài khiển trách lớn lao"" đã quy định nhà vua muốn đánh thuế dân chúng phải thông qua cơ quan nào?",['quốc hội'],False,369
+0001-0051-0006,Paris,Sân bay nào có số lượng phi cơ ra vào nhiều nhất châu Âu năm 2006?,['Charles-de-Gaulle'],False,50
+0009-0012-0001,François Mitterrand,Mitterrand nhanh chóng quay trở lại với chính trị sau sự kiện nào?,"['Sau cuộc thế chiến', 'cuộc thế chiến']",False,283
+0013-0006-0001,Nội chiến Anh,Vua Charles bị xử tử trước sự chứng kiến của đông đảo quần chúng vào năm nào?,['1640'],False,371
+0015-0030-0005,Mông Cổ,Số người có độ tuổi dưới 30 chiếm tỷ lệ bao nhiêu tại Mông Cổ?,['Khoảng 59%'],False,419
+0015-0025-0001,Mông Cổ,Khi vùng đất sa mạc bị tàn phá thì dẫn đến điều gì?,[],True,414
+0004-0017-0004,Chiến tranh Vùng Vịnh,Quốc gia đứng đầu thế giới về sản lượng hỏa lực là gì?,[],True,184
+0001-0033-0004,Paris,Ngành kinh tế có vị thế như thế nào trong cơ cấu du lịch Paris?,[],True,32

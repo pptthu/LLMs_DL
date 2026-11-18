@@ -1,0 +1,22 @@
+sentence_id,sentence,idx,context,target_token,target_id,prob_target,loss_token
+vi,Hôm nay trời rất đẹp.,0,H,ôm,94365,0.0002777120389509946,8.188925743103027
+vi,Hôm nay trời rất đẹp.,1,Hôm, n,308,0.7054165005683899,0.3489668369293213
+vi,Hôm nay trời rất đẹp.,2,Hôm n,ay,352,0.9960526823997498,0.003955161664634943
+vi,Hôm nay trời rất đẹp.,3,Hôm nay, trời,130868,0.0017568403854966164,6.34423828125
+vi,Hôm nay trời rất đẹp.,4,Hôm nay trời, rất,128323,0.028603550046682358,3.5542244911193848
+vi,Hôm nay trời rất đẹp.,5,Hôm nay trời rất, đẹp,128501,0.7882140874862671,0.23798561096191406
+vi,Hôm nay trời rất đẹp.,6,Hôm nay trời rất đẹp,.,13,0.10911758989095688,2.215329170227051
+vi_shuffled,đẹp rất trời nay Hôm.,0,đ,ẹ,124635,6.584963557543233e-05,9.62813663482666
+vi_shuffled,đẹp rất trời nay Hôm.,1,đẹ,p,79,0.9871920943260193,0.012890581972897053
+vi_shuffled,đẹp rất trời nay Hôm.,2,đẹp, rất,128323,0.000435337278759107,7.739389419555664
+vi_shuffled,đẹp rất trời nay Hôm.,3,đẹp rất, trời,130868,0.0011428326833993196,6.774245262145996
+vi_shuffled,đẹp rất trời nay Hôm.,4,đẹp rất trời, n,308,0.0037919029127806425,5.574887275695801
+vi_shuffled,đẹp rất trời nay Hôm.,5,đẹp rất trời n,ay,352,0.03635577857494354,3.3144021034240723
+vi_shuffled,đẹp rất trời nay Hôm.,6,đẹp rất trời nay, Hôm,143958,1.1871979950228706e-05,11.341329574584961
+vi_shuffled,đẹp rất trời nay Hôm.,7,đẹp rất trời nay Hôm,.,13,9.840964048635215e-05,9.226371765136719
+en,The weather is very nice today.,0,The, weather,9104,0.00011290804832242429,9.088936805725098
+en,The weather is very nice today.,1,The weather, is,374,0.13404059410095215,2.009612560272217
+en,The weather is very nice today.,2,The weather is, very,1602,0.029809093102812767,3.512941837310791
+en,The weather is very nice today.,3,The weather is very, nice,6419,0.1798391342163086,1.7156925201416016
+en,The weather is very nice today.,4,The weather is very nice, today,3351,0.26291507482528687,1.3359242677688599
+en,The weather is very nice today.,5,The weather is very nice today,.,13,0.32848018407821655,1.1132787466049194

@@ -1,0 +1,26 @@
+{
+  "source": "uitnlp/vietnamese_students_feedback, split train",
+  "seed": 42,
+  "label_names": {
+    "0": "negative",
+    "2": "positive"
+  },
+  "examples": [
+    {
+      "sentence": "dạy tốt có tâm .",
+      "label": 2
+    },
+    {
+      "sentence": "oop khá phức tạp nên cần nhiều ví dụ .",
+      "label": 0
+    },
+    {
+      "sentence": "giáo viên tích cực , năng nổ trong giảng dạy , phương pháp dạy có phần đổi mới .",
+      "label": 2
+    },
+    {
+      "sentence": "giảng viên cần linh hoạt trong giảng dạy , chuẩn bị bài giảng phong phú .",
+      "label": 0
+    }
+  ]
+}
