@@ -1,31 +1,31 @@
 row_id,sentence,label,output,pred,error_group,note
-2625,"môn học này nên thường xuyên cập nhật mới , phù hợp với lại thực tế .",negative,Cảm xúc: tích cực,positive,ý ngầm hoặc mỉa mai,góp ý 'nên cập nhật'
-2968,đối với môn anh văn tránh sa đà vào chỉ luyện tập kỹ năng về đọc và viết mà nên thực hành kỹ năng nghe nói nhiều hơn và hiệu quả hơn .,negative,Cảm xúc: tích cực,positive,ý ngầm hoặc mỉa mai,góp ý 'nên thực hành nghe nói'
+2625,"môn học này nên thường xuyên cập nhật mới , phù hợp với lại thực tế .",negative,Cảm xúc: tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",góp ý 'nên cập nhật'
+2968,đối với môn anh văn tránh sa đà vào chỉ luyện tập kỹ năng về đọc và viết mà nên thực hành kỹ năng nghe nói nhiều hơn và hiệu quả hơn .,negative,Cảm xúc: tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",góp ý 'nên thực hành nghe nói'
 2635,"cho thảo luận , làm seminar .",positive,Cảm xúc: tiêu cực,negative,model sai rõ ràng,"câu ngắn, kể hoạt động; nhãn positive hợp lý"
 138,thầy rất dễ tính .,positive,Cảm xúc: tiêu cực,negative,model sai rõ ràng,'rất dễ tính' là khen
-2234,mong thầy nên cho sinh viên tự viết code trước khi cho code cụ thể để vận dụng khả năng tư duy của sinh viên được tốt hơn .,negative,Cảm xúc: tích cực,positive,ý ngầm hoặc mỉa mai,góp ý 'mong thầy nên'
-356,"giảm thời lượng lý thuyết , tăng thời lượng thực hành .",negative,Cảm xúc: tích cực,positive,ý ngầm hoặc mỉa mai,"góp ý 'giảm lý thuyết, tăng thực hành'"
-1494,các bài thực hành nên bám sát thực tế và có ứng dụng thực tiễn .,negative,Tích cực,positive,ý ngầm hoặc mỉa mai,góp ý 'nên bám sát thực tế'
-1649,giảng viên cần phải giảng và hướng dẫn thực hành từng bài học của mỗi buổi học để sinh viên hiểu và thực hành được .,negative,Cảm xúc: tích cực,positive,ý ngầm hoặc mỉa mai,góp ý 'cần phải giảng'
-1086,"cung cấp thêm các giáo trình tiếng việt và các bài tập , ví dụ thực tiễn .",negative,Tích cực,positive,ý ngầm hoặc mỉa mai,góp ý 'cung cấp thêm'
-1420,giảng viên nên hướng dẫn để chúng em nghiên cứu những vấn để mà mình cảm thấy có khả năng và yêu thích .,negative,Tích cực,positive,ý ngầm hoặc mỉa mai,góp ý 'nên hướng dẫn'
-1695,"viết bài nhiều , học ngoài giờ nhiều .",positive,Cảm xúc: tiêu cực,negative,nhãn gốc có vẻ sai,"'viết bài nhiều, học ngoài giờ nhiều' nghe như phàn nàn"
-718,thực hành speaking nhiều hơn .,negative,Cảm xúc: tích cực,positive,ý ngầm hoặc mỉa mai,góp ý 'nhiều hơn'
-1427,"nên đưa môn học này vào đầu lộ trình học , ở năm nhất .",negative,Cảm xúc: tích cực,positive,ý ngầm hoặc mỉa mai,góp ý 'nên đưa môn học'
-2748,"em nghĩ thầy nên bổ sung hình vẽ vào slide bài giảng , hoặc ít nhất trong lúc giảng thầy rời ghế và vẽ lên bảng cho sinh viên dễ hình dung .",negative,Cảm xúc: tích cực,positive,ý ngầm hoặc mỉa mai,góp ý 'nên bổ sung hình vẽ'
+2234,mong thầy nên cho sinh viên tự viết code trước khi cho code cụ thể để vận dụng khả năng tư duy của sinh viên được tốt hơn .,negative,Cảm xúc: tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",góp ý 'mong thầy nên'
+356,"giảm thời lượng lý thuyết , tăng thời lượng thực hành .",negative,Cảm xúc: tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)","góp ý 'giảm lý thuyết, tăng thực hành'"
+1494,các bài thực hành nên bám sát thực tế và có ứng dụng thực tiễn .,negative,Tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",góp ý 'nên bám sát thực tế'
+1649,giảng viên cần phải giảng và hướng dẫn thực hành từng bài học của mỗi buổi học để sinh viên hiểu và thực hành được .,negative,Cảm xúc: tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",góp ý 'cần phải giảng'
+1086,"cung cấp thêm các giáo trình tiếng việt và các bài tập , ví dụ thực tiễn .",negative,Tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",góp ý 'cung cấp thêm'
+1420,giảng viên nên hướng dẫn để chúng em nghiên cứu những vấn để mà mình cảm thấy có khả năng và yêu thích .,negative,Tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",góp ý 'nên hướng dẫn'
+1695,"viết bài nhiều , học ngoài giờ nhiều .",positive,Cảm xúc: tiêu cực,negative,vừa khen vừa chê,"'viết bài nhiều, học ngoài giờ nhiều': vừa như khen chăm, vừa như than nhiều bài"
+718,thực hành speaking nhiều hơn .,negative,Cảm xúc: tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",góp ý 'nhiều hơn'
+1427,"nên đưa môn học này vào đầu lộ trình học , ở năm nhất .",negative,Cảm xúc: tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",góp ý 'nên đưa môn học'
+2748,"em nghĩ thầy nên bổ sung hình vẽ vào slide bài giảng , hoặc ít nhất trong lúc giảng thầy rời ghế và vẽ lên bảng cho sinh viên dễ hình dung .",negative,Cảm xúc: tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",góp ý 'nên bổ sung hình vẽ'
 2486,đi sâu vào vấn đề khó hơn .,positive,Cảm xúc: tiêu cực,negative,nhãn gốc có vẻ sai,"góp ý nhưng gán positive, ngược quy ước góp ý = negative"
 1176,thầy dạy hơi khó hiểu nhưng rất kỹ .,positive,Cảm xúc: tiêu cực,negative,vừa khen vừa chê,'khó hiểu nhưng rất kỹ'
 2269,"cô dạy rất rõ ràng , rành mạch , nhưng hơi thiên về lý thuyết .",negative,Tích cực,positive,vừa khen vừa chê,'rõ ràng … nhưng thiên về lý thuyết'
-670,nắng vào buổi sáng ở gần cửa sổ .,negative,Cảm xúc: tích cực,positive,ý ngầm hoặc mỉa mai,phàn nàn ngầm về nắng chiếu
-1579,nên cho sinh viên những đề thi thử môn tiếng anh sao cho gần tương tự trong đề thi thật để kết quả học tập nâng cao .,negative,Cảm xúc: tích cực,positive,ý ngầm hoặc mỉa mai,góp ý 'nên cho đề thi thử'
+670,nắng vào buổi sáng ở gần cửa sổ .,negative,Cảm xúc: tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",phàn nàn ngầm về nắng chiếu
+1579,nên cho sinh viên những đề thi thử môn tiếng anh sao cho gần tương tự trong đề thi thật để kết quả học tập nâng cao .,negative,Cảm xúc: tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",góp ý 'nên cho đề thi thử'
 667,"thầy dạy rất dề hiểu , tiếp thu bài nhanh .",positive,Cảm xúc: tiêu cực,negative,model sai rõ ràng,'rất dề hiểu' (gõ sai 'dễ') là khen
 1584,môn học cần thiết và thiết thực với ngành học .,negative,Cảm xúc: tích cực,positive,nhãn gốc có vẻ sai,'cần thiết và thiết thực' là khen nhưng gán negative
-1865,sau mỗi buổi thuyết trình nên chốt lại vấn đề đã học được những gì .,negative,Cảm xúc: tích cực,positive,ý ngầm hoặc mỉa mai,góp ý 'nên chốt lại'
+1865,sau mỗi buổi thuyết trình nên chốt lại vấn đề đã học được những gì .,negative,Cảm xúc: tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",góp ý 'nên chốt lại'
 1686,kỹ lưỡng .,positive,Tiêu cực,negative,model sai rõ ràng,'kỹ lưỡng' là khen
-541,thầy cố gắng nên cho giải bài tập nhiều hơn .,negative,Cảm xúc: tích cực,positive,ý ngầm hoặc mỉa mai,góp ý 'nên cho giải bài tập'
-721,nên nhiệt tình và quan tâm đến sinh viên nhiều hơn .,negative,Cảm xúc: tích cực,positive,ý ngầm hoặc mỉa mai,góp ý 'nên nhiệt tình hơn'
-184,giáo viên cần nhiệt tình hơn trong giảng dạy và giờ nên lớp .,negative,Cảm xúc: tích cực,positive,ý ngầm hoặc mỉa mai,góp ý 'cần nhiệt tình hơn'
-2993,"môn thiết kế mạng cần cho sinh viên thực hành với những dự án thực tế đã có , giảm các trường hợp giả sử , giúp rút ngắn giai đoạn thích nghi công việc sau khi ra trường .",negative,Tích cực,positive,ý ngầm hoặc mỉa mai,góp ý 'cần cho thực hành'
-2947,nên trang bị kiến thức nền vững chắc cho những môn chuyên ngành .,negative,ti tích cực,positive,ý ngầm hoặc mỉa mai,góp ý 'nên trang bị'
-2282,cần áp dụng các trò chơi để giúp giảng dạy đỡ nhàm chán .,negative,Cảm xúc: tích cực,positive,ý ngầm hoặc mỉa mai,góp ý 'cần áp dụng trò chơi'
+541,thầy cố gắng nên cho giải bài tập nhiều hơn .,negative,Cảm xúc: tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",góp ý 'nên cho giải bài tập'
+721,nên nhiệt tình và quan tâm đến sinh viên nhiều hơn .,negative,Cảm xúc: tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",góp ý 'nên nhiệt tình hơn'
+184,giáo viên cần nhiệt tình hơn trong giảng dạy và giờ nên lớp .,negative,Cảm xúc: tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",góp ý 'cần nhiệt tình hơn'
+2993,"môn thiết kế mạng cần cho sinh viên thực hành với những dự án thực tế đã có , giảm các trường hợp giả sử , giúp rút ngắn giai đoạn thích nghi công việc sau khi ra trường .",negative,Tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",góp ý 'cần cho thực hành'
+2947,nên trang bị kiến thức nền vững chắc cho những môn chuyên ngành .,negative,ti tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",góp ý 'nên trang bị'
+2282,cần áp dụng các trò chơi để giúp giảng dạy đỡ nhàm chán .,negative,Cảm xúc: tích cực,positive,"ý ngầm (góp ý, phàn nàn gián tiếp)",góp ý 'cần áp dụng trò chơi'
 1886,"giảng viên dạy chậm , dễ tiếp thu .",positive,Cảm xúc: tiêu cực,negative,vừa khen vừa chê,'dạy chậm' nhưng 'dễ tiếp thu'
