@@ -2,7 +2,7 @@
 
 Bài thuyết trình nhóm môn Học sâu (UTH). Nhóm: Muội, Phúc, Toàn (thực hiện), Thư (hỗ trợ: review, Q&A, bấm giờ).
 
-> Trạng thái: **[đề xuất]**, khung repo, chưa chạy notebook. Mọi số liệu sẽ lấy từ lần chạy chính thức trên Kaggle. Người phụ trách README: Muội.
+> Trạng thái: đã chạy chính thức trên Kaggle (GPU T4), run_id **`20261119_150356_normal`**. Mọi số liệu trong `outputs/results/` và trên slide lấy từ lần chạy này. Người phụ trách README: Muội.
 
 ## Nội dung
 10 mục theo đề của cô; mỗi mục có demo trên model thật, cùng một notebook. Code notebook: Toàn. Cột "Người" là người phụ trách lý thuyết và thuyết trình:
@@ -60,7 +60,7 @@ Cả ba model đều công khai, **không cần token Hugging Face**.
 2. Bật GPU T4 và Internet.
 3. **Chạy thử:** đặt `SMOKE = True` ở cell đầu → Run All. Mỗi phần chạy vài câu, kết quả ghi vào `outputs/_smoke/`.
 4. **Chạy chính thức:** `SMOKE = False` → **Save & Run All**. Kết quả ghi vào `outputs/results/` và `outputs/figures/`; log ghi vào `outputs/logs/<YYYYMMDD_HHMMSS>_normal/`.
-5. Thời gian chạy dự kiến: _chưa đo_ (điền sau lần chạy chính thức).
+5. Thời gian chạy: chính thức **7.4 phút** (`outputs/logs/20261119_150356_normal/run.log`, chưa tính thời gian tải model); chạy thử khoảng 2.3 phút.
 
 ## Cấu trúc thư mục
 ```text

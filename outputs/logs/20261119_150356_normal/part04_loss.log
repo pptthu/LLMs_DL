@@ -1,0 +1,30 @@
+=== PART 04 loss START 2026-11-19T15:04:24+07:00 ===
+tham số: model=Qwen/Qwen2.5-1.5B-Instruct | văn bản thô, không chat template | torch.no_grad(), không backward
+dữ liệu vào: câu viết trong cell 'Hôm nay trời rất đẹp.'
+--- mỗi mẫu ---
+idx,id,context,target_token,prob_target,loss_token,time_s
+0,vi,H,ôm,0.000278,8.188926,0.054
+1,vi,Hôm, n,0.705417,0.348967,0.054
+2,vi,Hôm n,ay,0.996053,0.003955,0.054
+3,vi,Hôm nay, trời,0.001757,6.344238,0.054
+4,vi,Hôm nay trời, rất,0.028604,3.554224,0.054
+5,vi,Hôm nay trời rất, đẹp,0.788214,0.237986,0.054
+6,vi,Hôm nay trời rất đẹp,.,0.109118,2.215329,0.054
+loss_mean tự tính = 2.984804 | outputs.loss = 2.984804 | chênh 6.30e-08
+perplexity = 19.783 | mốc đoán bừa: loss 11.931, perplexity 151,936
+7,vi_shuffled,đ,ẹ,6.6e-05,9.628137,
+8,vi_shuffled,đẹ,p,0.987192,0.012891,
+9,vi_shuffled,đẹp, rất,0.000435,7.739389,
+10,vi_shuffled,đẹp rất, trời,0.001143,6.774245,
+11,vi_shuffled,đẹp rất trời, n,0.003792,5.574887,
+12,vi_shuffled,đẹp rất trời n,ay,0.036356,3.314402,
+13,vi_shuffled,đẹp rất trời nay, Hôm,1.2e-05,11.34133,
+14,vi_shuffled,đẹp rất trời nay Hôm,.,9.8e-05,9.226372,
+15,en,The, weather,0.000113,9.088937,
+16,en,The weather, is,0.134041,2.009613,
+17,en,The weather is, very,0.029809,3.512942,
+18,en,The weather is very, nice,0.179839,1.715693,
+19,en,The weather is very nice, today,0.262915,1.335924,
+20,en,The weather is very nice today,.,0.32848,1.113279,
+=== PART 04 loss END 2026-11-19T15:04:24+07:00 ===
+tổng kết: loss_mean vi=2.985 (perplexity 19.78) | xáo trộn=6.701 | en=3.129 | đoán bừa=11.931 | khớp outputs.loss (atol 1e-3): 3/3

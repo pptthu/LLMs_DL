@@ -6,7 +6,18 @@
 
 ---
 
-## 20261119_025437_normal — phần 0–10 (**lần chạy chính thức cuối**, notebook nộp và số cho slide lấy từ đây)
+## 20261119_150356_normal — phần 0–10 (**lần chạy chính thức cuối**, notebook nộp và số cho slide lấy từ đây)
+
+- Người chạy: Toàn | Kaggle T4 | Chế độ: normal | notebook đã chạy và `outputs/` (qua `outputs.zip`) tải về repo 19/11
+- Thay đổi so với 20261119_025437_normal: thêm cell 9.3 (3 câu về thực thể không tồn tại × 2 cách hỏi, `MANUAL_JUDGE9F`); cell 10.3 đổi tên nhóm (d) và chuyển row 1695 sang (c); cell 10.4 ghi đủ đúng / sai / từ chối (mục 8) và cả 2 bản (mục 5); markdown chi tiết hơn. Phần sinh của phần 0–8 không đổi.
+- Kết quả: **đạt**, chạy hết, không lỗi; 7.4 phút. Mọi số trùng 20261119_025437_normal (chỉ khác `time_s`): zero-shot 0.8986, few-shot 0.9230, McNemar p = 1.5e-08; RAG có đáp án 0 đúng / 1 sai / 14 từ chối vs 10 / 3 / 2; mục 9 sai 12/15 mỗi cách hỏi.
+- Mới: thực thể không tồn tại bịa 5/6 lần hỏi, từ chối 1/6 (`fict-3|B`, nhãn tay áp đúng, không có cảnh báo); output trùng lần chạy thử trên CPU.
+- Phân tích lỗi: ý ngầm 20, vừa khen vừa chê 4, model sai rõ 4, nhãn gốc có vẻ sai 2.
+- Lần chạy `20261119_142011_normal` dừng sau phần 0, không dùng, không chép vào repo.
+
+---
+
+## 20261119_025437_normal — phần 0–10 (lần chạy chính thức trước)
 
 - Người chạy: Toàn | Kaggle T4 | Chế độ: normal | notebook đã chạy và `outputs/` tải về repo 19/11
 - Thay đổi so với 20261119_023934_normal: cell Phân tích phần 0–10 đã điền; cell 10.3 thêm `MANUAL_ERROR_GROUPS` (30 câu) và đếm câu góp ý. Phần sinh không đổi.

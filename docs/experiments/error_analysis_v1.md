@@ -1,7 +1,7 @@
 # Phân tích lỗi — zero-shot vs few-shot trên UIT-VSFC (v1)
 
-- **Created**: 2026-11-19 (Toàn, AI hỗ trợ) · Trạng thái: **[đề xuất]**, nhóm lỗi do AI gán, chờ Toàn duyệt
-- Lần chạy: `20261119_025437_normal` (Kaggle T4). Số liệu lấy từ `outputs/results/icl_metrics.json`, `icl_zero_shot.csv`, `icl_few_shot.csv`, `error_analysis_sample.csv`.
+- **Created**: 2026-11-19 (Toàn, AI hỗ trợ) · Trạng thái: **Duyệt: Toàn, 2026-11-19** (AI gán nháp, Toàn đọc lại từng câu và sửa)
+- Lần chạy: `20261119_150356_normal` (Kaggle T4). Số liệu lấy từ `outputs/results/icl_metrics.json`, `icl_zero_shot.csv`, `icl_few_shot.csv`, `error_analysis_sample.csv`.
 - Code: notebook phần 10, cell 10.1–10.3. Nhóm lỗi gán trong `MANUAL_ERROR_GROUPS` (cell 10.3).
 
 ## 1. Thiết lập
@@ -30,8 +30,8 @@ Nhóm ghi sẵn **trước** khi đọc output (file chốt khung v4 §2.4).
 | Nhóm | Số câu | Ví dụ thật (nhãn gốc → model) |
 |---|---|---|
 | (a) không parse được | 0 | — |
-| (b) nhãn gốc có vẻ sai | 3 | "môn học cần thiết và thiết thực với ngành học ." (negative → tích cực) |
-| (c) vừa khen vừa chê | 3 | "thầy dạy hơi khó hiểu nhưng rất kỹ ." (positive → tiêu cực) |
+| (b) nhãn gốc có vẻ sai | 2 | "môn học cần thiết và thiết thực với ngành học ." (negative → tích cực) |
+| (c) vừa khen vừa chê | 4 | "thầy dạy hơi khó hiểu nhưng rất kỹ ." (positive → tiêu cực) |
 | (d) ý ngầm (góp ý, phàn nàn gián tiếp) | 20 | "giảm thời lượng lý thuyết , tăng thời lượng thực hành ." (negative → tích cực) |
 | (e) model sai rõ ràng | 4 | "thầy rất dễ tính ." (positive → tiêu cực) |
 
@@ -49,4 +49,4 @@ Chi tiết từng câu và lý do: `outputs/results/error_analysis_sample.csv` (
 
 - 1 model 1.5B; 1 bộ dữ liệu, 1 tác vụ; 1 bộ ví dụ few-shot; mỗi cấu hình chạy 1 lần.
 - 30 câu là mẫu nhỏ; tỉ lệ các nhóm chỉ mang tính minh họa.
-- Nhóm lỗi do một người gán, chưa có người thứ hai đối chiếu.
+- Nhóm lỗi do một người (Toàn) duyệt, chưa có người thứ hai đối chiếu.
