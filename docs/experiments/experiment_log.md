@@ -6,6 +6,66 @@
 
 ---
 
+## 20261119_025437_normal — phần 0–10 (**lần chạy chính thức cuối**, notebook nộp và số cho slide lấy từ đây)
+
+- Người chạy: Toàn | Kaggle T4 | Chế độ: normal | notebook đã chạy và `outputs/` tải về repo 19/11
+- Thay đổi so với 20261119_023934_normal: cell Phân tích phần 0–10 đã điền; cell 10.3 thêm `MANUAL_ERROR_GROUPS` (30 câu) và đếm câu góp ý. Phần sinh không đổi.
+- Kết quả: **đạt**, chạy hết, không lỗi; 7.1 phút. Mọi số trùng với 20261119_023934_normal (greedy): zero-shot 0.8986, few-shot 0.9230, McNemar p = 1.503e-08; RAG 0/15 vs 10/15; mục 9 sai 12/15 mỗi cách hỏi.
+- Phân tích lỗi (`part10_summary.log`): ý ngầm 20, model sai rõ 4, nhãn gốc có vẻ sai 3, vừa khen vừa chê 3; negative bị đoán positive là câu góp ý: 189/248 (zero-shot), 117/145 (few-shot).
+
+---
+
+## 20261119_023934_normal — phần 0–10 (lần chạy chính thức thứ nhất)
+
+- Người chạy: Toàn | Kaggle T4, Internet bật, Dataset `llms-dl-data` | Chế độ: normal | `outputs/` và notebook đã chạy tải về repo 19/11
+- Thay đổi so với `20261119_022224_normal`: chỉ phần chấm của cell 8.4 (dấu câu → khoảng trắng, `MANUAL_JUDGE8`) và 9.2 (`MANUAL_JUDGE9`). Phần sinh không đổi.
+- Kết quả: **đạt**, cell 0.1–10.4 chạy hết, không lỗi; `RUN END` sau 7.1 phút.
+- Mục 7, 10: giống lần trước (greedy): zero-shot 0.8986, few-shot 0.9230 trên 2,999 câu; McNemar b=47, c=120, p=1.5e-08.
+- Mục 8: câu có đáp án: không RAG đúng 0/15 (từ chối 14, sai 1), có RAG đúng 10/15 (sai 3, từ chối 2); câu tài liệu không có đáp án: có RAG trả lời bịa 2/3.
+- Mục 9: không tài liệu sai 12/15 (cách A), 12/15 (cách B), sai cả 2 lần 11/15; câu vua Charles: đáp án gốc "1640" là nhãn sai của UIT-ViQuAD, model trả lời 1649 (đúng).
+- Mục 5: instruct đạt 4/4, base 0/4 (chấm theo `follow_rule`).
+
+---
+
+## 20261119_022224_normal — phần 0–10 (normal run đầu tiên)
+
+- Người chạy: Toàn | Kaggle T4, Internet bật, Dataset `llms-dl-data` | Chế độ: normal (`SMOKE=False`) | `outputs/` tải về repo 19/11
+- Kết quả: **đạt**, cell 0.1–10.4 chạy hết, không lỗi; `RUN END` sau 7.2 phút.
+- Phần 7, 10 (`icl_metrics.json`): mẫu prompt chọn trên validation: `vi_nhan_vi` (trung bình 0.875, `vi_nhan_en` 0.8725); 2,999 câu test: zero-shot 0.8986 (±0.0108), few-shot 0.9230 (±0.0095), không parse được 0; McNemar exact a=2648, b=47, c=120, d=184, p=1.5e-08.
+- Phần 8, 9: **chấm tự động sai vài câu** (xoá dấu câu làm "Charles-de-Gaulle" không khớp "Charles de Gaulle"; "Bảo tàng Louvre", "Georgia" không khớp đáp án; đáp án gốc "1640" của câu vua Charles là nhãn sai, đúng là 1649). Đã sửa cell 8.4 (dấu câu → khoảng trắng) và thêm `MANUAL_JUDGE8`, `MANUAL_JUDGE9` → **phải chạy lại normal run**; số của lần này ở phần 8, 9 không dùng.
+  - Tính lại trên CSV của lần này: câu có đáp án, không RAG đúng 0/15 (từ chối 14), có RAG đúng 10/15; hỏi không tài liệu sai 12/15 (A), 12/15 (B), sai cả 2 là 11/15.
+- Phân tích lỗi: phần lớn câu few-shot sai là **góp ý** ("nên…", "cần…") có nhãn negative nhưng model đoán positive.
+
+---
+
+## 20261119_021425_smoke — phần 0–10 (notebook có phần 6–10 mới)
+
+- Người chạy: Toàn | Kaggle T4, Internet bật, Dataset `llms-dl-data` | Chế độ: smoke (`N_TEST=20`, `N_VAL_PROMPT=20`, `N_QA=5`, `N_QA_IMPOSSIBLE=1`)
+- Kết quả: **đạt**, cell 0.1–10.4 chạy hết, không lỗi; `RUN END` sau 2.3 phút. Notebook đã chạy tải về repo; file `outputs/_smoke/` chưa tải.
+- Phần 2: VRAM khi có bản eager 5.76 GB (lần 17/11: 11.51 GB, do còn mBERT).
+- Phần 5: base bị cắt 4/4, instruct 0/4; **chưa chấm**.
+- Phần 6: sinh từng bước khớp `generate()`; P(token đầu) T=0.5/1.0/1.5 = 0.995/0.847/0.468; greedy 1 output / 3 lần, các cấu hình lấy mẫu 3/3; temp_1.5 ra chuỗi vô nghĩa lẫn nhiều ngôn ngữ.
+- Phần 7: chọn mẫu `vi_nhan_en` (validation 20 câu); mẫu `vi_nhan_vi` few-shot không parse được 60%. **Ước tính 2 cách × 2,999 câu: 3.1 phút (0.031 s/câu/cách)** → normal run giữ `N_TEST = None` (toàn bộ test).
+- Phần 8: recall@3 = 0.833 (5/6); câu có đáp án: không RAG đúng 0/5 (từ chối 4), có RAG đúng 3/5.
+- Phần 9: không tài liệu, sai 5/5 cả 2 cách hỏi; ví dụ: "Muốn ban hành luật thì hoàng đế phải làm gì?" → model "Đưa ra một đạo luật.", đáp án "phải thông qua Hội đồng".
+- Số smoke không dùng cho slide.
+
+---
+
+## 20261117_161656_smoke — phần 0–5
+
+- Người chạy: Toàn | Kaggle T4 x2 (dùng GPU 0) | Chế độ: smoke | Môi trường như lần 20261116 (torch 2.11.0+cu130, transformers 5.20.2)
+- Kết quả: cell 0.1–5.4 chạy hết, không lỗi (output lưu trong notebook ngày 19/11; file `outputs/_smoke/` chưa tải về máy).
+  - Phần 2: attention thật phần trên đường chéo = 0.000000; top-1 sau "Hôm nay trời rất" = " đẹp" (0.788).
+  - Phần 3: câu tiếng Việt Qwen 8 token / GPT-2 22 token; tiếng Anh 7 / 7; decode đúng 4/4.
+  - Phần 4: loss câu ví dụ 2.985 = `outputs.loss` (chênh 6.3e-08); câu xáo trộn 6.701.
+  - Phần 5: base bị cắt ở `max_new_tokens` 4/4, instruct 0/4; **chưa chấm** (`MANUAL_JUDGE5` trống) → phần 5 chưa tính đạt.
+- Thời gian sinh: câu ngắn 9–10 token mất 0.38–0.42 s (cell 1.1, 5.3) → căn cứ chọn sinh theo lô ở phần 7.
+- VRAM cao nhất 12.18 GB (cell 5.1, khi có cả bản base).
+- Ghi nhận cho mục 9: cell 1.1 ("Xin chào") và 1.5 model trả lời lẫn tiếng Trung.
+
+---
+
 ## 2026-11-16 smoke run phần 1 Tác vụ mẫu (lần cuối: END 03:54:34)
 
 - Người chạy: Toàn | Kaggle T4, Dataset `llms-dl-data` (`tasks_prompts.json` v2) | Chế độ: smoke | greedy, repetition_penalty 1.1 (mặc định)

@@ -1,0 +1,36 @@
+{
+  "zero_shot": {
+    "n": 2999,
+    "accuracy": 0.8986,
+    "ci95_half_width": 0.0108,
+    "n_unparsed": 0,
+    "unparsed_rate": 0.0
+  },
+  "few_shot": {
+    "n": 2999,
+    "accuracy": 0.923,
+    "ci95_half_width": 0.0095,
+    "n_unparsed": 0,
+    "unparsed_rate": 0.0
+  },
+  "mcnemar": {
+    "a_both_correct": 2648,
+    "b_only_zero_correct": 47,
+    "c_only_few_correct": 120,
+    "d_both_wrong": 184,
+    "p_value": 1.5026760788561915e-08,
+    "exact": true
+  },
+  "setup": {
+    "run_id": "20261119_025437_normal",
+    "model": "Qwen/Qwen2.5-1.5B-Instruct",
+    "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "dtype": "float16",
+    "template": "vi_nhan_vi",
+    "n_fewshot": 4,
+    "max_new_tokens": 10,
+    "do_sample": false,
+    "seed": 42,
+    "n_test": 2999
+  }
+}

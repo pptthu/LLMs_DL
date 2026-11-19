@@ -1,0 +1,33 @@
+=== PART 00 setup START 2026-11-19T02:54:37+07:00 ===
+run_id: 20261119_025437_normal
+date: 2026-11-19T02:54:37+07:00
+python: 3.13.16
+torch: 2.11.0+cu130
+cuda: 13.0
+gpu: Tesla T4
+gpu_count: 2
+gpu_vram_gb: 14.6
+dtype: float16
+transformers: 5.20.2
+accelerate: 1.15.0
+pandas: 2.3.3
+pyarrow: 23.0.1
+scikit-learn: 1.6.1
+statsmodels: 0.15.0
+matplotlib: 3.10.0
+model chính: Qwen/Qwen2.5-1.5B-Instruct (revision 989aa7980e4cf806f80c7fef2b1adb7bc71aa306) | device: cuda:0
+generation_config mặc định: do_sample=True, temperature=0.7, top_p=0.8, top_k=20, repetition_penalty=1.1
+num_hidden_layers: 28
+hidden_size: 1,536
+num_attention_heads: 12
+num_key_value_heads: 2
+intermediate_size: 8,960
+vocab_size: 151,936
+max_position_embeddings: 32,768
+tie_word_embeddings: True
+n_params: 1,543,714,304
+tokenizer phụ: openai-community/gpt2 | vocab_size: 50,257
+UIT-VSFC train: 11,426 dòng gốc → 10,968 dòng sau khi bỏ neutral {'positive': 5643, 'negative': 5325}
+UIT-VSFC validation: 1,583 dòng gốc → 1,510 dòng sau khi bỏ neutral {'positive': 805, 'negative': 705}
+UIT-VSFC test: 3,166 dòng gốc → 2,999 dòng sau khi bỏ neutral {'positive': 1590, 'negative': 1409}
+=== PART 00 setup END 2026-11-19T02:54:42+07:00 ===

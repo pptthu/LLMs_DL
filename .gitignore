@@ -27,3 +27,6 @@ tailieu/
 .env
 *.token
 hf_token*
+
+# Bản nháp cá nhân: chỉ giữ ở máy, không đưa lên GitHub
+docs/drafts/

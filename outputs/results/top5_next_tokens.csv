@@ -1,0 +1,6 @@
+text,n_input_tokens,rank,token_id,token,prob
+Hôm nay trời rất,6,1,128501, đẹp,0.7878739237785339
+Hôm nay trời rất,6,2,136583, nắng,0.06317448616027832
+Hôm nay trời rất,6,3,130823, lạnh,0.04550287872552872
+Hôm nay trời rất,6,4,131484, nóng,0.028923386707901955
+Hôm nay trời rất,6,5,220, ,0.0071435729041695595

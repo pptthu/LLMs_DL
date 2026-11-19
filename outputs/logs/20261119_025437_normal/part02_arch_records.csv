@@ -1,0 +1,6 @@
+idx,id,text,position,token,top_k_rank,top_k_token,top_k_prob,time_s
+0,qwen,Hôm nay trời rất,cuối, rất,1, đẹp,0.787874,0.051
+1,qwen,Hôm nay trời rất,cuối, rất,2, nắng,0.063174,0.051
+2,qwen,Hôm nay trời rất,cuối, rất,3, lạnh,0.045503,0.051
+3,qwen,Hôm nay trời rất,cuối, rất,4, nóng,0.028923,0.051
+4,qwen,Hôm nay trời rất,cuối, rất,5, ,0.007144,0.051

@@ -56,6 +56,8 @@
 | Qwen2.5-1.5B (base) | https://huggingface.co/Qwen/Qwen2.5-1.5B | 5 | 15/11 |
 | GPT-2 tokenizer | https://huggingface.co/openai-community/gpt2 | 3 | 15/11 |
 | UIT-VSFC trên Hugging Face | https://huggingface.co/datasets/uitnlp/vietnamese_students_feedback | 7, 10 | 14/11 |
+| UIT-ViQuAD 2.0 trên Hugging Face (split validation; trang dataset không ghi giấy phép) | https://huggingface.co/datasets/taidng/UIT-ViQuAD2.0 | 8, 9 | 19/11 |
+| Nguyen et al., *VLSP 2021 - ViMRC Challenge: Vietnamese Machine Reading Comprehension* (bài báo của UIT-ViQuAD 2.0) | https://arxiv.org/abs/2203.11400 | 8, 9 | 19/11 |
 | Hugging Face Transformers docs | https://huggingface.co/docs/transformers | Tất cả | 14/11 |
 | HF *Summary of the tokenizers* | https://huggingface.co/docs/transformers/tokenizer_summary | 3 | 15/11 |
 | HF *Perplexity of fixed-length models* | https://huggingface.co/docs/transformers/perplexity | 4 | 15/11 |

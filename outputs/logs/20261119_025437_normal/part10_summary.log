@@ -1,0 +1,6 @@
+=== PART 10 summary START 2026-11-19T03:01:42+07:00 ===
+McNemar: a=2648, b=47, c=120, d=184, p=1.503e-08
+phân tích lỗi: 30/231 câu sai few-shot | {'ý ngầm hoặc mỉa mai': 20, 'model sai rõ ràng': 4, 'nhãn gốc có vẻ sai': 3, 'vừa khen vừa chê': 3}
+zero_shot: negative bị đoán positive 248 câu, trong đó câu góp ý 189 (76%)
+few_shot: negative bị đoán positive 145 câu, trong đó câu góp ý 117 (81%)
+=== PART 10 summary END 2026-11-19T03:01:43+07:00 ===

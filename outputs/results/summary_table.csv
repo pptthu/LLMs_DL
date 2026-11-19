@@ -1,0 +1,10 @@
+muc,thi_nghiem,ket_qua,file
+1,"4 tác vụ, 1 model",xem tasks_outputs.csv,tasks_outputs.csv
+2,Top-5 token tiếp theo,xem top5_next_tokens.csv,top5_next_tokens.csv
+3,Số token câu Việt / Anh,vi: Qwen 8 / GPT-2 22; en: Qwen 7 / GPT-2 7,token_counts.csv
+4,Cross-entropy câu ví dụ,vi: loss 2.985; vi_shuffled: loss 6.701; en: loss 3.129,loss_summary.csv
+5,Base vs Instruct (đạt follow_rule),{'instruct': 4},base_vs_instruct.csv
+6,Số output khác nhau / 3 lần,"{'greedy': 1, 'temp_0.5': 3, 'temp_1.5': 3, 'top_p_0.5': 3, 'top_p_0.95': 3}",decoding_samples.csv
+"7, 10",Zero-shot vs few-shot,"accuracy 0.899 vs 0.923 (n = 2,999); McNemar p = 1.5e-08",icl_metrics.json
+8,Không RAG vs có RAG (câu có đáp án đúng),no_rag 0/15 | rag 10/15,rag_results.csv
+9,Hỏi không tài liệu: sai (A / B),12 / 12 trên 15 câu,hallucination_results.csv
