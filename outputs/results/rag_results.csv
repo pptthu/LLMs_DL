@@ -4,7 +4,7 @@ id,title,question,answer_list,is_impossible,hit@3,mode,output,judged,judge_note
 0015-0028-0002,Mông Cổ,Trong GDP thì các ngành nông nghiệp chiếm tỷ lệ bao nhiêu?,['20.4%'],False,True,no_rag,Không có thông tin.,Từ chối,tự động
 0015-0028-0002,Mông Cổ,Trong GDP thì các ngành nông nghiệp chiếm tỷ lệ bao nhiêu?,['20.4%'],False,True,rag,20.4%,Đúng,tự động
 0004-0049-0002,Chiến tranh Vùng Vịnh,Đâu là một trong những loại vũ khí thông minh của quân đội Hoa Kỳ?,['tên lửa AGM-130'],False,True,no_rag,Không có thông tin,Từ chối,tự động
-0004-0049-0002,Chiến tranh Vùng Vịnh,Đâu là một trong những loại vũ khí thông minh của quân đội Hoa Kỳ?,['tên lửa AGM-130'],False,True,rag,AGM-130,Đúng,"Toàn đọc lại: trả lời 'AGM-130' = đáp án 'tên lửa AGM-130', chỉ thiếu chữ 'tên lửa'"
+0004-0049-0002,Chiến tranh Vùng Vịnh,Đâu là một trong những loại vũ khí thông minh của quân đội Hoa Kỳ?,['tên lửa AGM-130'],False,True,rag,AGM-130,Đúng,"chấm tay: trả lời 'AGM-130' = đáp án 'tên lửa AGM-130', chỉ thiếu chữ 'tên lửa'"
 0006-0008-0001,Puerto Rico,Ai được xem là người khởi xướng cho những phong trào đấu tranh giành tự do ở Puerto Rico?,['Ramon Emeterio Betances'],False,False,no_rag,Không có thông tin.,Từ chối,tự động
 0006-0008-0001,Puerto Rico,Ai được xem là người khởi xướng cho những phong trào đấu tranh giành tự do ở Puerto Rico?,['Ramon Emeterio Betances'],False,False,rag,Không có thông tin.,Từ chối,tự động
 0012-0034-0001,Mahatma Gandhi,Việc nhịn ăn đối với ông là gì?,"['một vũ khí chính trị', 'vũ khí chính trị']",False,True,no_rag,Không có thông tin.,Từ chối,tự động
@@ -26,7 +26,7 @@ id,title,question,answer_list,is_impossible,hit@3,mode,output,judged,judge_note
 0009-0012-0001,François Mitterrand,Mitterrand nhanh chóng quay trở lại với chính trị sau sự kiện nào?,"['Sau cuộc thế chiến', 'cuộc thế chiến']",False,True,no_rag,Không có thông tin.,Từ chối,tự động
 0009-0012-0001,François Mitterrand,Mitterrand nhanh chóng quay trở lại với chính trị sau sự kiện nào?,"['Sau cuộc thế chiến', 'cuộc thế chiến']",False,True,rag,"Sau cuộc thế chiến, François Mitterrand nhanh chóng quay trở lại với chính trị.",Đúng,tự động
 0013-0006-0001,Nội chiến Anh,Vua Charles bị xử tử trước sự chứng kiến của đông đảo quần chúng vào năm nào?,['1640'],False,True,no_rag,Không có thông tin.,Từ chối,tự động
-0013-0006-0001,Nội chiến Anh,Vua Charles bị xử tử trước sự chứng kiến của đông đảo quần chúng vào năm nào?,['1640'],False,True,rag,20 tháng 1 năm 1649,Đúng,Toàn đọc lại: 1649 đúng thực tế; đáp án gốc '1640' là nhãn sai (đoạn nguồn: 'quốc hội năm 1640')
+0013-0006-0001,Nội chiến Anh,Vua Charles bị xử tử trước sự chứng kiến của đông đảo quần chúng vào năm nào?,['1640'],False,True,rag,20 tháng 1 năm 1649,Đúng,chấm tay: 1649 đúng thực tế; đáp án gốc '1640' là nhãn sai (đoạn nguồn: 'quốc hội năm 1640')
 0015-0030-0005,Mông Cổ,Số người có độ tuổi dưới 30 chiếm tỷ lệ bao nhiêu tại Mông Cổ?,['Khoảng 59%'],False,False,no_rag,Không có thông tin.,Từ chối,tự động
 0015-0030-0005,Mông Cổ,Số người có độ tuổi dưới 30 chiếm tỷ lệ bao nhiêu tại Mông Cổ?,['Khoảng 59%'],False,False,rag,Không có thông tin.,Từ chối,tự động
 0015-0025-0001,Mông Cổ,Khi vùng đất sa mạc bị tàn phá thì dẫn đến điều gì?,[],True,True,no_rag,Không có thông tin.,Từ chối,tự động

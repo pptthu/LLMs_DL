@@ -1,6 +1,6 @@
 # Tài liệu tham khảo
 
-- Tổng hợp: Muội (bản đầu do Toàn soạn từ research 14–15/11/2026) | Trạng thái: **[đề xuất]**
+- Tổng hợp: Muội (bản đầu do Toàn soạn từ research 14–15/11/2026); cập nhật 21/11 (Toàn, AI hỗ trợ: thêm #33–35 và 2 nguồn dữ liệu, đều đã mở link) | Trạng thái: **[đề xuất]**, chờ Toàn duyệt trước khi đưa lên slide
 - Cột "Đã mở": ngày đã mở link kiểm tra. Link chưa mở thì để trống, không đưa lên slide.
 - Đối chiếu thêm với tài liệu giảng viên cung cấp trước khi chốt.
 
@@ -48,6 +48,9 @@
 | 30 | Min et al., *FActScore: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text Generation*, EMNLP 2023 | https://arxiv.org/abs/2305.14251 | 9 | 16/11 |
 | 31 | Zheng et al., *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*, NeurIPS 2023 | https://arxiv.org/abs/2306.05685 | 8, 9 (vì sao không dùng LLM chấm) | 16/11 |
 | 32 | Landis & Koch, *The Measurement of Observer Agreement for Categorical Data*, Biometrics 33(1):159–174, 1977 | https://pubmed.ncbi.nlm.nih.gov/843571/ | 8, 9 (thang kappa) | 16/11 (chỉ mở được abstract; các ngưỡng 0,41/0,61/0,81 lấy từ tài liệu dạy NLP trích lại, chưa đọc bản gốc) |
+| 33 | Rudinger, Naradowsky, Leonard, Van Durme, *Gender Bias in Coreference Resolution* (WinoGender), NAACL 2018 | https://github.com/rudinger/winogender-schemas (bài báo: `paper/gender-bias-coreference.pdf`) | 9 (thiên lệch) | 20/11 |
+| 34 | Zhao et al., *Gender Bias in Coreference Resolution: Evaluation and Debiasing Methods* (WinoBias), NAACL 2018 | https://github.com/uclanlp/corefBias | 9 (so sánh, không dùng) | 20/11 |
+| 35 | Nangia et al., *CrowS-Pairs: A Challenge Dataset for Measuring Social Biases in Masked Language Models*, EMNLP 2020 | https://arxiv.org/abs/2010.00133 | 9 (cách đo bằng xác suất câu) | 21/11 |
 
 ## Model, dữ liệu, tài liệu thư viện
 | Tài liệu | Link | Mục | Đã mở |
@@ -58,6 +61,8 @@
 | UIT-VSFC trên Hugging Face | https://huggingface.co/datasets/uitnlp/vietnamese_students_feedback | 7, 10 | 14/11 |
 | UIT-ViQuAD 2.0 trên Hugging Face (split validation; trang dataset không ghi giấy phép) | https://huggingface.co/datasets/taidng/UIT-ViQuAD2.0 | 8, 9 | 19/11 |
 | Nguyen et al., *VLSP 2021 - ViMRC Challenge: Vietnamese Machine Reading Comprehension* (bài báo của UIT-ViQuAD 2.0) | https://arxiv.org/abs/2203.11400 | 8, 9 | 19/11 |
+| WinoGender: `data/all_sentences.tsv`, `data/occupations-stats.tsv` (giấy phép MIT) | https://github.com/rudinger/winogender-schemas | 9 | 20/11 |
+| NVIDIA, Nemotron-Personas-Vietnam (dữ liệu tổng hợp, CC BY 4.0; dataset card ghi nguồn Tổng cục Thống kê 2024) | https://huggingface.co/datasets/nvidia/Nemotron-Personas-Vietnam | 9 | 20/11 |
 | Hugging Face Transformers docs | https://huggingface.co/docs/transformers | Tất cả | 14/11 |
 | HF *Summary of the tokenizers* | https://huggingface.co/docs/transformers/tokenizer_summary | 3 | 15/11 |
 | HF *Perplexity of fixed-length models* | https://huggingface.co/docs/transformers/perplexity | 4 | 15/11 |

@@ -6,7 +6,19 @@
 
 ---
 
-## 20261119_150356_normal — phần 0–10 (**lần chạy chính thức cuối**, notebook nộp và số cho slide lấy từ đây)
+## 20261121_010447_normal — phần 0–10 (**lần chạy chính thức cuối**, notebook nộp và số cho slide lấy từ đây)
+
+- Người chạy: Toàn | Kaggle, 2 × T4 (model trên GPU 0), Internet bật | Chế độ: normal | notebook đã chạy và `outputs/` (qua `outputs.zip`) tải về repo 21/11
+- Thay đổi so với 20261119_150356_normal (sửa 20–21/11, AI hỗ trợ): bảng in bằng `show_table()` (kẻ vạch); khung ĐẦU VÀO `show_input()` trước mỗi demo (25 khung, có chuỗi sau chat template); cell mới 3.1b (gom token theo từ, byte UTF-8), 5.0 (sơ đồ 3 giai đoạn huấn luyện), 9.4 (thiên lệch: WinoGender + BLS, Nemotron-Personas-Vietnam + 3 khuôn câu tự soạn), 9.5 (kim trong đống rơm, cắt cửa sổ 1,024 token, chi phí theo độ dài), 9.6 (chất lượng theo tác vụ và dữ liệu); 10 hình mới; xoá tên thành viên khỏi notebook (`judge_note` đổi "Toàn đọc lại" → "chấm tay").
+- Kết quả: **đạt**, 140 cell chạy hết, không lỗi; 9.2 phút. Phần 1–8 và 9.1–9.3 trùng 20261119_150356_normal (chỉ khác `time_s`): zero-shot 0.8986, few-shot 0.9230, McNemar p = 1.5e-08; RAG 0/15 → 10/15; mục 9 sai 12/15 mỗi cách hỏi; thực thể không tồn tại bịa 5/6.
+- Mới, 9.4 thiên lệch (`bias_summary.csv`): tiếng Anh 60 nghề r = 0.69 (p = 8.5e-10), tiếng Việt 122 nghề r = 0.44 (p = 4.0e-07); 7/7 biến thể đạt luật ghi trước (r > 0, p < 0.05). Đối chứng: "person" 0.13, "người đó" 0.01 (model mặc định chọn đại từ nam). Nemotron revision ghi trong `part09_limits.log`.
+- Mới, 9.5 (`context_needle.csv`, `context_cost.csv`): câu giấu trong input đúng 6/6 (1,161 và 4,202 token); cắt còn 1,024 token cuối làm mất câu giấu → trả lời "1234"; 8,192 token: 10.7 s, 13.3 GB.
+- Mới, 9.6 (`quality_by_task.csv`, `quality_by_data.csv`): câu có từ góp ý accuracy 0.790 (619 câu) so với 0.958 (2,380 câu).
+- Sự cố trước khi đạt: `20261121_002559_normal` và `20261121_003544_normal` dừng giữa chừng (lần sau OOM ở cell 9.5, đo 8,192 token khi bộ nhớ GPU bị phân mảnh) → cell 9.5 dọn bộ nhớ trước mỗi độ dài và bắt `OutOfMemoryError` (ghi `OOM` vào bảng thay vì dừng). `20261121_004703_normal` chạy hết, số trùng run này (chưa có khung ĐẦU VÀO). Log 3 run này không chép vào repo.
+
+---
+
+## 20261119_150356_normal — phần 0–10 (lần chạy chính thức trước)
 
 - Người chạy: Toàn | Kaggle T4 | Chế độ: normal | notebook đã chạy và `outputs/` (qua `outputs.zip`) tải về repo 19/11
 - Thay đổi so với 20261119_025437_normal: thêm cell 9.3 (3 câu về thực thể không tồn tại × 2 cách hỏi, `MANUAL_JUDGE9F`); cell 10.3 đổi tên nhóm (d) và chuyển row 1695 sang (c); cell 10.4 ghi đủ đúng / sai / từ chối (mục 8) và cả 2 bản (mục 5); markdown chi tiết hơn. Phần sinh của phần 0–8 không đổi.

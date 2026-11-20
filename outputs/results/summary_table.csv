@@ -8,3 +8,5 @@ muc,thi_nghiem,ket_qua,file
 "7, 10",Zero-shot vs few-shot,"accuracy 0.899 vs 0.923 (n = 2,999); McNemar p = 1.5e-08",icl_metrics.json
 8,Không RAG vs có RAG,câu có đáp án: no_rag 0 đúng / 1 sai / 14 từ chối | rag 10 đúng / 3 sai / 2 từ chối; câu không có đáp án: rag trả lời bừa 2/3,rag_results.csv
 9,Hỏi không tài liệu: sai (A / B),12 / 12 trên 15 câu; thực thể không tồn tại: bịa 5/6 lần hỏi,"hallucination_results.csv, hallucination_fictitious.csv"
+9,Thiên lệch giới tính theo nghề (tương quan % nữ thật và lựa chọn đại từ của model),"en: r = 0.69, p = 8.5e-10; vi: r = 0.44, p = 4e-07",bias_summary.csv
+9,Giới hạn ngữ cảnh (kim trong đống rơm),đầy đủ: đúng 6/6; cắt mất câu giấu: đúng 0/1,context_needle.csv

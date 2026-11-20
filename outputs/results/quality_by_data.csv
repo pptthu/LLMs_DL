@@ -1,0 +1,6 @@
+chia_theo,nhóm,accuracy,n
+loại câu,"có từ góp ý (nên, cần, mong, thêm, hơn)",0.79,619
+loại câu,không có từ góp ý,0.958,2380
+độ dài,≤ 5 từ,0.929,254
+độ dài,6–15 từ,0.935,1792
+độ dài,> 15 từ,0.898,953

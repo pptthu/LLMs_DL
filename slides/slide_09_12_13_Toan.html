@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Slide 9, 12, 13 – Toàn</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#14345c;--blue:#2f80c2;--blue-l:#eaf3fb;--orange:#d9721f;--orange-l:#fdf1e6;--ink:#1d2939;--mute:#475569;--line:#d6dee8;--green:#2e9d63;--red:#d0463b;--bg:#ffffff}
+*{box-sizing:border-box;margin:0;padding:0}
+@page{size:1456px 816px;margin:0}
+body{background:#cfd6df;font-family:"Be Vietnam Pro","Segoe UI",sans-serif;color:var(--ink)}
+.slide{width:1456px;height:816px;background:var(--bg);position:relative;overflow:hidden;margin:24px auto;page-break-after:always;break-after:page}
+@media print{body{background:#fff}.slide{margin:0}}
+.hd{height:64px;background:var(--navy);color:#fff;display:flex;align-items:center;padding:0 36px;font-size:30px;font-weight:700;gap:14px}
+.hd small{font-size:18px;font-weight:500;opacity:.75;margin-left:auto}
+.pg{position:absolute;right:28px;bottom:14px;font-weight:700;font-size:18px;color:var(--navy)}
+.foot{position:absolute;left:0;right:0;bottom:44px;border-top:1px solid var(--line)}
+.card{border:2px solid var(--blue);border-radius:14px;background:var(--blue-l);padding:18px 22px}
+.card.o{border-color:var(--orange);background:var(--orange-l)}
+.card.n{border-color:var(--navy);background:#fff}
+.ct{font-weight:800;font-size:19px;color:var(--navy);display:flex;align-items:center;gap:10px;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.ct svg{width:24px;height:24px}
+.mono{font-family:"JetBrains Mono",monospace}
+.tag{display:inline-block;padding:2px 10px;border-radius:999px;font-size:14px;font-weight:700}
+.pos{background:#dff3e8;color:var(--green)}.neg{background:#fbe4e2;color:var(--red)}
+.big{font-weight:800;line-height:1}
+.ok{color:var(--green);font-weight:700}.bad{color:var(--red);font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- ================= SLIDE 9 ================= -->
+<section class="slide">
+  <div class="hd">7. Khả năng của LLM: zero-shot vs few-shot<small>UIT-VSFC · cảm xúc phản hồi sinh viên</small></div>
+
+  <!-- 3 capabilities -->
+  <div style="position:absolute;left:32px;top:84px;width:1392px;display:flex;gap:18px">
+    <div class="card" style="flex:1;display:flex;gap:14px;align-items:center;padding:14px 18px">
+      <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#2f80c2" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 9h10M7 13h6"/><circle cx="18" cy="18" r="3" fill="#d9721f" stroke="#d9721f"/></svg>
+      <div><b style="color:var(--navy)">In-context learning</b><br><span style="font-size:15px;color:var(--mute)">Học từ ví dụ trong prompt — <b>không đổi trọng số</b></span></div>
+    </div>
+    <div class="card" style="flex:1;display:flex;gap:14px;align-items:center;padding:14px 18px">
+      <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#2f80c2" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h7"/><path d="M15 16l2 2 4-4" stroke="#d9721f"/></svg>
+      <div><b style="color:var(--navy)">Làm theo chỉ dẫn</b><br><span style="font-size:15px;color:var(--mute)">"Chỉ trả lời: tích cực hoặc tiêu cực" — nhờ SFT (mục 5)</span></div>
+    </div>
+    <div class="card" style="flex:1;display:flex;gap:14px;align-items:center;padding:14px 18px">
+      <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#2f80c2" stroke-width="2"><circle cx="12" cy="12" r="3" fill="#d9721f" stroke="#d9721f"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg>
+      <div><b style="color:var(--navy)">Một model, nhiều tác vụ</b><br><span style="font-size:15px;color:var(--mute)">Phân loại = sinh ra chữ "tích cực"</span></div>
+    </div>
+  </div>
+
+  <!-- two prompts -->
+  <div style="position:absolute;left:32px;top:190px;width:870px;display:flex;gap:16px;align-items:stretch">
+    <div class="card n" style="flex:1;padding:14px 16px">
+      <div class="ct" style="font-size:17px">ZERO-SHOT <span class="tag" style="background:#e5ebf2;color:var(--navy);margin-left:auto">0 ví dụ</span></div>
+      <pre class="mono" style="font-size:12.5px;line-height:1.55;white-space:pre-wrap">Phân loại cảm xúc của câu phản hồi
+sinh viên sau. Chỉ trả lời:
+tích cực hoặc tiêu cực.
+
+Câu: "&lt;câu cần phân loại&gt;"
+Cảm xúc:</pre>
+    </div>
+    <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;color:var(--orange);font-weight:800;font-size:15px;width:64px;text-align:center">
+      <svg viewBox="0 0 24 24" width="40" height="40" fill="#d9721f"><path d="M4 10h11V5l7 7-7 7v-5H4z"/></svg>+4 ví dụ
+    </div>
+    <div class="card o" style="flex:1.25;padding:14px 16px">
+      <div class="ct" style="font-size:17px">FEW-SHOT <span class="tag" style="background:var(--orange);color:#fff;margin-left:auto">4 ví dụ từ train</span></div>
+      <pre class="mono" style="font-size:12.5px;line-height:1.55;white-space:pre-wrap">Phân loại cảm xúc ... tích cực hoặc tiêu cực.
+
+<span style="background:#fde3c8">Câu: "dạy tốt có tâm ."              → tích cực
+Câu: "oop khá phức tạp nên cần nhiều
+      ví dụ ."                       → tiêu cực
+Câu: "giáo viên tích cực , năng nổ…" → tích cực
+Câu: "giảng viên cần linh hoạt…"     → tiêu cực</span>
+Câu: "&lt;câu cần phân loại&gt;"
+Cảm xúc:</pre>
+    </div>
+  </div>
+
+  <!-- control box -->
+  <div class="card" style="position:absolute;left:926px;top:190px;width:498px;height:262px">
+    <div class="ct"><svg viewBox="0 0 24 24" fill="none" stroke="#14345c" stroke-width="2"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>Chỉ đổi <span style="color:var(--orange)">một biến</span></div>
+    <div style="font-size:15.5px;line-height:1.75">
+      <div>✔ Cùng model <b>Qwen2.5-1.5B-Instruct</b>, float16</div>
+      <div>✔ Cùng hàm <span class="mono" style="font-size:14px">build_prompt()</span> — <span class="mono" style="font-size:14px">examples=[]</span> là zero-shot</div>
+      <div>✔ Cùng mẫu prompt <span class="mono" style="font-size:14px">vi_nhan_vi</span> (chọn trên validation)</div>
+      <div>✔ Cùng greedy, <span class="mono" style="font-size:14px">max_new_tokens=10</span></div>
+      <div>✔ Cùng <b>2,999</b> câu test</div>
+    </div>
+  </div>
+
+  <!-- real outputs -->
+  <div style="position:absolute;left:32px;top:478px;width:1050px">
+    <div style="font-weight:800;color:var(--navy);font-size:18px;margin-bottom:8px">Output thật (run <span class="mono" style="font-size:14px">20261119_150356_normal</span>)</div>
+    <table style="width:100%;border-collapse:separate;border-spacing:0;font-size:15px;border:1px solid var(--line);border-radius:10px;overflow:hidden">
+      <tr style="background:var(--navy);color:#fff;text-align:left"><th style="padding:8px 12px">Câu phản hồi</th><th style="padding:8px 12px">Nhãn gốc</th><th style="padding:8px 12px">Zero-shot</th><th style="padding:8px 12px">Few-shot</th></tr>
+      <tr><td style="padding:10px 12px">cần giảng chậm và kỹ để chúng em hiểu bài .</td><td style="padding:10px 12px"><span class="tag neg">tiêu cực</span></td><td class="bad" style="padding:10px 12px">✘ Tích cực</td><td class="ok" style="padding:10px 12px">✔ Cảm xúc: tiêu cực</td></tr>
+      <tr style="background:#f6f8fb"><td style="padding:10px 12px">thầy giảng nhanh .</td><td style="padding:10px 12px"><span class="tag neg">tiêu cực</span></td><td class="bad" style="padding:10px 12px">✘ Tích cực</td><td class="ok" style="padding:10px 12px">✔ Cảm xúc: tiêu cực</td></tr>
+      <tr><td style="padding:10px 12px">thầy dạy hay , rất dễ hiểu , đi dạy đúng giờ …</td><td style="padding:10px 12px"><span class="tag pos">tích cực</span></td><td class="ok" style="padding:10px 12px">✔ Tích cực</td><td class="ok" style="padding:10px 12px">✔ Cảm xúc: tích cực</td></tr>
+      <tr style="background:#f6f8fb"><td style="padding:10px 12px">giảng kỹ .</td><td style="padding:10px 12px"><span class="tag pos">tích cực</span></td><td class="ok" style="padding:10px 12px">✔ Tích cực</td><td class="bad" style="padding:10px 12px">✘ Cảm xúc: tiêu cực</td></tr>
+    </table>
+  </div>
+
+  <!-- big stat -->
+  <div class="card o" style="position:absolute;left:1102px;top:478px;width:322px;height:262px;text-align:center;display:flex;flex-direction:column;justify-content:center;gap:10px;background:#fff">
+    <div style="font-size:15px;color:var(--mute);font-weight:600">Accuracy trên 2,999 câu test</div>
+    <div class="big" style="font-size:40px;color:var(--blue)">89.86%</div>
+    <div style="color:var(--orange);font-weight:800;font-size:15px">▼ thêm 4 ví dụ</div>
+    <div class="big" style="font-size:52px;color:var(--orange)">92.30%</div>
+    <div style="font-size:14px;color:var(--mute)">Chi tiết + kiểm định: slide 12</div>
+  </div>
+
+  <div class="foot"></div><div class="pg">9</div>
+</section>
+
+<!-- ================= SLIDE 12 ================= -->
+<section class="slide">
+  <div class="hd">10. Thử nghiệm có kiểm soát: thiết lập & kết quả<small>Câu hỏi: thêm 4 ví dụ có làm accuracy khác zero-shot không?</small></div>
+
+  <!-- setup pipeline -->
+  <div style="position:absolute;left:32px;top:84px;width:1392px">
+    <div style="font-weight:800;color:var(--navy);font-size:18px;margin-bottom:10px">① THIẾT LẬP</div>
+    <div style="display:flex;align-items:stretch;gap:0">
+      <div class="card" style="flex:1;padding:12px 14px;font-size:14.5px"><b style="color:var(--navy)">Model</b><br>Qwen2.5-1.5B-Instruct<br>float16 · Kaggle T4</div>
+      <div style="width:30px;display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:24px">➜</div>
+      <div class="card" style="flex:1;padding:12px 14px;font-size:14.5px"><b style="color:var(--navy)">Dữ liệu</b><br>UIT-VSFC test, bỏ neutral<br><b>2,999</b> câu (1,590 + / 1,409 −)</div>
+      <div style="width:30px;display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:24px">➜</div>
+      <div class="card" style="flex:1;padding:12px 14px;font-size:14.5px"><b style="color:var(--navy)">Chọn prompt</b><br>3 mẫu × 200 câu <i>validation</i><br>→ <span class="mono" style="font-size:13px">vi_nhan_vi</span> (TB 0.875)</div>
+      <div style="width:30px;display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:24px">➜</div>
+      <div class="card o" style="flex:1;padding:12px 14px;font-size:14.5px"><b style="color:var(--navy)">Biến thay đổi</b><br>0 ví dụ vs 4 ví dụ<br>(lấy từ train, không trùng test)</div>
+      <div style="width:30px;display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:24px">➜</div>
+      <div class="card" style="flex:1;padding:12px 14px;font-size:14.5px"><b style="color:var(--navy)">Sinh & đo</b><br>greedy · 10 token · seed 42<br>không parse được = sai</div>
+    </div>
+  </div>
+
+  <!-- accuracy bars -->
+  <div class="card n" style="position:absolute;left:32px;top:236px;width:640px;height:432px">
+    <div class="ct">② KẾT QUẢ · Accuracy (khoảng tin cậy 95%)</div>
+    <svg width="596" height="250" viewBox="0 0 596 250" style="display:block;margin-top:4px">
+      <!-- axis 85..95 -->
+      <g font-family="Be Vietnam Pro, Segoe UI, sans-serif" font-size="13" fill="#475569">
+        <line x1="130" y1="10" x2="130" y2="200" stroke="#d6dee8"/>
+        <line x1="330" y1="10" x2="330" y2="200" stroke="#d6dee8" stroke-dasharray="4 4"/>
+        <line x1="530" y1="10" x2="530" y2="200" stroke="#d6dee8" stroke-dasharray="4 4"/>
+        <text x="130" y="220" text-anchor="middle">85%</text><text x="330" y="220" text-anchor="middle">90%</text><text x="530" y="220" text-anchor="middle">95%</text>
+        <text x="130" y="244" font-size="12">trục bắt đầu từ 85%</text>
+      </g>
+      <!-- zero 89.86 => x = 130 + 4.86*40 = 324.4 ; ci ±1.08 => ±43.2 -->
+      <text x="0" y="62" font-family="Be Vietnam Pro, Segoe UI, sans-serif" font-weight="700" font-size="16" fill="#14345c">Zero-shot</text>
+      <rect x="130" y="36" width="194.4" height="40" rx="6" fill="#2f80c2"/>
+      <line x1="281.2" y1="56" x2="367.6" y2="56" stroke="#14345c" stroke-width="2"/><line x1="281.2" y1="48" x2="281.2" y2="64" stroke="#14345c" stroke-width="2"/><line x1="367.6" y1="48" x2="367.6" y2="64" stroke="#14345c" stroke-width="2"/>
+      <text x="380" y="62" font-family="Be Vietnam Pro, Segoe UI, sans-serif" font-weight="800" font-size="20" fill="#2f80c2">89.86% <tspan font-size="13" font-weight="500" fill="#475569">±1.08</tspan></text>
+      <!-- few 92.30 => 130 + 7.3*40 = 422 ; ci ±0.95 => ±38 -->
+      <text x="0" y="146" font-family="Be Vietnam Pro, Segoe UI, sans-serif" font-weight="700" font-size="16" fill="#14345c">Few-shot</text>
+      <rect x="130" y="120" width="292" height="40" rx="6" fill="#d9721f"/>
+      <line x1="384" y1="140" x2="460" y2="140" stroke="#14345c" stroke-width="2"/><line x1="384" y1="132" x2="384" y2="148" stroke="#14345c" stroke-width="2"/><line x1="460" y1="132" x2="460" y2="148" stroke="#14345c" stroke-width="2"/>
+      <text x="470" y="146" font-family="Be Vietnam Pro, Segoe UI, sans-serif" font-weight="800" font-size="20" fill="#d9721f">92.30% <tspan font-size="13" font-weight="500" fill="#475569">±0.95</tspan></text>
+    </svg>
+    <div style="display:flex;gap:12px;font-size:14.5px;margin-top:4px">
+      <div style="flex:1;background:#f6f8fb;border-radius:8px;padding:8px 12px"><b>+2.44</b> điểm %</div>
+      <div style="flex:1;background:#f6f8fb;border-radius:8px;padding:8px 12px">Không parse: <b>0 / 0</b></div>
+      <div style="flex:1;background:#f6f8fb;border-radius:8px;padding:8px 12px">Thời gian: ~5 phút</div>
+    </div>
+  </div>
+
+  <!-- McNemar -->
+  <div class="card n" style="position:absolute;left:692px;top:236px;width:732px;height:432px">
+    <div class="ct">③ KIỂM ĐỊNH McNEMAR <span style="font-weight:500;font-size:14px;color:var(--mute);margin-left:auto">cùng 2,999 câu → chỉ câu hai cách khác nhau mới có thông tin</span></div>
+    <div style="display:flex;gap:26px;align-items:center">
+      <table style="border-collapse:separate;border-spacing:6px;font-size:15px;text-align:center">
+        <tr><td></td><td style="font-weight:700;color:var(--navy)">Few-shot ✔</td><td style="font-weight:700;color:var(--navy)">Few-shot ✘</td></tr>
+        <tr><td style="font-weight:700;color:var(--navy);text-align:right">Zero-shot ✔</td>
+          <td style="background:#eef1f5;border-radius:8px;width:130px;height:86px;color:var(--mute)">a<br><b style="font-size:22px;color:var(--ink)">2,648</b></td>
+          <td style="background:var(--blue-l);border:2px solid var(--blue);border-radius:8px;width:130px;height:86px">b<br><b style="font-size:30px;color:var(--blue)">47</b></td></tr>
+        <tr><td style="font-weight:700;color:var(--navy);text-align:right">Zero-shot ✘</td>
+          <td style="background:var(--orange-l);border:2px solid var(--orange);border-radius:8px;height:86px">c<br><b style="font-size:30px;color:var(--orange)">120</b></td>
+          <td style="background:#eef1f5;border-radius:8px;height:86px;color:var(--mute)">d<br><b style="font-size:22px;color:var(--ink)">184</b></td></tr>
+      </table>
+      <div style="flex:1;display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:15px;line-height:1.5">H0: hai cách có tỉ lệ sai như nhau → kỳ vọng <b>b ≈ c</b></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:15px">
+          <div style="height:22px;width:56px;background:var(--blue);border-radius:4px"></div><span>b = 47 chỉ zero-shot đúng</span></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:15px">
+          <div style="height:22px;width:143px;background:var(--orange);border-radius:4px"></div><span>c = 120</span></div>
+        <div style="background:var(--navy);color:#fff;border-radius:10px;padding:12px 14px;text-align:center">
+          <div style="font-size:13px;opacity:.8">nhị thức chính xác trên b + c = 167 câu</div>
+          <div class="big" style="font-size:34px;margin:4px 0">p = 1.5 × 10⁻⁸</div>
+          <div style="font-size:14px">&lt; 0.05 → few-shot tốt hơn <b>có ý nghĩa thống kê</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- limitations -->
+  <div style="position:absolute;left:32px;top:684px;width:1392px;background:#fff6ec;border-left:6px solid var(--orange);border-radius:8px;padding:10px 16px;font-size:14.5px;line-height:1.5">
+    <b style="color:var(--orange)">Giới hạn:</b> 1 model 1.5B · 1 bộ dữ liệu, 1 tác vụ · <b>1 bộ ví dụ few-shot — đổi ví dụ hoặc thứ tự có thể cho kết quả khác</b> (Zhao et al., 2021) · mỗi cấu hình chạy 1 lần → không suy rộng cho "LLM nói chung".
+  </div>
+
+  <div class="foot"></div><div class="pg">12</div>
+</section>
+
+<!-- ================= SLIDE 13 ================= -->
+<section class="slide">
+  <div class="hd">10. Phân tích lỗi & tổng hợp kết quả<small>run 20261119_150356_normal</small></div>
+
+  <!-- confusion matrices -->
+  <div class="card n" style="position:absolute;left:32px;top:84px;width:560px;height:330px">
+    <div class="ct">Confusion matrix (hàng: nhãn gốc · cột: dự đoán)</div>
+    <div style="display:flex;gap:22px;justify-content:center">
+      <div>
+        <div style="text-align:center;font-weight:700;color:var(--blue);margin-bottom:6px">Zero-shot</div>
+        <table style="border-collapse:separate;border-spacing:4px;font-size:13px;text-align:center">
+          <tr><td></td><td>neg</td><td>pos</td></tr>
+          <tr><td>neg</td><td style="background:#2f80c2;color:#fff;width:86px;height:62px;border-radius:6px;font-weight:700;font-size:17px">1,161</td><td style="background:#fbe4e2;border:2px solid var(--red);width:86px;border-radius:6px;font-weight:800;font-size:20px;color:var(--red)">248</td></tr>
+          <tr><td>pos</td><td style="background:#fdeeed;height:62px;border-radius:6px;font-weight:700;font-size:17px;color:var(--red)">56</td><td style="background:#2f80c2;color:#fff;border-radius:6px;font-weight:700;font-size:17px">1,534</td></tr>
+        </table>
+      </div>
+      <div>
+        <div style="text-align:center;font-weight:700;color:var(--orange);margin-bottom:6px">Few-shot</div>
+        <table style="border-collapse:separate;border-spacing:4px;font-size:13px;text-align:center">
+          <tr><td></td><td>neg</td><td>pos</td></tr>
+          <tr><td>neg</td><td style="background:#d9721f;color:#fff;width:86px;height:62px;border-radius:6px;font-weight:700;font-size:17px">1,264</td><td style="background:#e3f4ea;border:2px solid var(--green);width:86px;border-radius:6px;font-weight:800;font-size:20px;color:var(--green)">145</td></tr>
+          <tr><td>pos</td><td style="background:#fdeeed;height:62px;border-radius:6px;font-weight:700;font-size:17px;color:var(--red)">86</td><td style="background:#d9721f;color:#fff;border-radius:6px;font-weight:700;font-size:17px">1,504</td></tr>
+        </table>
+      </div>
+    </div>
+    <div style="font-size:14.5px;margin-top:10px;text-align:center">Lỗi <b>neg → pos</b>: <span class="bad">248</span> → <span class="ok">145</span> &nbsp;·&nbsp; đổi lại <b>pos → neg</b>: 56 → 86</div>
+  </div>
+
+  <!-- error groups -->
+  <div class="card n" style="position:absolute;left:612px;top:84px;width:812px;height:330px">
+    <div class="ct">Nhóm lỗi — 30 câu few-shot sai lấy ngẫu nhiên <span style="font-weight:500;font-size:13.5px;color:var(--mute);margin-left:auto">nhóm ghi sẵn <b>trước</b> khi đọc output</span></div>
+    <div style="display:grid;grid-template-columns:230px 1fr;row-gap:9px;column-gap:12px;align-items:center;font-size:14.5px">
+      <div><b>(d) Ý ngầm</b> (góp ý, phàn nàn gián tiếp)</div><div style="display:flex;align-items:center;gap:8px"><div style="height:24px;width:400px;background:var(--orange);border-radius:4px"></div><b>20</b></div>
+      <div><b>(c)</b> Vừa khen vừa chê</div><div style="display:flex;align-items:center;gap:8px"><div style="height:24px;width:80px;background:var(--blue);border-radius:4px"></div><b>4</b></div>
+      <div><b>(e)</b> Model sai rõ ràng</div><div style="display:flex;align-items:center;gap:8px"><div style="height:24px;width:80px;background:var(--blue);border-radius:4px"></div><b>4</b></div>
+      <div><b>(b)</b> Nhãn gốc có vẻ sai</div><div style="display:flex;align-items:center;gap:8px"><div style="height:24px;width:40px;background:#7f93a8;border-radius:4px"></div><b>2</b></div>
+      <div><b>(a)</b> Không parse được</div><div style="display:flex;align-items:center;gap:8px"><div style="height:24px;width:2px;background:#7f93a8"></div><b>0</b></div>
+    </div>
+    <div style="margin-top:12px;font-size:13.5px;line-height:1.55;background:#f6f8fb;border-radius:8px;padding:8px 12px">
+      (d) "giảm thời lượng lý thuyết , tăng thời lượng thực hành ." <span class="tag neg">neg</span> → tích cực<br>
+      (c) "thầy dạy hơi khó hiểu nhưng rất kỹ ." <span class="tag pos">pos</span> → tiêu cực &nbsp;·&nbsp; (e) "thầy rất dễ tính ." <span class="tag pos">pos</span> → tiêu cực
+    </div>
+  </div>
+
+  <!-- insight -->
+  <div style="position:absolute;left:32px;top:430px;width:560px;height:310px;background:var(--navy);color:#fff;border-radius:14px;padding:18px 22px">
+    <div style="font-weight:800;font-size:18px;margin-bottom:10px;color:#ffc58f">💡 Vì sao few-shot giúp?</div>
+    <div style="display:flex;gap:16px;margin-bottom:12px">
+      <div style="flex:1;background:rgba(255,255,255,.08);border-radius:10px;padding:10px;text-align:center"><div class="big" style="font-size:34px;color:#8cc4f0">76%</div><div style="font-size:13px;margin-top:4px">lỗi neg→pos zero-shot là câu góp ý<br>(189 / 248)</div></div>
+      <div style="flex:1;background:rgba(255,255,255,.08);border-radius:10px;padding:10px;text-align:center"><div class="big" style="font-size:34px;color:#ffb066">81%</div><div style="font-size:13px;margin-top:4px">lỗi neg→pos few-shot là câu góp ý<br>(117 / 145)</div></div>
+    </div>
+    <div style="font-size:14.5px;line-height:1.55">UIT-VSFC gán <b>negative</b> cho câu góp ý ("nên", "cần", "mong"…); model đọc giọng lịch sự → đoán tích cực. Hai ví dụ negative trong prompt <b>đều là góp ý</b> → model thấy quy ước này.</div>
+    <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.2);font-size:14.5px;line-height:1.55"><b style="color:#ffc58f">Kết luận:</b> 4 ví dụ giúp model nắm quy ước nhãn của bộ dữ liệu, cải thiện có ý nghĩa thống kê — trong phạm vi 1 model, 1 bộ dữ liệu, 1 bộ ví dụ.</div>
+  </div>
+
+  <!-- summary table -->
+  <div class="card n" style="position:absolute;left:612px;top:430px;width:812px;height:310px;padding:14px 18px">
+    <div class="ct" style="margin-bottom:6px">Tổng hợp mọi phần (đọc từ <span class="mono" style="font-size:14px">summary_table.csv</span>)</div>
+    <table style="width:100%;border-collapse:collapse;font-size:14px;line-height:1.5">
+      <tr style="border-bottom:1px solid var(--line)"><td style="padding:4px 6px;font-weight:700;color:var(--navy);width:52px">3</td><td>Số token câu Việt: Qwen <b>8</b> / GPT-2 <b>22</b>; câu Anh 7 / 7</td></tr>
+      <tr style="border-bottom:1px solid var(--line)"><td style="padding:4px 6px;font-weight:700;color:var(--navy)">4</td><td>Loss câu đúng <b>2.985</b>; câu xáo trộn <b>6.701</b>; câu Anh 3.129</td></tr>
+      <tr style="border-bottom:1px solid var(--line)"><td style="padding:4px 6px;font-weight:700;color:var(--navy)">5</td><td>Làm theo luật: Base <b>0/4</b> vs Instruct <b>4/4</b></td></tr>
+      <tr style="border-bottom:1px solid var(--line)"><td style="padding:4px 6px;font-weight:700;color:var(--navy)">6</td><td>Output khác nhau / 3 lần: greedy <b>1</b>, mọi cấu hình lấy mẫu <b>3</b></td></tr>
+      <tr style="border-bottom:1px solid var(--line);background:var(--orange-l)"><td style="padding:4px 6px;font-weight:700;color:var(--orange)">7, 10</td><td><b>89.86% vs 92.30%</b> (2,999 câu); McNemar p = 1.5e-08</td></tr>
+      <tr style="border-bottom:1px solid var(--line)"><td style="padding:4px 6px;font-weight:700;color:var(--navy)">8</td><td>Đúng / sai / từ chối: không RAG <b>0/1/14</b>, có RAG <b>10/3/2</b>; câu không có đáp án: RAG trả lời bừa 2/3</td></tr>
+      <tr><td style="padding:4px 6px;font-weight:700;color:var(--navy)">9</td><td>Hỏi không tài liệu: sai <b>12/15</b> mỗi cách hỏi; thực thể không tồn tại: bịa <b>5/6</b></td></tr>
+    </table>
+  </div>
+
+  <div class="foot"></div><div class="pg">13</div>
+</section>
+
+</body>
+</html>
