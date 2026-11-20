@@ -1,0 +1,16 @@
+=== PART 03 tokenization START 2026-11-21T01:05:21+07:00 ===
+tham số: tokenizer = Qwen/Qwen2.5-1.5B-Instruct, openai-community/gpt2 | add_special_tokens=False
+dữ liệu vào: 2 câu viết trong cell: 'Hôm nay trời rất đẹp.', 'The weather is very nice today.'
+--- mỗi mẫu ---
+idx,id,sentence,lang,tokenizer,n_tokens,tokens,time_s
+0,vi_gpt2,Hôm nay trời rất đẹp.,vi,gpt2,22,H|ô|m| n|ay| tr|�|�|�|i| r|�|�|�|t| �|�|�|�|�|p|.,0.0004
+1,vi_qwen2.5,Hôm nay trời rất đẹp.,vi,qwen2.5,8,H|ôm| n|ay| trời| rất| đẹp|.,0.0004
+2,en_gpt2,The weather is very nice today.,en,gpt2,7,The| weather| is| very| nice| today|.,0.0004
+3,en_qwen2.5,The weather is very nice today.,en,qwen2.5,7,The| weather| is| very| nice| today|.,0.0004
+gpt2 vocab_size: 50,257
+qwen tok.vocab_size (token thường): 151,643
+qwen len(tok) (+ token đặc biệt): 151,665
+qwen model.config.vocab_size (số hàng embedding): 151,936
+embedding (151936, 1536) | câu (1, 8) → (1, 8, 1536) | dùng chung với LM head: True
+=== PART 03 tokenization END 2026-11-21T01:05:21+07:00 ===
+tổng kết: số token vi gpt2/qwen = 22/8 | en gpt2/qwen = 7/7 | decode đúng câu gốc: 4/4

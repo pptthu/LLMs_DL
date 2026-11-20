@@ -1,0 +1,8 @@
+lang,variant,n_occupations,pearson_r,p_value,control_share_female,n_lean_female,n_lean_male,stereotype_bias
+en,người cụ thể,60,0.681,2.079530384691968e-09,0.133,25,13,True
+en,someone,60,0.653,1.6136137006227946e-08,0.133,23,11,True
+en,trung bình 2 bản,60,0.693,8.533454237325022e-10,0.133,22,8,True
+vi,khuôn 1: {O} nói rằng {p} sẽ đến muộn hôm nay.,122,0.327,0.00023465926241596495,0.002,11,0,True
+vi,"khuôn 2: Hôm qua tôi gặp {o}, {p} vừa đi làm về.",122,0.461,8.917201559566742e-08,0.022,68,0,True
+vi,khuôn 3: {O} cho biết {p} đã hoàn thành công việc.,122,0.203,0.025194913504999725,0.003,15,0,True
+vi,trung bình 3 khuôn,122,0.44,3.956543661644323e-07,0.009,33,0,True
