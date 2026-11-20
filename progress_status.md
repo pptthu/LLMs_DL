@@ -1,44 +1,42 @@
 # Tiến độ bài Presentation LLMs
 
 - **Created**: 2026-11-15T16:30:00+07:00 (Toàn)
-- **Last Updated**: 2026-11-19T02:30:00+07:00 (Toàn, AI hỗ trợ)
+- **Last Updated**: 2026-11-21T02:00:00+07:00 (Toàn, AI hỗ trợ)
 
-Cập nhật file này sau MỖI bước. Bảng dưới đây là nguồn thông tin duy nhất về việc ai đang làm gì.
+Cập nhật file này sau MỖI bước. Bảng dưới đây là trạng thái hiện tại của từng phần.
 
-Code mọi phần: **Toàn** (quyết định 15/11). Cột "Lý thuyết + thuyết trình" là người phải giải thích được code phần đó sau khi bàn giao.
+Code và trình bày mọi phần: **Toàn** (code: quyết định 15/11; trình bày cả 10 mục: quyết định 21/11). Thư: chủ repo, review. Bảng cũ có cột người phụ trách từng mục và bàn giao code: xem lịch sử git.
 
-| Phần notebook | Mục | Lý thuyết + thuyết trình | Desc (`docs/parts/`) | Code (chưa làm / đang làm / xong) | Smoke run (đạt / lỗi / chưa chạy) | Normal run (đạt / lỗi / chưa chạy) | Đã bàn giao code | Slide | Ghi chú |
-|---|---|---|---|---|---|---|---|---|---|
-| 0. Setup | — | Toàn (cả nhóm phải hiểu) | — | xong | đạt (16/11, Kaggle T4) | đạt (19/11, `20261119_025437_normal`) | chưa | 2 | Ưu tiên số 1: cách lấy model / tokenizer / dữ liệu |
-| 1. Tác vụ mẫu | 1 | Muội (demo: Toàn) | `muc01_gioi_thieu_v2.md` (duyệt 16/11) | xong | đạt (16/11, Kaggle T4, 4/4) | đạt (19/11, `20261119_025437_normal`) | chưa | 3–4 | |
-| 2. Kiến trúc | 2 | Muội | `muc02_kien_truc_v1.md` (nháp AI 17/11, chờ người phụ trách sửa, Toàn duyệt) | xong; 19/11 bỏ cell 2.5–2.10 (sang `llm_extension_part02.ipynb`), thêm 2.5 tổng kết | đạt 2.1–2.4 (17/11, `20261117_161656_smoke`); 2.5 mới đạt (19/11, `20261119_021425_smoke`) | đạt (19/11, `20261119_025437_normal`) | chưa | 5–6 | Cell 2.8 (VLM), 2.9 (RNN) chờ Thư chốt |
-| 3. Tokenization | 3 | Muội | `muc03_tokenization_v1.md` (nháp AI 17/11, chờ người phụ trách sửa, Toàn duyệt) | xong | đạt (17/11, `20261117_161656_smoke`) | đạt (19/11, `20261119_025437_normal`) | chưa | 7 | |
-| 4. Nguyên lý học | 4 | Phúc | `muc04_nguyen_ly_hoc_v1.md` (nháp AI 17/11, chờ người phụ trách sửa, Toàn duyệt) | xong | đạt (17/11, `20261117_161656_smoke`) | đạt (19/11, `20261119_025437_normal`) | chưa | 8–9 | |
-| 5. Base vs instruct | 5 | Phúc | `muc05_giai_doan_huan_luyen_v1.md` (nháp AI 17/11, chờ người phụ trách sửa, Toàn duyệt) | xong | chạy hết (17/11), **chưa chấm** → chưa đạt | đạt (19/11, `20261119_025437_normal`) | chưa | 10–11 | `data/base_vs_instruct.json` nháp AI, chờ Phúc duyệt; `repetition_penalty` 1.0 chờ Thư chốt |
-| 6. Sinh văn bản | 6 | Phúc | chưa có | xong (19/11, thử CPU đạt) | đạt (19/11, `20261119_021425_smoke`) | đạt (19/11, `20261119_025437_normal`) | chưa | 12–13 | |
-| 7. Zero / few-shot | 7 | Toàn | chưa có | xong (19/11, thử CPU đạt) | đạt (19/11, `20261119_021425_smoke`) | đạt (19/11, `20261119_025437_normal`) | — | 14 | Chờ cô xác nhận UIT-VSFC |
-| 8. RAG | 8 | Muội | chưa có | xong (19/11, UIT-ViQuAD 2.0, thử CPU đạt) | đạt (19/11, `20261119_021425_smoke`) | đạt (19/11, `20261119_025437_normal`) | chưa | 15–16 | Chờ cô xác nhận |
-| 9. Hạn chế | 9 | Phúc | chưa có | xong (19/11, UIT-ViQuAD 2.0, thử CPU đạt) | đạt (19/11, `20261119_021425_smoke`) | đạt (19/11, `20261119_025437_normal`) | chưa | 17–18 | |
-| 10. Tổng hợp | 10 | Toàn | chưa có | xong (19/11, thử CPU đạt) | đạt (19/11, `20261119_021425_smoke`) | đạt (19/11, `20261119_025437_normal`) | — | 19–20 | |
-| Save & Run All (chính thức) | — | Toàn | — | xong | — | đạt (19/11, `20261119_025437_normal`, 7.1 phút) | — | — | |
-| README | — | Muội | — | khung (Toàn) | — | — | — | — | |
-| Ghép slide | — | Muội | — | chưa làm | — | — | — | 1, 2, 21 | |
+| Phần notebook | Mục | Cell | Normal run | Slide (khung v5) | Giải thích |
+|---|---|---|---|---|---|
+| 0. Setup | — | 0.1–0.8 | đạt (21/11, `20261121_010447_normal`) | 2 | `docs/giai_thich_du_an_v4.md` §2 |
+| 1. Tác vụ mẫu | 1 | 1.1–1.5 | đạt, 4/4 | 3 | §3 |
+| 2. Kiến trúc | 2 | 2.1–2.5 (2.5–2.10 cũ ở `llm_extension_part02.ipynb`, không nộp) | đạt | 4–5 | §4 |
+| 3. Tokenization | 3 | 3.1, 3.1b–3.5 | đạt | 6 | §5 |
+| 4. Nguyên lý học | 4 | 4.1–4.5 | đạt | 7 | §6 |
+| 5. Giai đoạn huấn luyện | 5 | 5.0–5.4 | đạt, base 0/4, Instruct 4/4 | 8 | §7 |
+| 6. Sinh văn bản | 6 | 6.1–6.4 | đạt | 9 | §8 |
+| 7. Zero / few-shot | 7 | 7.1–7.5 | đạt, 0.8986 / 0.9230 | 10 | §9 |
+| 8. RAG | 8 | 8.1–8.4 | đạt, 0/15 → 10/15 | 11 | §10 |
+| 9. Hạn chế | 9 | 9.1–9.6 | đạt; thiên lệch r = 0.69 / 0.44 | 12–13 | §11 |
+| 10. Tổng hợp | 10 | 10.1–10.4 | đạt, McNemar p = 1.5e-08 | 14–15 | §12 |
+| Save & Run All (chính thức) | — | 140 cell, 0 lỗi | đạt (21/11, 9.2 phút) | — | `docs/experiments/experiment_log.md` |
+| Slide đủ 16 trang | — | — | đạt (21/11) | 1–16 | `slides/infographic/llm_slides.pdf` (nguồn `llm_slides.html`, ảnh `png/`); theo `docs/plans/khung_presentation_llms_v5.md` |
 
-## Bàn giao code cho người thuyết trình (mỗi phần)
-Toàn chỉ đánh dấu "Đã bàn giao" khi đủ cả 4 điều kiện:
-- [ ] Phần đó smoke run đạt, ghi đủ file kết quả theo `project_description.md` §2.3
-- [ ] Có markdown, comment, cell "Phân tích" theo `docs/rules/RULES_v2.md` §2
-- [ ] Toàn đã giải thích từng cell cho người phụ trách mục (gặp trực tiếp hoặc gọi), chỉ file kết quả và số cho slide
-- [ ] Người phụ trách mục tự giải thích lại được 3 cell bất kỳ do Thư chọn
+## Chuẩn bị trình bày (Toàn)
+- [x] Làm đủ 16 slide, mọi số ghi `run_id` (`slides/infographic/`)
+- [ ] Ôn theo `docs/scripts/kich_ban_toan_v2.md` Phần A; tự giải thích 3 cell bất kỳ không nhìn tài liệu
+- [ ] Tập nói, bấm giờ từng slide (≤ 20 phút, gồm mở notebook); Thư hỏi Q&A thử
+- [ ] Nộp: slide PDF/PPTX, notebook đã chạy, `outputs/`, `data/`, `docs/references.md`
 
 ## Kiểm chứng
-- 2026-11-16 smoke run phần 0 (`20261116_025328_smoke`, Kaggle T4): đạt; tóm tắt trong `docs/experiments/experiment_log.md`.
+- Lần chạy chính thức `20261121_010447_normal` (Kaggle T4, 9.2 phút): 140 cell, 0 lỗi; kết quả phần 1–8, 9.1–9.3 trùng từng file với run `20261119_150356_normal` (chỉ khác cột thời gian). Tóm tắt mọi lần chạy: `docs/experiments/experiment_log.md`.
 
-Log mỗi lần chạy ở `outputs/logs/<YYYYMMDD_HHMMSS>_<smoke|normal>/` theo `docs/templates/RUN_LOG_TEMPLATE_v2.md`; tóm tắt ở `docs/experiments/experiment_log.md`.
+Log mỗi lần chạy ở `outputs/logs/<YYYYMMDD_HHMMSS>_<smoke|normal>/` theo `docs/templates/RUN_LOG_TEMPLATE_v3.md`.
 
 ## Vấn đề mở
-- Chờ cô xác nhận: cách demo mục 5, mục 8; dùng UIT-VSFC.
-- Cần chốt: không còn (mục §8 của `docs/plans/plan_presentation_llm_v3.md` đã chốt hết ngày 16/11). `AI_usage.md` để sau.
+- Cô đã trả lời "cứ làm" cho demo mục 5, mục 8 và việc dùng UIT-VSFC (ghi ở `docs/plans/yeu_cau_cua_co_v1.md` §3).
+- Còn lại: tập bấm giờ (kịch bản 19.4 phút). `AI_usage.md`: các ô "[Toàn điền]" do Toàn tự điền.
 
 ## Nhật ký (ghi ngày, mỗi bước một dòng)
 - 2026-11-15 Toàn: clone repo `pptthu/LLMs_DL` (repo trống) về `D:\File\File\UTH\UTH\Học sâu - DL\LLMs_DL`; tạo khung thư mục và tài liệu theo rule Lab 1 đã sửa cho bài presentation (AI hỗ trợ) → commit `578300a`, chưa push, chưa chạy code; chờ Thư duyệt
@@ -69,3 +67,17 @@ Log mỗi lần chạy ở `outputs/logs/<YYYYMMDD_HHMMSS>_<smoke|normal>/` theo
 - 2026-11-19 Toàn: duyệt nhóm lỗi phần 10 (row 1695 chuyển (b) → (c); đổi tên (d) thành "ý ngầm (góp ý, phàn nàn gián tiếp)") → sửa `MANUAL_ERROR_GROUPS` cell 10.3, `error_analysis_v1.md`, `ban_giao_toan_v1.md`; dọn markdown notebook để nộp (bỏ tham chiếu tài liệu nội bộ, nhãn [đề xuất]/[cần chốt]); bỏ thí nghiệm thiên lệch nghề nghiệp, mục 9 nói bằng lời (AI hỗ trợ) → **cần Save & Run All lại** để output cell 10.3 và `error_analysis_sample.csv` khớp code; chưa commit
 - 2026-11-19 Toàn: xử lý góp ý của Thư sau run `20261119_025437_normal`: (1) chọn (a), thêm cell 9.3, gồm 3 câu về thực thể không tồn tại × 2 cách hỏi, chấm Đúng / Từ chối / Sai theo SimpleQA và TruthfulQA, ra `results/hallucination_fictitious.csv`; chạy thử trên CPU: bịa 5/6, từ chối 1/6 (`fict-3|B` sửa tay); phần 6 ghi lý do 3 lần/cấu hình; (2) README: trạng thái, run_id, thời gian chạy 7.1 phút; (3) cell 10.4 ghi đủ đúng / sai / từ chối (mục 8), instruct 4/4, base 0/4 (mục 5); (4) tên nhóm (d) đã đổi (AI hỗ trợ) → **cần Save & Run All trên Kaggle**, sau đó đọc lại 6 output 9.3 và thay run_id mới; chưa commit
 - 2026-11-19 Toàn: Save & Run All `20261119_150356_normal` (7.4 phút, đạt; số trùng lần trước); 9.3 bịa 5/6, nhãn tay áp đúng; giải nén `outputs.zip` vào `outputs/` (bỏ run dở `20261119_142011_normal`); đổi run_id ở README, `error_analysis_v1.md`, 3 file bàn giao, cell markdown notebook; thêm 9.3 vào `ban_giao_phuc_v1.md` (AI hỗ trợ) → notebook nộp và số cho slide lấy từ lần này; chưa commit
+- 2026-11-20 Toàn: viết kịch bản thuyết trình slide 2, 9, 12, 13 + giải thích từng cell phần 0, 7, 10 + 18 câu Q&A → `docs/scripts/kich_ban_toan_v1.md` (AI hỗ trợ; số đối chiếu lại với `outputs/results/` run `20261119_150356_normal`); chưa bấm giờ, chưa commit
+- 2026-11-20 Toàn: rà notebook theo đề (AI hỗ trợ, Claude Code): thêm `show_table()` (bảng kẻ vạch, 30 cell), cell 3.1 (câu tô màu theo token, cột từ / byte UTF-8), 3.1b (gom token theo từ), 3.4 (heatmap embedding), 4.1 (ma trận cặp ngữ cảnh → mục tiêu), 4.2 (biểu đồ loss), 5.0 (sơ đồ 3 giai đoạn huấn luyện), biểu đồ ở 2.4, 6.2, 10.1; xoá tên thành viên khỏi notebook; viết lại cell giới thiệu và nguồn dữ liệu theo mẫu Lab 1
+- 2026-11-20 Toàn: mở lại demo mục 9 (quyết định bỏ ngày 19/11): 9.4 thiên lệch theo nghề (tiếng Anh: WinoGender + BLS; tiếng Việt: nghề và % nữ từ `nvidia/Nemotron-Personas-Vietnam`, 3 khuôn câu tự soạn, luật kết luận ghi trước r > 0 và p < 0.05), 9.5 giới hạn ngữ cảnh (kim trong đống rơm, cắt cửa sổ, chi phí theo độ dài), 9.6 chất lượng theo tác vụ và dữ liệu (AI hỗ trợ; nguồn WinoGender và Nemotron tra trực tiếp trên GitHub / Hugging Face)
+- 2026-11-21 Toàn: normal run `20261121_002559_normal`, `20261121_003544_normal` dừng giữa chừng (OOM cell 9.5 ở 8,192 token) → sửa 9.5 dọn bộ nhớ, bắt `OutOfMemoryError`; `20261121_004703_normal` đạt; thêm khung ĐẦU VÀO `show_input()` trước mỗi demo (25 khung)
+- 2026-11-21 Toàn: Save & Run All `20261121_010447_normal` (9.2 phút, đạt, 140 cell không lỗi; phần 1–8 trùng số run cũ). Mới: thiên lệch r = 0.69 (Anh) / 0.44 (Việt), 7/7 biến thể đạt; kim trong đống rơm 6/6, cắt mất câu giấu → bịa "1234"; câu góp ý accuracy 0.79 so với 0.96. Cập nhật cell Phân tích, kết luận, README, `experiment_log.md`, `AI_usage.md`, file này; chép `results/`, `figures/`, log run này vào `outputs/` (AI hỗ trợ) → chưa commit
+- 2026-11-21 Toàn: đổi phân công, Toàn trình bày cả 10 mục → xoá 5 file trao đổi / bàn giao giữa thành viên: `docs/parts/ban_giao_muoi_v1.md`, `ban_giao_phuc_v1.md`, `docs/plans/gop_y_thu_cho_toan_v1.md`, `tra_loi_toan_cho_thu_v1.md`, `chot_khung_v4_ke_hoach_cho_Toan.md` (vẫn xem được trong lịch sử git; các dòng nhật ký và link cũ trỏ tới chúng giữ nguyên) → chưa commit
+- 2026-11-21 Toàn: `docs/parts/ban_giao_toan_v2.md` (giải thích lý thuyết, code, kết quả cả 10 mục, gộp 2 file bàn giao đã xoá; v1 giữ nguyên) và `docs/scripts/kich_ban_toan_v2.md` (kịch bản 14 slide, khoảng 18.6 phút, thứ tự ôn và chỗ coi kĩ); README bỏ cột người trình bày; `docs/references.md` thêm #33–35 và 2 nguồn dữ liệu (WinoGender, Nemotron-Personas-Vietnam) (AI hỗ trợ) → chưa commit
+- 2026-11-21 Toàn: `docs/giai_thich_du_an_v4.md` (từ v3: mỗi phần thêm "Cô yêu cầu → notebook đáp ứng", "Note lý thuyết để hiểu", "Nói khi trình bày", "Câu có thể bị hỏi"; thêm cell 3.1b, 5.0, 9.4–9.6 và giải thích các hình mới; run `20261121_010447_normal`); `kich_ban_toan_v2.md` thêm khối "Giải thích hình" cho từng slide (hình là gì, đọc thế nào, nguyên lý, công thức) (AI hỗ trợ; số kiểm lại bằng scipy: McNemar p, CI 95%) → chưa commit
+- 2026-11-21 Toàn: cập nhật tài liệu theo hiện trạng (AI hỗ trợ): sửa `project_description.md`, `README.md`, `AGENTS.md`, `CONTRIBUTING.md`, file này (bảng tiến độ mới); tạo bản mới `docs/00_README_v3.md`, `presentation_description_v3.md`, `rules/RULES_v3.md`, `rules/FOLDER_STRUCTURE_v3.md`, `templates/RUN_LOG_TEMPLATE_v3.md`, `plans/khung_presentation_llms_v5.md`, `experiments/error_analysis_v2.md` (bản cũ giữ nguyên, đánh dấu lịch sử trong mục lục); `references.md` ghi ngày mở #35 → chưa commit
+- 2026-11-21 Toàn: bộ slide ảnh infographic `slides/infographic/` (15 slide, PDF + PNG): mỗi slide nội dung thêm khung code ngắn rút gọn từ cell; tách mục 9 thành slide 11 (hallucination) và 12 (thiên lệch, ngữ cảnh, chất lượng); cập nhật `kich_ban_toan_v2.md` (15 slide, 18.9 phút, chỉ mở notebook ở slide 4, 7, 11, 12, 13) và `khung_presentation_llms_v5.md` (AI hỗ trợ) → chưa commit
+- 2026-11-21 Toàn: slide bỏ dòng "ĐỀ"; thêm slide 4 sơ đồ kiến trúc (vai trò Transformer: RNN vs self-attention, 3 họ Transformer với mask; khối decoder-only của Qwen2.5-1.5B với số tham số thật từ cell 2.1; causal attention Q, K, V, mask) và sơ đồ ở slide 3, 6, 7, 8, 9 → 16 slide; kịch bản 19.4 phút, mở notebook ở slide 5, 8, 12, 13, 14 (AI hỗ trợ) → chưa commit
+- 2026-11-21 Toàn: `kich_ban_toan_v2.md` thêm cho slide 2–15 khối **Trọng tâm lý thuyết** và **Đọc demo trên slide** (INPUT → OUTPUT → vì sao), giải thích từng dòng khung code slide 4, 12, 15; `giai_thich_du_an_v4.md` đổi số slide theo bộ 16 slide (AI hỗ trợ; chi tiết code đối chiếu lại notebook) → chưa commit
+- 2026-11-21 Toàn: `kich_ban_toan_v2.md` thêm khối **Thuật ngữ** cho slide 2–15 (107 thuật ngữ: là gì, câu nói mẫu, cần học / hiểu tới đâu; 71 từ đánh dấu bắt buộc) (AI hỗ trợ) → chưa commit
+- 2026-11-21 Toàn: `kich_ban_toan_v2.md` thêm cho slide 2–15 khối **Các ý bắt buộc phải nói** và **Lý thuyết chi tiết**; phụ lục công thức viết lại (28 công thức: ký hiệu, đọc thành lời, phát biểu ý nghĩa, ví dụ số); xuất `docs/scripts/kich_ban_toan_v2.docx` (68 trang, công thức dạng phương trình Word, có mục lục) theo yêu cầu (AI hỗ trợ) → chưa commit

@@ -10,7 +10,7 @@ Dựa trên `Lab-DL/CONTRIBUTING.md`, sửa cho repo bài presentation (không c
 - **Commit:** mỗi bước logic một commit, định dạng Conventional Commits `<type>(<phạm vi>): <việc đã làm>` (bảng dưới). Tiêu đề PR dùng cùng định dạng.
 - **Stage từng file:** `git add <file>`; xem `git status` và `git diff --staged` trước khi commit.
 - **Không commit:** dữ liệu UIT-VSFC, trọng số model, slide môn học, `outputs/_smoke/`, token, `.env` (`.gitignore` đã chặn phần lớn). Không force-push nhánh dùng chung.
-- **Notebook:** chỉ Toàn sửa `notebook/llm_presentation.ipynb` (Toàn viết toàn bộ code, quyết định 15/11). Muội, Phúc góp ý qua issue hoặc PR review, không sửa trực tiếp notebook. Trước khi commit notebook, kiểm output không chứa token hay đường dẫn cá nhân.
+- **Notebook:** chỉ Toàn sửa `notebook/llm_presentation.ipynb` (Toàn viết toàn bộ code, quyết định 15/11). Thành viên khác góp ý qua issue hoặc PR review, không sửa trực tiếp notebook. Trước khi commit notebook, kiểm output không chứa token hay đường dẫn cá nhân.
 - **Pull Request:** mở PR vào `main` theo mẫu, ghi `Closes #<số issue>`; Thư review (góp ý), Toàn duyệt rồi merge.
 - **Trước khi mở PR:**
   - chạy lại phần notebook liên quan (smoke run đạt, có log trong `outputs/_smoke/logs/`);
