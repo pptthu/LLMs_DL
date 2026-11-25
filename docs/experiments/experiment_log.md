@@ -6,7 +6,18 @@
 
 ---
 
-## 20261125_082211_normal — phần 0–10 + metric theo danh sách của cô (**lần chạy chính thức cuối**, notebook nộp và số cho slide lấy từ đây)
+## 20261125_214650_normal — chạy lại sau sửa đo VRAM (**lần chạy chính thức cuối**, notebook nộp và số cho slide lấy từ đây)
+
+- Người chạy: Toàn | Kaggle, 2 × T4 (model chính GPU 0, giám khảo GPU 1), Internet bật | Chế độ: normal | notebook đã chạy và `outputs/` (qua `outputs.zip`) chép vào repo 25/11
+- Thay đổi so với 20261125_082211_normal (theo review của Thư, AI hỗ trợ, Claude Code): cell 5.4 `del inputs` trước khi xoá model base (biến `inputs` của 5.3 giữ `model_base` trên GPU 0 tới hết notebook); cell 6.6 đổi `/ 1e9` → `/ 1024**3` cho VRAM đỉnh và RAM (thống nhất GiB với `vram_used_gb()`); 154 cell.
+- Kết quả: **đạt**, chạy hết, không lỗi; 41.2 phút (DeepEval 15.2 phút, 159 lần gọi; G-Eval 13.7 phút, 324 lần gọi cộng dồn). "VRAM sau khi xoá base": 2.88 GiB (run trước 5.76). Mọi file kết quả trùng 20261125_082211_normal, trừ cột thời gian và bộ nhớ.
+- 6.6 (`efficiency.csv`): TTFT 0.045–0.048 s; latency 2.31 / 3.46 / 8.44 s; ≈ 26 token/s; VRAM đỉnh 2.90 GiB (trọng số 2.89 GiB), RAM 2.35 GiB (run trước 6.2 GB, 2.67 GB, có model base).
+- 9.5 (`context_cost.csv`): 512 token 0.12 s, 2.95 GiB; 8,192 token 9.9 s, 10.41 GiB (run trước 13.28 GiB, có model base).
+- `20261125_213700_normal` dừng sau phần 8, không dùng, không chép vào repo.
+
+---
+
+## 20261125_082211_normal — phần 0–10 + metric theo danh sách của cô (lần chạy chính thức trước; VRAM 6.6, 9.5 đo sai vì model base chưa giải phóng)
 
 - Người chạy: Toàn | Kaggle, 2 × T4 (model chính GPU 0, giám khảo GPU 1), Internet bật | Chế độ: normal | notebook đã chạy và `outputs/` (qua `outputs.zip`) chép vào repo 25/11
 - Thay đổi so với 20261124_180414_normal (AI hỗ trợ, Claude Code): cell 1.6 (unit-test pass rate 7 test, Pass@k với 10 mẫu T = 0.8, top-p 0.95), 4.6 (top-1 / top-5 accuracy token tiếp theo), 6.5 (distinct-1/2, tỉ lệ lặp), 6.6 (TTFT, latency, throughput, VRAM, RAM, GPU-giây; `GPU_USD_PER_HOUR = None`), 10.3d (G-Eval 5 tiêu chí cho mục 1, 5, 6, 8, cùng giám khảo 10.3c); 154 cell.

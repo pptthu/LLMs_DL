@@ -1,0 +1,23 @@
+{
+  "run_id": "20261125_214650_normal",
+  "smoke": false,
+  "seed": 42,
+  "dtype": "float16",
+  "model_instruct": "Qwen/Qwen2.5-1.5B-Instruct",
+  "model_instruct_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "model_base": "Qwen/Qwen2.5-1.5B",
+  "tokenizer_gpt2": "openai-community/gpt2",
+  "n_test": null,
+  "uit_vsfc_base": "https://huggingface.co/datasets/uitnlp/vietnamese_students_feedback/resolve/refs%2Fconvert%2Fparquet/default",
+  "architecture": {
+    "num_hidden_layers": 28,
+    "hidden_size": 1536,
+    "num_attention_heads": 12,
+    "num_key_value_heads": 2,
+    "intermediate_size": 8960,
+    "vocab_size": 151936,
+    "max_position_embeddings": 32768,
+    "tie_word_embeddings": true,
+    "n_params": 1543714304
+  }
+}
