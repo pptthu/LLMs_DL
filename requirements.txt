@@ -9,3 +9,8 @@ scikit-learn
 statsmodels
 matplotlib
 scipy
+# Cell 10.3b, 10.3c (cài bằng %pip ngay trong cell, sau khi các phần trước đã chạy xong)
+sacrebleu
+rouge-score
+deepeval==4.3.5
+bitsandbytes
