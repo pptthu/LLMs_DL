@@ -1,0 +1,6 @@
+metric,gia_tri
+Unit-test pass rate (greedy),1.0
+Unit-test pass rate (TB 10 mẫu),1.0
+Số mẫu qua cả 7 test,10/10
+Pass@1,1.0
+Pass@5,1.0

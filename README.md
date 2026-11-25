@@ -2,7 +2,7 @@
 
 Bài thuyết trình nhóm môn Học sâu (UTH). Nhóm: Muội, Phúc, Toàn, Thư. Người trình bày cả 10 mục và viết code notebook: Toàn (đổi phân công 21/11).
 
-> Trạng thái: đã chạy chính thức trên Kaggle (GPU T4), run_id **`20261121_010447_normal`** (bản có thêm demo 9.4 thiên lệch, 9.5 giới hạn ngữ cảnh, 9.6 chất lượng theo tác vụ và dữ liệu, khung ĐẦU VÀO trước mỗi demo). Mọi số liệu trong `outputs/results/` và trên slide lấy từ lần chạy này; phần 1–8 ra đúng số của run cũ `20261119_150356_normal`. Người phụ trách README: Muội.
+> Trạng thái: đã chạy chính thức trên Kaggle (GPU T4), run_id **`20261125_082211_normal`** (bản có thêm cell 1.6 Pass@k, 4.6 top-1/top-5 accuracy, 6.5 distinct-n, 6.6 hiệu quả thực thi, 10.3b Exact Match / token F1 / BLEU / ROUGE, 10.3c DeepEval, 10.3d G-Eval). Mọi số liệu trong `outputs/results/` và trên slide lấy từ lần chạy này; phần 1–10 ra đúng số của run cũ `20261124_180414_normal` và `20261121_010447_normal`. Người phụ trách README: Muội.
 
 ## Nội dung
 10 mục theo đề của cô; mỗi mục có demo trên model thật, cùng một notebook. Giải thích lý thuyết, code và kết quả từng mục: `docs/parts/ban_giao_toan_v2.md`; kịch bản thuyết trình và thứ tự ôn: `docs/scripts/kich_ban_toan_v2.md`.
@@ -64,7 +64,7 @@ Cả ba model đều công khai, **không cần token Hugging Face**.
 2. Bật GPU T4 và Internet.
 3. **Chạy thử:** đặt `SMOKE = True` ở cell đầu → Run All. Mỗi phần chạy vài câu, kết quả ghi vào `outputs/_smoke/`.
 4. **Chạy chính thức:** `SMOKE = False` → **Save & Run All**. Kết quả ghi vào `outputs/results/` và `outputs/figures/`; log ghi vào `outputs/logs/<YYYYMMDD_HHMMSS>_normal/`.
-5. Thời gian chạy: chính thức **9.2 phút** (`outputs/logs/20261121_010447_normal/run.log`, chưa tính thời gian tải model).
+5. Thời gian chạy: chính thức **41.2 phút** trên Kaggle T4 x2, trong đó DeepEval (10.3c) 14.8 phút và G-Eval (10.3d) 13.5 phút (`outputs/logs/20261125_082211_normal/run.log`, chưa tính thời gian tải model).
 6. Notebook cần Internet suốt lần chạy: ngoài model còn đọc dữ liệu từ Hugging Face và GitHub (mục 7–9).
 
 ## Cấu trúc thư mục

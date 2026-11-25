@@ -34,7 +34,7 @@
 ## 2. Design
 
 ### 2.1 Môi trường và model
-- Kaggle, GPU T4, `torch.float16`, seed 42. Lần chạy chính thức: **`20261121_010447_normal`** (9.2 phút).
+- Kaggle, GPU T4, `torch.float16`, seed 42. Lần chạy chính thức: **`20261125_082211_normal`** (41.2 phút, T4 x2; giám khảo DeepEval và G-Eval chạy trên GPU thứ hai).
 - Model: `Qwen/Qwen2.5-1.5B-Instruct` (chính), `Qwen/Qwen2.5-1.5B` (mục 5), tokenizer `openai-community/gpt2` (mục 3).
 - Dữ liệu: UIT-VSFC (mục 7, 9.6, 10); UIT-ViQuAD 2.0 (mục 8, 9.1–9.3, 9.5); WinoGender và Nemotron-Personas-Vietnam (mục 9.4).
 - Cách lấy từng thứ: `README.md` §Setup và cell markdown thứ 2 của notebook; model card ở `docs/models/*_v2.md`.

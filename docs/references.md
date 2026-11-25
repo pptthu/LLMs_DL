@@ -1,6 +1,6 @@
 # Tài liệu tham khảo
 
-- Tổng hợp: Muội (bản đầu do Toàn soạn từ research 14–15/11/2026); cập nhật 21/11 (Toàn, AI hỗ trợ: thêm #33–35 và 2 nguồn dữ liệu, đều đã mở link) | Trạng thái: **[đề xuất]**, chờ Toàn duyệt trước khi đưa lên slide
+- Tổng hợp: Muội (bản đầu do Toàn soạn từ research 14–15/11/2026); cập nhật 21/11 (Toàn, AI hỗ trợ: thêm #33–35 và 2 nguồn dữ liệu, đều đã mở link); 24/11 (thêm #36–38, DeepEval, Qwen2.5-7B-Instruct; đã mở link) | Trạng thái: **[đề xuất]**, chờ Toàn duyệt trước khi đưa lên slide
 - Cột "Đã mở": ngày đã mở link kiểm tra. Link chưa mở thì để trống, không đưa lên slide.
 - Đối chiếu thêm với tài liệu giảng viên cung cấp trước khi chốt.
 
@@ -46,11 +46,17 @@
 | 28 | Es et al., *Ragas: Automated Evaluation of Retrieval Augmented Generation*, 2023 | https://arxiv.org/abs/2309.15217 | 8 | 16/11 |
 | 29 | Wei et al., *Measuring short-form factuality in large language models* (SimpleQA), 2024 | https://arxiv.org/abs/2411.04368 | 9 | 16/11 |
 | 30 | Min et al., *FActScore: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text Generation*, EMNLP 2023 | https://arxiv.org/abs/2305.14251 | 9 | 16/11 |
-| 31 | Zheng et al., *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*, NeurIPS 2023 | https://arxiv.org/abs/2306.05685 | 8, 9 (vì sao không dùng LLM chấm) | 16/11 |
+| 31 | Zheng et al., *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*, NeurIPS 2023 | https://arxiv.org/abs/2306.05685 | 8, 9, 10 (LLM làm giám khảo: dùng cho DeepEval 10.3c, giám khảo khác và mạnh hơn model được chấm) | 16/11 |
 | 32 | Landis & Koch, *The Measurement of Observer Agreement for Categorical Data*, Biometrics 33(1):159–174, 1977 | https://pubmed.ncbi.nlm.nih.gov/843571/ | 8, 9 (thang kappa) | 16/11 (chỉ mở được abstract; các ngưỡng 0,41/0,61/0,81 lấy từ tài liệu dạy NLP trích lại, chưa đọc bản gốc) |
 | 33 | Rudinger, Naradowsky, Leonard, Van Durme, *Gender Bias in Coreference Resolution* (WinoGender), NAACL 2018 | https://github.com/rudinger/winogender-schemas (bài báo: `paper/gender-bias-coreference.pdf`) | 9 (thiên lệch) | 20/11 |
 | 34 | Zhao et al., *Gender Bias in Coreference Resolution: Evaluation and Debiasing Methods* (WinoBias), NAACL 2018 | https://github.com/uclanlp/corefBias | 9 (so sánh, không dùng) | 20/11 |
 | 35 | Nangia et al., *CrowS-Pairs: A Challenge Dataset for Measuring Social Biases in Masked Language Models*, EMNLP 2020 | https://arxiv.org/abs/2010.00133 | 9 (cách đo bằng xác suất câu) | 21/11 |
+| 36 | Papineni et al., *Bleu: a Method for Automatic Evaluation of Machine Translation*, ACL 2002 | https://aclanthology.org/P02-1040/ | 10 (BLEU, cell 10.3b) | 24/11 |
+| 37 | Lin, *ROUGE: A Package for Automatic Evaluation of Summaries*, Text Summarization Branches Out 2004 | https://aclanthology.org/W04-1013/ | 10 (ROUGE-1/2/L, cell 10.3b) | 24/11 |
+| 38 | Post, *A Call for Clarity in Reporting BLEU Scores* (sacreBLEU), WMT 2018 | https://aclanthology.org/W18-6319/ | 10 (cách tính BLEU chuẩn hoá, cell 10.3b) | 24/11 |
+| 39 | Liu et al., *G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment*, EMNLP 2023 | https://arxiv.org/abs/2303.16634 | 10 (G-Eval, cell 10.3d) | 24/11 |
+| 40 | Li et al., *A Diversity-Promoting Objective Function for Neural Conversation Models* (distinct-n), NAACL 2016 | https://arxiv.org/abs/1510.03055 | 6 (distinct-n, cell 6.5) | 24/11 |
+| 41 | Radford et al., *Language Models are Unsupervised Multitask Learners* (GPT-2, byte-level BPE), 2019 | https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf | 3 | 24/11 |
 
 ## Model, dữ liệu, tài liệu thư viện
 | Tài liệu | Link | Mục | Đã mở |
@@ -72,6 +78,9 @@
 | HF PEFT docs | https://huggingface.co/docs/peft | 8 | 14/11 |
 | scikit-learn `TfidfVectorizer` | https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html | 8 | 15/11 |
 | statsmodels `mcnemar` | https://www.statsmodels.org/stable/generated/statsmodels.stats.contingency_tables.mcnemar.html | 10 | 14/11 |
+| DeepEval (Confident AI, Apache-2.0), bản 4.3.5 | https://github.com/confident-ai/deepeval | 10 (cell 10.3c) | 24/11 |
+| DeepEval docs: *Hallucination* (điểm = số context khớp / tổng context; "Higher is better") | https://deepeval.com/docs/metrics-hallucination | 10 | 24/11 |
+| Qwen2.5-7B-Instruct (giám khảo DeepEval, Apache-2.0) | https://huggingface.co/Qwen/Qwen2.5-7B-Instruct | 10 | 24/11 |
 
 ## Bài giảng, bài giải thích
 | Tài liệu | Link | Mục | Đã mở |

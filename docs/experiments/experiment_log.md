@@ -6,7 +6,32 @@
 
 ---
 
-## 20261121_010447_normal — phần 0–10 (**lần chạy chính thức cuối**, notebook nộp và số cho slide lấy từ đây)
+## 20261125_082211_normal — phần 0–10 + metric theo danh sách của cô (**lần chạy chính thức cuối**, notebook nộp và số cho slide lấy từ đây)
+
+- Người chạy: Toàn | Kaggle, 2 × T4 (model chính GPU 0, giám khảo GPU 1), Internet bật | Chế độ: normal | notebook đã chạy và `outputs/` (qua `outputs.zip`) chép vào repo 25/11
+- Thay đổi so với 20261124_180414_normal (AI hỗ trợ, Claude Code): cell 1.6 (unit-test pass rate 7 test, Pass@k với 10 mẫu T = 0.8, top-p 0.95), 4.6 (top-1 / top-5 accuracy token tiếp theo), 6.5 (distinct-1/2, tỉ lệ lặp), 6.6 (TTFT, latency, throughput, VRAM, RAM, GPU-giây; `GPU_USD_PER_HOUR = None`), 10.3d (G-Eval 5 tiêu chí cho mục 1, 5, 6, 8, cùng giám khảo 10.3c); 154 cell.
+- Kết quả: **đạt**, chạy hết, không lỗi; 41.2 phút (DeepEval 14.8 phút, 159 lần gọi; G-Eval 13.5 phút, 324 lần gọi cộng dồn). Mọi file kết quả đã có trùng 20261124_180414_normal, chỉ khác cột thời gian (`time_s`, `context_cost.csv`, `prompt_selection.csv`).
+- Mới, 1.6 (`code_passk_summary.csv`): greedy 7/7 test; 10/10 mẫu qua cả 7 test → Pass@1 = Pass@5 = 1.0 (bài dễ nên bão hòa).
+- Mới, 4.6 (`next_token_accuracy.csv`): top-1 / top-5 câu đúng 0.43 / 0.71, xáo trộn 0.12 / 0.25, tiếng Anh 0.33 / 0.67.
+- Mới, 6.5 (`decoding_diversity.csv`): distinct-2 greedy 0.33, T = 0.5 0.65, top-p 0.5 0.76, top-p 0.95 0.84, T = 1.5 0.99; tỉ lệ lặp ≤ 0.06.
+- Mới, 6.6 (`efficiency.csv`, trung vị 5 lần): TTFT 0.045–0.046 s; latency 2.30 / 3.46 / 8.37 s (60 / 90 / 219 token ra); ≈ 26 token/s; VRAM đỉnh 6.2 GB; RAM 2.67 GB.
+- Mới, 10.3d (`geval_scores.csv`, `geval_summary.csv`): mục 5 Instruction following base 0.00 / Instruct 0.82, Coherence 0.05 / 0.95; mục 8 Correctness 0.22 → 0.38, Semantic equivalence 0.00 → 0.21, Completeness 0.08 → 0.27; mục 6 Coherence greedy 0.70, T = 1.5 0.00, Instruction following 0–0.20; mục 1 Correctness 1.0 / 0.8 / 0.5 (hỏi đáp / tóm tắt / dịch); 1 câu JSON lỗi (top-p 0.95, Coherence).
+- `20261125_082125_normal` dừng sau phần 0, không dùng, không chép vào repo.
+
+---
+
+## 20261124_180414_normal — phần 0–10 + bộ metric nhóm chốt (lần chạy chính thức trước)
+
+- Người chạy: Toàn | Kaggle, 2 × T4 (model chính GPU 0, giám khảo DeepEval GPU 1), Internet bật | Chế độ: normal | notebook đã chạy và `outputs/` (qua `outputs.zip`) chép vào repo 24/11
+- Thay đổi so với 20261121_010447_normal (AI hỗ trợ, Claude Code): cell 10.3b (Exact Match, token F1 cho hỏi đáp mục 8; BLEU cho dịch; ROUGE-1/2/L cho tóm tắt, tham chiếu `REF_SUMMARY` nhóm tự viết) và 10.3c (DeepEval 4.3.5: Answer Relevancy, Faithfulness, Hallucination; giám khảo `Qwen/Qwen2.5-7B-Instruct` 4-bit NF4, greedy); 10.4 thêm 2 dòng; 144 cell.
+- Kết quả: **đạt**, chạy hết, không lỗi; 26.4 phút (DeepEval 14.9 phút, 159 lần gọi giám khảo). Phần 1–10 trùng từng file với 20261121_010447_normal, chỉ khác cột thời gian. Chi phí ngữ cảnh 8,192 token: 8.7 s (cũ 10.7 s), gấp 83 lần 512 token; bộ nhớ vẫn 13.28 GB.
+- Mới, 10.3b (`lexical_metrics.csv`, `qa_em_f1.csv`): hỏi đáp 15 câu EM 0.0 → 0.2, token F1 0.007 → 0.395 (không RAG → RAG); dịch BLEU 26.3; tóm tắt ROUGE-1/2/L F1 0.550 / 0.341 / 0.504.
+- Mới, 10.3c (`deepeval_scores.csv`, `deepeval_summary.csv`), 18 câu, cả 3 metric cao = tốt: Answer Relevancy 0.056 → 0.753; Hallucination 0.000 → 0.556; Faithfulness (chỉ RAG) 0.627, 1 câu lỗi (`0019-0036-0002`, giám khảo trả JSON thiếu khóa `verdicts`). Giám khảo chấm sai vài câu đúng (ví dụ "20.4%" Hallucination 0, "14,9" Answer Relevancy 0): ghi ở `docs/drafts/tieu_chi_danh_gia_v2.md` §10b.
+- Smoke run trước khi đạt (`outputs/_smoke/`, không chép vào repo): `20261124_163828_smoke` lỗi `AttributeError: 'LocalJudge' object has no attribute 'model_name'` (deepeval 4.x không tự đặt `model_name`) → sửa; chạy được nhưng Hallucination ngược chiều mô tả (deepeval 4.x tính tỉ lệ khớp) và Faithfulness lỗi JSON 2/6 (output giám khảo bị cắt ở 512 token) → ghim `deepeval==4.3.5`, `truths_extraction_limit=10`, `JUDGE_MAX_NEW_TOKENS = 1024`; `20261124_165525_smoke` đạt, 0 lỗi. Các normal run dở `20261124_154817_normal`, `20261124_162742_normal` (chạy nhầm với `SMOKE = False`) không chép vào repo.
+
+---
+
+## 20261121_010447_normal — phần 0–10 (lần chạy chính thức trước)
 
 - Người chạy: Toàn | Kaggle, 2 × T4 (model trên GPU 0), Internet bật | Chế độ: normal | notebook đã chạy và `outputs/` (qua `outputs.zip`) tải về repo 21/11
 - Thay đổi so với 20261119_150356_normal (sửa 20–21/11, AI hỗ trợ): bảng in bằng `show_table()` (kẻ vạch); khung ĐẦU VÀO `show_input()` trước mỗi demo (25 khung, có chuỗi sau chat template); cell mới 3.1b (gom token theo từ, byte UTF-8), 5.0 (sơ đồ 3 giai đoạn huấn luyện), 9.4 (thiên lệch: WinoGender + BLS, Nemotron-Personas-Vietnam + 3 khuôn câu tự soạn), 9.5 (kim trong đống rơm, cắt cửa sổ 1,024 token, chi phí theo độ dài), 9.6 (chất lượng theo tác vụ và dữ liệu); 10 hình mới; xoá tên thành viên khỏi notebook (`judge_note` đổi "Toàn đọc lại" → "chấm tay").

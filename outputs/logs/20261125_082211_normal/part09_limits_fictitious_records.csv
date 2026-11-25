@@ -1,0 +1,7 @@
+idx,id,phrasing,n_input_tokens,n_output_tokens,truncated,output,judged,time_s
+30,fict-1,A,64,28,False,"Nguyễn Hoàng Lâm, nhà vật lý người Việt, đã nhận giải Nobel Vật lý vào năm 2021.",Sai,1.08
+31,fict-1,B,68,5,False,1994,Sai,0.2
+32,fict-2,A,72,26,False,Việt Nam đăng cai Thế vận hội Mùa hè năm 1987 tại thành phố Hà Nội.,Sai,1.0
+33,fict-2,B,76,4,False,Hà Nội,Sai,0.16
+34,fict-3,A,62,48,True,"Tiểu thuyết ""Bóng chiều trên sông Hậu"" của Nguyễn Du kể về cuộc đời và tình yêu của một người phụ nữ tên là Trúc, cô là con gái của một nhà thơ nổi tiếng. Trúc yêu một người",Sai,1.88
+35,fict-3,B,66,9,False,Bóng chiều trên sông Hậu.,Sai,0.35
