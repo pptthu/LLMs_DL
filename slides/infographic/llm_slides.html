@@ -117,7 +117,7 @@ ul{padding-left:18px;font-size:14px;line-height:1.5}
   <div style="position:absolute;left:70px;right:70px;bottom:110px;display:flex;gap:16px">
     <div style="flex:1;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:14px 18px"><div style="font-size:13px;opacity:.8">MODEL</div><div style="font-size:20px;font-weight:700">Qwen2.5-1.5B-Instruct</div><div style="font-size:14px;opacity:.85">decoder-only · 1,543,714,304 tham số</div></div>
     <div style="flex:1;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:14px 18px"><div style="font-size:13px;opacity:.8">DỮ LIỆU</div><div style="font-size:20px;font-weight:700">UIT-VSFC · UIT-ViQuAD 2.0</div><div style="font-size:14px;opacity:.85">+ WinoGender · Nemotron-Personas-Vietnam</div></div>
-    <div style="flex:1;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:14px 18px"><div style="font-size:13px;opacity:.8">LẦN CHẠY CHÍNH THỨC</div><div style="font-size:20px;font-weight:700" class="mono">20261125_082211_normal</div><div style="font-size:14px;opacity:.85">Kaggle T4 x2 · 154 cell · 0 lỗi · 41.2 phút</div></div>
+    <div style="flex:1;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:14px 18px"><div style="font-size:13px;opacity:.8">LẦN CHẠY CHÍNH THỨC</div><div style="font-size:20px;font-weight:700" class="mono">20261125_214650_normal</div><div style="font-size:14px;opacity:.85">Kaggle T4 x2 · 154 cell · 0 lỗi · 41.2 phút</div></div>
   </div>
   <div style="position:absolute;left:70px;bottom:44px;font-size:20px;font-weight:700">Nhóm 1</div>
   <div class="pg" style="position:absolute;right:40px;bottom:20px;font-weight:800;font-size:15px;opacity:.8"></div>
@@ -144,13 +144,13 @@ ul{padding-left:18px;font-size:14px;line-height:1.5}
     </div>
     <div class="card o">
       <div class="ct">MÔI TRƯỜNG</div>
-      <div class="kpi" style="margin-bottom:10px"><div><div class="v">T4</div><div class="l">Kaggle GPU · 14.6 GB</div></div><div><div class="v">fp16</div><div class="l">2 byte / tham số</div></div></div>
+      <div class="kpi" style="margin-bottom:10px"><div><div class="v">T4</div><div class="l">Kaggle GPU · 14.6 GiB</div></div><div><div class="v">fp16</div><div class="l">2 byte / tham số</div></div></div>
       <ul>
         <li>Python 3.13.16 · CUDA 13.0 · seed 42</li>
         <li>Bộ nhớ trọng số ≈ 1.54 tỉ × 2 byte ≈ <b>3.1 GB</b></li>
         <li><b>Chỉ suy luận, không fine-tune</b></li>
         <li>Instruct mặc định <span class="mono">do_sample=True</span> → mọi lần sinh <b>truyền tham số tường minh</b> (greedy khi đánh giá)</li>
-        <li>Toàn notebook: <b>26.4 phút</b> (DeepEval 14.9), 144 cell, 0 lỗi</li>
+        <li>Toàn notebook: <b>41.2 phút</b> (DeepEval 15.2 + G-Eval 13.7), 154 cell, 0 lỗi</li>
       </ul>
       <div style="margin-top:10px"><div class="code"><div class="cl">💻 cell 0.4, 0.5</div><pre>model = AutoModelForCausalLM.from_pretrained(
     MODEL_INSTRUCT, torch_dtype=torch.float16,
@@ -176,7 +176,7 @@ assert n == 1_543_714_304</pre></div></div>
       <div class="cap">Phiên bản đọc bằng <span class="mono">importlib.metadata</span> → <span class="mono">results/env.json</span>; sacrebleu, deepeval ghi ở <span class="mono">part10_summary.log</span></div>
     </div>
   </div>
-  <div class="ft">Nguồn: outputs/results/env.json, model_config.json · run 20261125_082211_normal<span class="pg"></span></div>
+  <div class="ft">Nguồn: outputs/results/env.json, model_config.json · run 20261125_214650_normal<span class="pg"></span></div>
 </section>
 
 <!-- ============ M1a: LM · LLM · chatbot ============ -->
@@ -413,7 +413,7 @@ Thủ đô của Nhật Bản là gì?&lt;|im_end|&gt;
       </div>
     </div>
   </div>
-  <div class="ft">Nguồn: figures/causal_mask.png, attention_qwen.png · results/top5_next_tokens.csv · run 20261125_082211_normal<span class="pg"></span></div>
+  <div class="ft">Nguồn: figures/causal_mask.png, attention_qwen.png · results/top5_next_tokens.csv · run 20261125_214650_normal<span class="pg"></span></div>
 </section>
 
 
@@ -513,7 +513,7 @@ emb = model.get_input_embeddings()(ids)                 # (1, 8) → (1, 8, 1536
       </table>
     </div>
   </div>
-  <div class="ft">Nguồn: results/token_counts.csv, output cell 3.1, 3.1b, 3.4 · run 20261125_082211_normal<span class="pg"></span></div>
+  <div class="ft">Nguồn: results/token_counts.csv, output cell 3.1, 3.1b, 3.4 · run 20261125_214650_normal<span class="pg"></span></div>
 </section>
 
 
@@ -929,7 +929,7 @@ Câu hỏi: Muốn ban hành luật thì hoàng đế phải làm gì?</pre></di
       <div class="def"><span class="tag in">INPUT</span> tài liệu Wikipedia ~4,000 token + câu giấu "Mã số bí mật của kho lưu trữ là 7429." (đầu / giữa / cuối) → hỏi mã số</div>
       <div class="def"><span class="tag out">OUTPUT</span> câu giấu còn trong input: <b class="ok">7429 (6/6)</b> · cắt còn 1,024 token cuối: <b class="bad">"1234" (bịa)</b></div>
       <div class="fw" style="flex:1;min-height:0"><img class="fig" src="../../outputs/figures/context_cost.png"></div>
-      <div class="def"><b>Tiêu chí:</b> đúng mã số hay không · thời gian, bộ nhớ theo độ dài. <b>Kết quả:</b> 512 → 8,192 token: thời gian ×83, bộ nhớ 13.3 / 14.6 GB của T4.</div>
+      <div class="def"><b>Tiêu chí:</b> đúng mã số hay không · thời gian, bộ nhớ theo độ dài. <b>Kết quả:</b> 512 → 8,192 token: thời gian ×85, bộ nhớ 10.4 / 14.6 GiB của T4.</div>
     </div>
     <div style="display:grid;gap:10px;grid-template-rows:1fr auto;min-height:0">
       <div class="card g" style="display:flex;flex-direction:column;gap:5px">
@@ -992,32 +992,32 @@ mcnemar(table, exact=True).pvalue              # = 1.5e-08</pre></div></div>
 
 <!-- ============ M10b: bộ metric theo danh sách ============ -->
 <section class="slide" id="m10b">
-  <div class="hd"><span class="no">10</span>Tiêu chí đánh giá: đủ 20 metric trong danh sách tham khảo<small>mỗi metric: là gì · đo trên I/O nào · kết quả</small></div>
+  <div class="hd"><span class="no">10</span>Tiêu chí đánh giá: đủ 18 metric trong danh sách tham khảo<small>mỗi metric: là gì · đo trên I/O nào · kết quả</small></div>
   <div class="body" style="grid-template-rows:1fr auto;gap:8px">
     <table class="xt" style="font-size:12.5px;background:#fff">
       <tr><th style="width:11%">Nhóm</th><th style="width:13%">Metric</th><th style="width:26%">Là gì</th><th style="width:27%">Đo trên (INPUT → OUTPUT so với gì)</th><th>Kết quả</th></tr>
       <tr><td rowspan="2"><b>Dự đoán ngôn ngữ</b></td><td>Cross-Entropy</td><td>−ln P(token đúng), trung bình; thấp = tốt</td><td>Mục 4: câu → P mỗi token, so token thật</td><td>2.985 (đúng) · 6.701 (xáo trộn)</td></tr>
       <tr><td>Perplexity</td><td>e^loss; số lựa chọn model phân vân</td><td>Mục 4: như trên</td><td>19.8 · 813.6</td></tr>
       <tr><td rowspan="5"><b>Độ đúng, trùng khớp</b></td><td>Accuracy</td><td>% trả lời đúng</td><td>Mục 7: câu phản hồi → nhãn, so nhãn gốc</td><td>89.86% → 92.30% (p = 1.5e-08)</td></tr>
-      <tr><td>Exact Match</td><td>Khớp hoàn toàn đáp án sau chuẩn hóa</td><td>Mục 8: câu hỏi → câu trả lời, so đáp án</td><td>0 → 0.2 (không RAG → RAG)</td></tr>
-      <tr><td>Token F1</td><td>Độ trùng từ: 2PR / (P + R)</td><td>Mục 8: như trên</td><td>0.007 → 0.395</td></tr>
-      <tr><td>BLEU</td><td>Trùng n-gram 1–4 từ, phạt câu ngắn (0–100)</td><td>Mục 1: câu dịch, so câu tham chiếu</td><td>26.3</td></tr>
-      <tr><td>ROUGE-1/2/L</td><td>Trùng từ / cặp từ / chuỗi con chung dài nhất</td><td>Mục 1: bản tóm tắt, so bản mẫu</td><td>0.55 / 0.34 / 0.50</td></tr>
+      <tr><td>Exact Match</td><td>Khớp hoàn toàn đáp án sau chuẩn hóa</td><td>Mục 8: câu hỏi → câu trả lời, so đáp án</td><td>0 → 0.2 (không RAG → RAG) · n = 15</td></tr>
+      <tr><td>Token F1</td><td>Độ trùng từ: 2PR / (P + R)</td><td>Mục 8: như trên</td><td>0.007 → 0.395 · n = 15</td></tr>
+      <tr><td>BLEU</td><td>Trùng n-gram 1–4 từ, phạt câu ngắn (0–100)</td><td>Mục 1: câu dịch, so câu tham chiếu</td><td>26.3 · n = 1 câu</td></tr>
+      <tr><td>ROUGE-1/2/L</td><td>Trùng từ / cặp từ / chuỗi con chung dài nhất</td><td>Mục 1: bản tóm tắt, so bản mẫu</td><td>0.55 / 0.34 / 0.50 · n = 1 bản</td></tr>
       <tr><td rowspan="4"><b>Ngữ nghĩa, chất lượng (DeepEval)</b></td><td>Answer Relevancy</td><td>Output có bám câu hỏi không</td><td>Mục 8: câu hỏi → câu trả lời</td><td>0.056 → 0.753</td></tr>
-      <tr><td>Faithfulness</td><td>Output có được tài liệu RAG hỗ trợ không</td><td>Mục 8: câu trả lời so 3 đoạn tìm được</td><td>0.627 (có RAG)</td></tr>
+      <tr><td>Faithfulness</td><td>Output có được tài liệu RAG hỗ trợ không</td><td>Mục 8: câu trả lời so 3 đoạn tìm được</td><td>0.627 (có RAG) · n = 17, 1 câu lỗi JSON (0019-0036-0002)</td></tr>
       <tr><td>Hallucination</td><td>Có mâu thuẫn đoạn gốc không (4.x: cao = tốt)</td><td>Mục 8: câu trả lời so đoạn chứa đáp án</td><td>0.000 → 0.556</td></tr>
       <tr><td>G-Eval</td><td>Giám khảo chấm theo rubric: correctness, semantic equivalence, completeness, coherence, instruction following</td><td>Mục 1, 5, 6, 8: output so prompt / đáp án</td><td>Instruct 0.82 / base 0.00 (Instr. fol.) · RAG Correctness 0.22 → 0.38 (chi tiết slide sau)</td></tr>
       <tr><td rowspan="2"><b>Sinh mã</b></td><td>Unit-test pass rate</td><td>% test qua</td><td>Mục 1: prompt → hàm is_even, chạy 7 test</td><td>greedy 7/7 · trung bình 10 mẫu 1.0</td></tr>
-      <tr><td>Pass@k</td><td>P(≥ 1 trong k mẫu đúng) = 1 − C(n−c,k)/C(n,k)</td><td>Mục 1: 10 lời giải lấy mẫu</td><td>c = 10/10 → Pass@1 = Pass@5 = 1.0</td></tr>
-      <tr><td rowspan="5"><b>Hiệu quả thực thi</b></td><td>TTFT</td><td>Thời gian tới token đầu tiên</td><td>Mục 6: 3 prompt, greedy, batch 1, trung vị 5 lần</td><td>0.045 s (cả 3 prompt)</td></tr>
-      <tr><td>Latency</td><td>Thời gian sinh xong câu trả lời</td><td>như trên</td><td>2.30 s (60 token) → 8.37 s (219 token)</td></tr>
+      <tr><td>Pass@k</td><td>P(≥ 1 trong k mẫu đúng) = 1 − C(n−c,k)/C(n,k)</td><td>Mục 1: 10 lời giải lấy mẫu</td><td>1 bài, 10 mẫu: c = 10/10 → Pass@1 = Pass@5 = 1.0 (bài dễ: chỉ minh họa công thức, đo thật cần HumanEval)</td></tr>
+      <tr><td rowspan="5"><b>Hiệu quả thực thi</b></td><td>TTFT</td><td>Thời gian tới token đầu tiên</td><td>Mục 6: 3 prompt, greedy, batch 1, trung vị 5 lần</td><td>0.045–0.048 s (cả 3 prompt)</td></tr>
+      <tr><td>Latency</td><td>Thời gian sinh xong câu trả lời</td><td>như trên</td><td>2.31 s (60 token) → 8.44 s (219 token)</td></tr>
       <tr><td>Throughput</td><td>Số token sinh / giây</td><td>như trên</td><td>≈ 26 token/s</td></tr>
-      <tr><td>Memory</td><td>VRAM đỉnh khi sinh, RAM tiến trình</td><td>như trên · trọng số fp16 ≈ 3.1 GB</td><td>VRAM đỉnh 6.20 GB · RAM 2.67 GB</td></tr>
+      <tr><td>Memory</td><td>VRAM đỉnh khi sinh, RAM tiến trình</td><td>như trên · trọng số fp16 ≈ 3.1 GB = 2.89 GiB</td><td>VRAM đỉnh 2.90 GiB · RAM 2.35 GiB</td></tr>
       <tr><td>Cost / request</td><td>GPU-giây mỗi yêu cầu (× giá GPU nếu có)</td><td>như trên · Kaggle T4 miễn phí</td><td>2.3 – 8.4 GPU-giây</td></tr>
     </table>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
       <div class="card g" style="padding:6px 12px;font-size:12.5px"><b>Thêm ngoài danh sách:</b> CI 95%, McNemar (so 2 cách trên cùng câu), confusion matrix, recall@3, chấm 3 mức Đúng / Từ chối / Sai, Pearson r (thiên lệch), top-1 / top-5 accuracy, distinct-n, đọc tay 30 câu sai.</div>
-      <div class="card o" style="padding:6px 12px;font-size:12.5px"><b>Đảm bảo chung:</b> greedy (chạy lại ra y hệt) · luật chấm, câu tham chiếu ghi <b>trước</b> khi chạy · chọn prompt trên validation, báo số trên test · mọi số đọc từ <span class="mono">outputs/results/</span>, không chép tay.</div>
+      <div class="card o" style="padding:6px 12px;font-size:12.5px"><b>Đảm bảo chung:</b> greedy (chạy lại ra y hệt) · luật chấm, câu tham chiếu ghi <b>trước</b> khi chạy · chọn prompt trên validation, báo số trên test · mọi số đọc từ <span class="mono">outputs/results/</span>, không chép tay · giám khảo khớp nhãn tay: G-Eval Correctness 31/36 (86%), DeepEval Hallucination 32/36 (89%); giám khảo Qwen2.5-7B cùng họ model được chấm, có thể thiên vị.</div>
     </div>
   </div>
   <div class="ft">Nguồn: results/*.csv (cell 10.4 đọc thẳng) · Papineni et al. 2002 · Lin 2004 · Rajpurkar et al. 2016 · Chen et al. 2021 · Liu et al. 2023 · DeepEval 4.3.5<span class="pg"></span></div>
@@ -1030,23 +1030,23 @@ mcnemar(table, exact=True).pvalue              # = 1.5e-08</pre></div></div>
     <div class="card"><div class="ct" style="font-size:19px">Ⓐ So khớp chữ với đáp án tham chiếu<span class="tag">10.3b</span></div>
       <table style="font-size:16.5px;line-height:1.4">
         <tr><th style="width:17%">Metric</th><th>Ví dụ thật</th><th style="width:13%">Điểm</th><th style="width:20%">Kết quả</th></tr>
-        <tr><td><b>Exact Match</b><br>khớp hoàn toàn</td><td>"20.4%" = đáp án → <span class="ok">1</span><br>"Hoàng đế phải thông qua Hội đồng để ban hành luật." (đúng ý, dài hơn) → <span class="bad">0</span></td><td>1 / 0</td><td>hỏi đáp: <b>0 → 0.2</b><br>(không RAG → RAG)</td></tr>
-        <tr><td><b>Token F1</b><br>trùng từ</td><td>câu trên 11 từ, trùng đủ 5 từ của "phải thông qua Hội đồng": P = 5/11, R = 1</td><td><b>0.625</b></td><td><b>0.007 → 0.395</b></td></tr>
-        <tr><td><b>BLEU</b><br>trùng n-gram, dịch</td><td>"Today the weather is very beautiful." so với "The weather is very nice today." · trùng 1–4 gram: 4/7, 2/6, 1/5, 0/4</td><td><b>26.3</b><br>/ 100</td><td>đúng nghĩa vẫn thấp: chỉ đếm chữ trùng</td></tr>
-        <tr><td><b>ROUGE-1/2/L</b><br>tóm tắt</td><td>bản tóm tắt 90 từ, tham chiếu 41 từ · ROUGE-1: P 0.40, R 0.88</td><td><b>0.55 / 0.34 / 0.50</b></td><td>giữ đủ ý (R cao), nhưng dài, rút gọn ít</td></tr>
+        <tr><td><b>Exact Match</b><br>khớp hoàn toàn</td><td>"20.4%" = đáp án → <span class="ok">1</span><br>"Hoàng đế phải thông qua Hội đồng để ban hành luật." (đúng ý, dài hơn) → <span class="bad">0</span></td><td>1 / 0</td><td>hỏi đáp: <b>0 → 0.2</b><br>(không RAG → RAG) · n = 15</td></tr>
+        <tr><td><b>Token F1</b><br>trùng từ</td><td>câu trên 11 từ, trùng đủ 5 từ của "phải thông qua Hội đồng": P = 5/11, R = 1</td><td><b>0.625</b></td><td><b>0.007 → 0.395</b><br>n = 15</td></tr>
+        <tr><td><b>BLEU</b><br>trùng n-gram, dịch</td><td>"Today the weather is very beautiful." so với "The weather is very nice today." · trùng 1–4 gram: 4/7, 2/6, 1/5, 0/4</td><td><b>26.3</b><br>/ 100</td><td>n = 1 câu · đúng nghĩa vẫn thấp: chỉ đếm chữ trùng</td></tr>
+        <tr><td><b>ROUGE-1/2/L</b><br>tóm tắt</td><td>bản tóm tắt 90 từ, tham chiếu 41 từ · ROUGE-1: P 0.40, R 0.88</td><td><b>0.55 / 0.34 / 0.50</b></td><td>n = 1 bản · giữ đủ ý (R cao), nhưng dài, rút gọn ít</td></tr>
       </table></div>
     <div class="card o"><div class="ct" style="font-size:19px">Ⓑ DeepEval: LLM giám khảo chấm theo nghĩa<span class="tag">10.3c</span></div>
       <div style="font-size:16px;margin-bottom:10px">Giám khảo <b>Qwen2.5-7B-Instruct</b> 4-bit, chạy local (khác và mạnh hơn model 1.5B) · 18 câu mục 8 · cả 3 metric: <b>cao = tốt</b>, đạt khi ≥ 0.5</div>
       <table style="font-size:16.5px;line-height:1.4">
         <tr><th style="width:21%">Metric</th><th style="width:12%">Không RAG</th><th style="width:12%">Có RAG</th><th>Ví dụ thật</th></tr>
         <tr><td><b>Answer Relevancy</b><br>bám câu hỏi</td><td>0.056</td><td><b>0.753</b></td><td>"…hoàng đế phải <b>ký tên</b>…" (<span class="bad">Sai</span>) vẫn được <b>1.0</b>: không đo đúng/sai</td></tr>
-        <tr><td><b>Faithfulness</b><br>bám tài liệu RAG</td><td>—</td><td><b>0.627</b></td><td>"Nam Ossetia thuộc chủ quyền của <b>Nga</b>" (đáp án Gruzia) → <span class="ok">0.0, bắt được</span></td></tr>
+        <tr><td><b>Faithfulness</b><br>bám tài liệu RAG</td><td>—</td><td><b>0.627</b><br>n = 17</td><td>"Nam Ossetia thuộc chủ quyền của <b>Nga</b>" (đáp án Gruzia) → <span class="ok">0.0, bắt được</span></td></tr>
         <tr><td><b>Hallucination</b><br>khớp đoạn gốc</td><td>0.000</td><td><b>0.556</b></td><td>"Charles-de-Gaulle" → 1.0 · "20.4%" (<span class="ok">Đúng</span>) → <span class="bad">0.0: giám khảo sai</span></td></tr>
       </table>
-      <div class="cap" style="font-size:15px;margin-top:10px">Không RAG thì model gần như luôn trả "Không có thông tin" → giám khảo cho 0. 159 lần gọi, 14.8 phút, 1 câu trả JSON lỗi.</div></div>
+      <div class="cap" style="font-size:15px;margin-top:10px">Không RAG thì model gần như luôn trả "Không có thông tin" → giám khảo cho 0. 159 lần gọi, 15.2 phút, 1 câu trả JSON lỗi (0019-0036-0002, Faithfulness).</div></div>
     <div class="card g" style="grid-column:1 / 3;padding:10px 16px;font-size:17px"><b>Đọc kết quả:</b> mỗi metric một mặt — EM quá chặt · F1, BLEU, ROUGE chỉ đếm chữ trùng · DeepEval hiểu nghĩa nhưng giám khảo cũng sai. → Kết quả chính vẫn là <b>nhãn 3 mức có đọc tay</b> (RAG 0/15 → 10/15); các metric trên để bổ sung và chỉ ra giới hạn.</div>
   </div>
-  <div class="ft">Nguồn: results/lexical_metrics.csv, qa_em_f1.csv, deepeval_scores.csv, deepeval_summary.csv · run 20261125_082211_normal<span class="pg"></span></div>
+  <div class="ft">Nguồn: results/lexical_metrics.csv, qa_em_f1.csv, deepeval_scores.csv, deepeval_summary.csv · run 20261125_214650_normal<span class="pg"></span></div>
 </section>
 
 <!-- ============ M10d: G-Eval + hiệu quả ============ -->
@@ -1076,7 +1076,7 @@ mcnemar(table, exact=True).pvalue              # = 1.5e-08</pre></div></div>
         <tr><td>6 · greedy / T = 1.5</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">0.70 / <span class="bad">0.00</span></td><td class="n">0.20 / <span class="bad">0.00</span></td></tr>
         <tr><td>8 · không RAG</td><td class="n">0.22</td><td class="n">0.00</td><td class="n">0.08</td><td class="n">—</td><td class="n">—</td></tr>
         <tr><td>8 · có RAG</td><td class="n">0.38</td><td class="n">0.21</td><td class="n">0.27</td><td class="n">—</td><td class="n">—</td></tr></table>
-      <div class="cap">Mục 1: Correctness qa 1.0 · tóm tắt 0.8 · dịch 0.5 (sinh mã chấm bằng unit test). 324 lần gọi giám khảo (cộng cả 10.3c), 13.5 phút, 1 câu JSON lỗi (top-p 0.95).</div>
+      <div class="cap">Mục 1: Correctness qa 1.0 · tóm tắt 0.8 · dịch 0.5 (sinh mã chấm bằng unit test). 324 lần gọi giám khảo (cộng cả 10.3c), 13.7 phút, 1 câu JSON lỗi (top-p 0.95).</div>
       <div class="def" style="margin-top:auto"><b>Đảm bảo:</b> giám khảo <b>khác và lớn hơn</b> model được chấm (7B so với 1.5B) · bước chấm ghi sẵn, giám khảo sinh greedy → chạy lại ra cùng điểm · câu giám khảo trả JSON hỏng được ghi lỗi, không bỏ im lặng (≤ 10%). <b>Giới hạn:</b> giám khảo cũng có thể sai (slide trước: "20.4%" đúng mà bị 0).</div>
     </div>
     <div class="card" style="display:flex;flex-direction:column;gap:6px">
@@ -1089,10 +1089,10 @@ mcnemar(table, exact=True).pvalue              # = 1.5e-08</pre></div></div>
         <div class="b" style="border-color:var(--green)"><b>Xong</b>= latency</div>
       </div>
       <table style="font-size:13px"><tr><th>Prompt</th><th class="n">Token vào / ra</th><th class="n">TTFT (s)</th><th class="n">Latency (s)</th><th class="n">Token/s</th><th class="n">VRAM đỉnh</th></tr>
-        <tr><td>Ngắn (Hà Nội)</td><td class="n">42 / 60</td><td class="n">0.045</td><td class="n">2.30</td><td class="n">26.1</td><td class="n">6.19 GB</td></tr>
-        <tr><td>Tóm tắt (dài)</td><td class="n">165 / 90</td><td class="n">0.046</td><td class="n">3.46</td><td class="n">26.0</td><td class="n">6.20 GB</td></tr>
-        <tr><td>Sinh mã</td><td class="n">49 / 219</td><td class="n">0.045</td><td class="n">8.37</td><td class="n">26.2</td><td class="n">6.20 GB</td></tr></table>
-      <div class="cap">Latency tăng theo số token <b>ra</b> (≈ 26 token/s không đổi); prompt dài 165 token vẫn chỉ tốn 0.046 s để đọc (prefill song song). RAM tiến trình 2.67 GB.</div>
+        <tr><td>Ngắn (Hà Nội)</td><td class="n">42 / 60</td><td class="n">0.045</td><td class="n">2.31</td><td class="n">26.0</td><td class="n">2.89 GiB</td></tr>
+        <tr><td>Tóm tắt (dài)</td><td class="n">165 / 90</td><td class="n">0.048</td><td class="n">3.46</td><td class="n">26.0</td><td class="n">2.90 GiB</td></tr>
+        <tr><td>Sinh mã</td><td class="n">49 / 219</td><td class="n">0.046</td><td class="n">8.44</td><td class="n">26.0</td><td class="n">2.90 GiB</td></tr></table>
+      <div class="cap">Latency tăng theo số token <b>ra</b> (≈ 26 token/s không đổi); prompt dài 165 token vẫn chỉ tốn 0.048 s để đọc (prefill song song). RAM tiến trình 2.35 GiB. VRAM đỉnh chỉ hơn trọng số (2.89 GiB) khoảng 0.01 GiB: KV cache vài trăm token rất nhỏ.</div>
       <div class="def"><b>Định nghĩa:</b> <b>TTFT</b> = thời gian chạy <span class="mono">generate(max_new_tokens=1)</span> · <b>Latency</b> = thời gian sinh cả câu · <b>Throughput</b> = token sinh ÷ latency · <b>Memory</b> = VRAM đỉnh (<span class="mono">max_memory_allocated</span>), RAM tiến trình · <b>Cost / request</b> = GPU-giây × giá thuê GPU.</div>
       <div class="def"><b>Cost / request:</b> <b>2.3 / 3.5 / 8.4</b> GPU-giây (= latency, 1 GPU) · Kaggle T4 miễn phí nên không quy ra USD.</div>
       <table class="ev" style="margin-top:auto">
