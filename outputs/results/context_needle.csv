@@ -1,9 +1,9 @@
 doc_tokens_target,needle_position,input,n_input_tokens,needle_in_input,output,correct,time_s
-1000,đầu,đầy đủ,1161,True,7429,True,0.48
-1000,giữa,đầy đủ,1161,True,7429,True,0.48
-1000,cuối,đầy đủ,1161,True,7429,True,0.48
-4000,đầu,đầy đủ,4202,True,7429,True,2.63
-4000,giữa,đầy đủ,4202,True,7429,True,2.62
-4000,cuối,đầy đủ,4202,True,7429,True,2.62
-4000,đầu,chỉ giữ 1024 token cuối,1091,False,1234,False,0.46
-4000,cuối,chỉ giữ 1024 token cuối,1091,True,7429,True,0.48
+1000,đầu,đầy đủ,1161,True,7429,True,0.58
+1000,giữa,đầy đủ,1161,True,7429,True,0.58
+1000,cuối,đầy đủ,1161,True,7429,True,0.57
+4000,đầu,đầy đủ,4202,True,7429,True,3.35
+4000,giữa,đầy đủ,4202,True,7429,True,3.22
+4000,cuối,đầy đủ,4202,True,7429,True,3.15
+4000,đầu,chỉ giữ 1024 token cuối,1091,False,1234,False,0.51
+4000,cuối,chỉ giữ 1024 token cuối,1091,True,7429,True,0.52
