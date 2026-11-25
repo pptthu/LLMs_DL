@@ -1,0 +1,32 @@
+muc,group,metric,score_mean,n_dat,n,n_loi
+1,qa,Instruction following,1.0,True,1,0
+1,qa,Coherence,1.0,True,1,0
+1,qa,Correctness,1.0,True,1,0
+1,summary,Instruction following,0.8,True,1,0
+1,summary,Coherence,1.0,True,1,0
+1,summary,Correctness,0.8,True,1,0
+1,translate,Instruction following,0.8,True,1,0
+1,translate,Coherence,1.0,True,1,0
+1,translate,Correctness,0.5,True,1,0
+1,code,Instruction following,0.9,True,1,0
+1,code,Coherence,0.8,True,1,0
+5,base,Instruction following,0.0,0,4,0
+5,base,Coherence,0.05,0,4,0
+5,instruct,Instruction following,0.825,4,4,0
+5,instruct,Coherence,0.95,4,4,0
+6,greedy,Instruction following,0.2,0,3,0
+6,greedy,Coherence,0.7,3,3,0
+6,temp_0.5,Instruction following,0.067,0,3,0
+6,temp_0.5,Coherence,0.833,3,3,0
+6,temp_1.5,Instruction following,0.0,0,3,0
+6,temp_1.5,Coherence,0.0,0,3,0
+6,top_p_0.5,Instruction following,0.067,0,3,0
+6,top_p_0.5,Coherence,0.8,3,3,0
+6,top_p_0.95,Instruction following,0.133,0,3,0
+6,top_p_0.95,Coherence,0.75,2,2,1
+8,no_rag,Correctness,0.222,5,18,0
+8,no_rag,Semantic equivalence,0.0,0,18,0
+8,no_rag,Completeness,0.083,3,18,0
+8,rag,Correctness,0.378,8,18,0
+8,rag,Semantic equivalence,0.211,4,18,0
+8,rag,Completeness,0.272,6,18,0

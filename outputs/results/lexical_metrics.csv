@@ -1,0 +1,9 @@
+muc,tac_vu,metric,gia_tri,n
+8,hỏi đáp (no_rag),Exact Match,0.0,15
+8,hỏi đáp (no_rag),Token F1,0.007,15
+8,hỏi đáp (rag),Exact Match,0.2,15
+8,hỏi đáp (rag),Token F1,0.395,15
+1,dịch,BLEU (0–100),26.3,1
+1,tóm tắt,ROUGE1 F1,0.55,1
+1,tóm tắt,ROUGE2 F1,0.341,1
+1,tóm tắt,ROUGEL F1,0.504,1

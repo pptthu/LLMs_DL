@@ -1,0 +1,29 @@
+=== PART 02 arch START 2026-11-24T18:05:21+07:00 ===
+model: Qwen/Qwen2.5-1.5B-Instruct
+revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306
+architectures: ['Qwen2ForCausalLM']
+num_hidden_layers: 28
+hidden_size: 1536
+num_attention_heads: 12
+num_key_value_heads: 2
+intermediate_size: 8960
+vocab_size: 151936
+max_position_embeddings: 32768
+tie_word_embeddings: True
+n_params: 1543714304
+head_dim: 128
+q_heads_per_kv_head: 6
+rope_theta: 1000000.0
+n_params_by_group: {'embedding': 233373696, 'attention': 154198016, 'ffn': 1156055040, 'norm': 87552, 'khác': 0}
+n_params_without_embedding: 1310340608
+causal mask: 'Hôm nay trời rất đẹp.' → 8 token ['H', 'ôm', ' n', 'ay', ' trời', ' rất', ' đẹp', '.']
+attention layer 0 head 0: tổng phần trên đường chéo = 0.000000 | tổng mỗi hàng = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+--- mỗi mẫu ---
+idx,id,text,position,token,top_k_rank,top_k_token,top_k_prob,time_s
+0,qwen,Hôm nay trời rất,cuối, rất,1, đẹp,0.787874,0.125
+1,qwen,Hôm nay trời rất,cuối, rất,2, nắng,0.063174,0.125
+2,qwen,Hôm nay trời rất,cuối, rất,3, lạnh,0.045503,0.125
+3,qwen,Hôm nay trời rất,cuối, rất,4, nóng,0.028923,0.125
+4,qwen,Hôm nay trời rất,cuối, rất,5, ,0.007144,0.125
+=== PART 02 arch END 2026-11-24T18:05:24+07:00 ===
+tổng kết: top-1 sau 'Hôm nay trời rất' = ' đẹp' (0.788) | causal mask 8×8 | attention phần trên đường chéo = 0

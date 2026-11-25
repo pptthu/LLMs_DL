@@ -1,0 +1,8 @@
+=== PART 10 summary START 2026-11-24T18:13:26+07:00 ===
+McNemar: a=2648, b=47, c=120, d=184, p=1.503e-08
+phân tích lỗi: 30/231 câu sai few-shot | {'ý ngầm (góp ý, phàn nàn gián tiếp)': 20, 'model sai rõ ràng': 4, 'vừa khen vừa chê': 4, 'nhãn gốc có vẻ sai': 2}
+zero_shot: negative bị đoán positive 248 câu, trong đó câu góp ý 189 (76%)
+few_shot: negative bị đoán positive 145 câu, trong đó câu góp ý 117 (81%)
+so khớp chữ: [['hỏi đáp (no_rag)', 'Exact Match', 0.0], ['hỏi đáp (no_rag)', 'Token F1', 0.007], ['hỏi đáp (rag)', 'Exact Match', 0.2], ['hỏi đáp (rag)', 'Token F1', 0.395], ['dịch', 'BLEU (0–100)', 26.3], ['tóm tắt', 'ROUGE1 F1', 0.55], ['tóm tắt', 'ROUGE2 F1', 0.341], ['tóm tắt', 'ROUGEL F1', 0.504]] | sacrebleu 2.6.0
+DeepEval 4.3.5 | giám khảo Qwen/Qwen2.5-7B-Instruct 4-bit GPU 1 | 159 lần gọi, 14.9 phút | [['Answer Relevancy', 'no_rag', 0.056, 0], ['Hallucination', 'no_rag', 0.0, 0], ['Answer Relevancy', 'rag', 0.753, 0], ['Hallucination', 'rag', 0.556, 0], ['Faithfulness', 'rag', 0.627, 1]]
+=== PART 10 summary END 2026-11-24T18:30:41+07:00 ===
