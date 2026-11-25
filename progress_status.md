@@ -1,7 +1,7 @@
 # Tiến độ bài Presentation LLMs
 
 - **Created**: 2026-11-15T16:30:00+07:00 (Toàn)
-- **Last Updated**: 2026-11-21T02:00:00+07:00 (Toàn, AI hỗ trợ)
+- **Last Updated**: 2026-11-25T10:00:00+07:00 (Toàn, AI hỗ trợ)
 
 Cập nhật file này sau MỖI bước. Bảng dưới đây là trạng thái hiện tại của từng phần.
 
@@ -9,34 +9,35 @@ Code và trình bày mọi phần: **Toàn** (code: quyết định 15/11; trìn
 
 | Phần notebook | Mục | Cell | Normal run | Slide (khung v5) | Giải thích |
 |---|---|---|---|---|---|
-| 0. Setup | — | 0.1–0.8 | đạt (21/11, `20261121_010447_normal`) | 2 | `docs/giai_thich_du_an_v4.md` §2 |
-| 1. Tác vụ mẫu | 1 | 1.1–1.5 | đạt, 4/4 | 3 | §3 |
+| 0. Setup | — | 0.1–0.8 | đạt (25/11, `20261125_082211_normal`) | 2 | `docs/giai_thich_du_an_v4.md` §2 |
+| 1. Tác vụ mẫu | 1 | 1.1–1.6 | đạt, 4/4; Pass@1 = Pass@5 = 1.0 | 3 | §3 |
 | 2. Kiến trúc | 2 | 2.1–2.5 (2.5–2.10 cũ ở `llm_extension_part02.ipynb`, không nộp) | đạt | 4–5 | §4 |
 | 3. Tokenization | 3 | 3.1, 3.1b–3.5 | đạt | 6 | §5 |
-| 4. Nguyên lý học | 4 | 4.1–4.5 | đạt | 7 | §6 |
+| 4. Nguyên lý học | 4 | 4.1–4.6 | đạt; top-1 / top-5 0.43 / 0.71 | 7 | §6 |
 | 5. Giai đoạn huấn luyện | 5 | 5.0–5.4 | đạt, base 0/4, Instruct 4/4 | 8 | §7 |
-| 6. Sinh văn bản | 6 | 6.1–6.4 | đạt | 9 | §8 |
+| 6. Sinh văn bản | 6 | 6.1–6.6 | đạt; distinct-2 0.33 → 0.99; ≈ 26 token/s | 9 | §8 |
 | 7. Zero / few-shot | 7 | 7.1–7.5 | đạt, 0.8986 / 0.9230 | 10 | §9 |
 | 8. RAG | 8 | 8.1–8.4 | đạt, 0/15 → 10/15 | 11 | §10 |
 | 9. Hạn chế | 9 | 9.1–9.6 | đạt; thiên lệch r = 0.69 / 0.44 | 12–13 | §11 |
-| 10. Tổng hợp | 10 | 10.1–10.4 | đạt, McNemar p = 1.5e-08 | 14–15 | §12 |
-| Save & Run All (chính thức) | — | 140 cell, 0 lỗi | đạt (21/11, 9.2 phút) | — | `docs/experiments/experiment_log.md` |
-| Slide đủ 16 trang | — | — | đạt (21/11) | 1–16 | `slides/infographic/llm_slides.pdf` (nguồn `llm_slides.html`, ảnh `png/`); theo `docs/plans/khung_presentation_llms_v5.md` |
+| 10. Tổng hợp | 10 | 10.1–10.4, 10.3b–10.3d | đạt, McNemar p = 1.5e-08; EM 0 → 0.2, F1 0.007 → 0.395; DeepEval có RAG 0.753 / 0.627 / 0.556; G-Eval Correctness RAG 0.22 → 0.38 | 14–16 | §12; `docs/drafts/tieu_chi_danh_gia_v2.md` |
+| Save & Run All (chính thức) | — | 154 cell, 0 lỗi | đạt (25/11, 41.2 phút) | — | `docs/experiments/experiment_log.md` |
+| Slide đủ 25 trang | — | — | đạt (25/11, hết ô "chờ run") | 1–25 | `slides/infographic/llm_slides.pdf` (nguồn `llm_slides.html`, ảnh `png/`); theo `docs/plans/khung_presentation_llms_v5.md` |
 
 ## Chuẩn bị trình bày (Toàn)
-- [x] Làm đủ 16 slide, mọi số ghi `run_id` (`slides/infographic/`)
+- [x] Làm đủ 25 slide, mọi số ghi `run_id` (`slides/infographic/`)
 - [ ] Ôn theo `docs/scripts/kich_ban_toan_v2.md` Phần A; tự giải thích 3 cell bất kỳ không nhìn tài liệu
 - [ ] Tập nói, bấm giờ từng slide (≤ 20 phút, gồm mở notebook); Thư hỏi Q&A thử
 - [ ] Nộp: slide PDF/PPTX, notebook đã chạy, `outputs/`, `data/`, `docs/references.md`
 
 ## Kiểm chứng
-- Lần chạy chính thức `20261121_010447_normal` (Kaggle T4, 9.2 phút): 140 cell, 0 lỗi; kết quả phần 1–8, 9.1–9.3 trùng từng file với run `20261119_150356_normal` (chỉ khác cột thời gian). Tóm tắt mọi lần chạy: `docs/experiments/experiment_log.md`.
+- Lần chạy chính thức `20261125_082211_normal` (Kaggle T4 x2, 41.2 phút): 154 cell, 0 lỗi; mọi file kết quả đã có trùng run `20261124_180414_normal` (chỉ khác cột thời gian); thêm `code_passk_*.csv`, `next_token_accuracy.csv`, `decoding_diversity.csv`, `efficiency.csv`, `geval_*.csv`. Tóm tắt mọi lần chạy: `docs/experiments/experiment_log.md`.
 
 Log mỗi lần chạy ở `outputs/logs/<YYYYMMDD_HHMMSS>_<smoke|normal>/` theo `docs/templates/RUN_LOG_TEMPLATE_v3.md`.
 
 ## Vấn đề mở
 - Cô đã trả lời "cứ làm" cho demo mục 5, mục 8 và việc dùng UIT-VSFC (ghi ở `docs/plans/yeu_cau_cua_co_v1.md` §3).
-- Còn lại: tập bấm giờ (kịch bản 19.4 phút). `AI_usage.md`: các ô "[Toàn điền]" do Toàn tự điền.
+- Còn lại: tập bấm giờ; `docs/scripts/kich_ban_toan_v4.md` còn viết theo bộ 18 slide, chưa khớp bộ 25 slide.
+- `GPU_USD_PER_HOUR = None` (cell 6.6): slide ghi chi phí bằng GPU-giây, không quy ra USD vì Kaggle T4 miễn phí [cần chốt nếu cô muốn USD]. `AI_usage.md`: các ô "[Toàn điền]" do Toàn tự điền.
 
 ## Nhật ký (ghi ngày, mỗi bước một dòng)
 - 2026-11-15 Toàn: clone repo `pptthu/LLMs_DL` (repo trống) về `D:\File\File\UTH\UTH\Học sâu - DL\LLMs_DL`; tạo khung thư mục và tài liệu theo rule Lab 1 đã sửa cho bài presentation (AI hỗ trợ) → commit `578300a`, chưa push, chưa chạy code; chờ Thư duyệt
@@ -81,3 +82,15 @@ Log mỗi lần chạy ở `outputs/logs/<YYYYMMDD_HHMMSS>_<smoke|normal>/` theo
 - 2026-11-21 Toàn: `kich_ban_toan_v2.md` thêm cho slide 2–15 khối **Trọng tâm lý thuyết** và **Đọc demo trên slide** (INPUT → OUTPUT → vì sao), giải thích từng dòng khung code slide 4, 12, 15; `giai_thich_du_an_v4.md` đổi số slide theo bộ 16 slide (AI hỗ trợ; chi tiết code đối chiếu lại notebook) → chưa commit
 - 2026-11-21 Toàn: `kich_ban_toan_v2.md` thêm khối **Thuật ngữ** cho slide 2–15 (107 thuật ngữ: là gì, câu nói mẫu, cần học / hiểu tới đâu; 71 từ đánh dấu bắt buộc) (AI hỗ trợ) → chưa commit
 - 2026-11-21 Toàn: `kich_ban_toan_v2.md` thêm cho slide 2–15 khối **Các ý bắt buộc phải nói** và **Lý thuyết chi tiết**; phụ lục công thức viết lại (28 công thức: ký hiệu, đọc thành lời, phát biểu ý nghĩa, ví dụ số); xuất `docs/scripts/kich_ban_toan_v2.docx` (68 trang, công thức dạng phương trình Word, có mục lục) theo yêu cầu (AI hỗ trợ) → chưa commit
+- 2026-11-21 Toàn: `docs/scripts/kich_ban_toan_v3.md` — kịch bản chính thức dạng lời nói liền mạch 16 slide, giải thích công thức, code, output ngay trong câu nói; mỗi ma trận nói rõ kích thước, hàng, cột, nghĩa một ô, ví dụ; phụ lục bảng đọc nhanh 13 ma trận; câu ⏩ bỏ được khi thiếu giờ (v2 giữ làm tài liệu ôn) (AI hỗ trợ; số đối chiếu slide và `outputs/results/icl_metrics.json`) → chưa bấm giờ, chưa commit
+- 2026-11-21 Toàn: xuất `docs/scripts/kich_ban_toan_v3.docx` từ bản .md theo yêu cầu (AI hỗ trợ, python-docx) → chưa commit
+- 2026-11-21 Toàn: xuất `slides/infographic/llm_slides.pptx` từ `llm_slides.pdf` (16 slide, mỗi slide 1 ảnh render 3x, không sửa được chữ) theo yêu cầu (AI hỗ trợ, PyMuPDF + python-pptx) → chưa commit
+- 2026-11-21 Toàn: thêm slide 15 "Tiêu chí đánh giá độ chính xác mô hình mà nhóm sử dụng" vào `slides/infographic/llm_slides.html` (5 nhóm tiêu chí + cell + kết quả; bộ slide 16 → 17), xuất lại PDF và PNG; `kich_ban_toan_v3.md` thêm lời slide 15, đánh số lại (AI hỗ trợ) → xuất lại `llm_slides.pptx` (17 slide); `kich_ban_toan_v3.docx` chưa xuất lại; chưa commit
+- 2026-11-21 Toàn: slide 15 viết lại thành 8 ô tiêu chí (thêm thiên lệch 9.4, giới hạn ngữ cảnh 9.5, đọc tay 30 câu sai 10.3), xuất lại PDF, PNG, pptx; lời slide 15 trong `kich_ban_toan_v3.md` theo câu trả lời Toàn soạn (AI hỗ trợ) → docx chưa xuất lại; chưa commit
+- 2026-11-21 Toàn: `docs/drafts/tieu_chi_danh_gia_v1.md` — văn báo cáo phần tiêu chí đánh giá (11 mục: nguyên tắc, 8 nhóm tiêu chí kèm công thức, cell, kết quả; bảng tổng hợp; hạn chế) (AI hỗ trợ; định nghĩa recall@3, chuẩn hóa đáp án, 2 nhãn sửa tay đối chiếu code cell 8.2, 8.4) → chưa commit
+- 2026-11-24 Toàn: nhóm chốt bộ metric (cross-entropy, PPL, accuracy, EM, token F1, BLEU, ROUGE, DeepEval). Notebook thêm 10.3b, 10.3c (AI hỗ trợ, Claude Code); giám khảo DeepEval Qwen2.5-7B-Instruct 4-bit chạy local. 2 smoke run sửa lỗi `model_name`, chiều Hallucination (deepeval 4.x: cao = tốt, ghim 4.3.5), JSON Faithfulness bị cắt (giới hạn 10 truths, 1,024 token). Normal run `20261124_180414_normal` đạt. Thêm slide 16 (18 slide), `docs/scripts/kich_ban_toan_v4.md`, `docs/drafts/tieu_chi_danh_gia_v2.md` (§10b ví dụ tính tay từng metric).
+- 2026-11-24 Toàn: thêm metric theo danh sách của cô (ý B, AI hỗ trợ, Claude Code): cell 1.6 (unit-test pass rate, Pass@k, 10 mẫu T = 0.8, top-p 0.95), 4.6 (top-1 / top-5 accuracy token tiếp theo), 6.5 (distinct-1/2, tỉ lệ lặp), 6.6 (TTFT, latency, throughput, VRAM, RAM, GPU-giây / yêu cầu; `GPU_USD_PER_HOUR = None` [cần chốt]), 10.3d (G-Eval 5 tiêu chí cho mục 1, 5, 6, 8, cùng giám khảo 10.3c); 10.3c chuyển `del judge` sang cuối 10.3d; 10.4 thêm 5 dòng → kiểm cú pháp 154 cell, logic Pass@k / distinct-n bằng ví dụ tính tay, G-Eval deepeval 4.3.5 với giám khảo giả: đạt; **chưa smoke / normal run trên Kaggle**, chưa commit
+- 2026-11-24 Toàn: viết lại bộ slide theo yêu cầu sửa từng mục (AI hỗ trợ): 18 → 25 slide trong `slides/infographic/llm_slides.html` (mục 1: 2 slide LM/LLM/chatbot + 4 tác vụ; mục 2: 3 slide Transformer, decoder-only + causal attention tính tay, token → xác suất; mục 3: 2 slide; mục 5, 6, 8, 9: mỗi mục 2 slide; mục 10: thêm bảng 20 metric, G-Eval + hiệu quả); mỗi demo có khung INPUT / OUTPUT / tiêu chí / đảm bảo; ô số mới để "chờ run"; xuất lại PDF, PNG (25), PPTX dạng ảnh; `references.md` thêm #39–41 → **chờ normal run trên Kaggle để điền số ý B**; chưa commit
+- 2026-11-24 Toàn: canh lại slide cho màn hình lớn (AI hỗ trợ): 22 slide chính viết lại, chữ nhỏ nhất 16px (thân bài 20–22px), chỉ giữ ý chính + INPUT/OUTPUT + tiêu chí + kết quả; 20 slide phụ lục (PL1–PL20, header xám) là bản chi tiết cũ (bảng 20 metric, DeepEval, G-Eval + hiệu quả, chi tiết từng mục); kiểm tràn khung bằng script trên Chrome: slide chính 0 lỗi; xuất lại PDF, PNG (42), PPTX → còn chờ normal run để điền số; chưa commit
+- 2026-11-24 Toàn: không duyệt bản 42 slide (slide chính + phụ lục) → quay về bản 25 slide; xuất lại PDF, PNG (25), PPTX; chưa commit
+- 2026-11-25 Toàn: normal run `20261125_082211_normal` trên Kaggle (154 cell, 0 lỗi, 41.2 phút; run dở `20261125_082125_normal` dừng sau phần 0, không chép); chép `outputs.zip` vào `outputs/`; điền số ý B vào 9 slide (4, 10, 12, 14, 17, 21, 22, 23, 24), hết ô "chờ run"; sửa cell Phân tích notebook theo run mới (thêm 1.6, 4.6, 6.5, 6.6, 10.3d, kết luận 13); kiểm tràn khung bằng script trên Chrome; xuất lại PDF, PNG (25), PPTX (AI hỗ trợ, Claude Code; mọi số đối chiếu `outputs/results/`)
