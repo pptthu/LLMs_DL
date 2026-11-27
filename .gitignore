@@ -30,3 +30,32 @@ hf_token*
 
 # Bản nháp cá nhân: chỉ giữ ở máy, không đưa lên GitHub
 docs/drafts/
+
+# Kịch bản thuyết trình cá nhân: chỉ giữ ở máy, không đưa lên GitHub
+docs/scripts/
+
+# Tài liệu cũ, kế hoạch, prompt làm slide: chỉ giữ ở máy (gỡ khỏi GitHub 28/11)
+docs/00_README_v1.md
+docs/00_README_v2.md
+docs/00_README_v3.md
+docs/giai_thich_du_an_*.md
+docs/presentation_description_v1.md
+docs/presentation_description_v2.md
+docs/parts/
+docs/plans/*
+!docs/plans/yeu_cau_cua_co_v1.md
+docs/research/noi_dung_*.md
+docs/research/huong_dan_*.md
+docs/research/nam_kien_thuc_*.md
+docs/research/research_*.md
+docs/rules/*_v1.md
+docs/rules/*_v2.md
+docs/templates/DESC_TEMPLATE_v1.md
+docs/templates/MODEL_CARD_TEMPLATE_v1.md
+docs/templates/PART_TEMPLATE_v1.md
+docs/templates/RUN_LOG_TEMPLATE_v1.md
+docs/templates/RUN_LOG_TEMPLATE_v2.md
+docs/templates/SCRIPT_TEMPLATE_v1.md
+docs/models/*_v1.md
+docs/experiments/error_analysis_v1.md
+HANDOFF_CLAUDE_CODE.md

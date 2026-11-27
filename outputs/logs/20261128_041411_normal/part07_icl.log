@@ -1,0 +1,2 @@
+=== PART 07 icl START 2026-11-28T04:18:08+07:00 ===
+test: 2,999 câu {'positive': 1590, 'negative': 1409} | validation chọn prompt: 200 câu | few-shot: [('positive', 'dạy tốt có tâm .'), ('negative', 'oop khá phức tạp nên cần nhiều ví dụ .'), ('positive', 'giáo viên tích cực , năng nổ trong giảng dạy , phương pháp dạy có phần đổi mới .'), ('negative', 'giảng viên cần linh hoạt trong giảng dạy , chuẩn bị bài giảng phong phú .')]

@@ -1,6 +1,6 @@
 # Luật làm việc bài Presentation LLMs (v3)
 
-- Tác giả: Toàn (AI hỗ trợ) | Tạo: 2026-11-16T01:40:17+07:00 | Cập nhật: Toàn (AI hỗ trợ), 2026-11-21
+- Tác giả: Toàn (AI hỗ trợ) | Tạo: 2026-11-16T01:40:17+07:00 | Cập nhật: Toàn (AI hỗ trợ), 2026-11-28 (trỏ sang `research/`, bỏ tài liệu đã gỡ)
 - Trạng thái: **Duyệt: Toàn, 2026-11-16** (Thư review)
 - Dựa trên: `RULES_v1.md` (bản này), gốc là `Lab-DL/labs/lab1/docs/rules/RULES_v1.md` (Thư).
 - Thay đổi so với v1:
@@ -17,9 +17,9 @@ Mỗi phần (mục 1–10 của đề, ứng với phần 0–10 của notebook
 
 | Bước | Ai làm | Làm gì | Ra file gì |
 |---|---|---|---|
-| 1. **Description** (dàn ý, scaffold) | **Người** (người phụ trách mục; cả bài: Toàn) | Tự viết và tự sắp xếp dàn ý theo khuôn: Purpose, Input/Output, Backbone, Success criteria, Đánh giá, How-to-do. AI không viết bước này thay người | `parts/mucNN_<tên>_v1.md` (khuôn `templates/PART_TEMPLATE_v2.md`); cả bài: `presentation_description_vN.md` (khuôn `templates/DESC_TEMPLATE_v2.md`) |
+| 1. **Description** (dàn ý, scaffold) | **Người** (người phụ trách mục; cả bài: Toàn) | Tự viết và tự sắp xếp dàn ý theo khuôn: Purpose, Input/Output, Backbone, Success criteria, Đánh giá, How-to-do. AI không viết bước này thay người | `research/mucNN_<tên>_v1.md` (khuôn `templates/PART_TEMPLATE_v2.md`); cả bài: `presentation_description_vN.md` (khuôn `templates/DESC_TEMPLATE_v2.md`) |
 | 2. **Discussion** | AI hỏi, người trả lời | AI đọc description, hỏi lại chỗ chưa rõ, mỗi lượt tối đa 5 câu. Chưa rõ thì hỏi, không tự đoán | Câu trả lời ghi vào mục "Quyết định" của description |
-| 3. **Detail description / detail plan** | AI viết, người duyệt | AI chi tiết hoá **đúng theo dàn ý**: tham số, tên hàm, cell, file vào/ra, gotcha có nguồn. Ý nào AI tự thêm phải đánh `[đề xuất]` | Mục "Detailed plan" trong desc mục, hoặc `plans/` |
+| 3. **Detail description / detail plan** | AI viết, người duyệt | AI chi tiết hoá **đúng theo dàn ý**: tham số, tên hàm, cell, file vào/ra, gotcha có nguồn. Ý nào AI tự thêm phải đánh `[đề xuất]` | Mục "Detailed plan" trong desc mục |
 | 4. **Duyệt** | **Toàn** (Thư review, góp ý) | Đọc detail plan, đối chiếu với dàn ý; nói duyệt hay sửa | Ghi "Duyệt <ngày>" trong desc |
 | 5. **Implementation bằng small prompt** | Toàn + AI | Mỗi prompt chỉ làm **một bước** của detail plan (ví dụ: dựng prompt → parse nhãn → tính metric). Làm xong bước nào chạy kiểm bước đó, Toàn đọc hiểu từng dòng rồi mới sang bước sau | Cell trong `notebook/llm_presentation.ipynb` |
 | 6. **Smoke run (dry run)** | Toàn | `SMOKE = True`, mỗi phần vài mẫu, seed 42, ghi vào `outputs/_smoke/` (kể cả log). Đạt khi: chạy hết không lỗi; đủ file kết quả, đúng cột; log có đủ phần đầu / mỗi mẫu / cuối; `env.json` đủ phiên bản. Số smoke run **không** dùng để báo cáo | `outputs/_smoke/logs/<ts>_smoke/` |
@@ -29,7 +29,7 @@ Mỗi phần (mục 1–10 của đề, ứng với phần 0–10 của notebook
 ### 1.1 How to do: từng bước cho mỗi phần
 
 **Bước 1. Description** (người phụ trách mục; AI không viết thay)
-1. Tạo file `docs/parts/mucNN_<tên>_v1.md`, copy khối "Khuôn" trong `templates/PART_TEMPLATE_v2.md` vào.
+1. Tạo file `docs/research/mucNN_<tên>_v1.md`, copy khối "Khuôn" trong `templates/PART_TEMPLATE_v2.md` vào.
 2. Điền header: ngày tạo, người phụ trách mục, slide, phần notebook, `Status: To Do`.
 3. Chép đúng 2 cột của đề (nội dung, minh hoạ) vào "Đề của cô".
 4. Viết Goals: 2–4 dòng, mỗi dòng là một kết quả kiểm được có tên file hoặc slide.
@@ -47,7 +47,7 @@ Mỗi phần (mục 1–10 của đề, ứng với phần 0–10 của notebook
 
 **Bước 3. Detail description / detail plan**
 1. Nhờ AI: "Chi tiết hoá mục Detailed plan và Input/Output theo đúng dàn ý. Ý nào tự thêm thì đánh [đề xuất]."
-2. Đối chiếu với `plans/detail_plan_notebook_v1.md` phần NN; chỗ khác nhau thì chọn một, ghi lý do.
+2. Đối chiếu với code hiện có của phần NN trong notebook; chỗ khác nhau thì chọn một, ghi lý do.
 3. Kiểm mỗi bước có đủ: cell, hàm, tham số, file ra, cách kiểm.
 
 **Bước 4. Duyệt** (Toàn)
@@ -66,13 +66,13 @@ Mỗi phần (mục 1–10 của đề, ứng với phần 0–10 của notebook
 
 **Bước 6. Smoke run (dry run)** (Toàn)
 1. `SMOKE = True`, chạy phần 0 rồi phần NN (hoặc Run All).
-2. Mở `outputs/_smoke/logs/<ts>_smoke/`, kiểm theo checklist `plans/huong_dan_tung_buoc_v1.md` §B1.
+2. Mở `outputs/_smoke/logs/<ts>_smoke/`, kiểm: chạy hết không lỗi, đủ file kết quả đúng cột, log có đủ đầu / mỗi mẫu / cuối, `env.json` đủ phiên bản.
 3. Lỗi thì sửa, chạy lại; lỗi khó ghi `docs/bugs/`.
 4. Ghi 1 mục "smoke run" vào `experiments/experiment_log.md`; cập nhật `progress_status.md` (cột Smoke run).
 5. Bàn giao code cho người phụ trách mục (giải thích từng cell, chỉ log và file kết quả); đủ 4 điều kiện ở `progress_status.md` thì đánh dấu "Đã bàn giao".
 
 **Bước 7. Normal run** (Toàn; chỉ khi mọi phần đã smoke run đạt)
-1. `SMOKE = False`, Save & Run All trên Kaggle (`plans/huong_dan_tung_buoc_v1.md` §B2).
+1. `SMOKE = False`, Save & Run All trên Kaggle (GPU T4, Internet bật).
 2. Tải `outputs/` và notebook đã chạy về repo; kiểm thư mục `outputs/logs/<ts>_normal/`.
 3. Ghi 1 mục "normal run" vào `experiments/experiment_log.md` (`run_id`, thời gian, file, kết quả chính).
 
@@ -84,7 +84,7 @@ Mỗi phần (mục 1–10 của đề, ứng với phần 0–10 của notebook
 5. Đủ hết thì đổi `Status: Done`; cập nhật `progress_status.md`.
 
 ### 1.2 Ghi chú
-- Chạy trên Kaggle, duyệt, commit từng bước: `plans/huong_dan_tung_buoc_v1.md`. Từng bước code phần 0–10: `plans/detail_plan_notebook_v1.md`.
+- Lý thuyết, code, kết quả từng phần 0–10: `research/mucNN_*_v1.md`.
 - Lưu có version: tên file `_v0`, `_v1`… Luôn dùng bản số lớn nhất; đổi nội dung thì tạo `_vN+1`, bản cũ giữ nguyên.
 - **Vì sao người phải tự viết dàn ý:** dàn ý quá chung thì AI tự điền theo thói quen của nó, người lại phải đi kiểm AI có làm đúng ý mình không, tức là người chạy theo AI. Dàn ý do người viết, đủ cụ thể, thì AI chỉ còn chi tiết hoá, và audit có thước đo rõ ràng.
 
@@ -135,5 +135,5 @@ Quyết định 15/11 (Toàn): **Toàn viết toàn bộ code notebook (phần 0
 | Thư | Chủ repo `pptthu/LLMs_DL`; review (góp ý, không phải cổng duyệt), hỏi Q&A thử, bấm giờ |
 | Muội, Phúc | Thành viên nhóm; việc đã làm (README bản đầu, góp ý) ghi trong `progress_status.md` |
 
-- Người trình bày phải giải thích được từng dòng code (yêu cầu của cô): ôn theo `scripts/kich_ban_toan_v2.md` Phần A và `giai_thich_du_an_v4.md`.
+- Người trình bày phải giải thích được từng dòng code (yêu cầu của cô): giải thích từng cell ở `research/mucNN_*_v1.md`.
 - Phân công cũ (Muội mục 1, 2, 3, 8; Phúc mục 4, 5, 6, 9; bàn giao code): xem `RULES_v2.md` §4 (lịch sử).

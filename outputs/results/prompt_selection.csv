@@ -1,7 +1,7 @@
 template,mode,accuracy,unparsed_rate,time_s
-vi_nhan_en,zero_shot,0.84,0.0,4.1
-vi_nhan_en,few_shot,0.905,0.0,8.1
-vi_nhan_vi,zero_shot,0.845,0.0,5.2
-vi_nhan_vi,few_shot,0.905,0.0,11.8
-en_nhan_en,zero_shot,0.825,0.0,4.5
-en_nhan_en,few_shot,0.87,0.0,8.2
+vi_nhan_en,zero_shot,0.84,0.0,3.6
+vi_nhan_en,few_shot,0.905,0.0,6.7
+vi_nhan_vi,zero_shot,0.845,0.0,4.5
+vi_nhan_vi,few_shot,0.905,0.0,9.9
+en_nhan_en,zero_shot,0.825,0.0,3.4
+en_nhan_en,few_shot,0.87,0.0,6.2

@@ -1,0 +1,20 @@
+idx,id,task,prompt,n_input_tokens,n_output_tokens,truncated,output,time_s
+0,qa,Hỏi đáp,Thủ đô của Nhật Bản là gì? Trả lời một câu.,44,10,False,Thủ đô của Nhật Bản là Tokyo.,0.41
+1,summary,Tóm tắt,"Học sâu là một nhánh của học máy, dùng mạng nơ-ron nhiều lớp để tự học biểu diễn từ dữ liệu. Môn học bắt đầu từ mạng nơ-ron nhân tạo và cách huấn luyện mạng bằng lan truyền ngược. Tiếp theo, sinh viên học cách tinh chỉnh một mô hình đã huấn luyện sẵn cho bài toán mới. Hai chương sau giới thiệu mạng tích chập cho ảnh và mạng hồi quy cho dữ liệu chuỗi. Cuối môn, mỗi nhóm thuyết trình một chủ đề, ví dụ mô hình ngôn ngữ lớn, và chạy thử code trên GPU miễn phí.
+
+Tóm tắt đoạn trên trong 1 câu.",165,104,False,"Học sâu là một lĩnh vực học máy sử dụng mạng nơ-ron nhiều lớp để tự học biểu diễn từ dữ liệu, bao gồm việc huấn luyện mạng thông qua lan truyền ngược và tinh chỉnh mô hình đã huấn luyện sẵn cho các bài toán mới, với hai phần giới thiệu về mạng tích chập cho ảnh và mạng hồi quy cho chuỗi, kết thúc bằng việc mỗi nhóm thuyết trình một chủ đề như mô hình ngôn ngữ lớn và chạy thử code trên GPU miễn phí.",4.15
+2,translate,Dịch,Dịch sang tiếng Anh: Hôm nay trời rất đẹp.,43,8,False,Today the weather is very beautiful.,0.33
+3,code,Sinh mã,Viết hàm Python is_even(n) trả về True nếu n là số chẵn.,49,216,False,"Dưới đây là một cách để viết hàm `is_even` trong Python:
+
+```python
+def is_even(n):
+    return n % 2 == 0
+
+# Sử dụng hàm
+print(is_even(4))   # Output: True
+print(is_even(5))   # Output: False
+```
+
+Hàm này sử dụng toán tử modulo (`%`) để kiểm tra xem n có phải là số chẵn hay không. Nếu `n` chia hết cho 2 (hoặc nói cách khác, nếu `n` chia lấy dư khi chia cho 2), thì `n` sẽ là số chẵn và hàm sẽ trả về `True`. Ngược lại, hàm sẽ trả về `False`.
+
+Lưu ý rằng hàm này chỉ hoạt động với các số nguyên. Nếu bạn muốn kiểm tra xem một số thực có phải là số chẵn hay không, bạn cần thêm một bước xử lý ngoại lệ hoặc chuyển đổi số thực thành số nguyên trước khi kiểm tra.",8.63

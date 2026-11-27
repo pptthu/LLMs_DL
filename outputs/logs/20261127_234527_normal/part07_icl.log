@@ -1,0 +1,8 @@
+=== PART 07 icl START 2026-11-27T23:48:24+07:00 ===
+test: 2,999 câu {'positive': 1590, 'negative': 1409} | validation chọn prompt: 200 câu | few-shot: [('positive', 'dạy tốt có tâm .'), ('negative', 'oop khá phức tạp nên cần nhiều ví dụ .'), ('positive', 'giáo viên tích cực , năng nổ trong giảng dạy , phương pháp dạy có phần đổi mới .'), ('negative', 'giảng viên cần linh hoạt trong giảng dạy , chuẩn bị bài giảng phong phú .')]
+chọn prompt trên validation (200 câu): [{'template': 'vi_nhan_en', 'mode': 'zero_shot', 'accuracy': 0.84, 'unparsed_rate': 0.0, 'time_s': 3.5}, {'template': 'vi_nhan_en', 'mode': 'few_shot', 'accuracy': 0.905, 'unparsed_rate': 0.0, 'time_s': 6.5}, {'template': 'vi_nhan_vi', 'mode': 'zero_shot', 'accuracy': 0.845, 'unparsed_rate': 0.0, 'time_s': 4.5}, {'template': 'vi_nhan_vi', 'mode': 'few_shot', 'accuracy': 0.905, 'unparsed_rate': 0.0, 'time_s': 9.8}, {'template': 'en_nhan_en', 'mode': 'zero_shot', 'accuracy': 0.825, 'unparsed_rate': 0.0, 'time_s': 3.3}, {'template': 'en_nhan_en', 'mode': 'few_shot', 'accuracy': 0.87, 'unparsed_rate': 0.0, 'time_s': 6.1}] → vi_nhan_vi
+tham số: model=Qwen/Qwen2.5-1.5B-Instruct | mẫu prompt=vi_nhan_vi | do_sample=False | max_new_tokens=10 | repetition_penalty=1.0 | batch=16 | few-shot=4 ví dụ
+dữ liệu vào: UIT-VSFC test, 2,999 câu (results/vsfc_test_ids.csv)
+--- mỗi mẫu: xem part07_icl_records.csv ---
+=== PART 07 icl END 2026-11-27T23:52:30+07:00 ===
+tổng kết: accuracy zero 0.8986 / few 0.9230 | thời gian 211.6 s (0.035 s/câu/cách)

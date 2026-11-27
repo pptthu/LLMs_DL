@@ -12,7 +12,7 @@ labels: part-task
 |---|---|---|---|---|
 
 ## Xong khi
-- [ ] Dàn ý desc mục trong `docs/parts/` (khuôn `PART_TEMPLATE_v2.md`) đã được Toàn duyệt
+- [ ] Research mục trong `docs/research/mucNN_*_v1.md` đã được Toàn duyệt
 - [ ] Smoke run đạt, ghi đủ file kết quả và log
 - [ ] Có markdown, comment, cell "Phân tích"
 - [ ] Toàn đã bàn giao code phần này cho người phụ trách mục (`progress_status.md`)

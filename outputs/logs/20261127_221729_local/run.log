@@ -1,0 +1,8 @@
+=== RUN START 2026-11-27T22:17:29+07:00 ===
+run_id: 20261127_221729_local | mode: local (chỉ chạy cell 10.5c–10.6, không chạy model) | người chạy: Toàn (AI hỗ trợ, Claude Code)
+nơi chạy: máy cá nhân, CPU | Python 3.13.7 | pandas 3.1.1 | matplotlib 3.11.2 | numpy 2.5.5
+dữ liệu vào: outputs/results/ của run 20261125_214650_normal (đọc lại, không sửa); model: không tải
+=== PART 10 suites START 2026-11-27T22:17:30+07:00 === (đọc lại file trong results/, không chạy model)
+[part10_suites] OK 2026-11-27T22:17:46+07:00 → results/metric_suites.csv, figures/metric_suites_overview.png, figures/suite_E1.png … suite_E14.png (14 bộ)
+=== PART 10 suites END 2026-11-27T22:17:46+07:00 ===
+=== RUN END 2026-11-27T22:17:46+07:00 | tổng thời gian 16.8 giây ===

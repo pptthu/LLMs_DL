@@ -1,64 +1,53 @@
 # Cấu trúc thư mục bài Presentation LLMs (v3)
 
-- Tác giả: Toàn (AI hỗ trợ) | Tạo: 2026-11-16T01:40:17+07:00 | Cập nhật: Toàn (AI hỗ trợ), 2026-11-21
+- Tác giả: Toàn (AI hỗ trợ) | Tạo: 2026-11-16T01:40:17+07:00 | Cập nhật: Toàn (AI hỗ trợ), 2026-11-28 (§1, §2, §7 theo cây thư mục mới)
 - Trạng thái: **Duyệt: Toàn, 2026-11-16** (Thư review)
 - Thay đổi so với v2 (v2 giữ nguyên, không dùng): §1, §2 ghi đúng cây thư mục ngày 21/11; §3 bỏ dữ liệu không còn dùng (ID 500 câu, mBERT, VLM, bộ câu mục 8–9 tự soạn), thêm UIT-ViQuAD 2.0, WinoGender, Nemotron-Personas-Vietnam; đánh dấu file lịch sử.
 
 Ký hiệu: **(có)** = đã có trong repo; **(sẽ tạo)** = tạo khi có file đầu tiên; **(không commit)** = `.gitignore` chặn.
 
-## 1. Cây thư mục hiện tại (2026-11-21)
+## 1. Cây thư mục trên GitHub (cập nhật 2026-11-28)
 
     LLMs_DL/
-    ├── README.md                     (có) Setup + cách chạy: môi trường, thư viện, lấy model/dữ liệu ở đâu
-    ├── project_description.md        (có) Define + Design: đề, 10 mục → phần notebook → slide, file vào/ra từng phần
-    ├── progress_status.md            (có) Bảng tiến độ, kiểm chứng, nhật ký
-    ├── AI_usage.md                   (có) Khai báo dùng AI, mỗi người một cột
-    ├── AGENTS.md                     (có) Luật cho AI agent
-    ├── CONTRIBUTING.md               (có) Quy tắc Git: nhánh, commit, PR
-    ├── requirements.txt              (có) Thư viện (phiên bản thật ở outputs/results/env.json)
-    ├── .gitignore                    (có) Chặn dữ liệu tải về, trọng số, outputs/_smoke/, *.zip, token
-    ├── .github/                      (có) Mẫu PR, mẫu issue
+    ├── README.md                     Setup + cách chạy: môi trường, thư viện, lấy model/dữ liệu ở đâu
+    ├── project_description.md        Define + Design: đề, 10 mục → phần notebook, file vào/ra từng phần
+    ├── progress_status.md            Bảng tiến độ, kiểm chứng, nhật ký
+    ├── AI_usage.md                   Khai báo dùng AI
+    ├── AGENTS.md                     Luật cho AI agent
+    ├── CONTRIBUTING.md               Quy tắc Git: nhánh, commit, PR
+    ├── requirements.txt              Thư viện (phiên bản thật ở outputs/results/env.json)
+    ├── .gitignore                    Chặn dữ liệu tải về, trọng số, outputs/_smoke/, *.zip, token, tài liệu chỉ giữ ở máy
+    ├── .github/                      Mẫu PR, mẫu issue
     ├── notebook/
-    │   ├── llm_presentation.ipynb    (có) Notebook nộp, phần 0–10, 140 cell, đã chạy (run 20261121_010447_normal)
-    │   ├── llm_extension_part02.ipynb (có) Phần so sánh mBERT / VLM / LSTM của mục 2, KHÔNG nộp
-    │   └── parts/                    (có, trống)
-    ├── data/                         (có) tasks_prompts.json (mục 1), base_vs_instruct.json (mục 5)
+    │   ├── llm_presentation.ipynb    Notebook nộp, phần 0–10, 188 cell, đã chạy (run 20261128_041850_normal)
+    │   └── llm_extension_part02.ipynb Phần so sánh mBERT / VLM / LSTM của mục 2, KHÔNG nộp
+    ├── data/                         tasks_prompts.json (mục 1), base_vs_instruct.json (mục 5)
     ├── outputs/
-    │   ├── results/                  (có) 30 file CSV/JSON của run chính thức
-    │   ├── figures/                  (có) 13 hình PNG
-    │   ├── logs/                     (có) Log mỗi lần chạy normal, một thư mục theo ngày giờ (§4)
-    │   └── _smoke/                   (có, không commit) Đầu ra của smoke run
-    ├── slides/                       (có) Slide 1 (jpg), slide 2 (pdf), slide 9, 12, 13 (html, pdf) — bản cũ; `infographic/` bộ đủ 16 slide: `llm_slides.html` (nguồn), `llm_slides.pdf`, `png/slide_01..16.png`
-    └── docs/                         (có) Xem §2
+    │   ├── results/                  CSV/JSON của run chính thức (kể cả metric_suites.csv)
+    │   ├── figures/                  Hình PNG (kể cả suite_E1..E14.png, metric_suites_overview.png)
+    │   ├── logs/                     Log mỗi lần chạy, một thư mục theo ngày giờ (§4)
+    │   └── _smoke/                   (không commit) Đầu ra của smoke run
+    ├── slides/                       Slide (`infographic/`: html nguồn, pdf, pptx, png)
+    └── docs/                         Xem §2
 
-## 2. Cây thư mục `docs/` hiện tại
-
-Bản **hiện hành** in đậm; còn lại là **lịch sử** (giữ nguyên, không sửa, không dùng làm nguồn số liệu).
+## 2. Cây thư mục `docs/` trên GitHub
 
     docs/
-    ├── 00_README_v3.md                             **Mục lục hiện hành** (v1, v2: lịch sử)
-    ├── presentation_description_v3.md              **Desc cả bài** (v1, v2: lịch sử)
-    ├── giai_thich_du_an_v4.md                      **Giải thích lý thuyết, code, output từng cell, cách trình bày** (v1–v3: lịch sử)
-    ├── references.md                               **Tài liệu tham khảo** (sản phẩm nộp số 4)
-    ├── rules/
-    │   ├── RULES_v3.md                             **Quy trình, luật chung, phân vai** (v1, v2: lịch sử)
-    │   └── FOLDER_STRUCTURE_v3.md                  **File này** (v1, v2: lịch sử)
-    ├── templates/                                  Khuôn; dùng bản số lớn nhất (RUN_LOG_TEMPLATE_v3)
-    ├── parts/
-    │   ├── ban_giao_toan_v2.md                     **Tóm gọn lý thuyết + code + kết quả 10 mục** (v1: lịch sử)
-    │   └── muc01–muc05_*.md                        Desc từng mục viết 16–17/11: lịch sử (cell và số đã đổi; xem giai_thich_du_an_v4.md)
-    ├── scripts/
-    │   ├── kich_ban_toan_v2.md                     **Kịch bản 16 slide, giải thích hình, thứ tự ôn** (v1: lịch sử)
-    ├── plans/
-    │   ├── yeu_cau_cua_co_v1.md                    **Chỉ yêu cầu của cô**
-    │   ├── khung_presentation_llms_v5.md           **Khung 16 slide hiện hành** (v1–v4: lịch sử)
-    │   └── (còn lại)                               Kế hoạch, plan, hướng dẫn, prompt làm slide: lịch sử
-    ├── research/                                   Nội dung research từng mục 14–17/11: lịch sử, tham khảo lý thuyết
-    ├── models/                                     **Model card *_v2** (Qwen Instruct, Qwen base, GPT-2); mBERT, Qwen2-VL: chỉ dùng ở notebook mở rộng
-    ├── experiments/
-    │   ├── experiment_log.md                       **Sổ ghi mọi lần chạy**
-    │   └── error_analysis_v2.md                    **Phân tích lỗi mục 10** (v1: lịch sử, cùng số)
-    └── drafts/                                     (không commit) Bản nháp cá nhân
+    ├── 00_README_v4.md                             Mục lục
+    ├── presentation_description_v3.md              Desc cả bài, đánh giá, quyết định
+    ├── references.md                               Tài liệu tham khảo (sản phẩm nộp số 4)
+    ├── research/                                   Lý thuyết, code, kết quả, nhận xét từng mục
+    │   ├── muc00_setup_v1.md                       Yêu cầu của đề, kiến thức nền, phần 0 Setup
+    │   └── muc01_… → muc10_…_v1.md                 Mục 1–10 (một file mỗi mục)
+    ├── plans/yeu_cau_cua_co_v1.md                  Chỉ yêu cầu của cô
+    ├── rules/                                      RULES_v3.md, FOLDER_STRUCTURE_v3.md (file này)
+    ├── templates/                                  Khuôn; dùng bản số lớn nhất
+    ├── models/                                     Model card *_v2 (Qwen Instruct, Qwen base, GPT-2)
+    └── experiments/
+        ├── experiment_log.md                       Sổ ghi mọi lần chạy
+        └── error_analysis_v2.md                    Phân tích lỗi mục 10
+
+Tài liệu cũ (bản _v nhỏ hơn, kế hoạch, hướng dẫn, prompt làm slide, desc từng mục 16–17/11, tài liệu chuẩn bị trình bày) giữ ở máy, `.gitignore` chặn; bản đã commit trước 28/11 vẫn xem được trong lịch sử git. `docs/drafts/` là nháp cá nhân, không commit.
 
 ## 3. Input lấy từ đâu, output lưu ở đâu
 
@@ -123,17 +112,17 @@ Bản **hiện hành** in đậm; còn lại là **lịch sử** (giữ nguyên,
 ## 7. How to do: từng bước
 
 **Thêm một file tài liệu mới**
-1. Xác định loại file theo §2 (luật → `rules/`, khuôn → `templates/`, kế hoạch → `plans/`, desc mục → `parts/`, nội dung → `research/`, model card → `models/`).
-2. Đặt tên tiếng Việt không dấu hoặc tiếng Anh, chữ thường, nối bằng `_`, có hậu tố `_v1` (ví dụ `docs/parts/muc03_tokenization_v1.md`).
+1. Xác định loại file theo §2 (luật → `rules/`, khuôn → `templates/`, nội dung từng mục → `research/`, model card → `models/`).
+2. Đặt tên tiếng Việt không dấu hoặc tiếng Anh, chữ thường, nối bằng `_`, có hậu tố `_v1` (ví dụ `docs/research/muc03_tokenization_v1.md`).
 3. Header có: tác giả, ngày tạo đủ giờ phút giây (+07:00), trạng thái.
-4. Thư mục chưa có (`scripts/`, `qa/`, `bugs/`) thì tạo khi có file đầu tiên.
-5. Thêm một dòng vào mục lục `00_README_v3.md` và cây §2 của file này.
+4. Thư mục chưa có (`bugs/`) thì tạo khi có file đầu tiên.
+5. Thêm một dòng vào mục lục `00_README_v4.md` và cây §2 của file này.
 
 **Sửa một file đã có version**
 1. Copy `<tên>_vN.md` thành `<tên>_vN+1.md`; không sửa bản cũ.
 2. Ở header bản mới ghi "Thay đổi so với vN" và "Cập nhật: <tên>, <thời điểm>".
 3. Sửa mọi chỗ trỏ tới bản cũ (`grep -rn "<tên>_vN" .`) sang bản mới, trừ dòng nhật ký và dòng "Dựa trên".
-4. Cập nhật `00_README_v3.md` (hoặc bản mục lục mới nhất).
+4. Cập nhật `00_README_v4.md` (hoặc bản mục lục mới nhất).
 
 **Thêm một file dữ liệu vào `data/`**
 1. Người phụ trách mục soạn file (CSV/JSON), tên theo `project_description.md` §2.3.
@@ -145,7 +134,7 @@ Bản **hiện hành** in đậm; còn lại là **lịch sử** (giữ nguyên,
 1. Cell 0.1 tạo `RUN_ID = <YYYYMMDD_HHMMSS>_<smoke|normal>` và `OUT_DIR` (`outputs/` hoặc `outputs/_smoke/`).
 2. Mỗi phần ghi kết quả vào `OUT_DIR/results/`, hình vào `OUT_DIR/figures/`, log vào `OUT_DIR/logs/RUN_ID/`.
 3. Chạy xong, mở thư mục log kiểm đủ file theo §4.
-4. Normal run trên Kaggle: tải về và chép vào đúng thư mục trong repo (`plans/huong_dan_tung_buoc_v1.md` §B2).
+4. Normal run trên Kaggle: tải `outputs.zip` về, chép `results/`, `figures/` và thư mục log của run vào đúng chỗ trong repo (không chép `_smoke/`, run dở).
 
 **Model**
 1. Không lưu trọng số vào repo; `from_pretrained` tự tải vào bộ nhớ đệm.

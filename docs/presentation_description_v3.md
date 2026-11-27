@@ -51,7 +51,7 @@ Bảng đầy đủ: `rules/FOLDER_STRUCTURE_v3.md` §3; tên file từng phần
 | Notebook Save & Run All không lỗi; markdown, comment, phân tích | Đạt: 140 cell, 0 lỗi (`20261121_010447_normal`) |
 | Mỗi lần chạy có log theo ngày giờ | Đạt (`outputs/logs/20261121_010447_normal/`) |
 | Mọi số trên slide có `run_id` | Chờ slide hoàn chỉnh |
-| Trình bày ≤ 20 phút | Kịch bản 19.4 phút (`scripts/kich_ban_toan_v2.md`); chưa tập bấm giờ |
+| Trình bày ≤ 20 phút | Chưa tập bấm giờ |
 
 ## Đánh giá (theo cách đã làm)
 | Phần | Đánh giá cái gì | Đo bằng gì | Thế nào là đạt | Kết quả `20261121_010447_normal` |
@@ -69,8 +69,8 @@ Bảng đầy đủ: `rules/FOLDER_STRUCTURE_v3.md` §3; tên file từng phần
 
 ## How-to-do (trạng thái 21/11)
 1. ~~Phần 0–10: code, smoke run, normal run~~ — xong, run chính thức `20261121_010447_normal`; nhật ký ở `../progress_status.md`, tóm tắt ở `experiments/experiment_log.md`.
-2. Làm đủ 16 slide theo `plans/khung_presentation_llms_v5.md`; số lấy từ `outputs/results/`, hình từ `outputs/figures/`, ghi `run_id`.
-3. Ôn theo `scripts/kich_ban_toan_v2.md` Phần A; giải thích từng cell: `giai_thich_du_an_v4.md`.
+2. Slide ở `slides/infographic/`; số lấy từ `outputs/results/`, hình từ `outputs/figures/`, ghi `run_id`.
+3. Lý thuyết, code, kết quả từng mục: `research/mucNN_*_v1.md`.
 4. Tập trình bày, bấm giờ từng slide (≤ 20 phút); Thư hỏi Q&A thử.
 5. Nộp: slide PDF/PPTX, notebook đã chạy, `outputs/`, `data/`, `docs/references.md`.
 
@@ -83,3 +83,7 @@ Bảng đầy đủ: `rules/FOLDER_STRUCTURE_v3.md` §3; tên file từng phần
 - 2026-11-19: bỏ cell so sánh mục 2 khỏi notebook nộp; chạy đủ 2,999 câu test; 4 ví dụ few-shot; chọn prompt trên 200 câu validation; mục 8, 9 dùng UIT-ViQuAD 2.0; bỏ McNemar nhiều bộ, Bonferroni, kappa — Toàn quyết định (theo file chốt khung v4 của Thư).
 - 2026-11-20: mở lại demo thiên lệch (WinoGender + Nemotron-Personas-Vietnam, luật kết luận ghi trước), thêm giới hạn ngữ cảnh và chất lượng theo dữ liệu ở mục 9; thêm bảng kẻ vạch, khung ĐẦU VÀO, các hình minh họa — Toàn quyết định.
 - 2026-11-21: Toàn trình bày cả 10 mục; xoá file bàn giao / trao đổi giữa thành viên (còn trong lịch sử git) — Toàn quyết định.
+- 2026-11-24: bổ sung bộ metric theo danh sách 18 metric của cô (10.3b–10.3d, 1.6, 4.6, 6.5, 6.6) — Toàn quyết định.
+- 2026-11-27: giám khảo DeepEval / G-Eval đổi sang API `gpt-6.2-sol` (run `20261127_234527_normal`), giữ tuỳ chọn Qwen2.5-7B local để so sánh — Toàn quyết định.
+- 2026-11-28: G-Eval chấm 20 lần / tiêu chí lấy trung bình (giám khảo không trả log-prob; chạy thử `20261128_040436_pilot`), giám khảo gọi song song 16 luồng; run chính thức `20261128_041850_normal`, VRAM 6.6 / 9.5 lấy run `20261127_234527_normal` (run mới đo lệch, Toàn chốt không chạy lại). Slide còn 26 trang: bỏ slide so khớp chữ + DeepEval, DeepEval 5W1H, tổng hợp 14 bộ; slide so sánh 2 giám khảo trình bày lại thành bảng.
+- 2026-11-28: tài liệu trên GitHub chỉ giữ research từng mục (`research/mucNN_*_v1.md`), luật, khuôn, model card, sổ thí nghiệm, tài liệu tham khảo; tài liệu cũ, kế hoạch, tài liệu chuẩn bị trình bày giữ ở máy — Toàn quyết định.

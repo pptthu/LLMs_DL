@@ -1,8 +1,8 @@
 # Presentation LLMs — tổng quan dự án
 
 - **Created**: 2026-11-15T16:30:00+07:00 (Toàn, AI hỗ trợ) | **Last Updated**: 2026-11-21 (Toàn, AI hỗ trợ) | Trạng thái: **Duyệt: Toàn, 2026-11-16**; cập nhật theo hiện trạng 21/11 (Thư review)
-- Desc hiện hành: [`docs/presentation_description_v3.md`](docs/presentation_description_v3.md) · Khung slide: [`docs/plans/khung_presentation_llms_v5.md`](docs/plans/khung_presentation_llms_v5.md) · Mục lục: [`docs/00_README_v3.md`](docs/00_README_v3.md)
-- Giải thích lý thuyết, code, output từng cell: [`docs/giai_thich_du_an_v4.md`](docs/giai_thich_du_an_v4.md) · Kịch bản và thứ tự ôn: [`docs/scripts/kich_ban_toan_v2.md`](docs/scripts/kich_ban_toan_v2.md)
+- Desc hiện hành: [`docs/presentation_description_v3.md`](docs/presentation_description_v3.md) · Mục lục: [`docs/00_README_v4.md`](docs/00_README_v4.md)
+- Lý thuyết, code, kết quả từng mục: [`docs/research/`](docs/research/) (`muc00_setup_v1.md` … `muc10_thuc_nghiem_ket_luan_v1.md`)
 
 ## 1. Define
 
@@ -93,5 +93,5 @@ Theo `docs/rules/RULES_v3.md` §2:
 | Rò dữ liệu: câu few-shot trùng câu test | Ví dụ lấy từ split train, test từ split test, `assert` không trùng |
 | Hết bộ nhớ GPU khi đo 8,192 token (cell 9.5) | Dọn bộ nhớ trước mỗi độ dài; bắt `OutOfMemoryError`, ghi `OOM` thay vì dừng notebook |
 | Số trên slide lệch notebook | Chỉ lấy số từ `outputs/results/` của run chính thức; ghi `run_id` dưới bảng |
-| Không giải thích được code khi bị hỏi | Ôn theo `docs/scripts/kich_ban_toan_v2.md` Phần A; giải thích từng cell ở `docs/giai_thich_du_an_v4.md` |
+| Không giải thích được code khi bị hỏi | Giải thích từng cell ở `docs/research/mucNN_*_v1.md` |
 | Không tải được model khi trình bày | Notebook nộp đã có output; không chạy lại khi trình bày |

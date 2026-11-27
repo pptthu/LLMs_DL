@@ -22,7 +22,7 @@
     "exact": true
   },
   "setup": {
-    "run_id": "20261125_214650_normal",
+    "run_id": "20261128_041850_normal",
     "model": "Qwen/Qwen2.5-1.5B-Instruct",
     "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
     "dtype": "float16",

@@ -2,10 +2,10 @@
 
 Bài thuyết trình nhóm môn Học sâu (UTH). Nhóm: Muội, Phúc, Toàn, Thư. Người trình bày cả 10 mục và viết code notebook: Toàn (đổi phân công 21/11).
 
-> Trạng thái: đã chạy chính thức trên Kaggle (GPU T4), run_id **`20261125_214650_normal`** (bản có thêm cell 1.6 Pass@k, 4.6 top-1/top-5 accuracy, 6.5 distinct-n, 6.6 hiệu quả thực thi, 10.3b Exact Match / token F1 / BLEU / ROUGE, 10.3c DeepEval, 10.3d G-Eval). Mọi số liệu trong `outputs/results/` và trên slide lấy từ lần chạy này; phần 1–10 ra đúng số của run cũ `20261125_082211_normal`, `20261124_180414_normal` và `20261121_010447_normal` (riêng bộ nhớ ở 6.6, 9.5 thấp hơn run 082211 vì đã sửa lỗi chưa giải phóng model base). Người phụ trách README: Muội.
+> Trạng thái: đã chạy chính thức trên Kaggle (GPU T4 x2), run_id **`20261128_041850_normal`** (188 cell; giám khảo DeepEval / G-Eval là `gpt-6.2-sol` qua API, G-Eval chấm 20 lần lấy trung bình). Mọi số liệu trong `outputs/results/` lấy từ lần chạy này, trừ VRAM mục 6.6 / 9.5 (run này đo lệch +2.97 GiB; số đúng ở run `20261127_234527_normal`, xem `docs/experiments/experiment_log.md`). Phần 1–9 và 10.1–10.3b trùng run `20261125_214650_normal` (giám khảo Qwen2.5-7B local) và các run trước, chỉ khác cột thời gian, bộ nhớ; so sánh 2 giám khảo ở `docs/research/muc10_thuc_nghiem_ket_luan_v1.md`. Người phụ trách README: Muội.
 
 ## Nội dung
-10 mục theo đề của cô; mỗi mục có demo trên model thật, cùng một notebook. Giải thích lý thuyết, code và kết quả từng mục: `docs/parts/ban_giao_toan_v2.md`; kịch bản thuyết trình và thứ tự ôn: `docs/scripts/kich_ban_toan_v2.md`.
+10 mục theo đề của cô; mỗi mục có demo trên model thật, cùng một notebook. Lý thuyết, code, kết quả và nhận xét từng mục: `docs/research/muc00_setup_v1.md` … `muc10_thuc_nghiem_ket_luan_v1.md`.
 
 | # | Mục |
 |---|---|
@@ -64,7 +64,7 @@ Cả ba model đều công khai, **không cần token Hugging Face**.
 2. Bật GPU T4 và Internet.
 3. **Chạy thử:** đặt `SMOKE = True` ở cell đầu → Run All. Mỗi phần chạy vài câu, kết quả ghi vào `outputs/_smoke/`.
 4. **Chạy chính thức:** `SMOKE = False` → **Save & Run All**. Kết quả ghi vào `outputs/results/` và `outputs/figures/`; log ghi vào `outputs/logs/<YYYYMMDD_HHMMSS>_normal/`.
-5. Thời gian chạy: chính thức **41.2 phút** trên Kaggle T4 x2, trong đó DeepEval (10.3c) 15.2 phút và G-Eval (10.3d) 13.7 phút (`outputs/logs/20261125_214650_normal/run.log`, chưa tính thời gian tải model).
+5. Thời gian chạy: chính thức **22.0 phút** trên Kaggle T4 x2, giám khảo gọi song song 16 luồng: DeepEval (10.3c) 1.0 phút, G-Eval (10.3d, 3,300 lần chấm) 11.1 phút (`outputs/logs/20261128_041850_normal/run.log`). Giám khảo cấu hình ở cell 10.3c: `JUDGE_BACKEND = "api"` (cần key, đặt `JUDGE_API_KEY` trong cell hoặc Kaggle Secrets) hoặc `"local"` (Qwen2.5-7B-Instruct 4-bit, miễn phí, cần GPU thứ 2).
 6. Notebook cần Internet suốt lần chạy: ngoài model còn đọc dữ liệu từ Hugging Face và GitHub (mục 7–9).
 
 ## Cấu trúc thư mục
@@ -76,9 +76,9 @@ LLMs_DL/
 ├── data/          # bộ câu nhóm tự soạn (mục 1, 5); câu test, ví dụ few-shot, câu hỏi RAG đã chọn lưu ở outputs/results/
 ├── outputs/       # results/ (CSV, JSON, env.json), figures/ (PNG), logs/<YYYYMMDD_HHMMSS>_normal/ (log mỗi lần chạy), _smoke/ (không commit)
 ├── slides/        # PPTX, PDF
-└── docs/          # luật, khuôn, kế hoạch, research, model card, sổ thí nghiệm, tài liệu tham khảo
+└── docs/          # research từng mục (research/), luật, khuôn, model card, sổ thí nghiệm, tài liệu tham khảo
 ```
-Chi tiết: `docs/rules/FOLDER_STRUCTURE_v3.md`. Đọc tài liệu bắt đầu từ `docs/00_README_v3.md`.
+Chi tiết: `docs/rules/FOLDER_STRUCTURE_v3.md`. Đọc tài liệu bắt đầu từ `docs/00_README_v4.md`.
 
 ## Sản phẩm nộp
 | Sản phẩm | Đường dẫn |
