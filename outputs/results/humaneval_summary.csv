@@ -1,0 +1,4 @@
+metric,gia_tri,n
+HumanEval Pass@1 (greedy),0.561,164
+Số bài đúng,92/164,164
+Số bài timeout,0,164

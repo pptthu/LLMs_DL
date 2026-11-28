@@ -1,0 +1,10 @@
+scope,judge,metric,n,n_khop,ti_le_khop,nguoi_dat,giam_khao_dat
+8,DeepEval,Answer Relevancy,36,22,0.611,35,23
+8,DeepEval,Hallucination,36,31,0.861,32,29
+8,DeepEval,Faithfulness,18,14,0.778,16,16
+8,G-Eval,Correctness,36,34,0.944,14,14
+8,G-Eval,Semantic equivalence,36,36,1.0,13,13
+8,G-Eval,Completeness,36,36,1.0,13,13
+9.1,DeepEval,Hallucination,30,24,0.8,19,17
+9.1,G-Eval,Correctness,30,29,0.967,6,5
+9.3,G-Eval,False premise,6,6,1.0,0,0

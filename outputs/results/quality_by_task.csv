@@ -1,8 +1,7 @@
 phần,tác vụ,điều kiện,chỉ số,giá trị,n
-1,"4 tác vụ mẫu (hỏi đáp, tóm tắt, dịch, sinh mã)",prompt ngắn,đạt,1.0,4
-7,Phân loại cảm xúc UIT-VSFC,zero-shot,accuracy,0.899,2999
-7,Phân loại cảm xúc UIT-VSFC,few-shot (4 ví dụ),accuracy,0.923,2999
-8,Hỏi đáp kiến thức UIT-ViQuAD,"không tài liệu, cho phép từ chối",đúng,0.0,15
-8,Hỏi đáp kiến thức UIT-ViQuAD,có RAG (3 đoạn TF-IDF),đúng,0.667,15
-9,Hỏi đáp kiến thức UIT-ViQuAD,"không tài liệu, không cho từ chối (cách A)",đúng,0.2,15
-9,Câu hỏi có tiền đề sai,không tài liệu,chỉ ra tiền đề sai,0.0,6
+7,Phân loại cảm xúc UIT-VSFC,zero-shot,Accuracy,0.899,2999
+7,Phân loại cảm xúc UIT-VSFC,few-shot (4 ví dụ),Accuracy,0.923,2999
+8,Hỏi đáp kiến thức UIT-ViQuAD,"không tài liệu, cho phép từ chối",Token F1,0.007,15
+8,Hỏi đáp kiến thức UIT-ViQuAD,có RAG (3 đoạn TF-IDF),Token F1,0.395,15
+9,Hỏi đáp kiến thức UIT-ViQuAD,"không tài liệu, không cho từ chối (cách A)",Token F1,0.079,15
+9,Tìm mã số trong tài liệu dài,câu giấu còn trong input,Exact Match,1.0,7
