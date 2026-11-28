@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metric đánh giá LLM</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#14345c;--blue:#2f80c2;--blue-l:#eaf3fb;--orange:#b4530a;--orange-l:#fdf1e6;--ink:#1d2939;--mute:#475467;--line:#d0d8e2;--green:#1d7046;--green-l:#e3f4ea;--bg:#f4f6f9;--card:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:"Be Vietnam Pro","Segoe UI",sans-serif;font-size:15px;line-height:1.55}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 16px 40px}
+header h1{font-size:28px;color:var(--navy);line-height:1.25}
+header p{color:var(--mute);margin-top:6px}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.pill{display:inline-block;border-radius:999px;padding:2px 12px;font-size:14px;font-weight:700}
+.up{background:var(--green-l);color:var(--green)}.down{background:var(--orange-l);color:var(--orange)}
+h2{font-size:19px;color:var(--navy);margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.card h3{font-size:17px;color:var(--navy);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card h3 .pill{margin-left:auto}
+.q{color:var(--mute);font-style:italic;margin:2px 0 10px}
+dl{display:grid;grid-template-columns:96px 1fr;gap:6px 12px}
+dt{font-weight:700;color:var(--mute);font-size:14px;padding-top:1px}
+dd{min-width:0}
+.f{font-family:"JetBrains Mono",monospace;background:var(--blue-l);border-radius:6px;padding:2px 8px;font-size:14px;display:inline-block;max-width:100%;overflow-wrap:anywhere}
+.ex{background:var(--green-l);border-radius:8px;padding:8px 12px}
+.note{border-left:3px solid var(--orange);padding-left:10px;color:var(--mute)}
+.src{font-size:14px;color:var(--orange);font-weight:600}
+footer{margin-top:28px;font-size:14px;color:var(--mute);border-top:1px solid var(--line);padding-top:12px}
+footer ul{padding-left:18px;margin-top:4px}
+@media (max-width:760px){.grid{grid-template-columns:1fr}dl{grid-template-columns:1fr}dt{padding-top:6px}}
+@media print{body{background:#fff;font-size:12.5px}.wrap{padding:0}.card{break-inside:avoid}h2{break-after:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Metric đánh giá LLM trong bài: đọc nhanh</h1>
+  <p>13 metric, mỗi thẻ trả lời: đo gì, cần input gì, tính thế nào, số của bài là bao nhiêu, đọc số đó ra sao. Model được đánh giá: Qwen2.5-1.5B-Instruct.</p>
+  <div class="legend"><span class="pill up">↑ cao = tốt</span><span class="pill down">↓ thấp = tốt</span></div>
+</header>
+
+<h2>1. Model dự đoán ngôn ngữ tốt đến đâu</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Cross-Entropy (CE)<span class="pill down">↓</span></h3>
+    <p class="q">Model "bất ngờ" bao nhiêu khi thấy từ tiếp theo thật?</p>
+    <dl>
+      <dt>Input</dt><dd>1 câu văn bản, tách thành token</dd>
+      <dt>Công thức</dt><dd><span class="f">CE = trung bình của −ln P(token đúng | các token trước)</span><br>Model tin token đúng 100% thì phạt 0; tin càng ít thì phạt càng nặng.</dd>
+      <dt>Trong bài</dt><dd class="ex">"Hôm nay trời rất đẹp." <b>2.985</b> · đảo thứ tự "đẹp rất trời nay Hôm." <b>6.701</b> · tiếng Anh <b>3.129</b> · đoán bừa 11.93</dd>
+      <dt>Đọc</dt><dd>Cùng các từ, chỉ đổi thứ tự mà CE tăng gấp đôi: model đã học được trật tự từ, không chỉ học từ vựng.</dd>
+      <dt>Lưu ý</dt><dd class="note">Chỉ so được khi dùng cùng tokenizer. Mỗi câu chỉ có 1 mẫu nên không kết luận model giỏi tiếng nào hơn.</dd>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>Perplexity (PPL)<span class="pill down">↓</span></h3>
+    <p class="q">Mỗi bước, model phân vân giữa bao nhiêu lựa chọn?</p>
+    <dl>
+      <dt>Input</dt><dd>CE ở thẻ bên cạnh</dd>
+      <dt>Công thức</dt><dd><span class="f">PPL = e<sup>CE</sup></span></dd>
+      <dt>Trong bài</dt><dd class="ex">câu đúng <b>19.8</b> · đảo thứ tự <b>813.6</b> · tiếng Anh <b>22.9</b> · đoán bừa 151,936 (cỡ bộ từ vựng)</dd>
+      <dt>Đọc</dt><dd>Với câu đúng, model chỉ phân vân giữa khoảng 20 token trong 151,936 token.</dd>
+      <dt>Lưu ý</dt><dd class="note">Cùng thông tin với CE, chỉ đổi sang thang dễ hình dung hơn.</dd>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>Top-k accuracy<span class="pill up">↑</span></h3>
+    <p class="q">Từ đúng có nằm trong k lựa chọn hàng đầu của model không?</p>
+    <dl>
+      <dt>Input</dt><dd>Như CE: mỗi vị trí trong câu</dd>
+      <dt>Công thức</dt><dd><span class="f">top-k = số vị trí mà token đúng nằm trong k token có xác suất cao nhất / số vị trí</span></dd>
+      <dt>Trong bài</dt><dd class="ex">câu đúng: top-1 <b>3/7 = 0.43</b>, top-5 <b>5/7 = 0.71</b> · đảo thứ tự: 0.13 và 0.25</dd>
+      <dt>Đọc</dt><dd>Top-1 thấp vẫn bình thường: sau "Hôm nay" có nhiều từ hợp lý. Top-5 cho thấy từ đúng thường nằm trong nhóm đầu.</dd>
+    </dl>
+  </div>
+</div>
+
+<h2>2. Phân loại cảm xúc: zero-shot và few-shot</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Accuracy và khoảng tin cậy 95%<span class="pill up">↑</span></h3>
+    <p class="q">Model gán đúng nhãn bao nhiêu phần trăm?</p>
+    <dl>
+      <dt>Input</dt><dd>Nhãn thật và nhãn model trả lời cho 2,999 câu phản hồi sinh viên (UIT-VSFC)</dd>
+      <dt>Công thức</dt><dd><span class="f">Acc = số câu đúng / n</span> · <span class="f">CI 95% ≈ Acc ± 1.96·√(Acc(1−Acc)/n)</span></dd>
+      <dt>Trong bài</dt><dd class="ex">zero-shot <b>89.86% ± 1.08</b> → few-shot (4 ví dụ) <b>92.30% ± 0.95</b></dd>
+      <dt>Đọc</dt><dd>Thêm 4 ví dụ vào prompt thì đúng thêm khoảng 2.4 điểm %. CI cho biết accuracy thật có thể lệch bao nhiêu do chỉ thử trên n câu.</dd>
+      <dt>Lưu ý</dt><dd class="note">Câu model trả lời không đọc ra được nhãn thì tính là sai.</dd>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>Kiểm định McNemar<span class="pill down">↓ p</span></h3>
+    <p class="q">Chênh lệch giữa hai cách là thật hay chỉ do may rủi?</p>
+    <dl>
+      <dt>Input</dt><dd>Đúng/sai của 2 cách trên <b>cùng</b> 2,999 câu</dd>
+      <dt>Cách tính</dt><dd>Chỉ đếm câu hai cách cho kết quả khác nhau: b = chỉ zero-shot đúng, c = chỉ few-shot đúng. Nếu hai cách ngang nhau thì b ≈ c.</dd>
+      <dt>Trong bài</dt><dd class="ex">b = <b>47</b>, c = <b>120</b> → p = <b>1.5 × 10⁻⁸</b></dd>
+      <dt>Đọc</dt><dd>p &lt; 0.05: few-shot tốt hơn thật, không phải do may rủi.</dd>
+      <dt>Lưu ý</dt><dd class="note">Chỉ dùng khi hai cách chạy trên cùng một bộ câu.</dd>
+    </dl>
+  </div>
+</div>
+
+<h2>3. So khớp chữ với đáp án mẫu</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Exact Match (EM)<span class="pill up">↑</span></h3>
+    <p class="q">Câu trả lời có giống hệt đáp án không?</p>
+    <dl>
+      <dt>Input</dt><dd>Câu trả lời của model + danh sách đáp án đúng</dd>
+      <dt>Công thức</dt><dd>Chuẩn hoá (chữ thường, bỏ dấu câu) rồi so cả chuỗi: giống thì 1, khác thì 0.</dd>
+      <dt>Trong bài</dt><dd class="ex">Hỏi đáp 15 câu: không RAG <b>0.00</b> → có RAG <b>0.20</b></dd>
+      <dt>Đọc</dt><dd>RAG đúng ý 10/15 câu nhưng EM chỉ 3/15, vì model trả lời cả câu: "Hoàng đế phải thông qua Hội đồng…" so với đáp án "phải thông qua Hội đồng" vẫn bị 0.</dd>
+      <dt>Lưu ý</dt><dd class="note">Rất khắt khe, chỉ hợp với đáp án ngắn.</dd>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>Token F1<span class="pill up">↑</span></h3>
+    <p class="q">Câu trả lời trùng bao nhiêu từ với đáp án?</p>
+    <dl>
+      <dt>Input</dt><dd>Như EM</dd>
+      <dt>Công thức</dt><dd><span class="f">P = từ trùng / số từ câu trả lời</span> · <span class="f">R = từ trùng / số từ đáp án</span> · <span class="f">F1 = 2PR / (P + R)</span></dd>
+      <dt>Trong bài</dt><dd class="ex">Ví dụ trên: 5 từ trùng, P = 5/11, R = 1 → F1 = <b>0.625</b> · trung bình: <b>0.007</b> → <b>0.395</b></dd>
+      <dt>Đọc</dt><dd>Cho điểm một phần, mềm hơn EM. P thấp nghĩa là nói thừa; R thấp nghĩa là thiếu ý.</dd>
+      <dt>Lưu ý</dt><dd class="note">Chỉ đếm chữ, không hiểu nghĩa: câu sai mà nhiều từ trùng vẫn được điểm.</dd>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>BLEU (dịch máy)<span class="pill up">↑</span></h3>
+    <p class="q">Câu dịch trùng bao nhiêu cụm 1–4 từ với câu dịch mẫu?</p>
+    <dl>
+      <dt>Input</dt><dd>Câu dịch của model + câu dịch tham chiếu</dd>
+      <dt>Cách tính</dt><dd>Tỉ lệ cụm 1, 2, 3, 4 từ trùng → trung bình nhân → nhân hệ số phạt nếu câu dịch quá ngắn. Thang 0–100.</dd>
+      <dt>Trong bài</dt><dd class="ex">"Today the weather is very beautiful." so với "The weather is very nice today." → <b>26.3</b></dd>
+      <dt>Đọc</dt><dd>Dịch đúng nghĩa mà điểm vẫn thấp, vì khác chữ ("beautiful" / "nice") và khác hoa thường.</dd>
+      <dt>Lưu ý</dt><dd class="note">Bài chỉ có 1 câu, dùng để minh họa cách tính.</dd>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>ROUGE-1 / 2 / L (tóm tắt)<span class="pill up">↑</span></h3>
+    <p class="q">Bản tóm tắt giữ được bao nhiêu nội dung của bản mẫu?</p>
+    <dl>
+      <dt>Input</dt><dd>Bản tóm tắt của model + bản tóm tắt mẫu nhóm viết trước</dd>
+      <dt>Cách tính</dt><dd>Đếm phần trùng theo từ đơn (R-1), cặp từ liền nhau (R-2), chuỗi chung dài nhất giữ thứ tự (R-L); báo F1 của P và R.</dd>
+      <dt>Trong bài</dt><dd class="ex">R-1 / R-2 / R-L = <b>0.55 / 0.34 / 0.50</b> · R-1: P = 0.40, R = 0.88</dd>
+      <dt>Đọc</dt><dd>R cao: giữ gần đủ ý của bản mẫu. P thấp: bản tóm tắt dài gấp 2.2 lần bản mẫu, rút gọn chưa nhiều.</dd>
+      <dt>Lưu ý</dt><dd class="note">Chỉ đếm chữ trùng. Bài chỉ có 1 bản tóm tắt.</dd>
+    </dl>
+  </div>
+</div>
+
+<h2>4. Sinh mã</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Unit-test pass rate<span class="pill up">↑</span></h3>
+    <p class="q">Code model viết có chạy đúng không?</p>
+    <dl>
+      <dt>Input</dt><dd>Hàm <span class="f">is_even</span> model viết + 7 test viết trước (có số âm, số lẻ, số rất lớn)</dd>
+      <dt>Công thức</dt><dd><span class="f">pass rate = số test qua / 7</span></dd>
+      <dt>Trong bài</dt><dd class="ex">lời giải greedy <b>7/7</b> · 10 lời giải lấy mẫu ngẫu nhiên đều <b>7/7</b></dd>
+      <dt>Đọc</dt><dd>Đo bằng cách chạy thật, không cần người đọc code.</dd>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>Pass@k<span class="pill up">↑</span></h3>
+    <p class="q">Cho model thử k lần, xác suất có ít nhất 1 lần đúng?</p>
+    <dl>
+      <dt>Input</dt><dd>n lời giải lấy mẫu, c lời giải qua hết test, k</dd>
+      <dt>Công thức</dt><dd><span class="f">Pass@k = 1 − C(n−c, k) / C(n, k)</span><br>Ví dụ n = 10, c = 3: Pass@1 = 0.3, Pass@5 = 0.92</dd>
+      <dt>Trong bài</dt><dd class="ex">n = 10, c = 10 → Pass@1 = Pass@5 = <b>1.0</b></dd>
+      <dt>Lưu ý</dt><dd class="note">Bài quá dễ nên điểm tối đa, chỉ minh họa. Muốn so model cần bộ đề lớn như HumanEval.</dd>
+    </dl>
+  </div>
+</div>
+
+<h2>5. Dùng LLM khác làm giám khảo</h2>
+<div class="grid">
+  <div class="card">
+    <h3>DeepEval: Answer Relevancy, Faithfulness, Hallucination<span class="pill up">↑</span></h3>
+    <p class="q">Trả lời có đúng trọng tâm, có bám tài liệu, có trái sự thật không?</p>
+    <dl>
+      <dt>Input</dt><dd>Câu hỏi + câu trả lời + (đoạn văn gốc / 3 đoạn RAG tìm được); giám khảo: gpt-6.2-sol</dd>
+      <dt>Cách tính</dt><dd>Giám khảo tách câu trả lời thành các ý rồi chấm từng ý. Điểm là tỉ lệ ý đạt, thang 0–1, từ 0.5 là đạt.<br><b>Relevancy</b>: ý đó có trả lời câu hỏi không · <b>Faithfulness</b>: có khớp tài liệu RAG không · <b>Hallucination</b>: có khớp đoạn văn gốc không</dd>
+      <dt>Trong bài</dt><dd class="ex">Relevancy <b>0.56 → 0.86</b> · Hallucination <b>0.83 → 0.89</b> · Faithfulness <b>0.89</b> (không RAG → có RAG, 18 câu)</dd>
+      <dt>Ví dụ</dt><dd>"Nam Ossetia thuộc chủ quyền của Nga" (đáp án: Gruzia). RAG tìm sai đoạn, model bám theo đoạn đó: Faithfulness 1.0 nhưng Hallucination 0.0.</dd>
+      <dt>Lưu ý</dt><dd class="note">Giám khảo cũng có thể sai, nên phải đối chiếu với nhãn đọc tay.</dd>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>G-Eval<span class="pill up">↑</span></h3>
+    <p class="q">Chấm theo tiêu chí tự đặt: đúng, đủ, mạch lạc, làm theo yêu cầu?</p>
+    <dl>
+      <dt>Input</dt><dd>Câu hỏi + câu trả lời (+ đáp án) + các bước chấm nhóm viết sẵn</dd>
+      <dt>Cách tính</dt><dd>Giám khảo cho điểm 0–10 theo các bước chấm, quy về 0–1. Mỗi tiêu chí chấm <b>20 lần</b> rồi lấy trung bình để điểm ổn định.</dd>
+      <dt>Trong bài</dt><dd class="ex">Làm theo yêu cầu: model base <b>0.16</b> → model Instruct <b>0.99</b></dd>
+      <dt>Đọc</dt><dd>Chấm được những tiêu chí "mềm" mà EM, F1, BLEU không đo được.</dd>
+      <dt>Lưu ý</dt><dd class="note">Điểm phụ thuộc giám khảo: đổi giám khảo thì điểm đổi.</dd>
+    </dl>
+  </div>
+</div>
+
+<h2>6. Hiệu quả khi chạy</h2>
+<div class="grid">
+  <div class="card" style="grid-column:1/-1">
+    <h3>TTFT, latency, throughput, VRAM, cost<span class="pill down">↓ (throughput ↑)</span></h3>
+    <p class="q">Chạy nhanh không, tốn bao nhiêu tài nguyên?</p>
+    <dl>
+      <dt>Input</dt><dd>3 prompt (ngắn, tóm tắt, sinh mã), 1 GPU T4, đo 5 lần lấy trung vị</dd>
+      <dt>Định nghĩa</dt><dd><b>TTFT</b>: thời gian tới token đầu tiên · <b>Latency</b>: thời gian sinh xong cả câu · <b>Throughput</b>: số token / giây · <b>VRAM</b>: bộ nhớ GPU cao nhất · <b>Cost</b>: GPU-giây mỗi yêu cầu</dd>
+      <dt>Trong bài</dt><dd class="ex">TTFT <b>0.044–0.048 s</b> · latency <b>2.30 s</b> (60 token) → <b>8.47 s</b> (219 token) · <b>≈ 26 token/s</b> · VRAM <b>2.90 GiB</b></dd>
+      <dt>Đọc</dt><dd>TTFT gần như không đổi. Latency tăng theo số token <b>sinh ra</b>, vì mỗi token mới cần một lượt chạy model.</dd>
+    </dl>
+  </div>
+</div>
+
+<footer>
+  Số liệu: run 20261128_041850_normal (hiệu quả: run 20261127_234527_normal), notebook <span class="f">llm_presentation.ipynb</span>.
+  <ul>
+    <li>CE, PPL: Jurafsky &amp; Martin, <i>Speech and Language Processing</i>, ch. 3 · EM, F1: Rajpurkar et al., SQuAD, 2016</li>
+    <li>BLEU: Papineni et al., 2002; Post, sacreBLEU, 2018 · ROUGE: Lin, 2004 · Pass@k: Chen et al., 2021</li>
+    <li>McNemar: Dietterich, 1998 · G-Eval: Liu et al., 2023 · LLM làm giám khảo: Zheng et al., 2023 · DeepEval 4.3.5 docs</li>
+    <li class="src">[đề xuất] chờ Toàn duyệt · [cần chốt] nguồn cho công thức CI 95% và định nghĩa TTFT / latency</li>
+  </ul>
+</footer>
+
+</div>
+</body>
+</html>
