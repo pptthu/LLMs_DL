@@ -57,6 +57,12 @@
 | 39 | Liu et al., *G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment*, EMNLP 2023 | https://arxiv.org/abs/2303.16634 | 10 (G-Eval, cell 10.3d) | 24/11 |
 | 40 | Li et al., *A Diversity-Promoting Objective Function for Neural Conversation Models* (distinct-n), NAACL 2016 | https://arxiv.org/abs/1510.03055 | 6 (distinct-n, cell 6.5) | 24/11 |
 | 41 | Radford et al., *Language Models are Unsupervised Multitask Learners* (GPT-2, byte-level BPE), 2019 | https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf | 3 | 24/11 |
+| 42 | Hendrycks, Burns, Basart et al., *Measuring Massive Multitask Language Understanding* (MMLU), ICLR 2021 | https://arxiv.org/abs/2009.03300 | 10 (khuyến nghị bộ đánh giá, cell 10.7; bài không chạy MMLU) | 27/11 (abstract) |
+| 43 | Liang, Bommasani, Lee et al., *Holistic Evaluation of Language Models* (HELM), TMLR 2023 | https://arxiv.org/abs/2211.09110 | 10 (khuyến nghị bộ đánh giá, efficiency, cell 10.7; bài không chạy HELM) | 27/11 (abstract) |
+| 44 | Kim, Shin et al., *Prometheus: Inducing Fine-grained Evaluation Capability in Language Models*, ICLR 2024 | https://arxiv.org/abs/2310.08491 | 10 (giám khảo mở, so sánh với Qwen2.5-7B của bài, cell 10.5 E13) | 27/11 (abstract) |
+| 45 | Kim, Suk et al., *Prometheus 2: An Open Source Language Model Specialized in Evaluating Other Language Models*, EMNLP 2024 | https://arxiv.org/abs/2405.01535 | 10 (như #44) | 27/11 (abstract, một phần HTML) |
+| 46 | Zhu, Wang, Wang, *JudgeLM: Fine-tuned Large Language Models are Scalable Judges*, ICLR 2025 | https://arxiv.org/abs/2310.17631 | 10 (như #44) | 27/11 (abstract) |
+| 47 | Thakur, Choudhary et al., *Judging the Judges: Evaluating Alignment and Vulnerabilities in LLMs-as-Judges*, GEM 2025 | https://arxiv.org/abs/2406.12624 | 10 (cỡ giám khảo cần để khớp người, cell 10.5 E13) | 27/11 (abstract, một phần HTML) |
 
 ## Model, dữ liệu, tài liệu thư viện
 | Tài liệu | Link | Mục | Đã mở |
@@ -80,6 +86,7 @@
 | statsmodels `mcnemar` | https://www.statsmodels.org/stable/generated/statsmodels.stats.contingency_tables.mcnemar.html | 10 | 14/11 |
 | DeepEval (Confident AI, Apache-2.0), bản 4.3.5 | https://github.com/confident-ai/deepeval | 10 (cell 10.3c) | 24/11 |
 | DeepEval docs: *Hallucination* (điểm = số context khớp / tổng context; "Higher is better") | https://deepeval.com/docs/metrics-hallucination | 10 | 24/11 |
+| DeepEval docs: *Metrics introduction*, *Using custom LLMs* (giám khảo mặc định là model OpenAI; model tự chọn không được bảo đảm; model nhỏ dễ lỗi JSON); mã nguồn 4.3.5 `deepeval/models/llms/constants.py`: `DEFAULT_GPT_MODEL = "gpt-5.4"` | https://deepeval.com/docs/metrics-introduction · https://deepeval.com/guides/guides-using-custom-llms | 10 (cell 10.5 E13) | 27/11 |
 | Qwen2.5-7B-Instruct (giám khảo DeepEval, Apache-2.0) | https://huggingface.co/Qwen/Qwen2.5-7B-Instruct | 10 | 24/11 |
 
 ## Bài giảng, bài giải thích

@@ -2,8 +2,8 @@
 
 Dựa trên `Lab-DL/AGENTS.md` và `Lab-DL/docs/agent/dl-lab-workflow/SKILL.md`, sửa cho repo bài presentation.
 
-1. Đọc `docs/00_README_v3.md`, `docs/rules/RULES_v3.md` và `docs/rules/FOLDER_STRUCTURE_v3.md` trước mọi việc, rồi làm theo.
-2. Đọc `project_description.md`, `progress_status.md`, desc của mục đang làm trong `docs/parts/` (nếu có) và nội dung trong `docs/research/`.
+1. Đọc `docs/00_README_v4.md`, `docs/rules/RULES_v3.md` và `docs/rules/FOLDER_STRUCTURE_v3.md` trước mọi việc, rồi làm theo.
+2. Đọc `project_description.md`, `progress_status.md`, và research của mục đang làm trong `docs/research/mucNN_*_v1.md`.
 3. Mỗi lần chỉ làm **một phần notebook**, đúng phần người dùng nêu, trong `notebook/llm_presentation.ipynb` (Toàn viết toàn bộ code, quyết định 15/11). Thay đổi nhỏ, chạy và kiểm, rồi giải thích đủ để Toàn (người trình bày cả 10 mục) giải thích lại được.
 4. Code chỉ nằm trong notebook. Không tạo file `.py` hay thư mục mã nguồn riêng.
 5. Không bao giờ nói "chạy được" khi chưa chạy. Không bịa số liệu, API, tham số; chưa chắc thì nói rõ và nói cách kiểm.

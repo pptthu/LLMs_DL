@@ -39,4 +39,4 @@ base.eval()
 - **Kết quả:** `outputs/results/base_vs_instruct.csv`.
 
 ## Log ghi gì về model
-- Tên model + revision (commit hash trên Hub), dtype, device_map, kiến trúc in từ `model.config` (số block, hidden, head Q/KV, FFN, vocab, context), số tham số đếm bằng code; theo `templates/RUN_LOG_TEMPLATE_v2.md` §2.1.
+- Tên model + revision (commit hash trên Hub), dtype, device_map, kiến trúc in từ `model.config` (số block, hidden, head Q/KV, FFN, vocab, context), số tham số đếm bằng code; theo `templates/RUN_LOG_TEMPLATE_v3.md` §2.1.

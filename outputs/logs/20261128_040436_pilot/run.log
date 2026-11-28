@@ -1,0 +1,23 @@
+=== RUN START 2026-11-28T04:04:36+07:00 ===
+run_id: 20261128_040436_pilot | mode: pilot (chọn N cho G-Eval) | người chạy: Toàn (AI hỗ trợ, Claude Code)
+nơi chạy: máy local, không GPU | code: script tạm ngoài repo, chép GEVAL_SPECS từ cell 10.3d và ApiJudge từ cell 10.3c của notebook/llm_presentation.ipynb
+môi trường: Python 3.13.7 | deepeval 4.3.5 | openai 3.60.0 | pandas 3.1.1
+giám khảo: gpt-6.2-sol qua https://ttmapi.site/v1 (dịch vụ trung gian), temperature=0 gửi kèm (dịch vụ có thể bỏ qua), max_tokens=1024
+dữ liệu vào: output của run 20261127_234527_normal (outputs/results/tasks_outputs.csv, base_vs_instruct.csv, decoding_samples.csv, rag_results.csv)
+thiết kế: 9 ca × 20 lần chấm = 180 lần; 8 luồng song song; mục tiêu sai số chuẩn ≤ 0.025 (thang 0–1)
+
+[pilot_geval] OK 69.2 s → outputs/logs/20261128_040436_pilot/pilot_geval_records.csv, pilot_geval_summary.csv
+                          case                metric  n  mean     sd  min  max  n_loi  se_N5  se_N10
+                  muc1 summary           Correctness 20 0.840 0.0503  0.8  0.9      0 0.0225  0.0159
+                muc1 translate           Correctness 20 0.855 0.0605  0.8  1.0      0 0.0270  0.0191
+           muc5 base #question Instruction following 20 0.640 0.0754  0.5  0.8      0 0.0337  0.0238
+                 muc6 greedy#1             Coherence 20 0.425 0.0786  0.3  0.6      0 0.0352  0.0249
+               muc6 temp_0.5#1 Instruction following 20 0.385 0.0988  0.3  0.6      0 0.0442  0.0312
+               muc6 temp_0.5#2             Coherence 20 0.455 0.1050  0.3  0.6      0 0.0470  0.0332
+       muc8 rag 0012-0034-0001           Correctness 20 0.945 0.0686  0.8  1.0      0 0.0307  0.0217
+muc8 rag 0015-0028-0002 (Đúng)           Correctness 20 1.000 0.0000  1.0  1.0      0 0.0000  0.0000
+ muc8 rag 0007-0002-0008 (Sai)           Correctness 20 0.000 0.0000  0.0  0.0      0 0.0000  0.0000
+
+=== RUN END 2026-11-28T04:05:50+07:00 ===
+tổng thời gian: 1.2 phút | lần gọi: 180 | token vào / ra: 61,680 / 16,627 | lỗi JSON: 0
+kết quả chính: sd lớn nhất = 0.1050 → N nhỏ nhất để sd/√N ≤ 0.025: N = 18

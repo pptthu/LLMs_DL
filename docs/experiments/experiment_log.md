@@ -6,6 +6,54 @@
 
 ---
 
+## 20261128_041850_normal — G-Eval N = 20, 16 luồng (**lần chạy chính thức mới**; VRAM 6.6 / 9.5 lấy run 20261127_234527)
+
+- Người chạy: Toàn | Kaggle, GPU T4 x2 | 22.0 phút, 188 cell, 0 lỗi | log: `outputs/logs/20261128_041850_normal/`
+- Thay đổi notebook: G-Eval chấm N = 20 lần / tiêu chí lấy trung bình; giám khảo gọi song song 16 luồng (10.3c, 10.3d).
+- Kết quả giám khảo: G-Eval 3,300 lần chấm, 0 lỗi JSON, 11.1 phút, σ trung bình 0.022, lớn nhất 0.251 (mục 8 RAG 0009-0012-0001 Semantic equivalence); 5/165 cặp σ > 0.1. Mục 5 Instruction following base 0.16 / Instruct 0.99; mục 8 Correctness 0.17 → 0.59. Khớp nhãn tay: G-Eval Correctness 34/36; DeepEval (chấm 1 lần) Hallucination 15/36, Answer Relevancy 20/36, Faithfulness 12/18.
+- **Lỗi đo:** VRAM 6.6 / 9.5 lệch đều +2.97 GiB (trọng số 5.86 thay vì 2.89 GiB). Nguyên nhân: run `20261128_041411_normal` dừng giữa chừng (tới phần 7), rồi Run All lại trong cùng phiên không Restart → model của lần trước còn trên GPU 0. Các file khác trùng run 20261127_234527 trừ cột thời gian.
+- Sự cố khác: output 10.3c/10.3d in widget lỗi "Error displaying widget: model not found" (thanh tiến trình DeepEval từ nhiều luồng) → sửa `measure(case, _show_indicator=False)`.
+- Quyết định (Toàn, 28/11): **không chạy lại**. Dùng run này làm chính thức; số VRAM 6.6, 9.5 (và thời gian 6.6, 9.5 trên slide) lấy run 20261127_234527_normal, lưu bản đối chiếu `outputs/logs/20261127_234527_normal/vram_ref_efficiency.csv`, `vram_ref_context_cost.csv`; notebook thêm ghi chú ở markdown 6.6, 9.5. `outputs/` đã chép kết quả run này (kèm log `20261128_041411_normal` dừng giữa chừng).
+- DeepEval (chấm 1 lần): Answer Relevancy 0.556 → 0.861, Hallucination 0.833 → 0.889, Faithfulness 0.889 (16/18 đạt); câu từ chối: Hallucination 0.82, Answer Relevancy 0.53.
+
+---
+
+## 20261128_040436_pilot — chạy thử chọn số lần chấm N cho G-Eval (giám khảo không trả log-prob)
+
+- Người chạy: Toàn (AI hỗ trợ, Claude Code) | máy cá nhân, không GPU, Python 3.13.7, deepeval 4.3.5, openai 3.60.0 | log: `outputs/logs/20261128_040436_pilot/` (`run.log`, `pilot_geval_records.csv`, `pilot_geval_summary.csv`)
+- Lý do: gpt-6.2-sol (và mọi model trên ttmapi.site, thử 28/11) không trả log-prob → G-Eval chỉ có điểm thô. Bài báo G-Eval (Liu et al. 2023) khi GPT-4 không có log-prob thì lấy mẫu 20 lần để ước lượng điểm kỳ vọng. Chạy thử để đo độ dao động σ của giám khảo rồi chọn N.
+- Thiết kế: 9 ca (mục 1 tóm tắt, dịch; mục 5 base; mục 6 greedy, T = 0.5 × 2; mục 8 RAG một câu điểm giữa, một câu Đúng, một câu Sai) × 20 lần chấm = 180 lần; dùng nguyên `GEVAL_SPECS` cell 10.3d và `ApiJudge` cell 10.3c; output lấy từ run 20261127_234527_normal; 8 luồng song song. Code: script tạm ngoài repo (không thuộc notebook).
+- Kết quả: **đạt**, 1.2 phút, 180 lần gọi, 61,680 / 16,627 token, 0 lỗi JSON.
+  - Câu rõ ràng (mục 8 Đúng / Sai): σ = 0, 20 lần ra cùng điểm.
+  - Câu điểm giữa (mục 6, 0.4–0.5): σ = 0.08–0.105; một lần chấm dao động 0.3–0.6, **cắt qua ngưỡng đạt 0.5**.
+  - σ lớn nhất 0.105 → để sai số chuẩn σ/√N ≤ 0.025 cần N ≥ 18.
+- [đề xuất] Đề xuất: N = 20 (bằng bài báo G-Eval, ≥ 18), chạy song song nhiều luồng. Chờ Toàn duyệt trước khi sửa cell 10.3d.
+
+---
+
+## 20261127_234527_normal — giám khảo DeepEval / G-Eval đổi sang API `gpt-6.2-sol` (**lần chạy chính thức mới**, chờ Toàn duyệt dùng cho slide)
+
+- Người chạy: Toàn | Kaggle, 2 × T4, Internet bật | Chế độ: normal | notebook đã chạy và `outputs/` (qua `outputs.zip`) chép vào repo 28/11 (results, figures, log run này; không chép `_smoke`, không chép run dở `20261127_234503_normal`)
+- Thay đổi so với 20261125_214650_normal (AI hỗ trợ, Claude Code): cell 10.3c thêm `JUDGE_BACKEND` và lớp `ApiJudge` (OpenAI-compatible `chat/completions`); giám khảo `gpt-6.2-sol` qua dịch vụ trung gian `https://ttmapi.site/v1` (không phải API chính thức OpenAI, không kiểm chứng được model thật phía sau), `temperature=0` (dịch vụ có thể bỏ qua), `max_tokens=1024`; dịch vụ không trả log-prob nên G-Eval vẫn điểm thô; 10.3d dùng chung giám khảo; phần 10.5–10.7; 188 cell.
+- Kết quả: **đạt**, 188 cell, 0 lỗi, 29.3 phút. DeepEval 162 lần gọi, 11.3 phút; G-Eval cộng dồn 327 lần gọi, 8.5 phút; token cộng dồn 132,986 vào / 29,883 ra; **0 câu JSON lỗi**. 34/43 file kết quả trùng run trước (chỉ khác cột thời gian, bộ nhớ); `icl_metrics.json` chỉ khác `run_id`.
+- DeepEval (cũ Qwen2.5-7B → mới): Answer Relevancy không RAG 0.056 → 0.778, có RAG 0.753 → 0.806; Hallucination không RAG 0.000 → 0.889, có RAG 0.556 → 0.778; Faithfulness 0.627 (n = 17) → 0.778 (n = 18).
+- G-Eval mục 8 Correctness 0.22 → 0.17 (không RAG), 0.38 → 0.58 (có RAG); mục 5 Instruction following base 0.00 → 0.18, Instruct 0.82 → 1.00.
+- Độ khớp nhãn tay: G-Eval Correctness mục 8 **34/36** (Qwen 31/36). Hallucination "≥ 0.5 ↔ nhãn = Đúng" chỉ 14/36 (Qwen 32/36), Answer Relevancy 15/36: giám khảo mới cho câu **từ chối** điểm cao (không mâu thuẫn nguồn, đúng trọng tâm), đúng định nghĩa metric nhưng không còn dùng được như thước "đúng / sai".
+- Smoke trước khi chạy: `20261127_231551_smoke` đạt (14.7 phút, 146 lần gọi, 0 lỗi JSON); không chép vào repo.
+- Lưu ý bảo mật: notebook đang chứa API key ở cell 10.3c; phải xoá trước khi commit / nộp.
+
+---
+
+## 20261127_221729_local — chỉ chạy cell 10.5c–10.6 (tổng hợp bộ đánh giá), đọc lại kết quả run 20261125_214650_normal
+
+- Người chạy: Toàn (AI hỗ trợ, Claude Code) | máy cá nhân, CPU, Python 3.13.7, pandas 3.1.1, matplotlib 3.11.2 | **không tải model, không chạy cell 0–10.4** | log: `outputs/logs/20261127_221729_local/`
+- Thay đổi notebook: 24 cell markdown đánh giá thêm dòng "Bộ đánh giá: Ex · tên bộ"; chèn 34 cell mới 10.5–10.7 trước cell nén `outputs` (thẻ 14 bộ đánh giá E1–E14: sơ đồ, ma trận, hình, bảng thông tin, 5W1H; bảng bộ cũ 21/11 và danh sách 18 metric của cô; bản đồ bộ × mục; khuyến nghị); 154 → 188 cell. Output cell cũ giữ nguyên.
+- Kết quả: **đạt**, 16 cell code chạy hết, không lỗi, 16.8 giây. Mọi số trùng `outputs/results/` của run 20261125_214650_normal; độ khớp giám khảo tính lại: DeepEval Hallucination 32/36, G-Eval Correctness mục 8 31/36.
+- File mới: `outputs/results/metric_suites.csv`, `outputs/figures/suite_E1.png` … `suite_E14.png`, `metric_suites_overview.png`.
+- Lệch luật: `RUN_LOG_TEMPLATE_v3.md` §5.2 yêu cầu chạy lại toàn bộ khi sửa code; lần này chỉ chạy phần mới (không phụ thuộc model). [cần chốt] Toàn quyết định có Save & Run All trên Kaggle hay giữ như vậy.
+
+---
+
 ## 20261125_214650_normal — chạy lại sau sửa đo VRAM (**lần chạy chính thức cuối**, notebook nộp và số cho slide lấy từ đây)
 
 - Người chạy: Toàn | Kaggle, 2 × T4 (model chính GPU 0, giám khảo GPU 1), Internet bật | Chế độ: normal | notebook đã chạy và `outputs/` (qua `outputs.zip`) chép vào repo 25/11

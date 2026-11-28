@@ -24,7 +24,7 @@ Model chính của bài, dùng cho mọi mục có demo. So với bản base `Qw
 | Yêu cầu | `transformers` ≥ 4.37.0 (bản cũ báo `KeyError: 'qwen2'`) |
 
 - **Giai đoạn huấn luyện:** pretraining (18 nghìn tỉ token) và post-training: SFT trên hơn 1 triệu mẫu, DPO khoảng 150 nghìn cặp, RL trực tuyến GRPO (Qwen2.5 Technical Report).
-- **Kiểm lại số tham số** (tự tính từ `config.json`): 1,543,714,304, khớp model card. Chi tiết ở `docs/research/noi_dung_muc02_kien_truc_v1.md` §5.2.
+- **Kiểm lại số tham số** (tự tính từ `config.json`): 1,543,714,304, khớp model card. Chi tiết ở `docs/research/muc02_kien_truc_v1.md` (cell 2.1).
 
 ## Sơ đồ kiến trúc
 Thứ tự trong mỗi block (chuẩn hoá trước, rồi cộng residual) lấy từ mã `Qwen2DecoderLayer.forward` trong `transformers` (`models/qwen2/modeling_qwen2.py`, tra 2026-11-16) **[Bổ sung]**. Thông số lấy từ bảng trên.
@@ -82,4 +82,4 @@ model.eval()
   - Dùng `apply_chat_template(..., tokenize=False)` rồi gọi `tok(text)` thì có thể thêm token đặc biệt hai lần → truyền `add_special_tokens=False`, hoặc dùng `tokenize=True, return_tensors="pt"`.
 
 ## Log ghi gì về model
-- Tên model + revision (commit hash trên Hub), dtype, device_map, kiến trúc in từ `model.config` (số block, hidden, head Q/KV, FFN, vocab, context), số tham số đếm bằng code; theo `templates/RUN_LOG_TEMPLATE_v2.md` §2.1.
+- Tên model + revision (commit hash trên Hub), dtype, device_map, kiến trúc in từ `model.config` (số block, hidden, head Q/KV, FFN, vocab, context), số tham số đếm bằng code; theo `templates/RUN_LOG_TEMPLATE_v3.md` §2.1.
