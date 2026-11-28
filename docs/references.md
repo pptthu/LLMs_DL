@@ -63,6 +63,7 @@
 | 45 | Kim, Suk et al., *Prometheus 2: An Open Source Language Model Specialized in Evaluating Other Language Models*, EMNLP 2024 | https://arxiv.org/abs/2405.01535 | 10 (như #44) | 27/11 (abstract, một phần HTML) |
 | 46 | Zhu, Wang, Wang, *JudgeLM: Fine-tuned Large Language Models are Scalable Judges*, ICLR 2025 | https://arxiv.org/abs/2310.17631 | 10 (như #44) | 27/11 (abstract) |
 | 47 | Thakur, Choudhary et al., *Judging the Judges: Evaluating Alignment and Vulnerabilities in LLMs-as-Judges*, GEM 2025 | https://arxiv.org/abs/2406.12624 | 10 (cỡ giám khảo cần để khớp người, cell 10.5 E13) | 27/11 (abstract, một phần HTML) |
+| 48 | Zhou, Lu, Mishra, Brahma, Basu, Luan, Zhou, Hou, *Instruction-Following Evaluation for Large Language Models* (IFEval), 2023: ~500 prompt, 25 loại chỉ dẫn kiểm được bằng máy; dữ liệu `google/IFEval` 541 dòng, Apache-2.0 | https://arxiv.org/abs/2311.07911 · https://huggingface.co/datasets/google/IFEval | 5 (cell 5.5) | 29/11 |
 
 ## Model, dữ liệu, tài liệu thư viện
 | Tài liệu | Link | Mục | Đã mở |

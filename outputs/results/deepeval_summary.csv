@@ -1,6 +1,9 @@
 metric,mode,score_mean,n_dat,n,n_loi
-Answer Relevancy,no_rag,0.556,10,18,0
-Hallucination,no_rag,0.833,15,18,0
-Answer Relevancy,rag,0.861,16,18,0
-Hallucination,rag,0.889,16,18,0
+Answer Relevancy,no_rag,0.389,7,18,0
+Hallucination,no_rag,0.778,14,18,0
+Answer Relevancy,rag,0.875,16,18,0
+Hallucination,rag,0.833,15,18,0
 Faithfulness,rag,0.889,16,18,0
+Hallucination,9.1_A,0.533,8,15,0
+Hallucination,9.1_B,0.6,9,15,0
+Bias,9.4b,0.95,10,10,0

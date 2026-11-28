@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Metric trong code [đề xuất]</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#14345c;--blue:#2f80c2;--blue-l:#eaf3fb;--orange:#b4530a;--orange-l:#fdf1e6;--ink:#1d2939;--mute:#3f4b5b;--line:#c9d3df;--green:#1d7046;--green-l:#e3f4ea;--bg:#ffffff}
+*{box-sizing:border-box;margin:0;padding:0}
+@page{size:1456px 816px;margin:0}
+body{background:#cfd6df;font-family:"Be Vietnam Pro","Segoe UI",sans-serif;color:var(--ink)}
+.slide{width:1456px;height:816px;background:var(--bg);position:relative;overflow:hidden;margin:24px auto;page-break-after:always;break-after:page}
+@media print{body{background:#fff}.slide{margin:0}}
+.hd{height:60px;background:var(--navy);color:#fff;display:flex;align-items:center;padding:0 28px;font-size:26px;font-weight:700;gap:14px}
+.hd .no{background:var(--orange);border-radius:10px;padding:2px 12px;font-size:21px}
+.hd small{font-size:15px;font-weight:500;opacity:.8;margin-left:auto}
+.ft{position:absolute;left:28px;right:28px;bottom:10px;display:flex;gap:12px;font-size:12.5px;color:var(--mute)}
+.ft .pg{margin-left:auto;font-weight:800;color:var(--navy);font-size:15px}
+.ft .dx{background:var(--orange-l);color:var(--orange);font-weight:700;border-radius:999px;padding:0 8px}
+code,.f,.tr,.code{font-family:"JetBrains Mono",monospace;font-variant-ligatures:none}
+.io{position:absolute;left:28px;right:28px;top:68px;display:grid;grid-template-columns:1fr 300px;gap:10px}
+.io>div{border:2px solid var(--navy);border-radius:10px;padding:5px 12px;font-size:13.5px;line-height:1.4;display:flex;gap:10px;align-items:flex-start}
+.io>div.out{border-color:var(--orange)}
+.chip{flex:none;border-radius:999px;padding:1px 10px;font-size:12px;font-weight:800;color:#fff;background:var(--navy);margin-top:2px}
+.out .chip{background:var(--orange)}
+code{background:#eef2f7;border-radius:4px;padding:1px 4px;font-size:12.5px}
+.main{position:absolute;left:28px;right:28px;top:140px;bottom:84px;display:grid;grid-template-columns:var(--cw) 1fr;gap:12px}
+.code{background:#0f2440;border-radius:12px;padding:8px 12px 8px 0;color:#e6edf6;overflow:hidden}
+.code .cap{font-family:"Be Vietnam Pro",sans-serif;font-size:12.5px;font-weight:800;color:#ffcf99;padding:0 12px 5px;border-bottom:1px solid #27405f;margin-bottom:4px}
+.ln{display:grid;grid-template-columns:28px 1fr;font-size:12px;line-height:1.55;white-space:pre}
+.ln.on{background:rgba(255,207,153,.07)}
+.ln b{justify-self:center;margin-top:2px}
+.ln.sp{height:6px}
+.c{color:#8fa3bb}.k{color:#9cc8ff}.s{color:#b9e3a6}
+.n{display:inline-grid;place-items:center;width:19px;height:19px;border-radius:50%;background:var(--orange);color:#fff;font:800 11.5px "Be Vietnam Pro",sans-serif;flex:none}
+.th{display:flex;flex-direction:column;gap:5px;min-height:0}
+.th .hdr{display:grid;grid-template-columns:20px 1fr 232px;gap:8px;font-size:12px;font-weight:800;color:var(--mute);text-transform:uppercase;letter-spacing:.04em;padding:0 9px}
+.st{display:grid;grid-template-columns:20px 1fr 232px;gap:8px;align-items:center;border:1px solid var(--line);border-radius:9px;padding:6px 10px;background:#fff;flex:1 1 auto;min-height:0}
+.st .f{font-size:12.5px;color:var(--navy);font-weight:600;line-height:1.35}
+.st .e{font-size:12px;color:var(--mute);line-height:1.3;margin-top:1px}
+.st .tr{font-size:12px;line-height:1.4;background:var(--green-l);border-radius:6px;padding:6px 9px;color:#173d2a;align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+.bot{position:absolute;left:28px;right:28px;bottom:34px;height:44px;border:2px solid var(--green);background:var(--green-l);border-radius:10px;padding:4px 12px;font-size:13.5px;line-height:1.4;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.bot b.t{color:var(--navy)}
+.src{font-size:12.5px;font-weight:700;color:var(--orange);margin-left:auto}
+table.ov{position:absolute;left:28px;right:28px;top:76px;border-collapse:collapse;font-size:14px;width:1400px}
+.ov th{background:var(--navy);color:#fff;text-align:left;padding:7px 9px;font-size:13px}
+.ov td{border-bottom:1px solid var(--line);padding:6px 9px;vertical-align:top;line-height:1.38}
+.ov tr:nth-child(even) td{background:#f5f8fb}
+.ov td:first-child{font-weight:800;color:var(--navy);white-space:nowrap}
+</style>
+</head>
+<body>
+
+<section class="slide">
+  <div class="hd"><span class="no">10</span>Metric trong code: input, phép tính, trang chi tiết<small>mỗi trang: code nguyên văn · lý thuyết · trace số thật</small></div>
+  <table class="ov"><tr><th>Trang</th><th style="width:19%">Metric</th><th style="width:25%">Input</th><th style="width:27%">Phép tính cốt lõi</th><th>Output</th><th>Cell · n</th></tr><tr><td>M2</td><td>Cross-Entropy</td><td>1 câu thô → <code>input_ids</code> (1, n)</td><td>−ln P(token đúng), trung bình</td><td>nat/token</td><td>4.2 · 3 câu</td></tr><tr><td>M3</td><td>Perplexity, top-k</td><td>CE ở M2 · logits (n−1, |V|)</td><td>e<sup>CE</sup>; token đúng có trong top-k?</td><td>PPL; 0–1</td><td>4.4, 4.6 · 3 câu</td></tr><tr><td>M4</td><td>Accuracy, CI 95%</td><td><code>label</code>, <code>pred</code> 2,999 câu</td><td>mean(pred == label); 1.96·SE</td><td>%, ±</td><td>10.1</td></tr><tr><td>M5</td><td>McNemar</td><td><code>correct</code> zero-shot, few-shot cùng câu</td><td>bảng 2×2 theo cặp, binomial exact</td><td>p-value</td><td>10.2</td></tr><tr><td>M6</td><td>Exact Match</td><td><code>output</code> str + <code>answer_list</code> list[str]</td><td>so cả chuỗi sau chuẩn hoá</td><td>0/1</td><td>8.4, 10.3b · 15×2</td></tr><tr><td>M7</td><td>Token F1</td><td>như EM</td><td>đếm từ trùng (multiset), 2PR/(P+R)</td><td>0–1</td><td>10.3b · 15×2</td></tr><tr><td>M8</td><td>BLEU</td><td>câu dịch + list câu tham chiếu</td><td>precision n-gram 1–4, BP</td><td>0–100</td><td>10.3b · 1</td></tr><tr><td>M9</td><td>ROUGE-1/2/L</td><td>bản mẫu + bản tóm tắt</td><td>trùng từ / cặp từ / LCS</td><td>P, R, F1</td><td>10.3b · 1</td></tr><tr><td>M10</td><td>Unit-test pass rate</td><td>code model sinh + 7 test (x, y)</td><td>exec, đếm test qua</td><td>0–1</td><td>1.6 · 11 lời giải</td></tr><tr><td>M11</td><td>Pass@k</td><td>n mẫu, c mẫu đúng, k</td><td>1 − C(n−c,k)/C(n,k)</td><td>0–1</td><td>1.6 · n = 10</td></tr><tr><td>M12</td><td>DeepEval (AR, Faith., Hall.)</td><td><code>LLMTestCase</code> + giám khảo LLM</td><td>giám khảo chấm từng ý → tỉ lệ</td><td>0–1</td><td>10.3c · 18×2</td></tr><tr><td>M13</td><td>G-Eval</td><td><code>LLMTestCase</code> + rubric (bước chấm)</td><td>điểm 0–10 /10, trung bình 20 lần</td><td>0–1</td><td>10.3d</td></tr><tr><td>M14</td><td>TTFT, latency, throughput, VRAM</td><td>prompt đã tokenize, model trên T4</td><td>đồng hồ + synchronize, VRAM đỉnh</td><td>s, tok/s, GiB</td><td>6.6 · 3×5</td></tr></table>
+  <div class="ft"><span class="dx">[đề xuất]</span>Nguồn: notebook/llm_presentation.ipynb · số liệu run 20261128_041850_normal (hiệu quả: run 20261127_234527_normal) · trace BLEU / ROUGE chạy lại bằng sacrebleu 2.6.0, rouge-score trên output của run<span class="pg">M1</span></div>
+</section>
+<section class="slide" style="--cw:780px">
+  <div class="hd"><span class="no">10</span>Cross-Entropy từng token<small>cell 4.2 per_token_loss · 4.5</small></div>
+  <div class="io"><div><span class="chip">INPUT</span><span><code>text</code> = "Hôm nay trời rất đẹp." (văn bản thô, không chat template) · <code>model</code> Qwen2.5-1.5B-Instruct · <code>tok</code> tokenizer Qwen2.5</span></div><div class="out"><span class="chip">OUTPUT</span><span>DataFrame 7 dòng: <code>prob_target</code>, <code>loss_token</code> → CE</span></div></div>
+  <div class="main"><div class="code"><div class="cap">Code cell 4.2 (nguyên văn, bỏ docstring và comment cuối dòng) + cell 4.5</div>
+<div class="ln"><b></b><span><span class="k">def</span> per_token_loss(model, tok, text: str) -&gt; pd.DataFrame:</span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>    ids = tok(text, return_tensors=<span class="s">"pt"</span>, add_special_tokens=<span class="k">False</span>)[<span class="s">"input_ids"</span>].to(model.device)</span></div>
+<div class="ln"><b></b><span>    <span class="k">with</span> torch.no_grad():</span></div>
+<div class="ln on"><b><span class="n">2</span></b><span>        logits = model(ids).logits[0].float()</span></div>
+<div class="ln on"><b><span class="n">3</span></b><span>    log_probs = F.log_softmax(logits[:-1], dim=-1)</span></div>
+<div class="ln on"><b><span class="n">4</span></b><span>    targets = ids[0, 1:]</span></div>
+<div class="ln on"><b><span class="n">5</span></b><span>    lp = log_probs.gather(1, targets[:, <span class="k">None</span>])[:, 0]</span></div>
+<div class="ln"><b></b><span>    ids_list = ids[0].tolist()</span></div>
+<div class="ln"><b></b><span>    <span class="k">return</span> pd.DataFrame({</span></div>
+<div class="ln"><b></b><span>        <span class="s">"idx"</span>: range(len(targets)),</span></div>
+<div class="ln"><b></b><span>        <span class="s">"context"</span>: [tok.decode(ids_list[:i + 1]) <span class="k">for</span> i <span class="k">in</span> range(len(targets))],</span></div>
+<div class="ln"><b></b><span>        <span class="s">"target_token"</span>: [tok.decode([t]) <span class="k">for</span> t <span class="k">in</span> targets.tolist()],</span></div>
+<div class="ln"><b></b><span>        <span class="s">"target_id"</span>: targets.tolist(),</span></div>
+<div class="ln on"><b><span class="n">6</span></b><span>        <span class="s">"prob_target"</span>: lp.exp().tolist(),</span></div>
+<div class="ln on"><b><span class="n">6</span></b><span>        <span class="s">"loss_token"</span>: (-lp).tolist(),</span></div>
+<div class="ln"><b></b><span>    })</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span><span class="c"># cell 4.5</span></span></div>
+<div class="ln on"><b><span class="n">7</span></b><span>    m = df[<span class="s">"loss_token"</span>].mean()</span></div>
+<div class="ln on"><b><span class="n">8</span></b><span><span class="k">assert</span> abs(r[<span class="s">"loss_mean"</span>] - r[<span class="s">"hf_loss"</span>]) &lt; 1e-3, r</span></div></div><div class="th"><div class="hdr"><span>#</span><span>Lý thuyết · giải thích</span><span>Trace trên ví dụ thật</span></div>
+<div class="st"><span class="n">1</span><div><div class="f">x = (x₁ … xₙ): câu → token ID</div><div class="e">Không thêm BOS/EOS: chỉ chấm đúng các token của câu.</div></div><div class="tr">ids.shape = (1, 8)</div></div>
+<div class="st"><span class="n">2</span><div><div class="f">z = logits ∈ ℝ<sup>n × |V|</sup></div><div class="e">1 lượt forward, mọi vị trí cùng lúc nhờ causal mask. Ép float32 vì model chạy fp16.</div></div><div class="tr">logits.shape = (8, 151936)</div></div>
+<div class="st"><span class="n">3</span><div><div class="f">log P(· | x≤t) = log_softmax(zₜ)</div><div class="e">Bỏ hàng cuối: sau token cuối không còn gì để đoán. log_softmax ổn định số hơn log(softmax).</div></div><div class="tr">log_probs.shape = (7, 151936)</div></div>
+<div class="st"><span class="n">4</span><div><div class="f">nhãn của vị trí t là xₜ₊₁</div><div class="e">Dịch 1 bước: bỏ token đầu vì không có ngữ cảnh.</div></div><div class="tr">targets = [94365, 308, 352, 130868, 128323, 128501, 13]<br>= 'ôm' ' n' 'ay' ' trời' ' rất' ' đẹp' '.'</div></div>
+<div class="st"><span class="n">5</span><div><div class="f">ln P(xₜ₊₁ | x≤t)</div><div class="e"><code>gather</code>: hàng t lấy đúng cột targets[t] → 1 số / vị trí.</div></div><div class="tr">lp = [−8.189, −0.349, −0.004, −6.344, −3.554, −0.238, −2.215]</div></div>
+<div class="st"><span class="n">6</span><div><div class="f">ℓₜ = −ln P(token đúng)</div><div class="e">Cross-entropy với nhãn one-hot [Slide Ch2]: chỉ còn số hạng của token đúng.</div></div><div class="tr">P: 'ay' 0.996 (dễ) · ' trời' 0.0018 (khó) · 'ôm' 0.0003</div></div>
+<div class="st"><span class="n">7</span><div><div class="f">CE = 1/(n−1) · Σₜ ℓₜ</div><div class="e">Trung bình trên n − 1 = 7 vị trí, đơn vị nat / token.</div></div><div class="tr">20.893 / 7 = <b>2.985</b></div></div>
+<div class="st"><span class="n">8</span><div><div class="f">tự kiểm với transformers</div><div class="e"><code>model(ids, labels=ids).loss</code> tính cùng công thức.</div></div><div class="tr">|2.98480 − 2.98480| &lt; 1e-3 ✓ (3/3 câu)</div></div></div></div>
+  <div class="bot"><b class="t">Kết quả:</b> câu đúng CE 2.985 · câu xáo trộn "đẹp rất trời nay Hôm." 6.701 · câu tiếng Anh 3.129. <span class="src">[Slide Ch2: softmax, cross-entropy] · [Bổ sung: #3 Jurafsky ch. 3]</span></div>
+  <div class="ft"><span class="dx">[đề xuất]</span>Nguồn: results/per_token_loss.csv, loss_summary.csv · run 20261128_041850_normal<span class="pg">M2</span></div>
+</section>
+<section class="slide" style="--cw:780px">
+  <div class="hd"><span class="no">10</span>Perplexity và top-k accuracy<small>cell 4.4 · 4.6 next_token_acc</small></div>
+  <div class="io"><div><span class="chip">INPUT</span><span><code>loss_mean</code> = CE của M2 · cùng câu, cùng model; top-k dùng lại <code>logits</code> (bỏ vị trí cuối)</span></div><div class="out"><span class="chip">OUTPUT</span><span>PPL (số thực ≥ 1) · top-1, top-5 accuracy (0–1)</span></div></div>
+  <div class="main"><div class="code"><div class="cap">Code cell 4.4, 4.6 (nguyên văn, bỏ docstring)</div>
+<div class="ln"><b></b><span><span class="c"># cell 4.4</span></span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>ppl = math.exp(loss_mean)</span></div>
+<div class="ln on"><b><span class="n">2</span></b><span>loss_uniform = math.log(model.config.vocab_size)</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span><span class="c"># cell 4.6</span></span></div>
+<div class="ln"><b></b><span><span class="k">def</span> next_token_acc(text: str) -&gt; pd.DataFrame:</span></div>
+<div class="ln"><b></b><span>    ids = tok(text, return_tensors=<span class="s">"pt"</span>, add_special_tokens=<span class="k">False</span>)[<span class="s">"input_ids"</span>].to(model.device)</span></div>
+<div class="ln"><b></b><span>    <span class="k">with</span> torch.no_grad():</span></div>
+<div class="ln on"><b><span class="n">3</span></b><span>        logits = model(ids).logits[0, :-1].float()</span></div>
+<div class="ln"><b></b><span>    targets = ids[0, 1:]</span></div>
+<div class="ln on"><b><span class="n">4</span></b><span>    top5 = logits.topk(5, dim=-1).indices</span></div>
+<div class="ln"><b></b><span>    <span class="k">return</span> pd.DataFrame({</span></div>
+<div class="ln"><b></b><span>        <span class="s">"target_id"</span>: targets.tolist(),</span></div>
+<div class="ln"><b></b><span>        <span class="s">"target_token"</span>: [tok.decode([t]) <span class="k">for</span> t <span class="k">in</span> targets.tolist()],</span></div>
+<div class="ln"><b></b><span>        <span class="s">"pred_top1"</span>: [tok.decode([t]) <span class="k">for</span> t <span class="k">in</span> top5[:, 0].tolist()],</span></div>
+<div class="ln on"><b><span class="n">5</span></b><span>        <span class="s">"top1_correct"</span>: (top5[:, 0] == targets).tolist(),</span></div>
+<div class="ln on"><b><span class="n">6</span></b><span>        <span class="s">"top5_correct"</span>: (top5 == targets[:, <span class="k">None</span>]).any(-1).tolist(),</span></div>
+<div class="ln"><b></b><span>    })</span></div>
+<div class="ln sp"></div>
+<div class="ln on"><b><span class="n">7</span></b><span>    acc_rows.append({<span class="s">"sentence_id"</span>: sid, <span class="s">"n_positions"</span>: len(d),</span></div>
+<div class="ln on"><b></b><span>        <span class="s">"top1_acc"</span>: d[<span class="s">"top1_correct"</span>].mean(),</span></div>
+<div class="ln on"><b><span class="n">7</span></b><span>                     <span class="s">"top5_acc"</span>: d[<span class="s">"top5_correct"</span>].mean(), ...})</span></div>
+<div class="ln on"><b><span class="n">8</span></b><span><span class="k">assert</span> (acc_df[<span class="s">"top1_acc"</span>] &lt;= acc_df[<span class="s">"top5_acc"</span>]).all()</span></div></div><div class="th"><div class="hdr"><span>#</span><span>Lý thuyết · giải thích</span><span>Trace trên ví dụ thật</span></div>
+<div class="st"><span class="n">1</span><div><div class="f">PPL = e<sup>CE</sup></div><div class="e">Số token model "phân vân" trung bình mỗi bước. Thấp = tốt.</div></div><div class="tr">e<sup>2.985</sup> = <b>19.78</b></div></div>
+<div class="st"><span class="n">2</span><div><div class="f">mốc đoán đều: P = 1/|V|</div><div class="e">CE = ln |V|, PPL = |V|: model không học gì.</div></div><div class="tr">ln 151,936 = 11.93 → PPL 151,936</div></div>
+<div class="st"><span class="n">3</span><div><div class="f">logits n − 1 vị trí</div><div class="e">Như M2 nhưng cắt hàng cuối ngay khi lấy logits.</div></div><div class="tr">logits.shape = (7, 151936)</div></div>
+<div class="st"><span class="n">4</span><div><div class="f">top-k = k chỉ số có logit lớn nhất</div><div class="e">Không cần softmax: softmax giữ nguyên thứ tự.</div></div><div class="tr">top5.shape = (7, 5)</div></div>
+<div class="st"><span class="n">5</span><div><div class="f">top-1 đúng ⇔ argmax = token đúng</div><div class="e">Cột 0 của <code>topk</code> là argmax.</div></div><div class="tr">3 / 7 vị trí đúng</div></div>
+<div class="st"><span class="n">6</span><div><div class="f">top-5 đúng ⇔ token đúng ∈ top-5</div><div class="e">So từng cột rồi <code>any</code> theo hàng.</div></div><div class="tr">5 / 7 vị trí đúng</div></div>
+<div class="st"><span class="n">7</span><div><div class="f">accuracy = mean(cột bool)</div><div class="e">True = 1, False = 0.</div></div><div class="tr">top-1 <b>0.429</b> · top-5 <b>0.714</b></div></div>
+<div class="st"><span class="n">8</span><div><div class="f">top-1 ≤ top-5</div><div class="e">Đúng top-1 thì chắc chắn đúng top-5.</div></div><div class="tr">đạt ✓ (3 câu)</div></div></div></div>
+  <div class="bot"><b class="t">Kết quả:</b> PPL câu đúng 19.8 · xáo trộn 813.6 · tiếng Anh 22.9 · top-1/top-5: câu đúng 0.43/0.71, xáo trộn 0.13/0.25. <span class="src">[Bổ sung: #3 Jurafsky ch. 3; HF Perplexity docs]</span></div>
+  <div class="ft"><span class="dx">[đề xuất]</span>Nguồn: results/loss_summary.csv, next_token_accuracy.csv · run 20261128_041850_normal<span class="pg">M3</span></div>
+</section>
+<section class="slide" style="--cw:780px">
+  <div class="hd"><span class="no">10</span>Accuracy, khoảng tin cậy 95%, confusion matrix<small>cell 7.5 run_icl · 10.1</small></div>
+  <div class="io"><div><span class="chip">INPUT</span><span><code>res</code> = DataFrame 2,999 câu test UIT-VSFC: <code>label</code> (2 tích cực, 0 tiêu cực), <code>pred</code> = <code>parse_label(output)</code>, None nếu không đọc được nhãn</span></div><div class="out"><span class="chip">OUTPUT</span><span>dict n, accuracy, ci95_half_width, n_unparsed · bảng 2 × 3</span></div></div>
+  <div class="main"><div class="code"><div class="cap">Code cell 7.5 (1 dòng) + cell 10.1 (nguyên văn, bỏ docstring)</div>
+<div class="ln"><b></b><span><span class="c"># cell 7.5, trong run_icl</span></span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>    res[<span class="s">"correct"</span>] = res[<span class="s">"pred"</span>] == res[<span class="s">"label"</span>]    <span class="c"># None ≠ nhãn nào → tính là sai</span></span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span><span class="c"># cell 10.1</span></span></div>
+<div class="ln"><b></b><span><span class="k">def</span> compute_metrics(res: pd.DataFrame) -&gt; dict:</span></div>
+<div class="ln on"><b><span class="n">2</span></b><span>    n = len(res)</span></div>
+<div class="ln on"><b><span class="n">3</span></b><span>    acc = float(res[<span class="s">"correct"</span>].mean())</span></div>
+<div class="ln on"><b><span class="n">4</span></b><span>    <span class="k">return</span> {<span class="s">"n"</span>: n, <span class="s">"accuracy"</span>: round(acc, 4),</span></div>
+<div class="ln on"><b></b><span>        <span class="s">"ci95_half_width"</span>: round(1.96 * math.sqrt(acc * (1 - acc) / n), 4),</span></div>
+<div class="ln on"><b><span class="n">5</span></b><span>            <span class="s">"n_unparsed"</span>: int(res[<span class="s">"pred"</span>].isna().sum()),</span></div>
+<div class="ln on"><b></b><span>                <span class="s">"unparsed_rate"</span>: round(float(res[<span class="s">"pred"</span>].isna().mean()), 4)}</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span><span class="k">def</span> confusion(res: pd.DataFrame) -&gt; pd.DataFrame:</span></div>
+<div class="ln on"><b><span class="n">6</span></b><span>    pred = res[<span class="s">"pred"</span>].map(LABEL_NAMES).fillna(<span class="s">"không parse được"</span>)</span></div>
+<div class="ln on"><b><span class="n">6</span></b><span>    true = res[<span class="s">"label"</span>].map(LABEL_NAMES)</span></div>
+<div class="ln on"><b><span class="n">7</span></b><span>    <span class="k">return</span> pd.crosstab(true, pred).reindex(index=[<span class="s">"positive"</span>, <span class="s">"negative"</span>],</span></div>
+<div class="ln on"><b><span class="n">7</span></b><span>                                           columns=[<span class="s">"positive"</span>, <span class="s">"negative"</span>, <span class="s">"không parse được"</span>],</span></div>
+<div class="ln on"><b></b><span>                                               fill_value=0)</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span>toy = pd.DataFrame({<span class="s">"label"</span>: [2, 2, 0, 0], <span class="s">"pred"</span>: [2, <span class="k">None</span>, 0, 2]})</span></div>
+<div class="ln"><b></b><span>toy[<span class="s">"correct"</span>] = toy[<span class="s">"pred"</span>] == toy[<span class="s">"label"</span>]</span></div>
+<div class="ln on"><b><span class="n">8</span></b><span><span class="k">assert</span> compute_metrics(toy)[<span class="s">"accuracy"</span>] == 0.5 <span class="k">and</span> compute_metrics(toy)[<span class="s">"n_unparsed"</span>] == 1</span></div>
+<div class="ln on"><b><span class="n">8</span></b><span><span class="k">assert</span> confusion(toy).loc[<span class="s">"negative"</span>, <span class="s">"positive"</span>] == 1 <span class="k">and</span> confusion(toy).values.sum() == 4</span></div></div><div class="th"><div class="hdr"><span>#</span><span>Lý thuyết · giải thích</span><span>Trace trên ví dụ thật</span></div>
+<div class="st"><span class="n">1</span><div><div class="f">1[ŷᵢ = yᵢ]</div><div class="e">Không parse được thì pred = None, so với nhãn nào cũng False.</div></div><div class="tr">zero-shot: 2,695 True / 2,999</div></div>
+<div class="st"><span class="n">2</span><div><div class="f">n</div><div class="e">Số câu test.</div></div><div class="tr">n = 2,999</div></div>
+<div class="st"><span class="n">3</span><div><div class="f">Acc = 1/n · Σ 1[ŷᵢ = yᵢ]</div><div class="e">mean của cột bool.</div></div><div class="tr">2,695 / 2,999 = <b>0.8986</b></div></div>
+<div class="st"><span class="n">4</span><div><div class="f">±1.96 · √(Acc(1 − Acc)/n)</div><div class="e">CI 95% xấp xỉ chuẩn: 1.96 là phân vị 97.5% của N(0, 1). [cần chốt nguồn]</div></div><div class="tr">1.96·√(0.8986·0.1014/2999) = <b>0.0108</b></div></div>
+<div class="st"><span class="n">5</span><div><div class="f">tỉ lệ không parse</div><div class="e">Tách riêng để biết lỗi do định dạng hay do hiểu sai.</div></div><div class="tr">n_unparsed = 0 (cả 2 cách)</div></div>
+<div class="st"><span class="n">6</span><div><div class="f">đổi số → tên nhãn</div><div class="e">None → "không parse được" để có cột riêng.</div></div><div class="tr">2 → positive, 0 → negative</div></div>
+<div class="st"><span class="n">7</span><div><div class="f">bảng đếm (nhãn thật × dự đoán)</div><div class="e"><code>reindex</code> cố định thứ tự, ô trống = 0.</div></div><div class="tr">zero: pos [1534, 56, 0] · neg [248, 1161, 0]<br>few: pos [1504, 86, 0] · neg [145, 1264, 0]</div></div>
+<div class="st"><span class="n">8</span><div><div class="f">tự kiểm trên 4 câu tính tay</div><div class="e">Đúng 2/4; 1 câu None; 1 câu tiêu cực → tích cực.</div></div><div class="tr">accuracy 0.5, n_unparsed 1 ✓</div></div></div></div>
+  <div class="bot"><b class="t">Kết quả:</b> zero-shot 89.86% ± 1.08 → few-shot 92.30% ± 0.95 · lỗi tiêu cực → tích cực giảm 248 → 145. <span class="src">[Bổ sung: #22 Dietterich 1998] · CI: [cần chốt nguồn]</span></div>
+  <div class="ft"><span class="dx">[đề xuất]</span>Nguồn: results/icl_metrics.json, icl_zero_shot.csv, icl_few_shot.csv · run 20261128_041850_normal<span class="pg">M4</span></div>
+</section>
+<section class="slide" style="--cw:780px">
+  <div class="hd"><span class="no">10</span>Kiểm định McNemar (exact)<small>cell 10.2 · statsmodels</small></div>
+  <div class="io"><div><span class="chip">INPUT</span><span><code>icl_zero["correct"]</code>, <code>icl_few["correct"]</code>: 2 cột bool, <b>cùng</b> 2,999 câu, cùng thứ tự (mỗi câu chấm 2 lần)</span></div><div class="out"><span class="chip">OUTPUT</span><span>bảng [[a, b], [c, d]] · p-value</span></div></div>
+  <div class="main"><div class="code"><div class="cap">Code cell 10.2 (nguyên văn, bỏ docstring, show_input, log)</div>
+<div class="ln"><b></b><span><span class="k">from</span> statsmodels.stats.contingency_tables <span class="k">import</span> mcnemar</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span><span class="k">def</span> mcnemar_counts(a_correct: pd.Series, b_correct: pd.Series) -&gt; list[list[int]]:</span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>    a, b = a_correct.to_numpy(), b_correct.to_numpy()</span></div>
+<div class="ln on"><b><span class="n">2</span></b><span>    <span class="k">return</span> [[int((a &amp; b).sum()), int((a &amp; ~b).sum())], [int((~a &amp; b).sum()), int((~a &amp; ~b).sum())]]</span></div>
+<div class="ln sp"></div>
+<div class="ln on"><b><span class="n">3</span></b><span><span class="k">assert</span> mcnemar([[5, 3], [3, 5]], exact=<span class="k">True</span>).pvalue == 1.0</span></div>
+<div class="ln on"><b><span class="n">4</span></b><span>table = mcnemar_counts(icl_zero[<span class="s">"correct"</span>], icl_few[<span class="s">"correct"</span>])</span></div>
+<div class="ln on"><b><span class="n">4</span></b><span><span class="k">assert</span> sum(map(sum, table)) == len(icl_zero)</span></div>
+<div class="ln sp"></div>
+<div class="ln on"><b><span class="n">5</span></b><span>test_res = mcnemar(table, exact=<span class="k">True</span>)</span></div>
+<div class="ln on"><b><span class="n">6</span></b><span>(a_, b_), (c_, d_) = table</span></div>
+<div class="ln"><b></b><span>ICL_METRICS[<span class="s">"mcnemar"</span>] = {<span class="s">"a_both_correct"</span>: a_, <span class="s">"b_only_zero_correct"</span>: b_, <span class="s">"c_only_few_correct"</span>: c_,</span></div>
+<div class="ln"><b></b><span>                          <span class="s">"d_both_wrong"</span>: d_, <span class="s">"p_value"</span>: float(test_res.pvalue), <span class="s">"exact"</span>: <span class="k">True</span>}</span></div>
+<div class="ln on"><b><span class="n">7</span></b><span>print(f<span class="s">"McNemar exact: p = {test_res.pvalue:.4g} → "</span></span></div>
+<div class="ln on"><b><span class="n">7</span></b><span>      f<span class="s">"{'khác biệt có ý nghĩa ở mức 0.05' if test_res.pvalue &lt; 0.05 else '…'}"</span>)   <span class="c"># rút gọn chuỗi else</span></span></div></div><div class="th"><div class="hdr"><span>#</span><span>Lý thuyết · giải thích</span><span>Trace trên ví dụ thật</span></div>
+<div class="st"><span class="n">1</span><div><div class="f">ghép cặp theo câu i</div><div class="e">numpy bool để dùng phép & và ~ theo từng phần tử.</div></div><div class="tr">a, b: 2 mảng bool dài 2,999</div></div>
+<div class="st"><span class="n">2</span><div><div class="f">a = Σ zᵢfᵢ · b = Σ zᵢ¬fᵢ<br>c = Σ ¬zᵢfᵢ · d = Σ ¬zᵢ¬fᵢ</div><div class="e">z = zero-shot đúng, f = few-shot đúng. b, c là câu bất đồng.</div></div><div class="tr">[[2648, 47], [120, 184]]</div></div>
+<div class="st"><span class="n">3</span><div><div class="f">b = c ⇒ p = 1</div><div class="e">Tự kiểm: không có chênh lệch thì không bác bỏ H₀.</div></div><div class="tr">p = 1.0 ✓</div></div>
+<div class="st"><span class="n">4</span><div><div class="f">a + b + c + d = n</div><div class="e">Mọi câu rơi vào đúng 1 ô.</div></div><div class="tr">2648 + 47 + 120 + 184 = 2,999 ✓</div></div>
+<div class="st"><span class="n">5</span><div><div class="f">H₀: P(chỉ zero đúng) = P(chỉ few đúng)<br>⇒ b ~ Binomial(b + c, 1/2)<br>p = 2 · P(X ≤ min(b, c))</div><div class="e">exact = True: dùng binomial, không xấp xỉ χ². Chỉ b, c mang thông tin; a, d giống nhau ở cả 2 cách.</div></div><div class="tr">min(47, 120) = 47, b + c = 167<br>p = 2 · P(X ≤ 47) = <b>1.50e-08</b><br>(tính tay bằng math.comb khớp)</div></div>
+<div class="st"><span class="n">6</span><div><div class="f">lưu 4 ô và p</div><div class="e">Ghi vào icl_metrics.json để slide đọc lại.</div></div><div class="tr">b_only_zero 47 · c_only_few 120</div></div>
+<div class="st"><span class="n">7</span><div><div class="f">p &lt; α = 0.05 ⇒ bác bỏ H₀</div><div class="e">Few-shot đúng thêm 120 câu, sai thêm 47 câu: chênh lệch không do ngẫu nhiên.</div></div><div class="tr">"khác biệt có ý nghĩa ở mức 0.05"</div></div></div></div>
+  <div class="bot"><b class="t">Kết quả:</b> few-shot tốt hơn zero-shot có ý nghĩa thống kê, p = 1.5e-08 · acc kiểm lại: (a + b)/n = 0.8986, (a + c)/n = 0.9230. <span class="src">[Bổ sung: #22 Dietterich 1998; statsmodels mcnemar]</span></div>
+  <div class="ft"><span class="dx">[đề xuất]</span>Nguồn: results/icl_metrics.json · run 20261128_041850_normal<span class="pg">M5</span></div>
+</section>
+<section class="slide" style="--cw:780px">
+  <div class="hd"><span class="no">10</span>Exact Match<small>cell 8.4 norm_answer · 10.3b em_score</small></div>
+  <div class="io"><div><span class="chip">INPUT</span><span><code>pred</code> = "Hoàng đế phải thông qua Hội đồng để ban hành luật." (output RAG, mục 8) · <code>answers</code> = ["phải thông qua Hội đồng", "thông qua Hội đồng"] (UIT-ViQuAD 2.0)</span></div><div class="out"><span class="chip">OUTPUT</span><span>EM ∈ {0, 1} mỗi câu → trung bình 15 câu mỗi chế độ</span></div></div>
+  <div class="main"><div class="code"><div class="cap">Code cell 8.4, 10.3b (nguyên văn, bỏ docstring)</div>
+<div class="ln"><b></b><span><span class="c"># cell 8.4</span></span></div>
+<div class="ln"><b></b><span><span class="k">def</span> norm_answer(s: str) -&gt; str:</span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>    <span class="k">return</span> <span class="s">" "</span>.join(str(s).lower().translate(str.maketrans(string.punctuation,</span></div>
+<div class="ln on"><b></b><span>        <span class="s">" "</span> * len(string.punctuation))).split())</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span><span class="c"># cell 10.3b</span></span></div>
+<div class="ln"><b></b><span><span class="k">def</span> em_score(pred: str, answers: list[str]) -&gt; float:</span></div>
+<div class="ln on"><b><span class="n">2</span></b><span>    <span class="k">return</span> float(any(norm_answer(pred) == norm_answer(a) <span class="k">for</span> a <span class="k">in</span> answers))</span></div>
+<div class="ln sp"></div>
+<div class="ln on"><b><span class="n">3</span></b><span>qa_ans = rag_df[~rag_df[<span class="s">"is_impossible"</span>]].copy()</span></div>
+<div class="ln on"><b><span class="n">4</span></b><span>qa_ans[<span class="s">"em"</span>] = [em_score(o, a) <span class="k">for</span> o, a <span class="k">in</span> zip(qa_ans[<span class="s">"output"</span>], qa_ans[<span class="s">"answer_list"</span>])]</span></div>
+<div class="ln on"><b><span class="n">5</span></b><span>lex_rows = [(<span class="s">"8"</span>, f<span class="s">"hỏi đáp ({m})"</span>, met, round(qa_ans.loc[qa_ans[<span class="s">"mode"</span>] == m, col].mean(), 3), ...)</span></div>
+<div class="ln on"><b><span class="n">5</span></b><span>            <span class="k">for</span> m <span class="k">in</span> (<span class="s">"no_rag"</span>, <span class="s">"rag"</span>) <span class="k">for</span> met, col <span class="k">in</span> ((<span class="s">"Exact Match"</span>, <span class="s">"em"</span>), (<span class="s">"Token F1"</span>, <span class="s">"f1"</span>))]</span></div>
+<div class="ln sp"></div>
+<div class="ln on"><b><span class="n">6</span></b><span><span class="k">assert</span> em_score(<span class="s">"Tskhinvali."</span>, [<span class="s">"Tskhinvali"</span>]) == 1.0 <span class="k">and</span> em_score(<span class="s">"Thủ đô là Tskhinvali"</span>,</span></div>
+<div class="ln on"><b></b><span>    [<span class="s">"Tskhinvali"</span>]) == 0.0</span></div></div><div class="th"><div class="hdr"><span>#</span><span>Lý thuyết · giải thích</span><span>Trace trên ví dụ thật</span></div>
+<div class="st"><span class="n">1</span><div><div class="f">norm(s): lower → dấu câu thành " " → gộp khoảng trắng</div><div class="e">Theo SQuAD [#26]; không bỏ a/an/the vì tiếng Việt. Dấu câu thành khoảng trắng nên "Charles-de-Gaulle" khớp "Charles de Gaulle".</div></div><div class="tr">"hoàng đế phải thông qua hội đồng để ban hành luật"<br>"20.4%" → "20 4"</div></div>
+<div class="st"><span class="n">2</span><div><div class="f">EM = maxₐ 1[norm(ŷ) = norm(a)]</div><div class="e"><code>any</code> = max trên các đáp án. So <b>cả chuỗi</b>, không phải "có chứa".</div></div><div class="tr">≠ "phải thông qua hội đồng"<br>≠ "thông qua hội đồng" → <b>0.0</b></div></div>
+<div class="st"><span class="n">3</span><div><div class="f">chỉ câu có đáp án</div><div class="e">Câu không có đáp án (đúng là từ chối) không có chuỗi để so.</div></div><div class="tr">18 câu → 15 câu × 2 chế độ</div></div>
+<div class="st"><span class="n">4</span><div><div class="f">EM từng câu</div><div class="e">Cột mới trong DataFrame.</div></div><div class="tr">câu "20.4%" (RAG): "20 4" = "20 4" → 1.0</div></div>
+<div class="st"><span class="n">5</span><div><div class="f">EM = 1/15 · Σ EMᵢ</div><div class="e">Tính riêng không RAG / có RAG.</div></div><div class="tr">RAG: 3 câu EM = 1 → 3/15 = <b>0.20</b></div></div>
+<div class="st"><span class="n">6</span><div><div class="f">tự kiểm</div><div class="e">Dấu chấm cuối bị chuẩn hoá mất; câu thừa chữ thì 0.</div></div><div class="tr">1.0 và 0.0 ✓</div></div></div></div>
+  <div class="bot"><b class="t">Kết quả:</b> EM không RAG 0.00 → có RAG 0.20 (n = 15). 10/15 câu RAG đúng ý nhưng chỉ 3 câu EM = 1, vì model trả lời cả câu. <span class="src">[Bổ sung: #26 Rajpurkar 2016, SQuAD]</span></div>
+  <div class="ft"><span class="dx">[đề xuất]</span>Nguồn: results/qa_em_f1.csv, lexical_metrics.csv · run 20261128_041850_normal<span class="pg">M6</span></div>
+</section>
+<section class="slide" style="--cw:780px">
+  <div class="hd"><span class="no">10</span>Token F1<small>cell 10.3b f1_score_tok</small></div>
+  <div class="io"><div><span class="chip">INPUT</span><span>Như Exact Match: <code>pred</code> = "Hoàng đế phải thông qua Hội đồng để ban hành luật." · <code>answers</code> = ["phải thông qua Hội đồng", "thông qua Hội đồng"]</span></div><div class="out"><span class="chip">OUTPUT</span><span>F1 ∈ [0, 1] mỗi câu → trung bình 15 câu</span></div></div>
+  <div class="main"><div class="code"><div class="cap">Code cell 10.3b (nguyên văn, bỏ docstring)</div>
+<div class="ln"><b></b><span><span class="k">from</span> collections <span class="k">import</span> Counter</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span><span class="k">def</span> f1_score_tok(pred: str, answers: list[str]) -&gt; float:</span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>    p = norm_answer(pred).split()</span></div>
+<div class="ln on"><b><span class="n">2</span></b><span>    best = 0.0</span></div>
+<div class="ln"><b></b><span>    <span class="k">for</span> a <span class="k">in</span> answers:</span></div>
+<div class="ln on"><b><span class="n">3</span></b><span>        g = norm_answer(a).split()</span></div>
+<div class="ln on"><b><span class="n">4</span></b><span>        same = sum((Counter(p) &amp; Counter(g)).values())</span></div>
+<div class="ln on"><b><span class="n">5</span></b><span>        <span class="k">if</span> same:</span></div>
+<div class="ln on"><b><span class="n">6</span></b><span>            prec, rec = same / len(p), same / len(g)</span></div>
+<div class="ln on"><b><span class="n">7</span></b><span>            best = max(best, 2 * prec * rec / (prec + rec))</span></div>
+<div class="ln"><b></b><span>    <span class="k">return</span> best</span></div>
+<div class="ln sp"></div>
+<div class="ln on"><b><span class="n">8</span></b><span>qa_ans[<span class="s">"f1"</span>] = [f1_score_tok(o, a) <span class="k">for</span> o, a <span class="k">in</span> zip(qa_ans[<span class="s">"output"</span>], qa_ans[<span class="s">"answer_list"</span>])]</span></div>
+<div class="ln sp"></div>
+<div class="ln on"><b><span class="n">9</span></b><span><span class="k">assert</span> abs(f1_score_tok(<span class="s">"thủ đô là Tskhinvali"</span>, [<span class="s">"Tskhinvali"</span>]) - 0.4) &lt; 1e-9</span></div>
+<div class="ln on"><b><span class="n">9</span></b><span><span class="k">assert</span> f1_score_tok(<span class="s">"Gori"</span>, [<span class="s">"Tskhinvali"</span>]) == 0.0</span></div></div><div class="th"><div class="hdr"><span>#</span><span>Lý thuyết · giải thích</span><span>Trace trên ví dụ thật</span></div>
+<div class="st"><span class="n">1</span><div><div class="f">ŷ → túi từ (sau chuẩn hoá)</div><div class="e">Tách theo khoảng trắng: "token" ở đây là từ, không phải token của model.</div></div><div class="tr">11 từ: hoàng đế phải thông qua hội đồng để ban hành luật</div></div>
+<div class="st"><span class="n">2</span><div><div class="f">best = 0</div><div class="e">Giữ điểm cao nhất qua các đáp án.</div></div><div class="tr">0.0</div></div>
+<div class="st"><span class="n">3</span><div><div class="f">a → túi từ</div><div class="e">Lặp từng đáp án.</div></div><div class="tr">a₁: phải thông qua hội đồng (5)<br>a₂: thông qua hội đồng (4)</div></div>
+<div class="st"><span class="n">4</span><div><div class="f">|ŷ ∩ a| theo multiset</div><div class="e"><code>Counter &amp;</code> lấy min số lần của mỗi từ: từ lặp chỉ tính đúng số lần có ở cả hai.</div></div><div class="tr">a₁: 5 · a₂: 4</div></div>
+<div class="st"><span class="n">5</span><div><div class="f">không trùng ⇒ F1 = 0</div><div class="e">Tránh chia 0 khi P = R = 0.</div></div><div class="tr">bỏ qua nếu same = 0</div></div>
+<div class="st"><span class="n">6</span><div><div class="f">P = |∩| / |ŷ| · R = |∩| / |a|</div><div class="e">P thấp: model nói thừa · R thấp: thiếu ý đáp án.</div></div><div class="tr">a₁: P = 5/11 = 0.455, R = 5/5 = 1<br>a₂: P = 4/11 = 0.364, R = 1</div></div>
+<div class="st"><span class="n">7</span><div><div class="f">F1 = 2PR / (P + R), lấy max</div><div class="e">Trung bình điều hoà: chỉ cao khi cả P và R cao.</div></div><div class="tr">a₁: 0.625 · a₂: 0.533 → <b>0.625</b></div></div>
+<div class="st"><span class="n">8</span><div><div class="f">F1 từng câu</div><div class="e">Câu từ chối "Không có thông tin." → 0.</div></div><div class="tr">RAG trung bình 15 câu = <b>0.395</b></div></div>
+<div class="st"><span class="n">9</span><div><div class="f">tự kiểm tính tay</div><div class="e">P = 1/4, R = 1 → 2·0.25/1.25.</div></div><div class="tr">0.4 ✓ · 0.0 ✓</div></div></div></div>
+  <div class="bot"><b class="t">Kết quả:</b> Token F1 không RAG 0.007 → có RAG 0.395 (n = 15). Mềm hơn EM nhưng vẫn chỉ đếm chữ, không hiểu nghĩa. <span class="src">[Bổ sung: #26 Rajpurkar 2016, SQuAD]</span></div>
+  <div class="ft"><span class="dx">[đề xuất]</span>Nguồn: results/qa_em_f1.csv · run 20261128_041850_normal<span class="pg">M7</span></div>
+</section>
+<section class="slide" style="--cw:780px">
+  <div class="hd"><span class="no">10</span>BLEU (câu dịch)<small>cell 10.3b · sacreBLEU 2.6.0 sentence_bleu</small></div>
+  <div class="io"><div><span class="chip">INPUT</span><span><code>out_of["translate"]</code> = "Today the weather is very beautiful." (hypothesis) · <code>[REF_TRANSLATE]</code> = ["The weather is very nice today."] (list tham chiếu)</span></div><div class="out"><span class="chip">OUTPUT</span><span>BLEU ∈ [0, 100]</span></div></div>
+  <div class="main"><div class="code"><div class="cap">Code cell 10.3b (nguyên văn) — bước 2–7 chạy bên trong sacreBLEU</div>
+<div class="ln"><b></b><span><span class="k">import</span> sacrebleu</span></div>
+<div class="ln sp"></div>
+<div class="ln on"><b><span class="n">1</span></b><span>out_of = dict(zip(results_df[<span class="s">"id"</span>], results_df[<span class="s">"output"</span>]))</span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>REF_TRANSLATE = next(t[<span class="s">"expected"</span>] <span class="k">for</span> t <span class="k">in</span> TASKS <span class="k">if</span> t[<span class="s">"id"</span>] == <span class="s">"translate"</span>)</span></div>
+<div class="ln on"><b><span class="n">2</span></b><span>bleu = sacrebleu.sentence_bleu(out_of[<span class="s">"translate"</span>], [REF_TRANSLATE]).score</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span>lex_rows += [(<span class="s">"1"</span>, <span class="s">"dịch"</span>, <span class="s">"BLEU (0–100)"</span>, round(bleu, 1), 1)]</span></div>
+<div class="ln on"><b><span class="n">8</span></b><span><span class="k">assert</span> 0 &lt;= bleu &lt;= 100 <span class="k">and</span> all(0 &lt;= v.fmeasure &lt;= 1 <span class="k">for</span> v <span class="k">in</span> rouge.values())</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span><span class="c"># Kiểm lại ngoài notebook (cùng sacrebleu 2.6.0):</span></span></div>
+<div class="ln"><b></b><span><span class="c"># b = sacrebleu.sentence_bleu(hyp, [ref])</span></span></div>
+<div class="ln"><b></b><span><span class="c"># b.counts    = [4, 2, 1, 0]</span></span></div>
+<div class="ln"><b></b><span><span class="c"># b.totals    = [7, 6, 5, 4]</span></span></div>
+<div class="ln"><b></b><span><span class="c"># b.precisions= [57.14, 33.33, 20.0, 12.5]</span></span></div>
+<div class="ln"><b></b><span><span class="c"># b.bp = 1.0, sys_len = 7, ref_len = 7, score = 26.27</span></span></div></div><div class="th"><div class="hdr"><span>#</span><span>Lý thuyết · giải thích</span><span>Trace trên ví dụ thật</span></div>
+<div class="st"><span class="n">1</span><div><div class="f">hypothesis, tham chiếu</div><div class="e">Tham chiếu ghi sẵn trước khi chạy.</div></div><div class="tr">hyp, ref: mỗi bên 1 câu</div></div>
+<div class="st"><span class="n">2</span><div><div class="f">tách từ 13a, giữ hoa thường</div><div class="e">Mặc định sacreBLEU: tách dấu câu, <b>phân biệt hoa thường</b>.</div></div><div class="tr">hyp: Today the weather is very beautiful .<br>ref: The weather is very nice today .</div></div>
+<div class="st"><span class="n">3</span><div><div class="f">pₙ = Σ min(c_hyp, c_ref) / số n-gram hyp</div><div class="e">Đếm "cắt" (clipped): một n-gram chỉ được tính tối đa số lần nó có trong tham chiếu.</div></div><div class="tr">1-gram: weather, is, very, . → 4/7<br>"Today" ≠ "today", "the" ≠ "The"</div></div>
+<div class="st"><span class="n">4</span><div><div class="f">n = 2, 3</div><div class="e"></div></div><div class="tr">2-gram: weather is, is very → 2/6<br>3-gram: weather is very → 1/5</div></div>
+<div class="st"><span class="n">5</span><div><div class="f">n = 4: 0 trùng → smoothing "exp"</div><div class="e">Không làm trơn thì ln 0 = −∞, BLEU = 0. Mặc định: 1 / (2 · 4).</div></div><div class="tr">0/4 → 1/8 = 12.5%</div></div>
+<div class="st"><span class="n">6</span><div><div class="f">BP = min(1, e<sup>1 − r/c</sup>)</div><div class="e">Phạt câu dịch ngắn hơn tham chiếu (c = độ dài hyp, r = ref).</div></div><div class="tr">c = r = 7 → BP = 1</div></div>
+<div class="st"><span class="n">7</span><div><div class="f">BLEU = 100 · BP · exp(Σₙ ln pₙ / 4)</div><div class="e">Trung bình nhân 4 độ chính xác.</div></div><div class="tr">100 · exp((ln 0.571 + ln 0.333 + ln 0.2 + ln 0.125) / 4) = <b>26.27</b></div></div>
+<div class="st"><span class="n">8</span><div><div class="f">tự kiểm miền giá trị</div><div class="e"></div></div><div class="tr">0 ≤ 26.3 ≤ 100 ✓</div></div></div></div>
+  <div class="bot"><b class="t">Kết quả:</b> BLEU 26.3 dù câu dịch đúng nghĩa: khác chữ ("beautiful" / "nice") và khác hoa thường. n = 1, chỉ minh họa công thức. <span class="src">[Bổ sung: #36 Papineni 2002; #38 Post 2018]</span></div>
+  <div class="ft"><span class="dx">[đề xuất]</span>Nguồn: results/lexical_metrics.csv, tasks_outputs.csv · run 20261128_041850_normal<span class="pg">M8</span></div>
+</section>
+<section class="slide" style="--cw:780px">
+  <div class="hd"><span class="no">10</span>ROUGE-1 / 2 / L (bản tóm tắt)<small>cell 10.3b · rouge-score</small></div>
+  <div class="io"><div><span class="chip">INPUT</span><span><code>REF_SUMMARY</code>: bản tóm tắt mẫu nhóm viết trước khi chạy (41 từ) · <code>out_of["summary"]</code>: tóm tắt 1 câu của model, mục 1 (90 từ)</span></div><div class="out"><span class="chip">OUTPUT</span><span>mỗi loại: precision, recall, fmeasure</span></div></div>
+  <div class="main"><div class="code"><div class="cap">Code cell 10.3b (nguyên văn, bỏ docstring)</div>
+<div class="ln"><b></b><span><span class="k">from</span> rouge_score <span class="k">import</span> rouge_scorer</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span><span class="k">class</span> WsTokenizer:</span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>    <span class="k">def</span> tokenize(self, text: str) -&gt; list[str]:</span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>        <span class="k">return</span> norm_answer(text).split()</span></div>
+<div class="ln sp"></div>
+<div class="ln on"><b><span class="n">2</span></b><span>rouge = rouge_scorer.RougeScorer([<span class="s">"rouge1"</span>, <span class="s">"rouge2"</span>, <span class="s">"rougeL"</span>],</span></div>
+<div class="ln on"><b></b><span>    tokenizer=WsTokenizer()).score(REF_SUMMARY, out_of[<span class="s">"summary"</span>])</span></div>
+<div class="ln sp"></div>
+<div class="ln on"><b><span class="n">6</span></b><span>lex_rows += [(<span class="s">"1"</span>, <span class="s">"tóm tắt"</span>, f<span class="s">"{k.upper()} F1"</span>, round(v.fmeasure, 3), 1) <span class="k">for</span> k, v <span class="k">in</span> rouge.items()]</span></div>
+<div class="ln sp"></div>
+<div class="ln on"><b><span class="n">7</span></b><span><span class="k">assert</span> WsTokenizer().tokenize(<span class="s">"Học sâu, GPU!"</span>) == [<span class="s">"học"</span>, <span class="s">"sâu"</span>, <span class="s">"gpu"</span>]</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span><span class="c"># Kiểm lại ngoài notebook (rouge-score, cùng tokenizer):</span></span></div>
+<div class="ln"><b></b><span><span class="c"># rouge1 Score(precision=0.4000, recall=0.8780, fmeasure=0.5496)</span></span></div>
+<div class="ln"><b></b><span><span class="c"># rouge2 Score(precision=0.2472, recall=0.5500, fmeasure=0.3411)</span></span></div>
+<div class="ln"><b></b><span><span class="c"># rougeL Score(precision=0.3667, recall=0.8049, fmeasure=0.5038)</span></span></div></div><div class="th"><div class="hdr"><span>#</span><span>Lý thuyết · giải thích</span><span>Trace trên ví dụ thật</span></div>
+<div class="st"><span class="n">1</span><div><div class="f">tách từ theo khoảng trắng</div><div class="e">Tokenizer mặc định của rouge-score chỉ giữ a–z, 0–9 nên xoá chữ có dấu tiếng Việt.</div></div><div class="tr">ref 41 từ · output 90 từ</div></div>
+<div class="st"><span class="n">2</span><div><div class="f">score(target, prediction)</div><div class="e">Tham số đầu là bản <b>mẫu</b>. Đảo thứ tự thì P và R đổi chỗ, F1 không đổi.</div></div><div class="tr">target = REF_SUMMARY</div></div>
+<div class="st"><span class="n">3</span><div><div class="f">ROUGE-1: từ đơn trùng (multiset)</div><div class="e">P = trùng / |output| · R = trùng / |mẫu|.</div></div><div class="tr">36 từ trùng: P = 36/90 = 0.400<br>R = 36/41 = 0.878 → F1 <b>0.550</b></div></div>
+<div class="st"><span class="n">4</span><div><div class="f">ROUGE-2: cặp từ liền nhau trùng</div><div class="e">Output 89 bigram, mẫu 40 bigram.</div></div><div class="tr">22 trùng: P = 22/89 = 0.247<br>R = 22/40 = 0.550 → F1 <b>0.341</b></div></div>
+<div class="st"><span class="n">5</span><div><div class="f">ROUGE-L: LCS</div><div class="e">Chuỗi con chung dài nhất: giữ thứ tự, không cần liền nhau.</div></div><div class="tr">LCS = 33: P = 33/90 = 0.367<br>R = 33/41 = 0.805 → F1 <b>0.504</b></div></div>
+<div class="st"><span class="n">6</span><div><div class="f">F1 = 2PR / (P + R)</div><div class="e">Báo fmeasure (β = 1).</div></div><div class="tr">0.550 / 0.341 / 0.504</div></div>
+<div class="st"><span class="n">7</span><div><div class="f">tự kiểm tokenizer</div><div class="e">Giữ chữ có dấu, bỏ dấu câu.</div></div><div class="tr">["học", "sâu", "gpu"] ✓</div></div></div></div>
+  <div class="bot"><b class="t">Kết quả:</b> R cao (giữ gần đủ ý của bản mẫu), P thấp (output dài gấp 2.2 lần). n = 1, chỉ minh họa. <span class="src">[Bổ sung: #37 Lin 2004]</span></div>
+  <div class="ft"><span class="dx">[đề xuất]</span>Nguồn: results/lexical_metrics.csv, tasks_outputs.csv · run 20261128_041850_normal<span class="pg">M9</span></div>
+</section>
+<section class="slide" style="--cw:780px">
+  <div class="hd"><span class="no">10</span>Unit-test pass rate<small>cell 1.6 run_unit_tests</small></div>
+  <div class="io"><div><span class="chip">INPUT</span><span><code>src</code>: code Python model sinh (đã tách khỏi markdown bằng <code>extract_code</code>) · <code>UNIT_TESTS</code>: 7 cặp (x, kết quả đúng), viết trước khi chạy</span></div><div class="out"><span class="chip">OUTPUT</span><span>(số test qua, lỗi) mỗi lời giải → pass rate, all_pass</span></div></div>
+  <div class="main"><div class="code"><div class="cap">Code cell 1.6 (nguyên văn, bỏ docstring, show_input, show_table)</div>
+<div class="ln on"><b><span class="n">1</span></b><span>UNIT_TESTS = [(0, <span class="k">True</span>), (1, <span class="k">False</span>), (2, <span class="k">True</span>), (-3, <span class="k">False</span>), (-4, <span class="k">True</span>), (7, <span class="k">False</span>), (10**9, <span class="k">True</span>)]</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span><span class="k">def</span> run_unit_tests(src: str) -&gt; tuple[int, str]:</span></div>
+<div class="ln"><b></b><span>    <span class="c"># shortcut: exec không sandbox, chỉ hợp với hàm 1 dòng do model 1.5B sinh</span></span></div>
+<div class="ln on"><b><span class="n">2</span></b><span>    ns: dict = {}</span></div>
+<div class="ln"><b></b><span>    <span class="k">try</span>:</span></div>
+<div class="ln on"><b><span class="n">3</span></b><span>        exec(src, ns)</span></div>
+<div class="ln on"><b><span class="n">3</span></b><span>        f = ns[<span class="s">"is_even"</span>]</span></div>
+<div class="ln"><b></b><span>    <span class="k">except</span> Exception as e:</span></div>
+<div class="ln on"><b><span class="n">4</span></b><span>        <span class="k">return</span> 0, f<span class="s">"{type(e).__name__}: {e}"</span>[:120]</span></div>
+<div class="ln"><b></b><span>    passed = 0</span></div>
+<div class="ln on"><b><span class="n">5</span></b><span>    <span class="k">for</span> x, y <span class="k">in</span> UNIT_TESTS:</span></div>
+<div class="ln"><b></b><span>        <span class="k">try</span>:</span></div>
+<div class="ln on"><b><span class="n">5</span></b><span>            passed += bool(f(x) == y)</span></div>
+<div class="ln"><b></b><span>        <span class="k">except</span> Exception:</span></div>
+<div class="ln on"><b><span class="n">6</span></b><span>            pass</span></div>
+<div class="ln"><b></b><span>    <span class="k">return</span> passed, <span class="s">""</span></span></div>
+<div class="ln sp"></div>
+<div class="ln on"><b><span class="n">7</span></b><span>passk_df[<span class="s">"test_pass_rate"</span>] = passk_df[<span class="s">"n_pass"</span>] / len(UNIT_TESTS)</span></div>
+<div class="ln on"><b><span class="n">8</span></b><span>passk_df[<span class="s">"all_pass"</span>] = passk_df[<span class="s">"n_pass"</span>] == len(UNIT_TESTS)</span></div>
+<div class="ln on"><b><span class="n">9</span></b><span><span class="k">assert</span> run_unit_tests(<span class="s">"def is_even(n):\n    return n % 2 == 0\n"</span>) == (len(UNIT_TESTS), <span class="s">""</span>)</span></div></div><div class="th"><div class="hdr"><span>#</span><span>Lý thuyết · giải thích</span><span>Trace trên ví dụ thật</span></div>
+<div class="st"><span class="n">1</span><div><div class="f">bộ test cố định trước</div><div class="e">4 input của prompt + 3 ca khó: số âm chẵn, số âm lẻ, số rất lớn.</div></div><div class="tr">7 test</div></div>
+<div class="st"><span class="n">2</span><div><div class="f">namespace riêng</div><div class="e">Hàm của model chỉ nằm trong <code>ns</code>, không đè biến notebook.</div></div><div class="tr">ns = {}</div></div>
+<div class="st"><span class="n">3</span><div><div class="f">chạy code, lấy hàm</div><div class="e">Lỗi cú pháp hoặc sai tên hàm → nhảy sang except.</div></div><div class="tr">greedy: return n % 2 == 0<br>mẫu 1: if n % 2 == 0: return True …</div></div>
+<div class="st"><span class="n">4</span><div><div class="f">không chạy được ⇒ 0 test</div><div class="e">Ghi lại lỗi (cắt 120 ký tự).</div></div><div class="tr">0 lời giải lỗi</div></div>
+<div class="st"><span class="n">5</span><div><div class="f">đếm f(x) = y</div><div class="e"><code>bool</code> → 0/1 rồi cộng dồn.</div></div><div class="tr">-3 % 2 = 1 → False ✓ · 10⁹ % 2 = 0 → True ✓</div></div>
+<div class="st"><span class="n">6</span><div><div class="f">lỗi khi chạy 1 test ⇒ test đó trượt</div><div class="e">Không dừng các test còn lại.</div></div><div class="tr">—</div></div>
+<div class="st"><span class="n">7</span><div><div class="f">pass rate = số test qua / 7</div><div class="e">Chấm một lời giải.</div></div><div class="tr">11/11 lời giải: 7/7 = 1.0</div></div>
+<div class="st"><span class="n">8</span><div><div class="f">all_pass = qua cả 7 test</div><div class="e">Định nghĩa "đúng" cho Pass@k (M11).</div></div><div class="tr">greedy + 10 mẫu: True</div></div>
+<div class="st"><span class="n">9</span><div><div class="f">tự kiểm</div><div class="e">Lời giải chuẩn phải qua 7/7.</div></div><div class="tr">(7, "") ✓</div></div></div></div>
+  <div class="bot"><b class="t">Kết quả:</b> greedy 7/7 test · 10 mẫu lấy ngẫu nhiên đều 7/7. Cảnh báo an toàn: exec không sandbox, code khác phải chạy subprocess có timeout. <span class="src">[Bổ sung: #19 Chen et al. 2021, HumanEval]</span></div>
+  <div class="ft"><span class="dx">[đề xuất]</span>Nguồn: results/code_passk_samples.csv · run 20261128_041850_normal<span class="pg">M10</span></div>
+</section>
+<section class="slide" style="--cw:780px">
+  <div class="hd"><span class="no">10</span>Pass@k<small>cell 1.6 pass_at_k</small></div>
+  <div class="io"><div><span class="chip">INPUT</span><span><code>n</code> = 10 lời giải lấy mẫu (T = 0.8, top_p = 0.95, top_k = 0, seed cố định) · <code>c</code> = số lời giải all_pass · <code>k</code> ∈ {1, 5}</span></div><div class="out"><span class="chip">OUTPUT</span><span>Pass@1, Pass@5 ∈ [0, 1]</span></div></div>
+  <div class="main"><div class="code"><div class="cap">Code cell 1.6 (nguyên văn, bỏ docstring, show_input, show_table)</div>
+<div class="ln"><b></b><span><span class="k">from</span> math <span class="k">import</span> comb</span></div>
+<div class="ln"><b></b><span>PASSK_N = 10</span></div>
+<div class="ln"><b></b><span>PASSK_SAMPLING = dict(do_sample=<span class="k">True</span>, temperature=0.8, top_p=0.95, top_k=0)</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span><span class="k">def</span> pass_at_k(n: int, c: int, k: int) -&gt; float:</span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>    <span class="k">if</span> n - c &lt; k:</span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>        <span class="k">return</span> 1.0</span></div>
+<div class="ln on"><b><span class="n">2</span></b><span>    <span class="k">return</span> 1.0 - comb(n - c, k) / comb(n, k)</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span>torch.manual_seed(SEED)</span></div>
+<div class="ln on"><b><span class="n">3</span></b><span>outs = model.generate(**code_enc, max_new_tokens=code_task[<span class="s">"max_new_tokens"</span>],</span></div>
+<div class="ln on"><b></b><span>    num_return_sequences=PASSK_N,</span></div>
+<div class="ln on"><b><span class="n">3</span></b><span>                      repetition_penalty=1.0, pad_token_id=tok.pad_token_id, **PASSK_SAMPLING)</span></div>
+<div class="ln on"><b><span class="n">4</span></b><span>sampled = passk_df.iloc[1:]</span></div>
+<div class="ln on"><b><span class="n">4</span></b><span>c_ok = int(sampled[<span class="s">"all_pass"</span>].sum())</span></div>
+<div class="ln on"><b><span class="n">5</span></b><span>... + [(f<span class="s">"Pass@{k}"</span>, round(pass_at_k(PASSK_N, c_ok, k), 3)) <span class="k">for</span> k <span class="k">in</span> PASSK_KS]</span></div>
+<div class="ln sp"></div>
+<div class="ln on"><b><span class="n">6</span></b><span><span class="k">assert</span> abs(pass_at_k(10, 3, 1) - 0.3) &lt; 1e-12 <span class="k">and</span> abs(pass_at_k(10, 3, 5) - (1 - 21 / 252)) &lt; 1e-12</span></div>
+<div class="ln on"><b><span class="n">7</span></b><span><span class="k">assert</span> pass_at_k(10, 0, 5) == 0.0 <span class="k">and</span> pass_at_k(10, 6, 5) == 1.0</span></div></div><div class="th"><div class="hdr"><span>#</span><span>Lý thuyết · giải thích</span><span>Trace trên ví dụ thật</span></div>
+<div class="st"><span class="n">1</span><div><div class="f">n − c &lt; k ⇒ Pass@k = 1</div><div class="e">Số mẫu sai ít hơn k: mọi nhóm k mẫu đều chứa ≥ 1 mẫu đúng. Cũng tránh comb(n−c, k) với n−c &lt; k.</div></div><div class="tr">n − c = 10 − 10 = 0 &lt; 1 → 1.0</div></div>
+<div class="st"><span class="n">2</span><div><div class="f">Pass@k = 1 − C(n−c, k) / C(n, k)</div><div class="e">C(n−c, k)/C(n, k): xác suất chọn k mẫu toàn sai. Ước lượng không chệch; công thức 1 − (1 − c/n)<sup>k</sup> bị chệch [#19].</div></div><div class="tr">ví dụ n = 10, c = 3, k = 5:<br>1 − C(7,5)/C(10,5) = 1 − 21/252 = 0.917</div></div>
+<div class="st"><span class="n">3</span><div><div class="f">n mẫu độc lập, cùng prompt</div><div class="e">Một lần generate trả 10 chuỗi; seed cố định để chạy lại ra như nhau.</div></div><div class="tr">outs.shape[0] = 10</div></div>
+<div class="st"><span class="n">4</span><div><div class="f">c = Σ all_pass (bỏ dòng greedy)</div><div class="e">Dòng 0 là lời giải greedy (M10), không tính vào n.</div></div><div class="tr">c_ok = 10</div></div>
+<div class="st"><span class="n">5</span><div><div class="f">Pass@1, Pass@5</div><div class="e"></div></div><div class="tr">Pass@1 = Pass@5 = <b>1.0</b></div></div>
+<div class="st"><span class="n">6</span><div><div class="f">tự kiểm k = 1: Pass@1 = c/n</div><div class="e">1 − (n−c)/n = c/n.</div></div><div class="tr">0.3 ✓ · 0.9167 ✓</div></div>
+<div class="st"><span class="n">7</span><div><div class="f">biên: c = 0 → 0 · n − c &lt; k → 1</div><div class="e"></div></div><div class="tr">0.0 ✓ · 1.0 ✓</div></div></div></div>
+  <div class="bot"><b class="t">Kết quả:</b> 10/10 mẫu đúng → Pass@1 = Pass@5 = 1.0: bài is_even quá dễ nên bão hòa, chỉ minh họa công thức; muốn so model cần bộ như HumanEval. <span class="src">[Bổ sung: #19 Chen et al. 2021]</span></div>
+  <div class="ft"><span class="dx">[đề xuất]</span>Nguồn: results/code_passk_summary.csv · run 20261128_041850_normal<span class="pg">M11</span></div>
+</section>
+<section class="slide" style="--cw:780px">
+  <div class="hd"><span class="no">10</span>DeepEval: Answer Relevancy, Faithfulness, Hallucination<small>cell 10.3c · deepeval 4.3.5</small></div>
+  <div class="io"><div><span class="chip">INPUT</span><span>Ví dụ câu <code>0007-0002-0008</code>: <code>input</code> = "Trên thực tế, Nam Ossetia thuộc chủ quyền quốc gia nào?" · <code>actual_output</code> (RAG) = "Nam Ossetia thuộc chủ quyền của Nga." · đáp án "Gruzia" · <code>context</code> = đoạn gốc · <code>retrieval_context</code> = 3 đoạn TF-IDF tìm được (không có đoạn gốc, hit@3 = False) · giám khảo gpt-6.2-sol</span></div><div class="out"><span class="chip">OUTPUT</span><span><code>metric.score</code> ∈ [0, 1], <code>success</code> = score ≥ 0.5</span></div></div>
+  <div class="main"><div class="code"><div class="cap">Code cell 10.3c (nguyên văn, bỏ phần dựng giám khảo, show_input, log)</div>
+<div class="ln"><b></b><span>de_cases = rag_df.merge(qa_df[[<span class="s">"id"</span>, <span class="s">"context"</span>, <span class="s">"top3_doc_ids"</span>]], on=<span class="s">"id"</span>)</span></div>
+<div class="ln"><b></b><span><span class="k">for</span> r <span class="k">in</span> de_cases.itertuples():</span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>    tests = [(<span class="s">"Answer Relevancy"</span>, AnswerRelevancyMetric, LLMTestCase(input=r.question,</span></div>
+<div class="ln on"><b></b><span>        actual_output=r.output)),</span></div>
+<div class="ln on"><b><span class="n">2</span></b><span>             (<span class="s">"Hallucination"</span>, HallucinationMetric, LLMTestCase(input=r.question,</span></div>
+<div class="ln on"><b></b><span>                 actual_output=r.output, context=[r.context]))]</span></div>
+<div class="ln"><b></b><span>    <span class="k">if</span> r.mode == <span class="s">"rag"</span>:</span></div>
+<div class="ln on"><b><span class="n">3</span></b><span>        tests.append((<span class="s">"Faithfulness"</span>, partial(FaithfulnessMetric, truths_extraction_limit=10),</span></div>
+<div class="ln on"><b></b><span>            LLMTestCase(</span></div>
+<div class="ln on"><b><span class="n">3</span></b><span>            input=r.question, actual_output=r.output,</span></div>
+<div class="ln on"><b></b><span>                retrieval_context=[corpus[<span class="s">"context"</span>][d] <span class="k">for</span> d <span class="k">in</span> r.top3_doc_ids])))</span></div>
+<div class="ln"><b></b><span>    <span class="k">for</span> name, Metric, case <span class="k">in</span> tests:</span></div>
+<div class="ln"><b></b><span>        de_jobs.append(({<span class="s">"id"</span>: r.id, <span class="s">"mode"</span>: r.mode, ..., <span class="s">"metric"</span>: name}, Metric, case))</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span><span class="k">def</span> deepeval_once(job):</span></div>
+<div class="ln"><b></b><span>    info, Metric, case = job</span></div>
+<div class="ln on"><b><span class="n">4</span></b><span>    metric = Metric(threshold=DE_THRESHOLD, model=judge, include_reason=<span class="k">False</span>, async_mode=<span class="k">False</span>)</span></div>
+<div class="ln"><b></b><span>    <span class="k">try</span>:</span></div>
+<div class="ln on"><b><span class="n">5</span></b><span>        metric.measure(case, _show_indicator=<span class="k">False</span>)</span></div>
+<div class="ln on"><b><span class="n">5</span></b><span>        <span class="k">return</span> {**info, <span class="s">"score"</span>: metric.score, <span class="s">"success"</span>: metric.success, <span class="s">"error"</span>: <span class="s">""</span>}</span></div>
+<div class="ln"><b></b><span>    <span class="k">except</span> Exception as e:</span></div>
+<div class="ln on"><b><span class="n">6</span></b><span>        <span class="k">return</span> {**info, <span class="s">"score"</span>: <span class="k">None</span>, <span class="s">"success"</span>: <span class="k">None</span>, <span class="s">"error"</span>: f<span class="s">"{type(e).__name__}: {e}"</span>[:200]}</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span><span class="k">with</span> ThreadPoolExecutor(JUDGE_WORKERS) as ex:</span></div>
+<div class="ln on"><b><span class="n">7</span></b><span>    de_rows = list(ex.map(deepeval_once, de_jobs))</span></div>
+<div class="ln on"><b><span class="n">8</span></b><span>de_sum = de_df.groupby([<span class="s">"metric"</span>, <span class="s">"mode"</span>], sort=<span class="k">False</span>).agg(score_mean=(<span class="s">"score"</span>, <span class="s">"mean"</span>), ...)</span></div>
+<div class="ln on"><b><span class="n">8</span></b><span><span class="k">assert</span> len(de_df) == 2 * len(rag_df) + (rag_df[<span class="s">"mode"</span>] == <span class="s">"rag"</span>).sum()</span></div></div><div class="th"><div class="hdr"><span>#</span><span>Lý thuyết · giải thích</span><span>Trace trên ví dụ thật</span></div>
+<div class="st"><span class="n">1</span><div><div class="f">AR = (statement yes + idk) / tổng statement</div><div class="e">Giám khảo tách output thành các ý, hỏi từng ý có trả lời câu hỏi không. <b>Không</b> đo đúng sai.</div></div><div class="tr">output nói đúng trọng tâm câu hỏi → <b>1.0</b></div></div>
+<div class="st"><span class="n">2</span><div><div class="f">Hall. = đoạn khớp / tổng đoạn (4.3.5: cao = tốt)</div><div class="e">So với <b>đoạn gốc đúng</b>; mỗi câu có 1 đoạn nên điểm 0 hoặc 1.</div></div><div class="tr">trái đáp án của đoạn gốc (Gruzia) → <b>0.0</b></div></div>
+<div class="st"><span class="n">3</span><div><div class="f">Faith. = (claim yes + idk) / tổng claim</div><div class="e">So với <b>3 đoạn RAG tìm được</b>; chỉ chế độ RAG. Rút tối đa 10 truths để JSON không bị cắt.</div></div><div class="tr">giám khảo thấy không trái 3 đoạn tìm được → <b>1.0</b></div></div>
+<div class="st"><span class="n">4</span><div><div class="f">giám khảo ≠ model được chấm</div><div class="e">Mỗi job tạo metric mới để chạy song song an toàn; threshold 0.5.</div></div><div class="tr">judge = gpt-6.2-sol, temperature 0</div></div>
+<div class="st"><span class="n">5</span><div><div class="f">measure → score, success</div><div class="e">DeepEval gửi prompt cho giám khảo, đọc JSON verdict, tính tỉ lệ.</div></div><div class="tr">AR 1.0 ✓ · Hall. 0.0 ✗ · Faith. 1.0 ✓</div></div>
+<div class="st"><span class="n">6</span><div><div class="f">lỗi JSON ⇒ ghi lại, không bỏ im lặng</div><div class="e">Assert: tỉ lệ lỗi ≤ 10%.</div></div><div class="tr">0 lỗi / 90 job</div></div>
+<div class="st"><span class="n">7</span><div><div class="f">16 luồng song song, giữ thứ tự</div><div class="e"></div></div><div class="tr">36 output: 2·36 + 18 = 90 job</div></div>
+<div class="st"><span class="n">8</span><div><div class="f">trung bình theo (metric, chế độ)</div><div class="e"></div></div><div class="tr">Hall.: không RAG 0.833 → RAG 0.889</div></div></div></div>
+  <div class="bot"><b class="t">Kết quả:</b> AR 0.556 → 0.861 · Hall. 0.833 → 0.889 · Faith. 0.889 (n = 18). Ví dụ: RAG tìm sai đoạn → bám tài liệu (Faith. 1.0) nhưng trái sự thật (Hall. 0.0). <span class="src">[Bổ sung: #31 Zheng 2023; DeepEval docs]</span></div>
+  <div class="ft"><span class="dx">[đề xuất]</span>Nguồn: results/deepeval_scores.csv, deepeval_summary.csv, rag_results.csv · run 20261128_041850_normal<span class="pg">M12</span></div>
+</section>
+<section class="slide" style="--cw:780px">
+  <div class="hd"><span class="no">10</span>G-Eval: chấm theo rubric, trung bình 20 lần<small>cell 10.3d · deepeval GEval</small></div>
+  <div class="io"><div><span class="chip">INPUT</span><span>Ví dụ câu <code>0014-0004-0002</code>, tiêu chí Correctness: <code>input</code> = câu hỏi · <code>actual_output</code> = output (không RAG / RAG) · <code>expected_output</code> = "phải thông qua Hội đồng / thông qua Hội đồng" · <code>steps</code> = bước chấm nhóm viết sẵn</span></div><div class="out"><span class="chip">OUTPUT</span><span>điểm 0–1 mỗi lần; trung bình, độ lệch chuẩn 20 lần</span></div></div>
+  <div class="main"><div class="code"><div class="cap">Code cell 10.3d (nguyên văn, chỉ giữ 1 tiêu chí của GEVAL_SPECS, bỏ show_input, log)</div>
+<div class="ln"><b></b><span>GEVAL_SPECS = {</span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>    <span class="s">"Correctness"</span>: ([</span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>        <span class="s">"Compare the facts in 'actual output' with 'expected output'."</span>,</span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>        <span class="s">"Heavily penalize any fact that contradicts 'expected output'."</span>,</span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>        <span class="s">"Extra wording is fine if it does not change or contradict the expected facts."</span>,</span></div>
+<div class="ln on"><b><span class="n">2</span></b><span>    ], [P.INPUT, P.ACTUAL_OUTPUT, P.EXPECTED_OUTPUT]),</span></div>
+<div class="ln"><b></b><span>    ...}</span></div>
+<div class="ln on"><b><span class="n">3</span></b><span>GEVAL_N = 1 <span class="k">if</span> JUDGE_BACKEND == <span class="s">"local"</span> <span class="k">else</span> (2 <span class="k">if</span> SMOKE <span class="k">else</span> 20)</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span><span class="k">def</span> geval_once(job):</span></div>
+<div class="ln"><b></b><span>    case, crit = job</span></div>
+<div class="ln"><b></b><span>    steps, params = GEVAL_SPECS[crit]</span></div>
+<div class="ln on"><b><span class="n">4</span></b><span>    metric = GEval(name=crit, evaluation_steps=steps, evaluation_params=params, model=judge,</span></div>
+<div class="ln on"><b><span class="n">4</span></b><span>                   threshold=DE_THRESHOLD, async_mode=<span class="k">False</span>)</span></div>
+<div class="ln"><b></b><span>    <span class="k">try</span>:</span></div>
+<div class="ln on"><b><span class="n">5</span></b><span>        metric.measure(case, _show_indicator=<span class="k">False</span>)</span></div>
+<div class="ln on"><b><span class="n">5</span></b><span>        <span class="k">return</span> metric.score, <span class="s">""</span></span></div>
+<div class="ln"><b></b><span>    <span class="k">except</span> Exception as e:</span></div>
+<div class="ln"><b></b><span>        <span class="k">return</span> <span class="k">None</span>, f<span class="s">"{type(e).__name__}: {e}"</span>[:200]</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span><span class="k">for</span> muc, group, cid, inp, out, exp, crits <span class="k">in</span> ge_cases:</span></div>
+<div class="ln on"><b><span class="n">6</span></b><span>    case = LLMTestCase(input=inp, actual_output=out, expected_output=exp)</span></div>
+<div class="ln"><b></b><span>    <span class="k">for</span> c <span class="k">in</span> crits:</span></div>
+<div class="ln on"><b><span class="n">6</span></b><span>        <span class="k">for</span> k <span class="k">in</span> range(GEVAL_N):</span></div>
+<div class="ln on"><b><span class="n">6</span></b><span>            jobs.append((case, c))</span></div>
+<div class="ln on"><b><span class="n">7</span></b><span>ge_df = ge_raw.groupby([<span class="s">"muc"</span>, <span class="s">"group"</span>, <span class="s">"id"</span>, <span class="s">"metric"</span>], sort=<span class="k">False</span>).agg(score=(<span class="s">"score"</span>, <span class="s">"mean"</span>),</span></div>
+<div class="ln on"><b></b><span>    score_std=(<span class="s">"score"</span>, <span class="s">"std"</span>), ...)</span></div>
+<div class="ln on"><b><span class="n">8</span></b><span>ge_df[<span class="s">"success"</span>] = ge_df[<span class="s">"score"</span>] &gt;= DE_THRESHOLD</span></div></div><div class="th"><div class="hdr"><span>#</span><span>Lý thuyết · giải thích</span><span>Trace trên ví dụ thật</span></div>
+<div class="st"><span class="n">1</span><div><div class="f">rubric = các bước chấm</div><div class="e">Nhóm viết sẵn, không để giám khảo tự sinh bước: ít lần gọi, chạy lại ra như nhau, người đọc kiểm được.</div></div><div class="tr">3 bước cho Correctness</div></div>
+<div class="st"><span class="n">2</span><div><div class="f">trường dữ liệu giám khảo được xem</div><div class="e">Correctness cần đáp án; Coherence chỉ cần input + output.</div></div><div class="tr">input, actual_output, expected_output</div></div>
+<div class="st"><span class="n">3</span><div><div class="f">N lần chấm</div><div class="e">N từ chạy thử 20261128_040436_pilot: σ lớn nhất 0.105 → N ≥ 18 để σ/√N ≤ 0.025.</div></div><div class="tr">N = 20 (API)</div></div>
+<div class="st"><span class="n">4</span><div><div class="f">GEval(name, steps, params)</div><div class="e">Giám khảo cho điểm 0–10; DeepEval chia 10 → 0–1.</div></div><div class="tr">judge = gpt-6.2-sol</div></div>
+<div class="st"><span class="n">5</span><div><div class="f">score = Σₛ P(s) · s (bài gốc)</div><div class="e">Bài gốc lấy kỳ vọng theo log-prob. API không trả log-prob → lấy mẫu 20 lần rồi trung bình để xấp xỉ.</div></div><div class="tr">không RAG "phải ký tên…": 20 lần đều 0.0<br>RAG "phải thông qua Hội đồng": 20 lần đều 1.0</div></div>
+<div class="st"><span class="n">6</span><div><div class="f">mỗi (output, tiêu chí) × N job</div><div class="e">Cùng case lặp N lần.</div></div><div class="tr">1 output × 1 tiêu chí → 20 job</div></div>
+<div class="st"><span class="n">7</span><div><div class="f">điểm = mean, độ dao động = std</div><div class="e">std lớn = giám khảo không chắc.</div></div><div class="tr">mean 0.0 / 1.0 · std 0.0</div></div>
+<div class="st"><span class="n">8</span><div><div class="f">đạt ⇔ điểm ≥ 0.5</div><div class="e"></div></div><div class="tr">không RAG ✗ · RAG ✓</div></div></div></div>
+  <div class="bot"><b class="t">Kết quả:</b> mục 5 Instruction following: base 0.164 → Instruct 0.990 · mục 1 Correctness: tóm tắt 0.85, dịch 0.835. <span class="src">[Bổ sung: #39 Liu 2023 G-Eval]</span></div>
+  <div class="ft"><span class="dx">[đề xuất]</span>Nguồn: results/geval_samples.csv, geval_summary.csv · run 20261128_041850_normal<span class="pg">M13</span></div>
+</section>
+<section class="slide" style="--cw:780px">
+  <div class="hd"><span class="no">10</span>Hiệu quả thực thi: TTFT, latency, throughput, VRAM, cost<small>cell 6.6</small></div>
+  <div class="io"><div><span class="chip">INPUT</span><span>Ví dụ prompt "ngắn (6.3)": <code>enc</code> = 42 token input (đã qua chat template) · <code>max_new</code> = 60 · model fp16 trên 1 GPU T4 · greedy, batch 1 · <code>EFF_RUNS</code> = 5</span></div><div class="out"><span class="chip">OUTPUT</span><span>giây, token/s, GiB, GPU-giây / yêu cầu</span></div></div>
+  <div class="main"><div class="code"><div class="cap">Code cell 6.6 (nguyên văn, bỏ show_input, show_table)</div>
+<div class="ln"><b></b><span><span class="k">def</span> timed_generate(enc, max_new: int) -&gt; tuple[float, int]:</span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>    cuda_sync()</span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>    t0 = time.perf_counter()</span></div>
+<div class="ln"><b></b><span>    <span class="k">with</span> torch.no_grad():</span></div>
+<div class="ln"><b></b><span>        out = model.generate(**enc, max_new_tokens=max_new, do_sample=<span class="k">False</span>, temperature=<span class="k">None</span>,</span></div>
+<div class="ln"><b></b><span>                             top_p=<span class="k">None</span>, top_k=<span class="k">None</span>, repetition_penalty=1.0,</span></div>
+<div class="ln"><b></b><span>                             pad_token_id=tok.pad_token_id)</span></div>
+<div class="ln on"><b><span class="n">1</span></b><span>    cuda_sync()</span></div>
+<div class="ln on"><b><span class="n">2</span></b><span>    <span class="k">return</span> time.perf_counter() - t0, out.shape[1] - enc[<span class="s">"input_ids"</span>].shape[1]</span></div>
+<div class="ln sp"></div>
+<div class="ln"><b></b><span><span class="k">for</span> name, (prompt, max_new) <span class="k">in</span> EFF_PROMPTS.items():</span></div>
+<div class="ln"><b></b><span>    enc = tok.apply_chat_template([{<span class="s">"role"</span>: <span class="s">"user"</span>, <span class="s">"content"</span>: prompt}], add_generation_prompt=<span class="k">True</span>,</span></div>
+<div class="ln"><b></b><span>                                  return_tensors=<span class="s">"pt"</span>, return_dict=<span class="k">True</span>).to(model.device)</span></div>
+<div class="ln on"><b><span class="n">3</span></b><span>    timed_generate(enc, 8)</span></div>
+<div class="ln on"><b><span class="n">3</span></b><span>    torch.cuda.reset_peak_memory_stats(0)</span></div>
+<div class="ln on"><b><span class="n">4</span></b><span>    ttft = float(np.median([timed_generate(enc, 1)[0] <span class="k">for</span> _ <span class="k">in</span> range(EFF_RUNS)]))</span></div>
+<div class="ln"><b></b><span>    runs = [timed_generate(enc, max_new) <span class="k">for</span> _ <span class="k">in</span> range(EFF_RUNS)]</span></div>
+<div class="ln on"><b><span class="n">5</span></b><span>    lat = float(np.median([r[0] <span class="k">for</span> r <span class="k">in</span> runs]))</span></div>
+<div class="ln on"><b><span class="n">5</span></b><span>    n_out = int(np.median([r[1] <span class="k">for</span> r <span class="k">in</span> runs]))</span></div>
+<div class="ln on"><b><span class="n">6</span></b><span>    <span class="s">"ttft_s"</span>: ttft, <span class="s">"latency_s"</span>: lat, <span class="s">"throughput_tok_s"</span>: n_out / lat,</span></div>
+<div class="ln on"><b><span class="n">6</span></b><span>    <span class="s">"decode_tok_s"</span>: (n_out - 1) / (lat - ttft) <span class="k">if</span> n_out &gt; 1 <span class="k">else</span> float(<span class="s">"nan"</span>),</span></div>
+<div class="ln on"><b><span class="n">7</span></b><span>    <span class="s">"vram_peak_gb"</span>: torch.cuda.max_memory_allocated(0) / 1024**3,</span></div>
+<div class="ln on"><b><span class="n">8</span></b><span>    <span class="s">"gpu_s_per_request"</span>: lat,</span></div>
+<div class="ln on"><b><span class="n">8</span></b><span>    <span class="s">"usd_per_request"</span>: lat / 3600 * GPU_USD_PER_HOUR <span class="k">if</span> GPU_USD_PER_HOUR <span class="k">else</span> <span class="k">None</span>,</span></div></div><div class="th"><div class="hdr"><span>#</span><span>Lý thuyết · giải thích</span><span>Trace trên ví dụ thật</span></div>
+<div class="st"><span class="n">1</span><div><div class="f">đo đúng thời gian GPU</div><div class="e">CUDA chạy bất đồng bộ: thiếu synchronize thì đồng hồ dừng khi GPU chưa tính xong.</div></div><div class="tr">perf_counter: đồng hồ độ phân giải cao</div></div>
+<div class="st"><span class="n">2</span><div><div class="f">n_out = |output| − |input|</div><div class="e"><code>generate</code> trả cả prompt.</div></div><div class="tr">102 − 42 = 60 token</div></div>
+<div class="st"><span class="n">3</span><div><div class="f">chạy nóng, reset đỉnh VRAM</div><div class="e">Lần đầu còn nạp kernel → chậm, bỏ.</div></div><div class="tr">1 lần, 8 token</div></div>
+<div class="st"><span class="n">4</span><div><div class="f">TTFT ≈ thời gian generate 1 token</div><div class="e">Gồm prefill: đọc cả 42 token prompt rồi sinh token đầu. Trung vị 5 lần.</div></div><div class="tr"><b>0.044 s</b></div></div>
+<div class="st"><span class="n">5</span><div><div class="f">latency = thời gian sinh xong</div><div class="e">Trung vị: ít bị 1 lần lệch kéo theo.</div></div><div class="tr"><b>2.304 s</b> cho 60 token</div></div>
+<div class="st"><span class="n">6</span><div><div class="f">throughput = n_out / latency<br>decode = (n_out − 1)/(latency − TTFT)</div><div class="e">Decode bỏ phần prefill: tốc độ sinh từng token thuần.</div></div><div class="tr">60 / 2.304 = <b>26.0 tok/s</b><br>59 / 2.260 = 26.1 tok/s</div></div>
+<div class="st"><span class="n">7</span><div><div class="f">VRAM đỉnh (GiB = 1024³ byte)</div><div class="e">Từ lúc reset: trọng số + KV cache + activation.</div></div><div class="tr"><b>2.89 GiB</b> (T4 có ≈ 15 GiB)</div></div>
+<div class="st"><span class="n">8</span><div><div class="f">cost = GPU-giây / yêu cầu</div><div class="e">Kaggle miễn phí: <code>GPU_USD_PER_HOUR = None</code> nên không quy USD.</div></div><div class="tr">2.30 GPU-giây</div></div></div></div>
+  <div class="bot"><b class="t">Kết quả:</b> TTFT 0.044–0.048 s · latency: ngắn 2.30 s (60 token), tóm tắt 3.47 s (90), sinh mã 8.47 s (219) · ≈ 26 token/s · VRAM 2.90 GiB. <span class="src">Định nghĩa: [cần chốt nguồn]</span></div>
+  <div class="ft"><span class="dx">[đề xuất]</span>Nguồn: outputs/logs/20261127_234527_normal/vram_ref_efficiency.csv · run 20261127_234527_normal<span class="pg">M14</span></div>
+</section>
+</body>
+</html>

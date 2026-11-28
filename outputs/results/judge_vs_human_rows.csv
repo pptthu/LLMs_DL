@@ -1,0 +1,265 @@
+scope,id,mode,judge,metric,label,human_ok,score,judge_ok,agree
+8,0014-0004-0002,no_rag,DeepEval,Answer Relevancy,Sai,True,1.0,True,True
+8,0014-0004-0002,rag,DeepEval,Answer Relevancy,Đúng,True,1.0,True,True
+8,0015-0028-0002,no_rag,DeepEval,Answer Relevancy,Từ chối,True,1.0,True,True
+8,0015-0028-0002,rag,DeepEval,Answer Relevancy,Đúng,True,1.0,True,True
+8,0004-0049-0002,no_rag,DeepEval,Answer Relevancy,Từ chối,True,0.0,False,False
+8,0004-0049-0002,rag,DeepEval,Answer Relevancy,Đúng,True,1.0,True,True
+8,0006-0008-0001,no_rag,DeepEval,Answer Relevancy,Từ chối,True,0.0,False,False
+8,0006-0008-0001,rag,DeepEval,Answer Relevancy,Từ chối,True,0.0,False,False
+8,0012-0034-0001,no_rag,DeepEval,Answer Relevancy,Từ chối,True,1.0,True,True
+8,0012-0034-0001,rag,DeepEval,Answer Relevancy,Đúng,True,1.0,True,True
+8,0001-0064-0006,no_rag,DeepEval,Answer Relevancy,Từ chối,True,0.0,False,False
+8,0001-0064-0006,rag,DeepEval,Answer Relevancy,Đúng,True,1.0,True,True
+8,0007-0002-0008,no_rag,DeepEval,Answer Relevancy,Từ chối,True,0.0,False,False
+8,0007-0002-0008,rag,DeepEval,Answer Relevancy,Sai,True,1.0,True,True
+8,0001-0025-0004,no_rag,DeepEval,Answer Relevancy,Từ chối,True,0.0,False,False
+8,0001-0025-0004,rag,DeepEval,Answer Relevancy,Sai,True,1.0,True,True
+8,0019-0036-0002,no_rag,DeepEval,Answer Relevancy,Từ chối,True,0.0,False,False
+8,0019-0036-0002,rag,DeepEval,Answer Relevancy,Đúng,True,1.0,True,True
+8,0014-0017-0006,no_rag,DeepEval,Answer Relevancy,Từ chối,True,1.0,True,True
+8,0014-0017-0006,rag,DeepEval,Answer Relevancy,Sai,True,1.0,True,True
+8,0013-0004-0009,no_rag,DeepEval,Answer Relevancy,Từ chối,True,0.0,False,False
+8,0013-0004-0009,rag,DeepEval,Answer Relevancy,Đúng,True,1.0,True,True
+8,0001-0051-0006,no_rag,DeepEval,Answer Relevancy,Từ chối,True,1.0,True,True
+8,0001-0051-0006,rag,DeepEval,Answer Relevancy,Đúng,True,1.0,True,True
+8,0009-0012-0001,no_rag,DeepEval,Answer Relevancy,Từ chối,True,0.0,False,False
+8,0009-0012-0001,rag,DeepEval,Answer Relevancy,Đúng,True,1.0,True,True
+8,0013-0006-0001,no_rag,DeepEval,Answer Relevancy,Từ chối,True,1.0,True,True
+8,0013-0006-0001,rag,DeepEval,Answer Relevancy,Đúng,True,1.0,True,True
+8,0015-0030-0005,no_rag,DeepEval,Answer Relevancy,Từ chối,True,1.0,True,True
+8,0015-0030-0005,rag,DeepEval,Answer Relevancy,Từ chối,True,1.0,True,True
+8,0015-0025-0001,no_rag,DeepEval,Answer Relevancy,Từ chối,True,0.0,False,False
+8,0015-0025-0001,rag,DeepEval,Answer Relevancy,Sai,True,1.0,True,True
+8,0004-0017-0004,no_rag,DeepEval,Answer Relevancy,Từ chối,True,0.0,False,False
+8,0004-0017-0004,rag,DeepEval,Answer Relevancy,Từ chối,True,0.0,False,False
+8,0001-0033-0004,no_rag,DeepEval,Answer Relevancy,Từ chối,True,0.0,False,False
+8,0001-0033-0004,rag,DeepEval,Answer Relevancy,Sai,False,0.75,True,False
+8,0014-0004-0002,no_rag,DeepEval,Hallucination,Sai,False,0.0,False,True
+8,0014-0004-0002,rag,DeepEval,Hallucination,Đúng,True,1.0,True,True
+8,0015-0028-0002,no_rag,DeepEval,Hallucination,Từ chối,True,0.0,False,False
+8,0015-0028-0002,rag,DeepEval,Hallucination,Đúng,True,1.0,True,True
+8,0004-0049-0002,no_rag,DeepEval,Hallucination,Từ chối,True,1.0,True,True
+8,0004-0049-0002,rag,DeepEval,Hallucination,Đúng,True,1.0,True,True
+8,0006-0008-0001,no_rag,DeepEval,Hallucination,Từ chối,True,1.0,True,True
+8,0006-0008-0001,rag,DeepEval,Hallucination,Từ chối,True,1.0,True,True
+8,0012-0034-0001,no_rag,DeepEval,Hallucination,Từ chối,True,1.0,True,True
+8,0012-0034-0001,rag,DeepEval,Hallucination,Đúng,True,1.0,True,True
+8,0001-0064-0006,no_rag,DeepEval,Hallucination,Từ chối,True,1.0,True,True
+8,0001-0064-0006,rag,DeepEval,Hallucination,Đúng,True,1.0,True,True
+8,0007-0002-0008,no_rag,DeepEval,Hallucination,Từ chối,True,1.0,True,True
+8,0007-0002-0008,rag,DeepEval,Hallucination,Sai,False,0.0,False,True
+8,0001-0025-0004,no_rag,DeepEval,Hallucination,Từ chối,True,1.0,True,True
+8,0001-0025-0004,rag,DeepEval,Hallucination,Sai,False,0.0,False,True
+8,0019-0036-0002,no_rag,DeepEval,Hallucination,Từ chối,True,1.0,True,True
+8,0019-0036-0002,rag,DeepEval,Hallucination,Đúng,True,1.0,True,True
+8,0014-0017-0006,no_rag,DeepEval,Hallucination,Từ chối,True,1.0,True,True
+8,0014-0017-0006,rag,DeepEval,Hallucination,Sai,False,1.0,True,False
+8,0013-0004-0009,no_rag,DeepEval,Hallucination,Từ chối,True,1.0,True,True
+8,0013-0004-0009,rag,DeepEval,Hallucination,Đúng,True,1.0,True,True
+8,0001-0051-0006,no_rag,DeepEval,Hallucination,Từ chối,True,0.0,False,False
+8,0001-0051-0006,rag,DeepEval,Hallucination,Đúng,True,1.0,True,True
+8,0009-0012-0001,no_rag,DeepEval,Hallucination,Từ chối,True,1.0,True,True
+8,0009-0012-0001,rag,DeepEval,Hallucination,Đúng,True,1.0,True,True
+8,0013-0006-0001,no_rag,DeepEval,Hallucination,Từ chối,True,1.0,True,True
+8,0013-0006-0001,rag,DeepEval,Hallucination,Đúng,True,1.0,True,True
+8,0015-0030-0005,no_rag,DeepEval,Hallucination,Từ chối,True,1.0,True,True
+8,0015-0030-0005,rag,DeepEval,Hallucination,Từ chối,True,1.0,True,True
+8,0015-0025-0001,no_rag,DeepEval,Hallucination,Từ chối,True,1.0,True,True
+8,0015-0025-0001,rag,DeepEval,Hallucination,Sai,True,1.0,True,True
+8,0004-0017-0004,no_rag,DeepEval,Hallucination,Từ chối,True,0.0,False,False
+8,0004-0017-0004,rag,DeepEval,Hallucination,Từ chối,True,0.0,False,False
+8,0001-0033-0004,no_rag,DeepEval,Hallucination,Từ chối,True,1.0,True,True
+8,0001-0033-0004,rag,DeepEval,Hallucination,Sai,True,1.0,True,True
+8,0014-0004-0002,rag,DeepEval,Faithfulness,Đúng,True,1.0,True,True
+8,0015-0028-0002,rag,DeepEval,Faithfulness,Đúng,True,1.0,True,True
+8,0004-0049-0002,rag,DeepEval,Faithfulness,Đúng,True,1.0,True,True
+8,0006-0008-0001,rag,DeepEval,Faithfulness,Từ chối,True,1.0,True,True
+8,0012-0034-0001,rag,DeepEval,Faithfulness,Đúng,True,1.0,True,True
+8,0001-0064-0006,rag,DeepEval,Faithfulness,Đúng,True,1.0,True,True
+8,0007-0002-0008,rag,DeepEval,Faithfulness,Sai,True,0.0,False,False
+8,0001-0025-0004,rag,DeepEval,Faithfulness,Sai,False,1.0,True,False
+8,0019-0036-0002,rag,DeepEval,Faithfulness,Đúng,True,1.0,True,True
+8,0014-0017-0006,rag,DeepEval,Faithfulness,Sai,False,1.0,True,False
+8,0013-0004-0009,rag,DeepEval,Faithfulness,Đúng,True,1.0,True,True
+8,0001-0051-0006,rag,DeepEval,Faithfulness,Đúng,True,1.0,True,True
+8,0009-0012-0001,rag,DeepEval,Faithfulness,Đúng,True,1.0,True,True
+8,0013-0006-0001,rag,DeepEval,Faithfulness,Đúng,True,1.0,True,True
+8,0015-0030-0005,rag,DeepEval,Faithfulness,Từ chối,True,0.0,False,False
+8,0015-0025-0001,rag,DeepEval,Faithfulness,Sai,True,1.0,True,True
+8,0004-0017-0004,rag,DeepEval,Faithfulness,Từ chối,True,1.0,True,True
+8,0001-0033-0004,rag,DeepEval,Faithfulness,Sai,True,1.0,True,True
+8,0014-0004-0002,no_rag,G-Eval,Correctness,Sai,False,0.01,False,True
+8,0014-0004-0002,rag,G-Eval,Correctness,Đúng,True,1.0,True,True
+8,0015-0028-0002,no_rag,G-Eval,Correctness,Từ chối,False,0.0,False,True
+8,0015-0028-0002,rag,G-Eval,Correctness,Đúng,True,1.0,True,True
+8,0004-0049-0002,no_rag,G-Eval,Correctness,Từ chối,False,0.0,False,True
+8,0004-0049-0002,rag,G-Eval,Correctness,Đúng,True,0.905,True,True
+8,0006-0008-0001,no_rag,G-Eval,Correctness,Từ chối,False,0.0,False,True
+8,0006-0008-0001,rag,G-Eval,Correctness,Từ chối,False,0.0,False,True
+8,0012-0034-0001,no_rag,G-Eval,Correctness,Từ chối,False,0.0,False,True
+8,0012-0034-0001,rag,G-Eval,Correctness,Đúng,True,0.925,True,True
+8,0001-0064-0006,no_rag,G-Eval,Correctness,Từ chối,False,0.0,False,True
+8,0001-0064-0006,rag,G-Eval,Correctness,Đúng,True,1.0,True,True
+8,0007-0002-0008,no_rag,G-Eval,Correctness,Từ chối,False,0.0,False,True
+8,0007-0002-0008,rag,G-Eval,Correctness,Sai,False,0.0,False,True
+8,0001-0025-0004,no_rag,G-Eval,Correctness,Từ chối,False,0.0,False,True
+8,0001-0025-0004,rag,G-Eval,Correctness,Sai,False,0.0,False,True
+8,0019-0036-0002,no_rag,G-Eval,Correctness,Từ chối,False,0.0,False,True
+8,0019-0036-0002,rag,G-Eval,Correctness,Đúng,True,1.0,True,True
+8,0014-0017-0006,no_rag,G-Eval,Correctness,Từ chối,False,0.02,False,True
+8,0014-0017-0006,rag,G-Eval,Correctness,Sai,False,0.77,True,False
+8,0013-0004-0009,no_rag,G-Eval,Correctness,Từ chối,False,0.0,False,True
+8,0013-0004-0009,rag,G-Eval,Correctness,Đúng,True,1.0,True,True
+8,0001-0051-0006,no_rag,G-Eval,Correctness,Từ chối,False,0.0,False,True
+8,0001-0051-0006,rag,G-Eval,Correctness,Đúng,True,1.0,True,True
+8,0009-0012-0001,no_rag,G-Eval,Correctness,Từ chối,False,0.0,False,True
+8,0009-0012-0001,rag,G-Eval,Correctness,Đúng,True,1.0,True,True
+8,0013-0006-0001,no_rag,G-Eval,Correctness,Từ chối,False,0.0,False,True
+8,0013-0006-0001,rag,G-Eval,Correctness,Đúng,True,0.0,False,False
+8,0015-0030-0005,no_rag,G-Eval,Correctness,Từ chối,False,0.005,False,True
+8,0015-0030-0005,rag,G-Eval,Correctness,Từ chối,False,0.0,False,True
+8,0015-0025-0001,no_rag,G-Eval,Correctness,Từ chối,True,1.0,True,True
+8,0015-0025-0001,rag,G-Eval,Correctness,Sai,False,0.0,False,True
+8,0004-0017-0004,no_rag,G-Eval,Correctness,Từ chối,True,1.0,True,True
+8,0004-0017-0004,rag,G-Eval,Correctness,Từ chối,True,1.0,True,True
+8,0001-0033-0004,no_rag,G-Eval,Correctness,Từ chối,True,1.0,True,True
+8,0001-0033-0004,rag,G-Eval,Correctness,Sai,False,0.02,False,True
+8,0014-0004-0002,no_rag,G-Eval,Semantic equivalence,Sai,False,0.0,False,True
+8,0014-0004-0002,rag,G-Eval,Semantic equivalence,Đúng,True,0.99,True,True
+8,0015-0028-0002,no_rag,G-Eval,Semantic equivalence,Từ chối,False,0.0,False,True
+8,0015-0028-0002,rag,G-Eval,Semantic equivalence,Đúng,True,1.0,True,True
+8,0004-0049-0002,no_rag,G-Eval,Semantic equivalence,Từ chối,False,0.0,False,True
+8,0004-0049-0002,rag,G-Eval,Semantic equivalence,Đúng,True,0.9550000000000001,True,True
+8,0006-0008-0001,no_rag,G-Eval,Semantic equivalence,Từ chối,False,0.0,False,True
+8,0006-0008-0001,rag,G-Eval,Semantic equivalence,Từ chối,False,0.0,False,True
+8,0012-0034-0001,no_rag,G-Eval,Semantic equivalence,Từ chối,False,0.0,False,True
+8,0012-0034-0001,rag,G-Eval,Semantic equivalence,Đúng,True,1.0,True,True
+8,0001-0064-0006,no_rag,G-Eval,Semantic equivalence,Từ chối,False,0.0,False,True
+8,0001-0064-0006,rag,G-Eval,Semantic equivalence,Đúng,True,1.0,True,True
+8,0007-0002-0008,no_rag,G-Eval,Semantic equivalence,Từ chối,False,0.0,False,True
+8,0007-0002-0008,rag,G-Eval,Semantic equivalence,Sai,False,0.0,False,True
+8,0001-0025-0004,no_rag,G-Eval,Semantic equivalence,Từ chối,False,0.0,False,True
+8,0001-0025-0004,rag,G-Eval,Semantic equivalence,Sai,False,0.01,False,True
+8,0019-0036-0002,no_rag,G-Eval,Semantic equivalence,Từ chối,False,0.0,False,True
+8,0019-0036-0002,rag,G-Eval,Semantic equivalence,Đúng,True,1.0,True,True
+8,0014-0017-0006,no_rag,G-Eval,Semantic equivalence,Từ chối,False,0.0,False,True
+8,0014-0017-0006,rag,G-Eval,Semantic equivalence,Sai,False,0.37,False,True
+8,0013-0004-0009,no_rag,G-Eval,Semantic equivalence,Từ chối,False,0.0,False,True
+8,0013-0004-0009,rag,G-Eval,Semantic equivalence,Đúng,True,1.0,True,True
+8,0001-0051-0006,no_rag,G-Eval,Semantic equivalence,Từ chối,False,0.0,False,True
+8,0001-0051-0006,rag,G-Eval,Semantic equivalence,Đúng,True,1.0,True,True
+8,0009-0012-0001,no_rag,G-Eval,Semantic equivalence,Từ chối,False,0.0,False,True
+8,0009-0012-0001,rag,G-Eval,Semantic equivalence,Đúng,True,0.6,True,True
+8,0013-0006-0001,no_rag,G-Eval,Semantic equivalence,Từ chối,False,0.0,False,True
+8,0013-0006-0001,rag,G-Eval,Semantic equivalence,Đúng,False,0.0,False,True
+8,0015-0030-0005,no_rag,G-Eval,Semantic equivalence,Từ chối,False,0.0,False,True
+8,0015-0030-0005,rag,G-Eval,Semantic equivalence,Từ chối,False,0.0,False,True
+8,0015-0025-0001,no_rag,G-Eval,Semantic equivalence,Từ chối,True,1.0,True,True
+8,0015-0025-0001,rag,G-Eval,Semantic equivalence,Sai,False,0.0,False,True
+8,0004-0017-0004,no_rag,G-Eval,Semantic equivalence,Từ chối,True,0.9949999999999999,True,True
+8,0004-0017-0004,rag,G-Eval,Semantic equivalence,Từ chối,True,0.9949999999999999,True,True
+8,0001-0033-0004,no_rag,G-Eval,Semantic equivalence,Từ chối,True,1.0,True,True
+8,0001-0033-0004,rag,G-Eval,Semantic equivalence,Sai,False,0.0,False,True
+8,0014-0004-0002,no_rag,G-Eval,Completeness,Sai,False,0.005,False,True
+8,0014-0004-0002,rag,G-Eval,Completeness,Đúng,True,1.0,True,True
+8,0015-0028-0002,no_rag,G-Eval,Completeness,Từ chối,False,0.0,False,True
+8,0015-0028-0002,rag,G-Eval,Completeness,Đúng,True,1.0,True,True
+8,0004-0049-0002,no_rag,G-Eval,Completeness,Từ chối,False,0.0,False,True
+8,0004-0049-0002,rag,G-Eval,Completeness,Đúng,True,0.63,True,True
+8,0006-0008-0001,no_rag,G-Eval,Completeness,Từ chối,False,0.0,False,True
+8,0006-0008-0001,rag,G-Eval,Completeness,Từ chối,False,0.0,False,True
+8,0012-0034-0001,no_rag,G-Eval,Completeness,Từ chối,False,0.0,False,True
+8,0012-0034-0001,rag,G-Eval,Completeness,Đúng,True,1.0,True,True
+8,0001-0064-0006,no_rag,G-Eval,Completeness,Từ chối,False,0.0,False,True
+8,0001-0064-0006,rag,G-Eval,Completeness,Đúng,True,1.0,True,True
+8,0007-0002-0008,no_rag,G-Eval,Completeness,Từ chối,False,0.0,False,True
+8,0007-0002-0008,rag,G-Eval,Completeness,Sai,False,0.0,False,True
+8,0001-0025-0004,no_rag,G-Eval,Completeness,Từ chối,False,0.0,False,True
+8,0001-0025-0004,rag,G-Eval,Completeness,Sai,False,0.0,False,True
+8,0019-0036-0002,no_rag,G-Eval,Completeness,Từ chối,False,0.0,False,True
+8,0019-0036-0002,rag,G-Eval,Completeness,Đúng,True,1.0,True,True
+8,0014-0017-0006,no_rag,G-Eval,Completeness,Từ chối,False,0.0,False,True
+8,0014-0017-0006,rag,G-Eval,Completeness,Sai,False,0.45499999999999996,False,True
+8,0013-0004-0009,no_rag,G-Eval,Completeness,Từ chối,False,0.0,False,True
+8,0013-0004-0009,rag,G-Eval,Completeness,Đúng,True,1.0,True,True
+8,0001-0051-0006,no_rag,G-Eval,Completeness,Từ chối,False,0.0,False,True
+8,0001-0051-0006,rag,G-Eval,Completeness,Đúng,True,1.0,True,True
+8,0009-0012-0001,no_rag,G-Eval,Completeness,Từ chối,False,0.0,False,True
+8,0009-0012-0001,rag,G-Eval,Completeness,Đúng,True,1.0,True,True
+8,0013-0006-0001,no_rag,G-Eval,Completeness,Từ chối,False,0.0,False,True
+8,0013-0006-0001,rag,G-Eval,Completeness,Đúng,False,0.0,False,True
+8,0015-0030-0005,no_rag,G-Eval,Completeness,Từ chối,False,0.0,False,True
+8,0015-0030-0005,rag,G-Eval,Completeness,Từ chối,False,0.0,False,True
+8,0015-0025-0001,no_rag,G-Eval,Completeness,Từ chối,True,0.975,True,True
+8,0015-0025-0001,rag,G-Eval,Completeness,Sai,False,0.0,False,True
+8,0004-0017-0004,no_rag,G-Eval,Completeness,Từ chối,True,0.99,True,True
+8,0004-0017-0004,rag,G-Eval,Completeness,Từ chối,True,0.9650000000000001,True,True
+8,0001-0033-0004,no_rag,G-Eval,Completeness,Từ chối,True,0.985,True,True
+8,0001-0033-0004,rag,G-Eval,Completeness,Sai,False,0.0,False,True
+9.1,0014-0004-0002,9.1_A,DeepEval,Hallucination,Sai,True,1.0,True,True
+9.1,0014-0004-0002,9.1_B,DeepEval,Hallucination,Sai,True,1.0,True,True
+9.1,0015-0028-0002,9.1_A,DeepEval,Hallucination,Sai,True,0.0,False,False
+9.1,0015-0028-0002,9.1_B,DeepEval,Hallucination,Sai,False,0.0,False,True
+9.1,0004-0049-0002,9.1_A,DeepEval,Hallucination,Sai,True,1.0,True,True
+9.1,0004-0049-0002,9.1_B,DeepEval,Hallucination,Sai,True,1.0,True,True
+9.1,0006-0008-0001,9.1_A,DeepEval,Hallucination,Sai,False,1.0,True,False
+9.1,0006-0008-0001,9.1_B,DeepEval,Hallucination,Sai,False,0.0,False,True
+9.1,0012-0034-0001,9.1_A,DeepEval,Hallucination,Sai,True,1.0,True,True
+9.1,0012-0034-0001,9.1_B,DeepEval,Hallucination,Sai,True,1.0,True,True
+9.1,0001-0064-0006,9.1_A,DeepEval,Hallucination,Đúng,True,1.0,True,True
+9.1,0001-0064-0006,9.1_B,DeepEval,Hallucination,Đúng,True,1.0,True,True
+9.1,0007-0002-0008,9.1_A,DeepEval,Hallucination,Sai,False,0.0,False,True
+9.1,0007-0002-0008,9.1_B,DeepEval,Hallucination,Đúng,True,1.0,True,True
+9.1,0001-0025-0004,9.1_A,DeepEval,Hallucination,Sai,True,1.0,True,True
+9.1,0001-0025-0004,9.1_B,DeepEval,Hallucination,Sai,True,1.0,True,True
+9.1,0019-0036-0002,9.1_A,DeepEval,Hallucination,Sai,False,0.0,False,True
+9.1,0019-0036-0002,9.1_B,DeepEval,Hallucination,Sai,False,0.0,False,True
+9.1,0014-0017-0006,9.1_A,DeepEval,Hallucination,Sai,True,0.0,False,False
+9.1,0014-0017-0006,9.1_B,DeepEval,Hallucination,Sai,True,0.0,False,False
+9.1,0013-0004-0009,9.1_A,DeepEval,Hallucination,Sai,False,0.0,False,True
+9.1,0013-0004-0009,9.1_B,DeepEval,Hallucination,Sai,False,1.0,True,False
+9.1,0001-0051-0006,9.1_A,DeepEval,Hallucination,Đúng,True,1.0,True,True
+9.1,0001-0051-0006,9.1_B,DeepEval,Hallucination,Đúng,True,1.0,True,True
+9.1,0009-0012-0001,9.1_A,DeepEval,Hallucination,Sai,False,0.0,False,True
+9.1,0009-0012-0001,9.1_B,DeepEval,Hallucination,Sai,False,0.0,False,True
+9.1,0013-0006-0001,9.1_A,DeepEval,Hallucination,Đúng,True,1.0,True,True
+9.1,0013-0006-0001,9.1_B,DeepEval,Hallucination,Sai,False,0.0,False,True
+9.1,0015-0030-0005,9.1_A,DeepEval,Hallucination,Sai,True,0.0,False,False
+9.1,0015-0030-0005,9.1_B,DeepEval,Hallucination,Sai,True,1.0,True,True
+9.1,0014-0004-0002,9.1_A,G-Eval,Correctness,Sai,False,0.14500000000000002,False,True
+9.1,0014-0004-0002,9.1_B,G-Eval,Correctness,Sai,False,0.0,False,True
+9.1,0015-0028-0002,9.1_A,G-Eval,Correctness,Sai,False,0.07,False,True
+9.1,0015-0028-0002,9.1_B,G-Eval,Correctness,Sai,False,0.0,False,True
+9.1,0004-0049-0002,9.1_A,G-Eval,Correctness,Sai,False,0.09,False,True
+9.1,0004-0049-0002,9.1_B,G-Eval,Correctness,Sai,False,0.0,False,True
+9.1,0006-0008-0001,9.1_A,G-Eval,Correctness,Sai,False,0.0,False,True
+9.1,0006-0008-0001,9.1_B,G-Eval,Correctness,Sai,False,0.0,False,True
+9.1,0012-0034-0001,9.1_A,G-Eval,Correctness,Sai,False,0.26,False,True
+9.1,0012-0034-0001,9.1_B,G-Eval,Correctness,Sai,False,0.34500000000000003,False,True
+9.1,0001-0064-0006,9.1_A,G-Eval,Correctness,Đúng,True,1.0,True,True
+9.1,0001-0064-0006,9.1_B,G-Eval,Correctness,Đúng,True,1.0,True,True
+9.1,0007-0002-0008,9.1_A,G-Eval,Correctness,Sai,False,0.0,False,True
+9.1,0007-0002-0008,9.1_B,G-Eval,Correctness,Đúng,True,1.0,True,True
+9.1,0001-0025-0004,9.1_A,G-Eval,Correctness,Sai,False,0.29,False,True
+9.1,0001-0025-0004,9.1_B,G-Eval,Correctness,Sai,False,0.37,False,True
+9.1,0019-0036-0002,9.1_A,G-Eval,Correctness,Sai,False,0.01,False,True
+9.1,0019-0036-0002,9.1_B,G-Eval,Correctness,Sai,False,0.0,False,True
+9.1,0014-0017-0006,9.1_A,G-Eval,Correctness,Sai,False,0.18,False,True
+9.1,0014-0017-0006,9.1_B,G-Eval,Correctness,Sai,False,0.0,False,True
+9.1,0013-0004-0009,9.1_A,G-Eval,Correctness,Sai,False,0.0,False,True
+9.1,0013-0004-0009,9.1_B,G-Eval,Correctness,Sai,False,0.0,False,True
+9.1,0001-0051-0006,9.1_A,G-Eval,Correctness,Đúng,True,1.0,True,True
+9.1,0001-0051-0006,9.1_B,G-Eval,Correctness,Đúng,True,0.915,True,True
+9.1,0009-0012-0001,9.1_A,G-Eval,Correctness,Sai,False,0.0,False,True
+9.1,0009-0012-0001,9.1_B,G-Eval,Correctness,Sai,False,0.0,False,True
+9.1,0013-0006-0001,9.1_A,G-Eval,Correctness,Đúng,True,0.0,False,False
+9.1,0013-0006-0001,9.1_B,G-Eval,Correctness,Sai,False,0.0,False,True
+9.1,0015-0030-0005,9.1_A,G-Eval,Correctness,Sai,False,0.0,False,True
+9.1,0015-0030-0005,9.1_B,G-Eval,Correctness,Sai,False,0.0,False,True
+9.3,fict-1,9.3_A,G-Eval,False premise,Sai,False,0.0,False,True
+9.3,fict-1,9.3_B,G-Eval,False premise,Sai,False,0.0,False,True
+9.3,fict-2,9.3_A,G-Eval,False premise,Sai,False,0.0,False,True
+9.3,fict-2,9.3_B,G-Eval,False premise,Sai,False,0.0,False,True
+9.3,fict-3,9.3_A,G-Eval,False premise,Sai,False,0.0,False,True
+9.3,fict-3,9.3_B,G-Eval,False premise,Từ chối,False,0.15,False,True

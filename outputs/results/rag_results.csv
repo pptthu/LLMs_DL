@@ -1,37 +1,37 @@
-id,title,question,answer_list,is_impossible,hit@3,mode,output,judged,judge_note
-0014-0004-0002,Đế quốc La Mã Thần thánh,Muốn ban hành luật thì hoàng đế phải làm gì?,"['phải thông qua Hội đồng', 'thông qua Hội đồng']",False,True,no_rag,"Để ban hành luật, hoàng đế phải ký tên vào bản thảo luật.",Sai,tự động
-0014-0004-0002,Đế quốc La Mã Thần thánh,Muốn ban hành luật thì hoàng đế phải làm gì?,"['phải thông qua Hội đồng', 'thông qua Hội đồng']",False,True,rag,Hoàng đế phải thông qua Hội đồng để ban hành luật.,Đúng,tự động
-0015-0028-0002,Mông Cổ,Trong GDP thì các ngành nông nghiệp chiếm tỷ lệ bao nhiêu?,['20.4%'],False,True,no_rag,Không có thông tin.,Từ chối,tự động
-0015-0028-0002,Mông Cổ,Trong GDP thì các ngành nông nghiệp chiếm tỷ lệ bao nhiêu?,['20.4%'],False,True,rag,20.4%,Đúng,tự động
-0004-0049-0002,Chiến tranh Vùng Vịnh,Đâu là một trong những loại vũ khí thông minh của quân đội Hoa Kỳ?,['tên lửa AGM-130'],False,True,no_rag,Không có thông tin,Từ chối,tự động
-0004-0049-0002,Chiến tranh Vùng Vịnh,Đâu là một trong những loại vũ khí thông minh của quân đội Hoa Kỳ?,['tên lửa AGM-130'],False,True,rag,AGM-130,Đúng,"chấm tay: trả lời 'AGM-130' = đáp án 'tên lửa AGM-130', chỉ thiếu chữ 'tên lửa'"
-0006-0008-0001,Puerto Rico,Ai được xem là người khởi xướng cho những phong trào đấu tranh giành tự do ở Puerto Rico?,['Ramon Emeterio Betances'],False,False,no_rag,Không có thông tin.,Từ chối,tự động
-0006-0008-0001,Puerto Rico,Ai được xem là người khởi xướng cho những phong trào đấu tranh giành tự do ở Puerto Rico?,['Ramon Emeterio Betances'],False,False,rag,Không có thông tin.,Từ chối,tự động
-0012-0034-0001,Mahatma Gandhi,Việc nhịn ăn đối với ông là gì?,"['một vũ khí chính trị', 'vũ khí chính trị']",False,True,no_rag,Không có thông tin.,Từ chối,tự động
-0012-0034-0001,Mahatma Gandhi,Việc nhịn ăn đối với ông là gì?,"['một vũ khí chính trị', 'vũ khí chính trị']",False,True,rag,"Việc nhịn ăn đối với ông là một vũ khí chính trị. Ông thường nhịn ăn lâu ngày, dùng nhịn ăn như một cách để thanh lọc tâm thức và thể hiện sự khoan dung lẫn nhau của các",Đúng,tự động
-0001-0064-0006,Paris,Bức tranh Mona Lisa nằm ở đâu?,['viện bảo tàng Louvre'],False,True,no_rag,Không có thông tin.,Từ chối,tự động
-0001-0064-0006,Paris,Bức tranh Mona Lisa nằm ở đâu?,['viện bảo tàng Louvre'],False,True,rag,Bức tranh Mona Lisa nằm ở viện bảo tàng Louvre.,Đúng,tự động
-0007-0002-0008,Nam Ossetia,"Trên thực tế, Nam Ossetia thuộc chủ quyền quốc gia nào?",['Gruzia'],False,False,no_rag,Không có thông tin.,Từ chối,tự động
-0007-0002-0008,Nam Ossetia,"Trên thực tế, Nam Ossetia thuộc chủ quyền quốc gia nào?",['Gruzia'],False,False,rag,Nam Ossetia thuộc chủ quyền của Nga.,Sai,tự động
-0001-0025-0004,Paris,Paris có sự lột xác mạnh mẽ từ phong cách cổ xưa sang diện mạo mới vào lúc nào?,['thời Napoléon III'],False,True,no_rag,Không có thông tin.,Từ chối,tự động
-0001-0025-0004,Paris,Paris có sự lột xác mạnh mẽ từ phong cách cổ xưa sang diện mạo mới vào lúc nào?,['thời Napoléon III'],False,True,rag,Paris có sự lột xác mạnh mẽ từ phong cách cổ xưa sang diện mạo mới vào khoảng thời gian từ thế kỷ 16 đến thế kỷ 17.,Sai,tự động
-0019-0036-0002,Texas,Tại Texas thì cứ bao nhiêu học sinh thì sẽ tương ứng với một giáo viên?,"['14,9']",False,True,no_rag,Không có thông tin.,Từ chối,tự động
-0019-0036-0002,Texas,Tại Texas thì cứ bao nhiêu học sinh thì sẽ tương ứng với một giáo viên?,"['14,9']",False,True,rag,"14,9",Đúng,tự động
-0014-0017-0006,Đế quốc La Mã Thần thánh,Liên minh các Vương hầu được thành lập với lí do gì?,"['Khi Hoàng đế Joseph II lại muốn chiếm xứ Bayern vào thập niên 1780', 'chiếm xứ Bayern']",False,True,no_rag,Không có thông tin.,Từ chối,tự động
-0014-0017-0006,Đế quốc La Mã Thần thánh,Liên minh các Vương hầu được thành lập với lí do gì?,"['Khi Hoàng đế Joseph II lại muốn chiếm xứ Bayern vào thập niên 1780', 'chiếm xứ Bayern']",False,True,rag,"Theo tài liệu, Liên minh các Vương hầu được thành lập vào năm 1785 với mục đích bảo vệ các Vương hầu người Đức khỏi những tham vọng của Hoàng đế Joseph II.",Sai,tự động
-0013-0004-0009,Nội chiến Anh,"Trong ""Bài khiển trách lớn lao"" đã quy định nhà vua muốn đánh thuế dân chúng phải thông qua cơ quan nào?",['quốc hội'],False,True,no_rag,Không có thông tin.,Từ chối,tự động
-0013-0004-0009,Nội chiến Anh,"Trong ""Bài khiển trách lớn lao"" đã quy định nhà vua muốn đánh thuế dân chúng phải thông qua cơ quan nào?",['quốc hội'],False,True,rag,"Theo tài liệu, trong ""Bài khiển trách lớn lao"" (the Grand Remonstrace), quốc hội Anh được quy định là cơ quan cần thông qua trước khi nhà vua có thể đánh thuế dân chúng",Đúng,tự động
-0001-0051-0006,Paris,Sân bay nào có số lượng phi cơ ra vào nhiều nhất châu Âu năm 2006?,['Charles-de-Gaulle'],False,True,no_rag,Không có thông tin.,Từ chối,tự động
-0001-0051-0006,Paris,Sân bay nào có số lượng phi cơ ra vào nhiều nhất châu Âu năm 2006?,['Charles-de-Gaulle'],False,True,rag,Charles-de-Gaulle,Đúng,tự động
-0009-0012-0001,François Mitterrand,Mitterrand nhanh chóng quay trở lại với chính trị sau sự kiện nào?,"['Sau cuộc thế chiến', 'cuộc thế chiến']",False,True,no_rag,Không có thông tin.,Từ chối,tự động
-0009-0012-0001,François Mitterrand,Mitterrand nhanh chóng quay trở lại với chính trị sau sự kiện nào?,"['Sau cuộc thế chiến', 'cuộc thế chiến']",False,True,rag,"Sau cuộc thế chiến, François Mitterrand nhanh chóng quay trở lại với chính trị.",Đúng,tự động
-0013-0006-0001,Nội chiến Anh,Vua Charles bị xử tử trước sự chứng kiến của đông đảo quần chúng vào năm nào?,['1640'],False,True,no_rag,Không có thông tin.,Từ chối,tự động
-0013-0006-0001,Nội chiến Anh,Vua Charles bị xử tử trước sự chứng kiến của đông đảo quần chúng vào năm nào?,['1640'],False,True,rag,20 tháng 1 năm 1649,Đúng,chấm tay: 1649 đúng thực tế; đáp án gốc '1640' là nhãn sai (đoạn nguồn: 'quốc hội năm 1640')
-0015-0030-0005,Mông Cổ,Số người có độ tuổi dưới 30 chiếm tỷ lệ bao nhiêu tại Mông Cổ?,['Khoảng 59%'],False,False,no_rag,Không có thông tin.,Từ chối,tự động
-0015-0030-0005,Mông Cổ,Số người có độ tuổi dưới 30 chiếm tỷ lệ bao nhiêu tại Mông Cổ?,['Khoảng 59%'],False,False,rag,Không có thông tin.,Từ chối,tự động
-0015-0025-0001,Mông Cổ,Khi vùng đất sa mạc bị tàn phá thì dẫn đến điều gì?,[],True,True,no_rag,Không có thông tin.,Từ chối,tự động
-0015-0025-0001,Mông Cổ,Khi vùng đất sa mạc bị tàn phá thì dẫn đến điều gì?,[],True,True,rag,"Khi vùng đất sa mạc bị tàn phá, dẫn đến sự mở rộng của sa mạc thực sự, một vùng đá vô dụng nơi thậm chí cả lạc đà hai bướu cũng không sống nổi.",Sai,tự động
-0004-0017-0004,Chiến tranh Vùng Vịnh,Quốc gia đứng đầu thế giới về sản lượng hỏa lực là gì?,[],True,False,no_rag,Không có thông tin.,Từ chối,tự động
-0004-0017-0004,Chiến tranh Vùng Vịnh,Quốc gia đứng đầu thế giới về sản lượng hỏa lực là gì?,[],True,False,rag,Không có thông tin.,Từ chối,tự động
-0001-0033-0004,Paris,Ngành kinh tế có vị thế như thế nào trong cơ cấu du lịch Paris?,[],True,False,no_rag,Không có thông tin.,Từ chối,tự động
-0001-0033-0004,Paris,Ngành kinh tế có vị thế như thế nào trong cơ cấu du lịch Paris?,[],True,False,rag,"Nổi tiếng với tên gọi Kinh đô ánh sáng, Paris là một trung tâm văn hóa lớn của thế giới và cũng là một trong những thành phố du lịch thu hút nhất. Sự nhộn nhịp, các công",Sai,tự động
+id,title,question,answer_list,is_impossible,mode,output,em,f1
+0014-0004-0002,Đế quốc La Mã Thần thánh,Muốn ban hành luật thì hoàng đế phải làm gì?,"['phải thông qua Hội đồng', 'thông qua Hội đồng']",False,no_rag,"Để ban hành luật, hoàng đế phải ký tên vào bản thảo luật.",0.0,0.1111111111111111
+0014-0004-0002,Đế quốc La Mã Thần thánh,Muốn ban hành luật thì hoàng đế phải làm gì?,"['phải thông qua Hội đồng', 'thông qua Hội đồng']",False,rag,Hoàng đế phải thông qua Hội đồng để ban hành luật.,0.0,0.625
+0015-0028-0002,Mông Cổ,Trong GDP thì các ngành nông nghiệp chiếm tỷ lệ bao nhiêu?,['20.4%'],False,no_rag,Không có thông tin.,0.0,0.0
+0015-0028-0002,Mông Cổ,Trong GDP thì các ngành nông nghiệp chiếm tỷ lệ bao nhiêu?,['20.4%'],False,rag,20.4%,1.0,1.0
+0004-0049-0002,Chiến tranh Vùng Vịnh,Đâu là một trong những loại vũ khí thông minh của quân đội Hoa Kỳ?,['tên lửa AGM-130'],False,no_rag,Không có thông tin,0.0,0.0
+0004-0049-0002,Chiến tranh Vùng Vịnh,Đâu là một trong những loại vũ khí thông minh của quân đội Hoa Kỳ?,['tên lửa AGM-130'],False,rag,AGM-130,0.0,0.6666666666666666
+0006-0008-0001,Puerto Rico,Ai được xem là người khởi xướng cho những phong trào đấu tranh giành tự do ở Puerto Rico?,['Ramon Emeterio Betances'],False,no_rag,Không có thông tin.,0.0,0.0
+0006-0008-0001,Puerto Rico,Ai được xem là người khởi xướng cho những phong trào đấu tranh giành tự do ở Puerto Rico?,['Ramon Emeterio Betances'],False,rag,Không có thông tin.,0.0,0.0
+0012-0034-0001,Mahatma Gandhi,Việc nhịn ăn đối với ông là gì?,"['một vũ khí chính trị', 'vũ khí chính trị']",False,no_rag,Không có thông tin.,0.0,0.0
+0012-0034-0001,Mahatma Gandhi,Việc nhịn ăn đối với ông là gì?,"['một vũ khí chính trị', 'vũ khí chính trị']",False,rag,"Việc nhịn ăn đối với ông là một vũ khí chính trị. Ông thường nhịn ăn lâu ngày, dùng nhịn ăn như một cách để thanh lọc tâm thức và thể hiện sự khoan dung lẫn nhau của các",0.0,0.22727272727272727
+0001-0064-0006,Paris,Bức tranh Mona Lisa nằm ở đâu?,['viện bảo tàng Louvre'],False,no_rag,Không có thông tin.,0.0,0.0
+0001-0064-0006,Paris,Bức tranh Mona Lisa nằm ở đâu?,['viện bảo tàng Louvre'],False,rag,Bức tranh Mona Lisa nằm ở viện bảo tàng Louvre.,0.0,0.5714285714285715
+0007-0002-0008,Nam Ossetia,"Trên thực tế, Nam Ossetia thuộc chủ quyền quốc gia nào?",['Gruzia'],False,no_rag,Không có thông tin.,0.0,0.0
+0007-0002-0008,Nam Ossetia,"Trên thực tế, Nam Ossetia thuộc chủ quyền quốc gia nào?",['Gruzia'],False,rag,Nam Ossetia thuộc chủ quyền của Nga.,0.0,0.0
+0001-0025-0004,Paris,Paris có sự lột xác mạnh mẽ từ phong cách cổ xưa sang diện mạo mới vào lúc nào?,['thời Napoléon III'],False,no_rag,Không có thông tin.,0.0,0.0
+0001-0025-0004,Paris,Paris có sự lột xác mạnh mẽ từ phong cách cổ xưa sang diện mạo mới vào lúc nào?,['thời Napoléon III'],False,rag,Paris có sự lột xác mạnh mẽ từ phong cách cổ xưa sang diện mạo mới vào khoảng thời gian từ thế kỷ 16 đến thế kỷ 17.,0.0,0.06451612903225806
+0019-0036-0002,Texas,Tại Texas thì cứ bao nhiêu học sinh thì sẽ tương ứng với một giáo viên?,"['14,9']",False,no_rag,Không có thông tin.,0.0,0.0
+0019-0036-0002,Texas,Tại Texas thì cứ bao nhiêu học sinh thì sẽ tương ứng với một giáo viên?,"['14,9']",False,rag,"14,9",1.0,1.0
+0014-0017-0006,Đế quốc La Mã Thần thánh,Liên minh các Vương hầu được thành lập với lí do gì?,"['Khi Hoàng đế Joseph II lại muốn chiếm xứ Bayern vào thập niên 1780', 'chiếm xứ Bayern']",False,no_rag,Không có thông tin.,0.0,0.0
+0014-0017-0006,Đế quốc La Mã Thần thánh,Liên minh các Vương hầu được thành lập với lí do gì?,"['Khi Hoàng đế Joseph II lại muốn chiếm xứ Bayern vào thập niên 1780', 'chiếm xứ Bayern']",False,rag,"Theo tài liệu, Liên minh các Vương hầu được thành lập vào năm 1785 với mục đích bảo vệ các Vương hầu người Đức khỏi những tham vọng của Hoàng đế Joseph II.",0.0,0.21276595744680848
+0013-0004-0009,Nội chiến Anh,"Trong ""Bài khiển trách lớn lao"" đã quy định nhà vua muốn đánh thuế dân chúng phải thông qua cơ quan nào?",['quốc hội'],False,no_rag,Không có thông tin.,0.0,0.0
+0013-0004-0009,Nội chiến Anh,"Trong ""Bài khiển trách lớn lao"" đã quy định nhà vua muốn đánh thuế dân chúng phải thông qua cơ quan nào?",['quốc hội'],False,rag,"Theo tài liệu, trong ""Bài khiển trách lớn lao"" (the Grand Remonstrace), quốc hội Anh được quy định là cơ quan cần thông qua trước khi nhà vua có thể đánh thuế dân chúng",0.0,0.1111111111111111
+0001-0051-0006,Paris,Sân bay nào có số lượng phi cơ ra vào nhiều nhất châu Âu năm 2006?,['Charles-de-Gaulle'],False,no_rag,Không có thông tin.,0.0,0.0
+0001-0051-0006,Paris,Sân bay nào có số lượng phi cơ ra vào nhiều nhất châu Âu năm 2006?,['Charles-de-Gaulle'],False,rag,Charles-de-Gaulle,1.0,1.0
+0009-0012-0001,François Mitterrand,Mitterrand nhanh chóng quay trở lại với chính trị sau sự kiện nào?,"['Sau cuộc thế chiến', 'cuộc thế chiến']",False,no_rag,Không có thông tin.,0.0,0.0
+0009-0012-0001,François Mitterrand,Mitterrand nhanh chóng quay trở lại với chính trị sau sự kiện nào?,"['Sau cuộc thế chiến', 'cuộc thế chiến']",False,rag,"Sau cuộc thế chiến, François Mitterrand nhanh chóng quay trở lại với chính trị.",0.0,0.4444444444444445
+0013-0006-0001,Nội chiến Anh,Vua Charles bị xử tử trước sự chứng kiến của đông đảo quần chúng vào năm nào?,['1640'],False,no_rag,Không có thông tin.,0.0,0.0
+0013-0006-0001,Nội chiến Anh,Vua Charles bị xử tử trước sự chứng kiến của đông đảo quần chúng vào năm nào?,['1640'],False,rag,20 tháng 1 năm 1649,0.0,0.0
+0015-0030-0005,Mông Cổ,Số người có độ tuổi dưới 30 chiếm tỷ lệ bao nhiêu tại Mông Cổ?,['Khoảng 59%'],False,no_rag,Không có thông tin.,0.0,0.0
+0015-0030-0005,Mông Cổ,Số người có độ tuổi dưới 30 chiếm tỷ lệ bao nhiêu tại Mông Cổ?,['Khoảng 59%'],False,rag,Không có thông tin.,0.0,0.0
+0015-0025-0001,Mông Cổ,Khi vùng đất sa mạc bị tàn phá thì dẫn đến điều gì?,[],True,no_rag,Không có thông tin.,,
+0015-0025-0001,Mông Cổ,Khi vùng đất sa mạc bị tàn phá thì dẫn đến điều gì?,[],True,rag,"Khi vùng đất sa mạc bị tàn phá, dẫn đến sự mở rộng của sa mạc thực sự, một vùng đá vô dụng nơi thậm chí cả lạc đà hai bướu cũng không sống nổi.",,
+0004-0017-0004,Chiến tranh Vùng Vịnh,Quốc gia đứng đầu thế giới về sản lượng hỏa lực là gì?,[],True,no_rag,Không có thông tin.,,
+0004-0017-0004,Chiến tranh Vùng Vịnh,Quốc gia đứng đầu thế giới về sản lượng hỏa lực là gì?,[],True,rag,Không có thông tin.,,
+0001-0033-0004,Paris,Ngành kinh tế có vị thế như thế nào trong cơ cấu du lịch Paris?,[],True,no_rag,Không có thông tin.,,
+0001-0033-0004,Paris,Ngành kinh tế có vị thế như thế nào trong cơ cấu du lịch Paris?,[],True,rag,"Nổi tiếng với tên gọi Kinh đô ánh sáng, Paris là một trung tâm văn hóa lớn của thế giới và cũng là một trong những thành phố du lịch thu hút nhất. Sự nhộn nhịp, các công",,

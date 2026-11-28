@@ -1,0 +1,2 @@
+giám khảo × nhãn tay: [['8', 'DeepEval', 'Answer Relevancy', 22, 36], ['8', 'DeepEval', 'Hallucination', 31, 36], ['8', 'DeepEval', 'Faithfulness', 14, 18], ['8', 'G-Eval', 'Correctness', 34, 36], ['8', 'G-Eval', 'Semantic equivalence', 36, 36], ['8', 'G-Eval', 'Completeness', 36, 36], ['9.1', 'DeepEval', 'Hallucination', 24, 30], ['9.1', 'G-Eval', 'Correctness', 29, 30], ['9.3', 'G-Eval', 'False premise', 6, 6]] | không có trong lần chạy 0, output đổi 0 (bỏ khỏi phép so)
+=== PART 10 summary END 2026-11-29T02:19:18+07:00 ===
