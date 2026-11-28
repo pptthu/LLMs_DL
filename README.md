@@ -1,8 +1,19 @@
 # LLMs_DL — Presentation: Tìm hiểu mô hình ngôn ngữ lớn (LLMs)
 
-Bài thuyết trình nhóm môn Học sâu (UTH). Nhóm: Muội, Phúc, Toàn, Thư. Người trình bày cả 10 mục và viết code notebook: Toàn (đổi phân công 21/11).
+Bài thuyết trình nhóm môn Học sâu (UTH). Nhóm 1, 6 thành viên (bảng dưới). Người trình bày cả 10 mục và viết code notebook: Toàn (đổi phân công 21/11).
 
 > Trạng thái: đã chạy chính thức trên Kaggle (GPU T4 x2), run_id **`20261129_003355_normal`** (196 cell; chấm bằng bộ 18 metric đánh giá LLM + HumanEval, IFEval; giám khảo DeepEval / G-Eval là `gpt-6.2-sol` qua API, G-Eval chấm 20 lần lấy trung bình). Mọi số liệu trong `outputs/results/` lấy từ lần chạy này (xem `docs/experiments/experiment_log.md`). Output model trùng run `20261128_232631_normal`; run `20261125_214650_normal` (giám khảo Qwen2.5-7B local) dùng để so sánh giám khảo; so sánh 2 giám khảo ở `docs/research/muc10_thuc_nghiem_ket_luan_v1.md`. Người phụ trách README: Muội.
+
+## Thành viên
+
+| Họ và tên | Ngành / chuyên ngành | Nhóm |
+|---|---|:---:|
+| Phạm Phương Thanh Thư | Data Science & AI | 1 |
+| Nguyễn Khánh Toàn | Data Science & AI | 1 |
+| Ngô Hồng Phúc | Smart logistics | 1 |
+| Phạm Thị Muội | Data Science & AI | 1 |
+| Nguyễn Thái Bảo | Smart logistics | 1 |
+| Nguyễn Bảo Đại | Data Science & AI | 1 |
 
 ## Nội dung
 10 mục theo đề của cô; mỗi mục có demo trên model thật, cùng một notebook. Lý thuyết, code, kết quả và nhận xét từng mục: `docs/research/muc00_setup_v1.md` … `muc10_thuc_nghiem_ket_luan_v1.md`.
