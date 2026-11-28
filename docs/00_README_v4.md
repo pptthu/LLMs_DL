@@ -2,7 +2,7 @@
 
 - Tác giả: Toàn (AI hỗ trợ) | Tạo: 2026-11-28 | Trạng thái: **[đề xuất]**, chờ Toàn duyệt
 - Thay đổi so với v3: chỉ giữ trên GitHub tài liệu của phần đã làm; nội dung từng mục chuyển vào `research/mucNN_*_v1.md`. Tài liệu cũ, kế hoạch, hướng dẫn, prompt làm slide giữ ở máy (xem lịch sử git cho bản đã commit trước 28/11).
-- Lần chạy chính thức: **`20261128_041850_normal`** (Kaggle, GPU T4 x2, 22.0 phút, 188 cell; G-Eval chấm 20 lần lấy trung bình). Mọi số đọc từ `../outputs/results/` của lần chạy này, trừ VRAM 6.6 / 9.5 lấy run `20261127_234527_normal` (run mới đo lệch). Run `20261125_214650_normal` (giám khảo Qwen2.5-7B) dùng để so sánh giám khảo ở mục 10.
+- Lần chạy chính thức: **`20261129_003355_normal`** (Kaggle, GPU T4 x2, 41.3 phút, 196 cell; bộ 18 metric đánh giá LLM + HumanEval, IFEval; G-Eval chấm 20 lần lấy trung bình). Mọi số đọc từ `../outputs/results/` của lần chạy này. Run `20261125_214650_normal` (giám khảo Qwen2.5-7B) dùng để so sánh giám khảo ở mục 10.
 
 ## Quy tắc version
 - Tên file có hậu tố `_vN`; dùng bản số lớn nhất. Đổi nội dung thì tạo `_vN+1` sau khi Toàn duyệt (`rules/RULES_v3.md`).

@@ -2,7 +2,7 @@
 
 Bài thuyết trình nhóm môn Học sâu (UTH). Nhóm: Muội, Phúc, Toàn, Thư. Người trình bày cả 10 mục và viết code notebook: Toàn (đổi phân công 21/11).
 
-> Trạng thái: đã chạy chính thức trên Kaggle (GPU T4 x2), run_id **`20261128_041850_normal`** (188 cell; giám khảo DeepEval / G-Eval là `gpt-6.2-sol` qua API, G-Eval chấm 20 lần lấy trung bình). Mọi số liệu trong `outputs/results/` lấy từ lần chạy này, trừ VRAM mục 6.6 / 9.5 (run này đo lệch +2.97 GiB; số đúng ở run `20261127_234527_normal`, xem `docs/experiments/experiment_log.md`). Phần 1–9 và 10.1–10.3b trùng run `20261125_214650_normal` (giám khảo Qwen2.5-7B local) và các run trước, chỉ khác cột thời gian, bộ nhớ; so sánh 2 giám khảo ở `docs/research/muc10_thuc_nghiem_ket_luan_v1.md`. Người phụ trách README: Muội.
+> Trạng thái: đã chạy chính thức trên Kaggle (GPU T4 x2), run_id **`20261129_003355_normal`** (196 cell; chấm bằng bộ 18 metric đánh giá LLM + HumanEval, IFEval; giám khảo DeepEval / G-Eval là `gpt-6.2-sol` qua API, G-Eval chấm 20 lần lấy trung bình). Mọi số liệu trong `outputs/results/` lấy từ lần chạy này (xem `docs/experiments/experiment_log.md`). Output model trùng run `20261128_232631_normal`; run `20261125_214650_normal` (giám khảo Qwen2.5-7B local) dùng để so sánh giám khảo; so sánh 2 giám khảo ở `docs/research/muc10_thuc_nghiem_ket_luan_v1.md`. Người phụ trách README: Muội.
 
 ## Nội dung
 10 mục theo đề của cô; mỗi mục có demo trên model thật, cùng một notebook. Lý thuyết, code, kết quả và nhận xét từng mục: `docs/research/muc00_setup_v1.md` … `muc10_thuc_nghiem_ket_luan_v1.md`.
@@ -64,7 +64,7 @@ Cả ba model đều công khai, **không cần token Hugging Face**.
 2. Bật GPU T4 và Internet.
 3. **Chạy thử:** đặt `SMOKE = True` ở cell đầu → Run All. Mỗi phần chạy vài câu, kết quả ghi vào `outputs/_smoke/`.
 4. **Chạy chính thức:** `SMOKE = False` → **Save & Run All**. Kết quả ghi vào `outputs/results/` và `outputs/figures/`; log ghi vào `outputs/logs/<YYYYMMDD_HHMMSS>_normal/`.
-5. Thời gian chạy: chính thức **22.0 phút** trên Kaggle T4 x2, giám khảo gọi song song 16 luồng: DeepEval (10.3c) 1.0 phút, G-Eval (10.3d, 3,300 lần chấm) 11.1 phút (`outputs/logs/20261128_041850_normal/run.log`). Giám khảo cấu hình ở cell 10.3c: `JUDGE_BACKEND = "api"` (cần key, đặt `JUDGE_API_KEY` trong cell hoặc Kaggle Secrets) hoặc `"local"` (Qwen2.5-7B-Instruct 4-bit, miễn phí, cần GPU thứ 2).
+5. Thời gian chạy: chính thức **41.3 phút** trên Kaggle T4 x2 (5.5 sinh IFEval base trên GPU 1, Instruct trên GPU 0 cùng lúc), giám khảo gọi song song 16 luồng: DeepEval (10.3c) 1.3 phút, G-Eval (10.3d, 4,020 lần chấm) 15.9 phút (`outputs/logs/20261129_003355_normal/run.log`). Giám khảo cấu hình ở cell 10.3c: `JUDGE_BACKEND = "api"` (cần key, đặt `JUDGE_API_KEY` trong Kaggle Secrets; để trống trong cell, không commit key) hoặc `"local"` (Qwen2.5-7B-Instruct 4-bit, miễn phí, cần GPU thứ 2).
 6. Notebook cần Internet suốt lần chạy: ngoài model còn đọc dữ liệu từ Hugging Face và GitHub (mục 7–9).
 
 ## Cấu trúc thư mục

@@ -6,6 +6,58 @@
 
 ---
 
+## 20261129_021918_local — chạy lại cell 10.3e → 10.6 với nhãn tay v2 (không gọi model, không gọi giám khảo)
+
+- Người chạy: AI (Claude Code) theo yêu cầu của Toàn | máy cá nhân, venv ngoài repo (pandas, matplotlib) | đọc `outputs/results/` của run `20261129_003355_normal`; exec nguyên code cell 10.3e, 10.4, 10.5c, E1–E14, 10.6 | log: `outputs/logs/20261129_021918_local/`
+- Lý do: `data/human_labels_v2.json` (Toàn gắn 29/11 qua `data/human_labels_v2_sheet.xlsx`; AI sửa 2 ô trái luật theo yêu cầu) thêm nhãn theo từng metric: Answer Relevancy, Hallucination, Faithfulness, Semantic equivalence, Completeness. 10.3e so mỗi metric với đúng nhãn của nó.
+- Kết quả: chỉ `judge_vs_human.csv`, `judge_vs_human_rows.csv` đổi nội dung (các file khác trùng run gốc); chép 2 file này + `figures/suite_E13.png` vào `outputs/`.
+  - Mục 8: Answer Relevancy 22/36, Hallucination 31/36, Faithfulness 14/18, G-Eval Correctness 34/36, Semantic equivalence 36/36, Completeness 36/36. 9.1: Hallucination 24/30, Correctness 29/30. 9.3 False premise 6/6.
+  - Answer Relevancy: 13/14 câu lệch là câu từ chối (người: liên quan; giám khảo: không).
+  - Giám khảo Qwen2.5-7B (điểm từng câu ở commit 79bfe61, run 20261125_082211, cùng trung bình run 20261125_214650; output 36/36 trùng) so cùng nhãn v2, tính bằng script ngoài notebook: 14/36, 12/36, 11/17, 31/36, 27/36, 32/36.
+- Notebook trên Kaggle cần `data/human_labels_v2.json` (Kaggle Dataset New Version) trước lần chạy sau.
+
+---
+
+## 20261129_003355_normal — chạy lại sau khi sửa VRAM (**lần chạy chính thức mới**)
+
+- Người chạy: Toàn | Kaggle, GPU T4 x2 | 41.3 phút (run trước 44.1), phần 0–10 và 10.5–10.6 OK, 0 lỗi | log: `outputs/logs/20261129_003355_normal/`; `outputs/` đã chép kết quả run này
+- Thay đổi notebook so với run 20261128_232631: 5.5 xoá `inputs` + `assert` weakref (base được giải phóng); 5.1 base nạp lên GPU 1, 5.5 sinh IFEval 2 bản song song; `cuda_sync()` đồng bộ mọi GPU; 10.3e so Hallucination theo cách B (từ chối = không bịa); đổi tên "bộ 18 metric đánh giá LLM".
+- **VRAM đúng:** 6.6 trọng số 2.90 GB, đỉnh 2.90–2.91 GB; 9.5 đỉnh 2.96 / 3.07 / 3.46 / 4.91 / 10.42 GB (512 → 8,192 token), khớp run tham chiếu 20261127_234527 (2.95–10.41). Không cần lấy VRAM từ run khác nữa.
+- **Thời gian:** phần 5 11.3 → 8.4 phút (IFEval Instruct cuda:0 393.5 s, base cuda:1 434.8 s, chạy cùng lúc); các phần khác như cũ; giám khảo 17.6 phút.
+- **Output model giống hệt run trước** ở mọi file (IFEval 200, HumanEval, RAG, 9.1, ICL 2 × 2,999, 5.4, mục 1, 9.4b, mục 6) → số theo metric tự động không đổi: HumanEval 0.561 (92/164); IFEval base 0.250 / 0.331, Instruct 0.400 / 0.552 (prompt / instruction strict); mục 8 EM / F1 RAG 0.200 / 0.395; ICL 0.899 → 0.923. IFEval base có 10/100 output rỗng (model sinh EOS ngay), cả 2 run như nhau.
+- **Giám khảo dao động trên cùng output:** DeepEval (chấm 1 lần) 26/130 câu đổi đạt / không giữa 2 run; trung bình nhóm lệch tới 0.111 (Answer Relevancy không RAG 0.500 → 0.389), Bias 0.857 → 0.950. G-Eval (TB 20 lần) 7/201 cặp đổi đạt / không, trung bình nhóm lệch TB 0.017, max 0.115.
+- Số giám khảo run này: DeepEval Answer Relevancy 0.389 → 0.875, Hallucination 0.778 → 0.833, Faithfulness 0.889; 9.1 Hallucination 0.533 / 0.600; Bias 0.950 (10/10). Khớp nhãn tay: DeepEval Hallucination 29/36 (mục 8, cách B), 19/30 (9.1); G-Eval Correctness 34/36, 29/30; False premise 6/6.
+
+---
+
+## 20261128_232631_normal — normal run theo bộ đánh giá của cô (HumanEval, IFEval, 9.4b Bias, 10.3e nhãn tay)
+
+- Người chạy: Toàn | Kaggle, GPU T4 x2, Python 3.13.16, torch 2.11.0+cu130, transformers 5.20.2, deepeval 4.3.5 | 44.1 phút, phần 0–10 và 10.5–10.6 OK | log: `outputs/logs/20261128_232631_normal/`; `outputs/` đã chép kết quả run này
+- Kết quả theo metric của cô:
+  - HumanEval Pass@1 (greedy) **0.561** (92/164), 0 timeout.
+  - IFEval 100 prompt, prompt / instruction-level strict: base 0.250 / 0.331, Instruct **0.400 / 0.552** (loose 0.270 / 0.344 và 0.430 / 0.583). Bị cắt ở 1024 token: base 47, Instruct 6.
+  - Mục 8 EM / Token F1 (15 câu có đáp án): không RAG 0.000 / 0.007, RAG 0.200 / 0.395. G-Eval Correctness 0.17 → 0.60. DeepEval: Answer Relevancy 0.50 → 0.86, Hallucination 0.72 → 0.83, Faithfulness 0.86.
+  - 9.1 Token F1 A / B 0.079 / 0.097; G-Eval Correctness 0.21 / 0.22; DeepEval Hallucination 0.53 / 0.60. 9.3 G-Eval False premise 0.00 / 0.06 (model chấp nhận tiền đề sai cả 3 câu).
+  - 9.4 Pearson r: en 0.69, vi 0.44. 9.4b DeepEval Bias TB 0.857 (9/10 nghề đạt; 1 = không thiên lệch).
+  - Mục 7 accuracy 0.899 → 0.923, McNemar p = 1.5e-08 (không đổi so với run trước).
+  - Giám khảo: DeepEval 210 lần gọi, 1.3 phút; G-Eval N = 20, 4,230 lần gọi cộng dồn, 15.7 phút, σ TB 0.023, lớn nhất 0.276, 1 lỗi JSON (mục 6 T = 1.5 Coherence).
+  - 10.3e khớp nhãn tay (72 nhãn, 0 output đổi): G-Eval Correctness 34/36 (mục 8), 28/30 (9.1); False premise 6/6; DeepEval Hallucination 20/36 (mục 8), 19/30 (9.1).
+- **Lỗi đo VRAM (do sửa 5.4 ngày 28/11):** 6.6 trọng số 5.76 GB, 9.5 đỉnh 5.82–13.28 GB, cao hơn run 20261127_234527 khoảng 2.87 GiB (= 1 model 1.5B fp16). Nguyên nhân: khi bỏ chấm tay ở 5.4 đã bỏ luôn `del inputs`, biến `inputs` của 5.4 vẫn trỏ tới `model_base` nên 5.5 xoá xong base vẫn ở GPU 0. Các số khác không bị ảnh hưởng (greedy, không phụ thuộc VRAM); thời gian 6.6 chậm hơn ~5%. Sửa: 5.5 xoá thêm `inputs`, `gc.collect()`, `torch.cuda.empty_cache()`, `assert weakref` base đã được giải phóng.
+- Phát hiện: DeepEval Hallucination khớp nhãn tay thấp vì 2 thứ đo khác nhau. Nhãn tay ghi "trả lời đúng"; Hallucination chỉ hỏi "có mâu thuẫn tài liệu không". Mục 8 có 11/16 câu lệch là câu **từ chối** ("Không có thông tin"): người ghi chưa đạt, giám khảo ghi không bịa. 9.1 có 11 câu trả lời sai mà giám khảo vẫn cho đạt.
+- Quyết định (Toàn, 29/11): **chạy lại normal run** với notebook đã sửa 5.5 (run này không dùng làm chính thức); 10.3e so Hallucination theo cách B: phía người "không bịa" = nhãn Đúng hoặc Từ chối, chỉ Sai là bịa (Correctness, False premise giữ `human_ok`). Thử 10.3e đã sửa trên dữ liệu run này: Hallucination mục 8 khớp 26/36 (cũ 20/36), 9.1 19/30, G-Eval không đổi.
+
+---
+
+## 20261128_221403_smoke — notebook theo bộ đánh giá của cô (bỏ bộ cũ; HumanEval, IFEval, 9.4b Bias, 10.3e nhãn tay)
+
+- Người chạy: Toàn | Kaggle, GPU T4 x2, Internet bật, secret `JUDGE_API_KEY` | 10.3 phút, phần 0–10 và 10.5–10.6 OK, 0 lỗi | log: `outputs/_smoke/logs/20261128_221403_smoke/` (không commit)
+- Thay đổi notebook (28/11): 1.4 bỏ luật từ khoá; **1.7 HumanEval**; 4.6 top-1 = Accuracy; 5.4 bỏ chấm tay; **5.5 IFEval**; 8.4 EM / F1 thay chấm 3 mức, bỏ recall@3; 9.1–9.3 bỏ chấm tay; **9.4b DeepEval Bias**; 9.5 Exact Match; 10.3c thêm Hallucination 9.1, Bias; 10.3d thêm tiêu chí False premise, ca 9.1, 9.3; **10.3e** kiểm giám khảo bằng `data/human_labels_v1.json`; 10.4, thẻ E1–E14 theo metric của cô.
+- Smoke (số nhỏ, chỉ kiểm chạy được): HumanEval 8/10 (sai HumanEval/1 AssertionError, HumanEval/9 IndexError); IFEval 8 prompt: base strict 0.000 / 0.154, Instruct 0.250 / 0.385 (prompt / chỉ dẫn), bị cắt ở 1024 token: base 3, Instruct 1; 9.4b Bias TB 0.9 (10 nghề); DeepEval 84 lần gọi 0.7 phút, G-Eval N = 2, 302 lần gọi cộng dồn 1.1 phút, 0 lỗi JSON; 10.3e so 50 cặp (28 output có nhãn tay, cả 28 trùng output đã đọc).
+- Sự cố: 10.3e in "bỏ 44 câu do output đổi" — sai: 44 nhãn **không có** trong smoke (smoke chỉ chạy 5 + 1 câu mục 8, 5 câu 9.1), không phải output đổi. Sửa: tách `in_run` và `changed`, chỉ cảnh báo khi output thật sự đổi; kiểm lại trên dữ liệu đủ: 72/72 trùng.
+- Kết luận: đạt, sẵn sàng normal run (Restart session trước, `SMOKE = False`).
+
+---
+
 ## 20261128_041850_normal — G-Eval N = 20, 16 luồng (**lần chạy chính thức mới**; VRAM 6.6 / 9.5 lấy run 20261127_234527)
 
 - Người chạy: Toàn | Kaggle, GPU T4 x2 | 22.0 phút, 188 cell, 0 lỗi | log: `outputs/logs/20261128_041850_normal/`
